@@ -2,7 +2,7 @@
   "$schema": "https://github.com/googleapis/release-please/raw/refs/heads/main/schemas/config.json",
   "initial-version": "0.0.1",
   "bump-minor-pre-major": true,
-  "bump-patch-for-minor-pre-major": true,
+  "bump-patch-for-minor-pre-major": false,
   "changelog-sections": [
     { "type": "feat", "section": "Features", "hidden": false },
     { "type": "fix", "section": "Bug fixes", "hidden": false },

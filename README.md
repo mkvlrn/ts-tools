@@ -1,6 +1,6 @@
-# tools
+# ts-tools
 
-Some Typescript tools I use frequently.
+Some Typescript tools I use frequently. They are all published at https://jsr.io/@mkvlrn.
 
 ## @mkvlrn/result
 
