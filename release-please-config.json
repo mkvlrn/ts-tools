@@ -6,15 +6,15 @@
   "packages": {
     "packages/app-error": {
       "release-type": "node",
-      "extra-files": [{ "type": "json", "path": "jsr.json", "jsonpath": "$.version" }]
+      "extra-files": [{ "type": "generic", "path": "jsr.json" }]
     },
     "packages/config": {
       "release-type": "node",
-      "extra-files": [{ "type": "json", "path": "jsr.json", "jsonpath": "$.version" }]
+      "extra-files": [{ "type": "generic", "path": "jsr.json" }]
     },
     "packages/result": {
       "release-type": "node",
-      "extra-files": [{ "type": "json", "path": "jsr.json", "jsonpath": "$.version" }]
+      "extra-files": [{ "type": "generic", "path": "jsr.json" }]
     }
   }
 }
