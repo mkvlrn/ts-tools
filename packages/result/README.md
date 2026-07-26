@@ -10,9 +10,9 @@ No `.map()`, no `.flatMap()`, no `.andThen()`, no `.orElse()`, no `.unwrap()`, n
 
 There are dozens of Result libraries for TypeScript. Nearly all of them bolt on method chaining, transformation pipelines, and functional programming utilities that turn a simple concept into an entire paradigm.
 
-This package does **one thing**: gives you a type-safe `ResultSync<T, E>` or `ResultAsync<T, E>` discriminated union with `ok()` and `err()` constructors. You use `if/else` to handle it. TypeScript narrows the type for you. That's the whole API.
+This package does **one thing**: gives you a type-safe `Result<T, E>` or `ResultAsync<T, E>` discriminated union with `okResult()` and `errResult()` constructors. You use `if/else` to handle it. TypeScript narrows the type for you. That's the whole API.
 
-**The entire implementation is ~35 lines. Zero runtime dependencies. Two exports.**
+**The entire implementation is ~35 lines. Zero runtime dependencies. Four exports.**
 
 If you need `.map().flatMap().andThen().orElse().unwrapOr()` chains, use [neverthrow](https://github.com/supermacro/neverthrow) or [ts-results](https://github.com/vultix/ts-results). They're good libraries. This isn't that.
 
@@ -31,28 +31,30 @@ npx jsr add -D @mkvlrn/result # npm
 
 ## API
 
-| Export              | What it does                                |
-| ------------------- | ------------------------------------------- |
-| `ResultSync<T, E>`  | Sync Result type and `{ ok, err }` helpers  |
-| `ResultAsync<T, E>` | Async Result type and `{ ok, err }` helpers |
+| Export              | What it does                                                                        |
+| ------------------- | ----------------------------------------------------------------------------------- |
+| `Result<T, E>`      | Synchronous Result type (`{ isError: false, value }` or `{ isError: true, error }`) |
+| `ResultAsync<T, E>` | Asynchronous Result type (`Promise<Result<T, E>>`)                                  |
+| `okResult(value)`   | Creates a successful Result object                                                  |
+| `errResult(error)`  | Creates an error Result object                                                      |
 
 That's it. That's the whole thing.
 
 ## Usage
 
 ```typescript
-import { ResultSync, ResultAsync } from "@mkvlrn/result";
+import { Result, ResultAsync, okResult, errResult } from "@mkvlrn/result";
 ```
 
 ### Create results, check results
 
 ```typescript
-function divide(a: number, b: number): ResultSync<number, Error> {
+function divide(a: number, b: number): Result<number, Error> {
   if (b === 0) {
-    return ResultSync.err(new Error("Division by zero"));
+    return errResult(new Error("Division by zero"));
   }
 
-  return ResultSync.ok(a / b);
+  return okResult(a / b);
 }
 
 const result = divide(10, 2);
@@ -72,18 +74,18 @@ async function fetchUser(id: number): ResultAsync<User, Error> {
   try {
     const response = await fetch(`/api/users/${id}`);
     if (!response.ok) {
-      return ResultAsync.err(new Error(`HTTP ${response.status}`));
+      return errResult(new Error(`HTTP ${response.status}`));
     }
     const user = await response.json();
 
-    return ResultAsync.ok(user);
+    return okResult(user);
   } catch (error) {
-    return ResultAsync.err(error instanceof Error ? error : new Error("Unknown error"));
+    return errResult(error instanceof Error ? error : new Error("Unknown error"));
   }
 }
 ```
 
-`ResultAsync<T, E>` is just `Promise<ResultSync<T, E>>`. It's a type alias.
+`ResultAsync<T, E>` is just `Promise<Result<T, E>>`. It's a type alias.
 
 ### Custom Error Types
 
@@ -98,12 +100,12 @@ class ValidationError extends Error {
   }
 }
 
-function validateEmail(email: string): ResultSync<string, ValidationError> {
+function validateEmail(email: string): Result<string, ValidationError> {
   if (!email.includes("@")) {
-    return ResultSync.err(new ValidationError(400, "bad-email"));
+    return errResult(new ValidationError(400, "bad-email"));
   }
 
-  return ResultSync.ok(email);
+  return okResult(email);
 }
 
 const result = validateEmail("invalid-email");
