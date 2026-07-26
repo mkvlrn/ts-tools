@@ -11,15 +11,24 @@
   "packages": {
     "packages/app-error": {
       "release-type": "node",
-      "extra-files": [{ "type": "generic", "path": "jsr.json" }]
+      "extra-files": [
+        { "type": "generic", "path": "jsr.json" },
+        { "type": "generic", "path": "README.md" }
+      ]
     },
     "packages/config": {
       "release-type": "node",
-      "extra-files": [{ "type": "generic", "path": "jsr.json" }]
+      "extra-files": [
+        { "type": "generic", "path": "jsr.json" },
+        { "type": "generic", "path": "README.md" }
+      ]
     },
     "packages/result": {
       "release-type": "node",
-      "extra-files": [{ "type": "generic", "path": "jsr.json" }]
+      "extra-files": [
+        { "type": "generic", "path": "jsr.json" },
+        { "type": "generic", "path": "README.md" }
+      ]
     }
   }
 }
