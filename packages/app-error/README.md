@@ -2,19 +2,26 @@
 
 Map your app's error codes to HTTP statuses. Define once, use everywhere, let TypeScript yell at you if you typo a code.
 
-[![npm](https://img.shields.io/npm/v/@mkvlrn/app-error)](https://www.npmjs.com/package/@mkvlrn/app-error)
+[![JSR Version](https://img.shields.io/jsr/v/%40mkvlrn/app-error)](https://jsr.io/@mkvlrn/app-error)
 
 ## Installation
 
+> [!NOTE]
+> This package is hosted at [jsr](https://jsr.io) and is ESM **only**.
+
 ```bash
-pnpm add @mkvlrn/app-error
+bunx jsr add -D @mkvlrn/app-error # bun
+pnpm add -D jsr:@mkvlrn/app-error # pnpm
+yarn add -D jsr:@mkvlrn/app-error # yarn
+deno add -D jsr:@mkvlrn/app-error # deno
+npx jsr add -D @mkvlrn/app-error # npm
 ```
 
 ## API
 
 | Export                  | What it does                                                                   |
 | ----------------------- | ------------------------------------------------------------------------------ |
-| `AppError<TCode>`       | Error subclass with `code`, `statusCode`, `status`, and a `serialize()` method |
+| `AppError<T>`           | Error subclass with `code`, `statusCode`, `status`, and a `serialize()` method |
 | `defineErrors(mapping)` | Takes a code → status mapping, returns `throw`, `create`, and `is` helpers     |
 | `InferAppError<T>`      | Extracts a qualified `AppError` type from a `defineErrors` result              |
 
@@ -101,7 +108,3 @@ throw new AppError("CUSTOM_CODE", 503, "service unavailable");
 ## License
 
 MIT
-
-```
-
-```
