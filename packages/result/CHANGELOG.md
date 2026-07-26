@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.5](https://github.com/mkvlrn/ts-tools/compare/result-v0.2.4...result-v0.2.5) (2026-07-26)
+
+
+### Bug fixes
+
+* force patch publish ([cdd120a](https://github.com/mkvlrn/ts-tools/commit/cdd120aa2701c6a62c53d00573aae4a4453e1c55))
+
 ## [0.2.4](https://github.com/mkvlrn/ts-tools/compare/result-v0.2.3...result-v0.2.4) (2026-07-26)
 
 
