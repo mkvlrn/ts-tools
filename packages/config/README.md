@@ -4,7 +4,7 @@ Custom, opinionated configurations for biome and typescript (tsconfig.json).
 
 To be used in my node projects - aimed at modern, type-safe, non-spaghetti codebases.
 
-They'll work well in most base node, nest, and react (non next) projects without changes, just by extending these configs.
+They'll work well in most base node, bun, deno, nest, and react (non next) projects without changes, just by extending these configs.
 
 [![JSR Version](https://img.shields.io/jsr/v/%40mkvlrn/config)](https://jsr.io/@mkvlrn/config)
 
