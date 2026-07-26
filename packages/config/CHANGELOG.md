@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.0](https://github.com/mkvlrn/ts-tools/compare/config-v0.0.3...config-v0.1.0) (2026-07-26)
+
+
+### Features
+
+* force minor publish ([a95a385](https://github.com/mkvlrn/ts-tools/commit/a95a385c605e9f0cd0193549efdab131980050dc))
+* force minor publish ([9b20ec1](https://github.com/mkvlrn/ts-tools/commit/9b20ec1f385095d22cb554d16fef804a955865fa))
+
 ## [0.0.3](https://github.com/mkvlrn/ts-tools/compare/config-v0.0.2...config-v0.0.3) (2026-07-26)
 
 
