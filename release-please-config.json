@@ -3,21 +3,15 @@
   "packages": {
     "packages/app-error": {
       "release-type": "node",
-      "extra-files": [
-        { "type": "json", "path": "./packages/app-error/jsr.json", "jsonpath": "$.version" }
-      ]
+      "extra-files": [{ "type": "json", "path": "jsr.json", "jsonpath": "$.version" }]
     },
     "packages/config": {
       "release-type": "node",
-      "extra-files": [
-        { "type": "json", "path": "./packages/config/jsr.json", "jsonpath": "$.version" }
-      ]
+      "extra-files": [{ "type": "json", "path": "jsr.json", "jsonpath": "$.version" }]
     },
     "packages/result": {
       "release-type": "node",
-      "extra-files": [
-        { "type": "json", "path": "./packages/result/jsr.json", "jsonpath": "$.version" }
-      ]
+      "extra-files": [{ "type": "json", "path": "jsr.json", "jsonpath": "$.version" }]
     }
   }
 }
