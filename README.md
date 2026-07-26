@@ -18,5 +18,4 @@ Opinionated configurations for biome and typescript.
 
 Map app error codes to HTTP statuses.
 
-[![JSR Version](https://img.shields.io/jsr/v/%40mkvlrn/app-error)
-](https://jsr.io/@mkvlrn/app-error) [![README](https://img.shields.io/badge/readme-white?style=flat&logo=ReadMe)](./packages/app-error/README.md)
+[![JSR Version](https://img.shields.io/jsr/v/%40mkvlrn/app-error)](https://jsr.io/@mkvlrn/app-error) [![README](https://img.shields.io/badge/readme-white?style=flat&logo=ReadMe)](./packages/app-error/README.md)
