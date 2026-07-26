@@ -1,7 +1,7 @@
 {
   "name": "@mkvlrn/app-error",
   "description": "Map app error codes to HTTP statuses",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "type": "module",
   "author": "Mike Valeriano <mkvlrn@gmail.com>",
