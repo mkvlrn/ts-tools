@@ -1,0 +1,20 @@
+{
+  "name": "@mkvlrn/config",
+  "description": "Opinionated configurations for biome and typescript",
+  "version": "0.0.0",
+  "license": "MIT",
+  "type": "module",
+  "author": "Mike Valeriano <mkvlrn@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:mkvlrn/ts-tools"
+  },
+  "keywords": [
+    "node",
+    "bun",
+    "typescript",
+    "biome",
+    "tsconfig"
+  ],
+  "devDependencies": {}
+}

@@ -1,0 +1,23 @@
+{
+  "name": "@mkvlrn/app-error",
+  "description": "Map app error codes to HTTP statuses",
+  "version": "0.0.0",
+  "license": "MIT",
+  "type": "module",
+  "author": "Mike Valeriano <mkvlrn@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:mkvlrn/ts-tools"
+  },
+  "keywords": [
+    "node",
+    "bun",
+    "typescript",
+    "error",
+    "http-error"
+  ],
+  "devDependencies": {},
+  "dependencies": {
+    "http-status-codes": "^2.3.0"
+  }
+}

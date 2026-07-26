@@ -1,0 +1,36 @@
+name: checks
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  run-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: jdx/mise-action@v4
+      - name: get mise cache directory
+        shell: bash
+        run: echo "MISE_CACHE_PATH=$(mise config show.cache.dir 2>/dev/null || echo ~/.local/cache/mise)" >> $GITHUB_ENV
+      - uses: actions/cache@v6
+        with:
+          path: ${{ env.MISE_CACHE_PATH }}
+          key: ${{ runner.os }}-mise-cache-${{ hashFiles('.mise/**') }}
+          restore-keys: ${{ runner.os }}-mise-cache-
+      - name: get pnpm store directory
+        shell: bash
+        run: echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+      - uses: actions/cache@v6
+        with:
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lockb', '**/bun.lock') }}
+          restore-keys: ${{ runner.os }}-bun-
+      - run: bun install --frozen-lockfile
+      - run: bun typecheck
+      - run: bun lint-check
+      - run: bun test-ci

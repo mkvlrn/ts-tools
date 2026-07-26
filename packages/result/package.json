@@ -1,0 +1,19 @@
+{
+  "name": "@mkvlrn/result",
+  "description": "Simple Result type/pattern for TypeScript",
+  "version": "0.2.0",
+  "license": "MIT",
+  "type": "module",
+  "author": "Mike Valeriano <mkvlrn@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:mkvlrn/ts-tools"
+  },
+  "keywords": [
+    "node",
+    "bun",
+    "typescript",
+    "result"
+  ],
+  "devDependencies": {}
+}

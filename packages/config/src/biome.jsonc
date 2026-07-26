@@ -1,0 +1,110 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.5.5/schema.json",
+  "root": false,
+  "assist": {
+    "enabled": true,
+    "actions": {
+      "source": {
+        "organizeImports": "on",
+        "useSortedAttributes": "off",
+        "useSortedKeys": "off",
+        "useSortedProperties": "off"
+      }
+    }
+  },
+  "json": {
+    "parser": { "allowComments": true },
+    "formatter": { "enabled": true }
+  },
+  "javascript": {
+    "parser": { "unsafeParameterDecoratorsEnabled": true }, // for nest decorators
+    "formatter": { "enabled": true }
+  },
+  "css": {
+    "parser": { "tailwindDirectives": true },
+    "formatter": { "enabled": true }
+  },
+  "html": {
+    "experimentalFullSupportEnabled": true,
+    "formatter": { "enabled": true }
+  },
+  "formatter": {
+    "enabled": true,
+    "formatWithErrors": true,
+    "lineEnding": "lf",
+    "lineWidth": 100,
+    "indentStyle": "space",
+    "indentWidth": 2
+  },
+  "linter": {
+    "enabled": true,
+    "domains": {
+      "next": "none",
+      "playwright": "none",
+      "project": "recommended",
+      "qwik": "none",
+      "react": "recommended",
+      "solid": "none",
+      "test": "recommended",
+      "turborepo": "none",
+      "types": "recommended",
+      "vue": "none"
+    },
+    "rules": {
+      "a11y": "on",
+      "complexity": "on",
+      "correctness": "on",
+      "nursery": "off",
+      "performance": "on",
+      "security": "on",
+      "style": "on",
+      "suspicious": "on"
+    }
+  },
+  "overrides": [
+    {
+      "includes": ["**/*"],
+      "linter": {
+        "rules": {
+          "complexity": {
+            // because of typescript's noPropertyAccessFromIndexSignature
+            "useLiteralKeys": "off"
+          },
+          "correctness": {
+            // path alias already uses ts extensions
+            "useImportExtensions": "off",
+            // let editor resolve imports
+            "noUnresolvedImports": "off"
+          },
+          "style": {
+            // this is a silly rule
+            "useExportsLast": "off"
+          }
+        }
+      }
+    },
+    {
+      // test files, config files, and some scripts
+      // should be able to import from node
+      "includes": ["**/*.config.ts", "**/*.test.ts", "**/*.spec.ts", "**/.config/*.ts"],
+      "linter": {
+        "rules": {
+          "correctness": {
+            "noNodejsModules": "off"
+          }
+        }
+      }
+    },
+    {
+      // config files should be able to export defaults as per tooling requirements
+      "includes": ["**/*.config.ts", "**/.config/*.ts"],
+      "linter": {
+        "rules": {
+          "style": {
+            "noDefaultExport": "off"
+          }
+        }
+      }
+    }
+  ]
+}

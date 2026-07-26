@@ -1,0 +1,44 @@
+{
+  "$schema": "https://www.schemastore.org/tsconfig",
+  "compilerOptions": {
+    // very strict
+    "strict": true,
+    "allowJs": false,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "erasableSyntaxOnly": true,
+    "exactOptionalPropertyTypes": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true,
+    "noUncheckedSideEffectImports": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "verbatimModuleSyntax": true,
+    // esm
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "lib": ["ESNext"],
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "moduleDetection": "force",
+    "target": "esnext",
+    // no comments by default
+    "removeComments": true,
+    // pnpm compatibility
+    "preserveSymlinks": false,
+    // self explanatory
+    "resolveJsonModule": true,
+    // don't try to check for errors on imported libs
+    "skipLibCheck": true,
+    // nest still uses these old experimental decorators
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    // react
+    "jsx": "react-jsx",
+    // default is empty now, so any type packages are allowed
+    "types": ["node"]
+  }
+}

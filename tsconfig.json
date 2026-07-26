@@ -1,0 +1,7 @@
+{
+  "extends": ["./packages/config/src/tsconfig.json"],
+  "compilerOptions": {
+    "noEmit": true,
+    "types": ["node", "bun"]
+  }
+}

@@ -1,0 +1,12 @@
+monorepo_root = true
+
+[monorepo]
+config_roots = ["packages/*"]
+
+[tools]
+bun = "1.3.14"
+
+[settings]
+disable_backends = ["asdf"]
+use_versions_host = false
+experimental = true
