@@ -6,12 +6,19 @@ To be used in my node projects - aimed at modern, type-safe, non-spaghetti codeb
 
 They'll work well in most base node, nest, and react (non next) projects without changes, just by extending these configs.
 
-[![npm](https://img.shields.io/npm/v/@mkvlrn/config)](https://www.npmjs.com/package/@mkvlrn/config)
+[![JSR Version](https://img.shields.io/jsr/v/%40mkvlrn/config)](https://jsr.io/@mkvlrn/config)
 
 ## Installation
 
+> [!NOTE]
+> This package is hosted at [jsr](https://jsr.io).
+
 ```bash
-pnpm add @mkvlrn/config -D
+bunx jsr add -D @mkvlrn/config # bun
+pnpm add -D jsr:@mkvlrn/config # pnpm
+yarn add -D jsr:@mkvlrn/config # yarn
+deno add -D jsr:@mkvlrn/config # deno
+npx jsr add -D @mkvlrn/config # npm
 ```
 
 ## Usage
@@ -29,10 +36,10 @@ Create your configuration file (`biome.json` or `biome.jsonc`):
 {
   "$schema": "node_modules/@biomejs/biome/configuration_schema.json",
   "root": true, // if this is the root of your project, false otherwise
-  "extends": ["@mkvlrn/config/biome"],
+  "extends": ["@mkvlrn/config/biome.json"],
   "overrides": [
     // any overrides, see biome docs
-  ]
+  ],
 }
 ```
 
@@ -47,10 +54,10 @@ Create your configuration file:
 
 ```jsonc
 {
-  "extends": "@mkvlrn/config/tsconfig",
+  "extends": "@mkvlrn/config/tsconfig.json",
   "compilerOptions": {
     // add your custom rules here
-  }
+  },
 }
 ```
 
