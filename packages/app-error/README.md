@@ -9,13 +9,17 @@ Map your app's error codes to HTTP statuses. Define once, use everywhere, let Ty
 > [!NOTE]
 > This package is hosted at [jsr](https://jsr.io) and is ESM **only**.
 
+<!-- x-release-please-start-version -->
+
 ```bash
-bunx jsr add @mkvlrn/app-error # bun
+bunx jsr add -D @mkvlrn/result@^0.0.3 # bun
 pnpm add jsr:@mkvlrn/app-error # pnpm
 yarn add jsr:@mkvlrn/app-error # yarn
 deno add jsr:@mkvlrn/app-error # deno
 npx jsr add @mkvlrn/app-error # npm
 ```
+
+<!-- x-release-please-end -->
 
 ## API
 
