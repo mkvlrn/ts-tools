@@ -17,10 +17,10 @@ They'll work well in most base node, nest, and react (non next) projects without
 
 ```bash
 bunx jsr add -D @mkvlrn/config@^0.0.3 # bun
-pnpm add jsr:@mkvlrn/config # pnpm
-yarn add jsr:@mkvlrn/config # yarn
-deno add jsr:@mkvlrn/config # deno
-npx jsr add @mkvlrn/config # npm
+pnpm add -D jsr:@mkvlrn/config # pnpm
+yarn add -D jsr:@mkvlrn/config # yarn
+deno add -D jsr:@mkvlrn/config # deno
+npx jsr add -D @mkvlrn/config # npm
 ```
 
 <!-- x-release-please-end -->
