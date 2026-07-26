@@ -12,8 +12,6 @@ There are dozens of Result libraries for TypeScript. Nearly all of them bolt on 
 
 This package does **one thing**: gives you a type-safe `Result<T, E>` or `ResultAsync<T, E>` discriminated union with `okResult()` and `errResult()` constructors. You use `if/else` to handle it. TypeScript narrows the type for you. That's the whole API.
 
-**The entire implementation is ~35 lines. Zero runtime dependencies. Four exports.**
-
 If you need `.map().flatMap().andThen().orElse().unwrapOr()` chains, use [neverthrow](https://github.com/supermacro/neverthrow) or [ts-results](https://github.com/vultix/ts-results). They're good libraries. This isn't that.
 
 ## Installation
@@ -22,11 +20,11 @@ If you need `.map().flatMap().andThen().orElse().unwrapOr()` chains, use [nevert
 > This package is hosted at [jsr](https://jsr.io) and is ESM **only**.
 
 ```bash
-bunx jsr add -D @mkvlrn/result # bun
-pnpm add -D jsr:@mkvlrn/result # pnpm
-yarn add -D jsr:@mkvlrn/result # yarn
-deno add -D jsr:@mkvlrn/result # deno
-npx jsr add -D @mkvlrn/result # npm
+bunx jsr add @mkvlrn/result # bun
+pnpm add jsr:@mkvlrn/result # pnpm
+yarn add jsr:@mkvlrn/result # yarn
+deno add jsr:@mkvlrn/result # deno
+npx jsr add @mkvlrn/result # npm
 ```
 
 ## API
