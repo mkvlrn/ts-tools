@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.3](https://github.com/mkvlrn/ts-tools/compare/result-v0.2.2...result-v0.2.3) (2026-07-26)
+
+
+### Features
+
+* **result:** refactor exports for 4 symbols ([f31b515](https://github.com/mkvlrn/ts-tools/commit/f31b515604cebfbcba7817b1ae74e426053a9c46))
+
 ## [0.2.2](https://github.com/mkvlrn/ts-tools/compare/result-v0.2.1...result-v0.2.2) (2026-07-26)
 
 
