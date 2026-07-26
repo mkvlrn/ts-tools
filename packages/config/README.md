@@ -1,8 +1,8 @@
 # @mkvlrn/config
 
-Custom, opinionated configurations for biome and typescript (tsconfig.json).
+Custom, opinionated configurations that can be used to extend your own biome and typescript configs. Or just to serve as sane, strict defaults.
 
-To be used in my node projects - aimed at modern, type-safe, non-spaghetti codebases.
+Aimed at modern, type-safe, non-spaghetti codebases.
 
 They'll work well in most base node, bun, deno, nest, and react (non next) projects without changes, just by extending these configs.
 
