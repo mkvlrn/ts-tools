@@ -4,7 +4,7 @@ Dead simple Result pattern for TypeScript.
 
 No `.map()`, no `.flatMap()`, no `.andThen()`, no `.orElse()`, no `.unwrap()`, no monadic gymnastics. Just two types with two functions. Then TypeScript does its thing.
 
-[![npm](https://img.shields.io/npm/v/@mkvlrn/result)](https://www.npmjs.com/package/@mkvlrn/result)
+[![JSR Version](https://img.shields.io/jsr/v/%40mkvlrn/result)](https://jsr.io/@mkvlrn/result)
 
 ## Why this one?
 
@@ -18,8 +18,15 @@ If you need `.map().flatMap().andThen().orElse().unwrapOr()` chains, use [nevert
 
 ## Installation
 
+> [!NOTE]
+> This package is hosted at [jsr](https://jsr.io) and is ESM **only**.
+
 ```bash
-pnpm add @mkvlrn/result
+bunx jsr add -D @mkvlrn/result # bun
+pnpm add -D jsr:@mkvlrn/result # pnpm
+yarn add -D jsr:@mkvlrn/result # yarn
+deno add -D jsr:@mkvlrn/result # deno
+npx jsr add -D @mkvlrn/result # npm
 ```
 
 ## API
