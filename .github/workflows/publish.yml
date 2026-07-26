@@ -21,14 +21,14 @@ jobs:
         working-directory: ./packages/app-error
         run: |
           bun install --production --ignore-scripts
-          jsr publish
+          bunx jsr publish
 
       - name: Publish config to JSR
         if: startsWith(github.event.release.tag_name, 'config-v')
         working-directory: ./packages/config
-        run: jsr publish
+        run: bunx jsr publish
 
       - name: Publish result to JSR
         if: startsWith(github.event.release.tag_name, 'result-v')
         working-directory: ./packages/result
-        run: jsr publish
+        run: bunx jsr publish
