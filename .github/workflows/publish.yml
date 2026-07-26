@@ -43,7 +43,9 @@ jobs:
       - name: Publish app-error to JSR
         if: ${{ steps.release.outputs['packages/app-error--release_created'] }}
         working-directory: ./packages/app-error
-        run: bunx jsr publish
+        run: |
+          bun install --production
+          bunx jsr publish
 
       - name: Publish config to JSR
         if: ${{ steps.release.outputs['packages/config--release_created'] }}
