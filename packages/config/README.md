@@ -16,7 +16,7 @@ They'll work well in most base node, bun, deno, nest, and react projects without
 <!-- x-release-please-start-version -->
 
 ```bash
-bunx jsr add -D @mkvlrn/config@^0.1.2 # bun
+bunx jsr add -D @mkvlrn/config@^0.1.3 # bun
 pnpm add -D jsr:@mkvlrn/config # pnpm
 yarn add -D jsr:@mkvlrn/config # yarn
 deno add -D jsr:@mkvlrn/config # deno
