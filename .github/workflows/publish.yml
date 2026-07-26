@@ -38,15 +38,15 @@ jobs:
 
       - name: Publish app-error to JSR
         if: ${{ steps.release.outputs['packages/app-error--release_created'] }}
-        working-directory: ./packages/pkg-a
+        working-directory: ./packages/app-error
         run: bunx jsr publish
 
       - name: Publish config to JSR
         if: ${{ steps.release.outputs['packages/config--release_created'] }}
-        working-directory: ./packages/pkg-b
+        working-directory: ./packages/config
         run: bunx jsr publish
 
       - name: Publish result to JSR
         if: ${{ steps.release.outputs['packages/result--release_created'] }}
-        working-directory: ./packages/pkg-b
+        working-directory: ./packages/result
         run: bunx jsr publish
