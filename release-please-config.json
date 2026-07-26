@@ -1,19 +1,19 @@
 {
   "$schema": "https://github.com/googleapis/release-please/raw/refs/heads/main/schemas/config.json",
   "packages": {
-    "@mkvlrn/app-error": {
+    "packages/app-error": {
       "release-type": "node",
       "extra-files": [
         { "type": "json", "path": "./packages/app-error/jsr.json", "jsonpath": "$.version" }
       ]
     },
-    "@mkvlrn/config": {
+    "packages/config": {
       "release-type": "node",
       "extra-files": [
         { "type": "json", "path": "./packages/config/jsr.json", "jsonpath": "$.version" }
       ]
     },
-    "@mkvlrn/result": {
+    "packages/result": {
       "release-type": "node",
       "extra-files": [
         { "type": "json", "path": "./packages/result/jsr.json", "jsonpath": "$.version" }
