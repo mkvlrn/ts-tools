@@ -19,13 +19,17 @@ If you need `.map().flatMap().andThen().orElse().unwrapOr()` chains, use [nevert
 > [!NOTE]
 > This package is hosted at [jsr](https://jsr.io) and is ESM **only**.
 
+<!-- x-release-please-start-version -->
+
 ```bash
-bunx jsr add @mkvlrn/result # bun
+bunx jsr add @mkvlrn/result@^0.2.4 # bun
 pnpm add jsr:@mkvlrn/result # pnpm
 yarn add jsr:@mkvlrn/result # yarn
 deno add jsr:@mkvlrn/result # deno
 npx jsr add @mkvlrn/result # npm
 ```
+
+<!-- x-release-please-end -->
 
 ## API
 
