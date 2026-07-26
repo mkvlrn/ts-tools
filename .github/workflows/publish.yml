@@ -44,7 +44,7 @@ jobs:
         if: ${{ steps.release.outputs['packages/app-error--release_created'] }}
         working-directory: ./packages/app-error
         run: |
-          bun install --production
+          bun install --production --ignore-scripts
           bunx jsr publish
 
       - name: Publish config to JSR
