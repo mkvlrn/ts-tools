@@ -65,7 +65,7 @@ Create your configuration file:
 
 </details>
 
-Obs: anything related to files needs to be set: rootDir, outDir, baseUrl, paths, etc - this prevents path confusion because the "original" tsconfig will be in node_modules.
+Obs: anything related to files needs to be set: rootDir, outDir, baseUrl, paths, etc - this prevents path confusion because the "original" tsconfig will be in `node_modules`.
 
 ## License
 
