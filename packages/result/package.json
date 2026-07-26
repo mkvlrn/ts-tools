@@ -1,7 +1,7 @@
 {
   "name": "@mkvlrn/result",
   "description": "Simple Result type/pattern for TypeScript",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "license": "MIT",
   "type": "module",
   "author": "Mike Valeriano <mkvlrn@gmail.com>",
