@@ -3,7 +3,5 @@
   "name": "@mkvlrn/result",
   "version": "0.2.4", // x-release-please-version
   "exports": "./src/index.ts",
-  "publish": {
-    "exclude": ["**/*.test.ts"]
-  }
+  "publish": { "exclude": ["**/*.test.ts"] }
 }

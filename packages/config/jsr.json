@@ -3,5 +3,5 @@
   "name": "@mkvlrn/config",
   "version": "0.0.3", // x-release-please-version
   "exports": { "./tsconfig.json": "./src/tsconfig.json", "./biome.json": "./src/biome.json" },
-  "publish": { "exclude": [] }
+  "publish": { "exclude": ["**/biome.jsonc"] }
 }
