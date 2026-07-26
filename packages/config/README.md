@@ -29,7 +29,7 @@ Obs: Both biome and typescript need to be installed separately and be available 
 
 ### biome
 
-Create your configuration file (`biome.json` or `biome.jsonc`):
+Create your configuration file:
 
 <details>
 <summary><code>biome.jsonc</code></summary>
