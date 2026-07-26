@@ -13,13 +13,17 @@ They'll work well in most base node, nest, and react (non next) projects without
 > [!NOTE]
 > This package is hosted at [jsr](https://jsr.io) and is ESM **only**.
 
+<!-- x-release-please-start-version -->
+
 ```bash
-bunx jsr add -D @mkvlrn/config # bun
-pnpm add -D jsr:@mkvlrn/config # pnpm
-yarn add -D jsr:@mkvlrn/config # yarn
-deno add -D jsr:@mkvlrn/config # deno
-npx jsr add -D @mkvlrn/config # npm
+bunx jsr add -D @mkvlrn/config@^0.0.3 # bun
+pnpm add jsr:@mkvlrn/config # pnpm
+yarn add jsr:@mkvlrn/config # yarn
+deno add jsr:@mkvlrn/config # deno
+npx jsr add @mkvlrn/config # npm
 ```
+
+<!-- x-release-please-end -->
 
 ## Usage
 
