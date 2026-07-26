@@ -2,9 +2,7 @@
 
 Custom, opinionated configurations that can be used to extend your own biome and typescript configs. Or just to serve as sane, strict defaults.
 
-Aimed at modern, type-safe, non-spaghetti codebases.
-
-They'll work well in most base node, bun, deno, nest, and react projects without changes, just by extending these configs.
+Aimed at modern, type-safe, non-spaghetti codebases in most most node, bun, deno, nest, and react projects without changes, just by extending these configs.
 
 [![JSR Version](https://img.shields.io/jsr/v/%40mkvlrn/config)](https://jsr.io/@mkvlrn/config)
 
