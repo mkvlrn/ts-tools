@@ -27,7 +27,7 @@ npx jsr add -D @mkvlrn/config # npm
 
 Obs: Both biome and typescript need to be installed separately and be available in the project.
 
-### biome
+### biome (biome.json / biome.jsonc)
 
 Create your configuration file:
 
