@@ -11,7 +11,7 @@ They'll work well in most base node, nest, and react (non next) projects without
 ## Installation
 
 > [!NOTE]
-> This package is hosted at [jsr](https://jsr.io).
+> This package is hosted at [jsr](https://jsr.io) and is ESM **only**.
 
 ```bash
 bunx jsr add -D @mkvlrn/config # bun
