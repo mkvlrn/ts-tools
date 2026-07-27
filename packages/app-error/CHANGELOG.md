@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/mkvlrn/ts-tools/compare/app-error-v0.1.0...app-error-v0.1.1) (2026-07-27)
+
+
+### Documentation
+
+* update readme ([74954c9](https://github.com/mkvlrn/ts-tools/commit/74954c95e7b23634d9a21c17f6644cfced3c04b9))
+
 ## [0.1.0](https://github.com/mkvlrn/ts-tools/compare/app-error-v0.0.3...app-error-v0.1.0) (2026-07-26)
 
 
