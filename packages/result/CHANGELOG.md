@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.3.0](https://github.com/mkvlrn/ts-tools/compare/result-v0.2.7...result-v0.3.0) (2026-07-27)
+
+
+### Features
+
+* **app-error:** adjust API to export only one symbol ([667ccb2](https://github.com/mkvlrn/ts-tools/commit/667ccb25b04341820a582265788654e9d29818cf))
+
+
+### Documentation
+
+* update readme ([cbb22f3](https://github.com/mkvlrn/ts-tools/commit/cbb22f38a8f71d930892f169cefc572a8e804112))
+
 ## [0.2.7](https://github.com/mkvlrn/ts-tools/compare/result-v0.2.6...result-v0.2.7) (2026-07-27)
 
 

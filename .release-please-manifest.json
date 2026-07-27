@@ -1,5 +1,5 @@
 {
-  "packages/app-error": "0.1.2",
-  "packages/config": "0.1.9",
-  "packages/result": "0.2.7"
+  "packages/app-error": "0.2.0",
+  "packages/config": "0.2.0",
+  "packages/result": "0.3.0"
 }
