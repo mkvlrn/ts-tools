@@ -23,8 +23,8 @@ If you need `.map().flatMap().andThen().orElse().unwrapOr()` chains, use [nevert
 
 ```bash
 bunx jsr add @mkvlrn/result@^0.2.7 # bun
-pnpm add jsr:@mkvlrn/result # pnpm
-yarn add jsr:@mkvlrn/result # yarn
+pnpm dlx jsr add @mkvlrn/result # pnpm
+yarn dlx jsr add @mkvlrn/result # yarn
 deno add jsr:@mkvlrn/result # deno
 npx jsr add @mkvlrn/result # npm
 ```

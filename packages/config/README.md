@@ -15,8 +15,8 @@ Aimed at modern, type-safe, non-spaghetti codebases in most most node, bun, deno
 
 ```bash
 bunx jsr add -D @mkvlrn/config@^0.1.9 # bun
-pnpm add -D jsr:@mkvlrn/config # pnpm
-yarn add -D jsr:@mkvlrn/config # yarn
+pnpm dlx jsr add @mkvlrn/config # pnpm
+yarn dlx jsr add @mkvlrn/config # yarn
 deno add -D jsr:@mkvlrn/config # deno
 npx jsr add -D @mkvlrn/config # npm
 ```
