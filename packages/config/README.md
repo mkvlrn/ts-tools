@@ -4,7 +4,7 @@ Custom, opinionated configurations that can be used to extend your own biome and
 
 Aimed at modern, type-safe, non-spaghetti codebases in most most node, bun, deno, nest, and react projects without changes, just by extending these configs.
 
-[![JSR Version](https://img.shields.io/jsr/v/%40mkvlrn/config)](https://jsr.io/@mkvlrn/config)
+[![JSR](https://jsr.io/badges/@mkvlrn/config)](https://jsr.io/@mkvlrn/config) [![Bun](https://badgen.net/badge/icon/it's%20better%20than%20node?icon=bun&label=bun&color=black)](https://bun.com)
 
 ## Installation
 

@@ -2,7 +2,7 @@
 
 Map your app's error codes to HTTP statuses. Define once, use everywhere, let TypeScript yell at you if you typo a code.
 
-[![JSR Version](https://img.shields.io/jsr/v/%40mkvlrn/app-error)](https://jsr.io/@mkvlrn/app-error)
+[![JSR](https://jsr.io/badges/@mkvlrn/app-error)](https://jsr.io/@mkvlrn/app-error) [![Bun](https://badgen.net/badge/icon/it's%20better%20than%20node?icon=bun&label=bun&color=black)](https://bun.com)
 
 ## Installation
 
