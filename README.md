@@ -1,8 +1,8 @@
+[![JSR Scope](https://jsr.io/badges/@mkvlrn)](https://jsr.io/@mkvlrn) [![Bun](https://badgen.net/badge/icon/it's%20better%20than%20node?icon=bun&label=bun&color=black)](https://bun.com)
+
 # ts-tools
 
 Some Typescript tools I use frequently. They are all published at [jsr](https://jsr.io).
-
-[![JSR Scope](https://jsr.io/badges/@mkvlrn)](https://jsr.io/@mkvlrn) [![Bun](https://badgen.net/badge/icon/it's%20better%20than%20node?icon=bun&label=bun&color=black)](https://bun.com)
 
 ## @mkvlrn/result
 
