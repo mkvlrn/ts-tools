@@ -1,6 +1,6 @@
 # ts-tools
 
-[![JSR Scope](https://jsr.io/badges/@mkvlrn)](https://jsr.io/@mkvlrn)
+[![JSR Scope](https://jsr.io/badges/@mkvlrn)](https://jsr.io/@mkvlrn) [![Bun](https://badgen.net/badge/icon/it's%20better%20than%20node?icon=bun&label=bun&color=black)](https://bun.com)
 
 Some Typescript tools I use frequently. They are all published at [jsr](https://jsr.io).
 
