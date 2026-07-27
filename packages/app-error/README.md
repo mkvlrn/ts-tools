@@ -1,8 +1,8 @@
 # @mkvlrn/app-error
 
-Map your app's error codes to HTTP statuses. Define once, use everywhere, let TypeScript yell at you if you typo a code.
-
 [![JSR](https://jsr.io/badges/@mkvlrn/app-error)](https://jsr.io/@mkvlrn/app-error) [![Bun](https://badgen.net/badge/icon/it's%20better%20than%20node?icon=bun&label=bun&color=black)](https://bun.com)
+
+Map your app's error codes to HTTP statuses. Define once, use everywhere, let TypeScript yell at you if you typo a code.
 
 ## Installation
 

@@ -1,10 +1,10 @@
 # @mkvlrn/config
 
+[![JSR](https://jsr.io/badges/@mkvlrn/config)](https://jsr.io/@mkvlrn/config) [![Bun](https://badgen.net/badge/icon/it's%20better%20than%20node?icon=bun&label=bun&color=black)](https://bun.com)
+
 Custom, opinionated configurations that can be used to extend your own biome and typescript configs. Or just to serve as sane, strict defaults.
 
 Aimed at modern, type-safe, non-spaghetti codebases in most most node, bun, deno, nest, and react projects without changes, just by extending these configs.
-
-[![JSR](https://jsr.io/badges/@mkvlrn/config)](https://jsr.io/@mkvlrn/config) [![Bun](https://badgen.net/badge/icon/it's%20better%20than%20node?icon=bun&label=bun&color=black)](https://bun.com)
 
 ## Installation
 

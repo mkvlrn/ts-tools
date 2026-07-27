@@ -1,10 +1,10 @@
 # @mkvlrn/result
 
+[![JSR](https://jsr.io/badges/@mkvlrn/result)](https://jsr.io/@mkvlrn/result) [![Bun](https://badgen.net/badge/icon/it's%20better%20than%20node?icon=bun&label=bun&color=black)](https://bun.com)
+
 Dead simple Result pattern for TypeScript.
 
 No `.map()`, no `.flatMap()`, no `.andThen()`, no `.orElse()`, no `.unwrap()`, no monadic gymnastics. Just two types with two functions. Then TypeScript does its thing.
-
-[![JSR](https://jsr.io/badges/@mkvlrn/result)](https://jsr.io/@mkvlrn/result) [![Bun](https://badgen.net/badge/icon/it's%20better%20than%20node?icon=bun&label=bun&color=black)](https://bun.com)
 
 ## Why this one?
 
