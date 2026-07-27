@@ -12,9 +12,9 @@ Map your app's error codes to HTTP statuses. Define once, use everywhere, let Ty
 <!-- x-release-please-start-version -->
 
 ```bash
-bunx jsr add @mkvlrn/app-error@^0.1.1 # bun
-pnpm add jsr:@mkvlrn/app-error # pnpm
-yarn add jsr:@mkvlrn/app-error # yarn
+bunx jsr add @mkvlrn/app-error@^0.1.2 # bun
+pnpm dlx jsr add @mkvlrn/app-error # pnpm
+yarn dlx jsr add @mkvlrn/app-error # yarn
 deno add jsr:@mkvlrn/app-error # deno
 npx jsr add @mkvlrn/app-error # npm
 ```
@@ -23,22 +23,21 @@ npx jsr add @mkvlrn/app-error # npm
 
 ## API
 
-| Export                  | What it does                                                                   |
-| ----------------------- | ------------------------------------------------------------------------------ |
-| `AppError<T>`           | Error subclass with `code`, `statusCode`, `status`, and a `serialize()` method |
-| `defineErrors(mapping)` | Takes a code → status mapping, returns `throw`, `create`, and `is` helpers     |
-| `InferAppError<T>`      | Extracts a qualified `AppError` type from a `defineErrors` result              |
+| Export              | What it does                                                                         |
+| ------------------- | ------------------------------------------------------------------------------------ |
+| `AppError<T>`       | Error subclass with `code`, `statusCode`, `status`, and `serialize()`                |
+| `AppError.define()` | Static method taking a code to status mapping, returning `throw`, `create`, and `is` |
 
 ## Usage
 
 ```ts
-import { AppError, defineErrors } from "@mkvlrn/app-error";
+import { AppError } from "@mkvlrn/app-error";
 ```
 
 ### Define your errors
 
 ```ts
-const errors = defineErrors({
+const errors = AppError.define({
   USER_NOT_FOUND: "NOT_FOUND", // 404
   INVALID_INPUT: "BAD_REQUEST", // 400
   UNAUTHORIZED_ACCESS: "UNAUTHORIZED", // 401
@@ -50,7 +49,7 @@ Keys are your codes, values are status names from [http-status-codes](https://gi
 ### Throw or create
 
 ```ts
-// throws — return type is never
+// throws: return type is never
 errors.throw("USER_NOT_FOUND", "no user with that id");
 
 // creates without throwing
@@ -81,7 +80,9 @@ if (err instanceof AppError) {
 
 ### Type guard
 
-`errors.is()` narrows an unknown value to your qualified `AppError` type — useful in catch blocks and error filters:
+### Type guard
+
+`errors.is()` narrows an unknown value to your qualified `AppError` type:
 
 ```ts
 if (errors.is(err)) {
@@ -92,21 +93,15 @@ if (errors.is(err)) {
 
 ### Infer the qualified type
 
-Instead of writing `AppError<"USER_NOT_FOUND" | "INVALID_INPUT" | ...>` by hand, use `InferAppError` to extract it from your definition:
+Extract the `AppError` type using `ReturnType<typeof errors.create>`:
 
 ```ts
-type MyAppError = InferAppError<typeof errors>;
-// → AppError<"USER_NOT_FOUND" | "INVALID_INPUT" | "UNAUTHORIZED_ACCESS">
+type MyAppError = ReturnType<typeof errors.create>;
+// AppError<"USER_NOT_FOUND" | "INVALID_INPUT" | "UNAUTHORIZED_ACCESS">
 
 function handleError(err: MyAppError) {
-  // err.code is narrowed to the union — no generic to qualify manually
+  // err.code is narrowed to the code union automatically
 }
-```
-
-### Standalone (no mapping)
-
-```ts
-throw new AppError("CUSTOM_CODE", 503, "service unavailable");
 ```
 
 ## License
