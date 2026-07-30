@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.0](https://github.com/mkvlrn/ts-tools/compare/app-error-v0.1.2...app-error-v0.2.0) (2026-07-27)
+
+
+### Features
+
+* **app-error:** adjust API to export only one symbol ([667ccb2](https://github.com/mkvlrn/ts-tools/commit/667ccb25b04341820a582265788654e9d29818cf))
+* **app-error:** adjust API to export only one symbol ([c0e6f1a](https://github.com/mkvlrn/ts-tools/commit/c0e6f1aa2a2ba049b0a7b1c296433b6ed69bf35a))
+
 ## [0.1.2](https://github.com/mkvlrn/ts-tools/compare/app-error-v0.1.1...app-error-v0.1.2) (2026-07-27)
 
 
