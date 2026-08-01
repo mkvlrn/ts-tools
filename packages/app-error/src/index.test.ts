@@ -3,20 +3,20 @@ import assert from "node:assert/strict";
 import { AppError } from "./index";
 
 const errors = AppError.define({
-  USER_NOT_FOUND: "NOT_FOUND",
-  INVALID_INPUT: "BAD_REQUEST",
-  UNAUTHORIZED_ACCESS: "UNAUTHORIZED",
+  userNotFound: "NOT_FOUND",
+  invalidInput: "BAD_REQUEST",
+  unauthorizedAccess: "UNAUTHORIZED",
 });
 
 describe("AppError class", () => {
   test("serialize returns a plain object", () => {
     // arrange
-    const error = errors.create("INVALID_INPUT", "invalid email", { field: "email" });
+    const error = errors.create("invalidInput", "invalid email", { field: "email" });
     // act
     const serialized = error.serialize();
     // assert
     expect(serialized).toEqual({
-      code: "INVALID_INPUT",
+      code: "invalidInput",
       message: "invalid email",
       details: { field: "email" },
     });
@@ -24,7 +24,7 @@ describe("AppError class", () => {
 
   test("serialize returns undefined details when no cause", () => {
     // act
-    const serialized = errors.create("USER_NOT_FOUND", "boom").serialize();
+    const serialized = errors.create("userNotFound", "boom").serialize();
     // assert
     expect(serialized.details).toBeUndefined();
   });
@@ -33,12 +33,12 @@ describe("AppError class", () => {
 describe("AppError.define - create", () => {
   test("creates an AppError with the mapped status code", () => {
     // act
-    const error = errors.create("USER_NOT_FOUND", "no such user");
+    const error = errors.create("userNotFound", "no such user");
     // assert
     expect(error).toBeInstanceOf(Error);
     expect(error).toBeInstanceOf(AppError);
     expect(error.name).toBe("AppError");
-    expect(error.code).toBe("USER_NOT_FOUND");
+    expect(error.code).toBe("userNotFound");
     expect(error.statusCode).toBe(404);
     expect(error.status).toBe("Not Found");
     expect(error.message).toBe("no such user");
@@ -47,9 +47,9 @@ describe("AppError.define - create", () => {
 
   test("creates an error with a different mapped code", () => {
     // act
-    const error = errors.create("INVALID_INPUT", "missing field");
+    const error = errors.create("invalidInput", "missing field");
     // assert
-    expect(error.code).toBe("INVALID_INPUT");
+    expect(error.code).toBe("invalidInput");
     expect(error.statusCode).toBe(400);
     expect(error.status).toBe("Bad Request");
   });
@@ -58,7 +58,7 @@ describe("AppError.define - create", () => {
     // arrange
     const cause = new TypeError("unexpected type");
     // act
-    const error = errors.create("INVALID_INPUT", "bad payload", cause);
+    const error = errors.create("invalidInput", "bad payload", cause);
     // assert
     expect(error.cause).toBe(cause);
   });
@@ -67,17 +67,17 @@ describe("AppError.define - create", () => {
 describe("AppError.define - throw", () => {
   test("throws an AppError with the mapped status code", () => {
     // act & assert
-    expect(() => errors.throw("USER_NOT_FOUND", "gone")).toThrowError(AppError);
+    expect(() => errors.throw("userNotFound", "gone")).toThrowError(AppError);
   });
 
   test("thrown error has correct properties", () => {
     // act & assert
     try {
-      errors.throw("UNAUTHORIZED_ACCESS", "bad token");
+      errors.throw("unauthorizedAccess", "bad token");
       assert.fail("should have thrown");
     } catch (error) {
       expect(error).toBeInstanceOf(AppError);
-      expect((error as AppError<string>).code).toBe("UNAUTHORIZED_ACCESS");
+      expect((error as AppError<string>).code).toBe("unauthorizedAccess");
       expect((error as AppError<string>).statusCode).toBe(401);
       expect((error as AppError<string>).status).toBe("Unauthorized");
       expect((error as AppError<string>).message).toBe("bad token");
@@ -89,7 +89,7 @@ describe("AppError.define - throw", () => {
     const cause = "session expired";
     // act & assert
     try {
-      errors.throw("UNAUTHORIZED_ACCESS", "re-authenticate", cause);
+      errors.throw("unauthorizedAccess", "re-authenticate", cause);
       assert.fail("should have thrown");
     } catch (error) {
       expect((error as AppError<string>).cause).toBe(cause);
@@ -100,7 +100,7 @@ describe("AppError.define - throw", () => {
 describe("AppError.define - is", () => {
   test("returns true for an AppError created from the same mapping", () => {
     // arrange
-    const error = errors.create("USER_NOT_FOUND", "gone");
+    const error = errors.create("userNotFound", "gone");
     // assert
     expect(errors.is(error)).toBe(true);
   });
@@ -121,11 +121,11 @@ describe("AppError.define - is", () => {
 
   test("narrows the type to AppError<T>", () => {
     // arrange
-    const err: unknown = errors.create("INVALID_INPUT", "bad");
+    const err: unknown = errors.create("invalidInput", "bad");
     // act & assert
     if (errors.is(err)) {
       expectTypeOf(err).toEqualTypeOf<
-        AppError<"USER_NOT_FOUND" | "INVALID_INPUT" | "UNAUTHORIZED_ACCESS">
+        AppError<"userNotFound" | "invalidInput" | "unauthorizedAccess">
       >();
     }
   });
@@ -137,14 +137,14 @@ describe("AppError type extraction", () => {
     type Inferred = ReturnType<typeof errors.create>;
     // assert
     expectTypeOf<Inferred>().toEqualTypeOf<
-      AppError<"USER_NOT_FOUND" | "INVALID_INPUT" | "UNAUTHORIZED_ACCESS">
+      AppError<"userNotFound" | "invalidInput" | "unauthorizedAccess">
     >();
   });
 
   test("inferred type is assignable from create result", () => {
     // arrange
     type Inferred = ReturnType<typeof errors.create>;
-    const error = errors.create("USER_NOT_FOUND", "gone");
+    const error = errors.create("userNotFound", "gone");
     // assert
     expectTypeOf(error).toExtend<Inferred>();
   });
