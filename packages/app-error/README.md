@@ -12,7 +12,7 @@ Map your app's error codes to HTTP statuses. Define once, use everywhere, let Ty
 <!-- x-release-please-start-version -->
 
 ```bash
-bunx jsr add @mkvlrn/app-error@0.2.0 # bun
+bunx jsr add @mkvlrn/app-error@0.2.1 # bun
 pnpm dlx jsr add @mkvlrn/app-error # pnpm
 yarn dlx jsr add @mkvlrn/app-error # yarn
 deno add jsr:@mkvlrn/app-error # deno
