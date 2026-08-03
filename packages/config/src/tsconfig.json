@@ -33,9 +33,6 @@
     "resolveJsonModule": true,
     // don't try to check for errors on imported libs
     "skipLibCheck": true,
-    // nest still uses these old experimental decorators
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
     // react
     "jsx": "react-jsx",
     // default is empty now, so any type packages are allowed
