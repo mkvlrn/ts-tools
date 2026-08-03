@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/mkvlrn/ts-tools/compare/config-v0.2.1...config-v0.3.0) (2026-08-03)
+
+
+### Features
+
+* remove decorator settings from tsconfig.json ([a225087](https://github.com/mkvlrn/ts-tools/commit/a2250878568fdf93335ef623ac769f306de88806))
+
 ## [0.2.1](https://github.com/mkvlrn/ts-tools/compare/config-v0.2.0...config-v0.2.1) (2026-08-01)
 
 
