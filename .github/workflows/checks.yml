@@ -17,6 +17,6 @@ jobs:
       - uses: jdx/mise-action@v4
 
       - run: bun install --frozen-lockfile
-      - run: bun typecheck
-      - run: bun lint-check
-      - run: bun test-ci
+      - run: mise typecheck
+      - run: mise lint
+      - run: mise test-ci

@@ -1,15 +1,15 @@
 [commit-msg.commands]
-commitlint = { run = "bun commitlint -x @commitlint/config-conventional --edit $1" }
+cog-lint = { run = "cog verify --file {1}" }
 
 [pre-commit.commands]
-typecheck = { glob = "*.{ts,tsx}", run = "bun typecheck-staged {staged_files}" }
-lint = { glob = "*.{ts,tsx,json,jsonc}", run = "bun lint-check {staged_files}" }
-test = { glob = "*.{ts,tsx}", run = "bun test-staged" }
+typecheck = { glob = "*.{ts,tsx}", run = "mise typecheck" }
+lint = { glob = "*.{ts,tsx,json,jsonc}", run = "mise lint {staged_files}" }
+test = { glob = "*.{ts,tsx}", run = "mise test-staged" }
 
 [pre-push.commands]
-typecheck = { run = "bun typecheck" }
-lint = { run = "bun lint-check" }
-test = { run = "bun test-ci" }
+typecheck = { run = "mise typecheck" }
+lint = { run = "mise lint" }
+test = { run = "mise test-ci" }
 
 [post-checkout.commands]
 sync-mise = { run = "mise install" }
