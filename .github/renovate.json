@@ -1,28 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended"],
-  "packageRules": [
-    {
-      "matchPackageNames": ["bun"],
-      "groupName": "engine-sync"
-    },
-    {
-      "matchPackageNames": ["github:**"],
-      "groupName": "Toolchain (mise)"
-    },
-    {
-      "matchManagers": ["mise"],
-      "groupName": "Toolchain (mise)"
-    },
-    {
-      "matchManagers": ["bun", "npm"],
-      "groupName": "Dependencies (bun)"
-    },
-    {
-      "matchManagers": ["github-actions"],
-      "groupName": "GitHub Actions"
-    }
-  ],
+  "extends": ["config:best-practices"],
   "customManagers": [
     {
       "customType": "regex",
