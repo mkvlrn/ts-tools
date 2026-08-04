@@ -15,10 +15,10 @@ Aimed at modern, type-safe, non-spaghetti codebases in most most node, bun, deno
 
 ```bash
 bunx jsr add -D @mkvlrn/config@0.3.0 # bun
-pnpm dlx jsr add @mkvlrn/config # pnpm
-yarn dlx jsr add @mkvlrn/config # yarn
-deno add -D jsr:@mkvlrn/config # deno
-npx jsr add -D @mkvlrn/config # npm
+pnpm dlx jsr add @mkvlrn/config@0.3.0 # pnpm
+yarn dlx jsr add @mkvlrn/config@0.3.0 # yarn
+deno add -D jsr:@mkvlrn/config@0.3.0 # deno
+npx jsr add -D @mkvlrn/config@0.3.0 # npm
 ```
 
 <!-- x-release-please-end -->
