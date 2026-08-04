@@ -8,7 +8,7 @@ No `.map()`, no `.flatMap()`, no `.andThen()`, no `.orElse()`, no `.unwrap()`, n
 
 ## Why this one?
 
-There are dozens of Result libraries for TypeScript. Nearly all of them bolt on method chaining, transformation pipelines, and functional programming utilities that turn a simple concept into an entire paradigm.
+There are dozens of Result pattern libraries for TypeScript. Nearly all of them bolt on method chaining, transformation pipelines, and functional programming utilities that turn a simple concept into an entire paradigm.
 
 This package does **one thing**: gives you a type-safe `Result<T, E>` or `ResultAsync<T, E>` discriminated union with `okResult()` and `errResult()` constructors. You use `if/else` to handle it. TypeScript narrows the type for you. That's the whole API.
 
@@ -23,10 +23,10 @@ If you need `.map().flatMap().andThen().orElse().unwrapOr()` chains, use [nevert
 
 ```bash
 bunx jsr add @mkvlrn/result@0.3.1 # bun
-pnpm dlx jsr add @mkvlrn/result # pnpm
-yarn dlx jsr add @mkvlrn/result # yarn
-deno add jsr:@mkvlrn/result # deno
-npx jsr add @mkvlrn/result # npm
+pnpm dlx jsr add @mkvlrn/result@0.3.1 # pnpm
+yarn dlx jsr add @mkvlrn/result@0.3.1 # yarn
+deno add jsr:@mkvlrn/result@0.3.1 # deno
+npx jsr add @mkvlrn/result@0.3.1 # npm
 ```
 
 <!-- x-release-please-end -->
