@@ -1,7 +1,7 @@
 {
   "name": "@mkvlrn/config",
   "description": "Opinionated configurations for biome and typescript",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "license": "MIT",
   "type": "module",
   "author": "Mike Valeriano <mkvlrn@gmail.com>",
