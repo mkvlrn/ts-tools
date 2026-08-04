@@ -13,10 +13,10 @@ Map your app's error codes to HTTP statuses. Define once, use everywhere, let Ty
 
 ```bash
 bunx jsr add @mkvlrn/app-error@0.2.1 # bun
-pnpm dlx jsr add @mkvlrn/app-error # pnpm
-yarn dlx jsr add @mkvlrn/app-error # yarn
-deno add jsr:@mkvlrn/app-error # deno
-npx jsr add @mkvlrn/app-error # npm
+pnpm dlx jsr add @mkvlrn/app-error@0.2.1 # pnpm
+yarn dlx jsr add @mkvlrn/app-error@0.2.1 # yarn
+deno add jsr:@mkvlrn/app-error@0.2.1 # deno
+npx jsr add @mkvlrn/app-error@0.2.1 # npm
 ```
 
 <!-- x-release-please-end -->
