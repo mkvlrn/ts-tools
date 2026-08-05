@@ -14,11 +14,11 @@ Define your application's error mapping once, then create, throw, serialize, and
 <!-- x-release-please-start-version -->
 
 ```bash
-bunx jsr add @mkvlrn/app-error@0.3.4 # bun
-pnpm dlx jsr add @mkvlrn/app-error@0.3.4 # pnpm
-yarn dlx jsr add @mkvlrn/app-error@0.3.4 # yarn
-deno add jsr:@mkvlrn/app-error@0.3.4 # deno
-npx jsr add @mkvlrn/app-error@0.3.4 # npm
+bunx jsr add @mkvlrn/app-error@0.3.5 # bun
+pnpm dlx jsr add @mkvlrn/app-error@0.3.5 # pnpm
+yarn dlx jsr add @mkvlrn/app-error@0.3.5 # yarn
+deno add jsr:@mkvlrn/app-error@0.3.5 # deno
+npx jsr add @mkvlrn/app-error@0.3.5 # npm
 ```
 
 <!-- x-release-please-end -->
