@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/mkvlrn/ts-tools/compare/app-error-v0.3.6...app-error-v0.4.0) (2026-08-05)
+
+
+### Features
+
+* **app-error:** update api, serialize is more complete ([f9cedcd](https://github.com/mkvlrn/ts-tools/commit/f9cedcd676fd21a8c819c72a0e915c6cd1c14c9b))
+
 ## [0.3.6](https://github.com/mkvlrn/ts-tools/compare/app-error-v0.3.5...app-error-v0.3.6) (2026-08-05)
 
 
