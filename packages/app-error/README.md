@@ -125,7 +125,9 @@ Produces:
 ```json
 {
   "errorCode": "invalidInput",
-  "httpStatus": "BadRequest",
+  "statusCode": 400,
+  "statusName": "BadRequest",
+  "statusPhrase": "Bad Request",
   "message": "Email is required",
   "details": null
 }

@@ -17,7 +17,9 @@ describe("AppError class", () => {
     // assert
     expect(serialized).toEqual({
       errorCode: "invalidInput",
-      httpStatus: "BadRequest",
+      statusCode: 400,
+      statusName: "BadRequest",
+      statusPhrase: "Bad Request",
       message: "invalid email",
       details: { field: "email" },
     });

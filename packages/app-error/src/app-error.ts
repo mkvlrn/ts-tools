@@ -69,7 +69,7 @@ export interface AppErrorFactory<T extends string> {
    * @example
    * ```ts
    * if (errors.is(error)) {
-   *   error.errorCode;
+   *   error.errorCode; // valid and accessible after narrowing
    * }
    * ```
    */
@@ -151,15 +151,17 @@ export class AppError<T extends string> extends Error {
    * The returned object is suitable for HTTP responses, structured logging,
    * and JSON serialization.
    *
-   * @returns A plain object containing the error code, HTTP status name,
-   * message, and original cause.
+   * @returns A plain object containing the error code, HTTP status code,
+   * HTTP status name, HTTP status reason phrase, message, and original cause.
    *
    * @example
    * ```ts
    * error.serialize();
    * // {
    * //   errorCode: "userNotFound",
-   * //   httpStatus: "NotFound",
+   * //   statusCode: 404,
+   * //   statusName: "NotFound",
+   * //   statusPhrase: "Not Found",
    * //   message: "User does not exist",
    * //   details: undefined
    * // }
@@ -167,13 +169,17 @@ export class AppError<T extends string> extends Error {
    */
   serialize(): {
     errorCode: string;
-    httpStatus: StatusName;
+    statusCode: StatusCode;
+    statusName: StatusName;
+    statusPhrase: StatusPhrase;
     message: string;
     details: unknown;
   } {
     return {
       errorCode: this.errorCode,
-      httpStatus: this.statusName,
+      statusCode: this.statusCode,
+      statusName: this.statusName,
+      statusPhrase: this.statusPhrase,
       message: this.message,
       details: this.cause,
     };
