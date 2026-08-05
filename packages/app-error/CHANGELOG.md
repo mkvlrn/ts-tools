@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.1](https://github.com/mkvlrn/ts-tools/compare/app-error-v0.3.0...app-error-v0.3.1) (2026-08-05)
+
+
+### Bug fixes
+
+* **app-error:** export httpStatus with explicit type ([ac0044e](https://github.com/mkvlrn/ts-tools/commit/ac0044e91eef4ce4b1e79a8487e27a851310996d))
+* **app-error:** export httpStatus with explicit type ([a963d9b](https://github.com/mkvlrn/ts-tools/commit/a963d9b3ed046b2f6a4b1f14eb728abb538cebda))
+
 ## [0.3.0](https://github.com/mkvlrn/ts-tools/compare/app-error-v0.2.2...app-error-v0.3.0) (2026-08-05)
 
 
