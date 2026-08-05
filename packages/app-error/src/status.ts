@@ -1,5 +1,16 @@
 import { type StatusCode, type StatusName, type StatusPhrase, status } from "./consts";
 
+export interface HttpStatus {
+  codeFromName: (name: StatusName) => StatusCode;
+  codeFromPhrase: (phrase: StatusPhrase) => StatusCode;
+
+  nameFromCode: (code: StatusCode) => StatusName;
+  nameFromPhrase: (phrase: StatusPhrase) => StatusName;
+
+  phraseFromCode: (code: StatusCode) => StatusPhrase;
+  phraseFromName: (name: StatusName) => StatusPhrase;
+}
+
 const codeByName = {} as Record<StatusName, StatusCode>;
 const codeByPhrase = {} as Record<StatusPhrase, StatusCode>;
 const nameByCode = {} as Record<StatusCode, StatusName>;
@@ -42,7 +53,7 @@ for (const [codeAsString, [name, phrase]] of Object.entries(status)) {
  * // => "Not Found"
  * ```
  */
-export const httpStatus = {
+export const httpStatus: Readonly<HttpStatus> = {
   /**
    * Returns the numeric HTTP status code for a status name.
    *
@@ -120,4 +131,4 @@ export const httpStatus = {
   phraseFromName(name: StatusName): StatusPhrase {
     return phraseByCode[codeByName[name]];
   },
-} as const;
+};

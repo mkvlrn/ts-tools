@@ -6,7 +6,7 @@ import { httpStatus } from "./status";
  *
  * @template T - Union of application-specific error code strings.
  */
-interface AppErrorFactory<T extends string> {
+export interface AppErrorFactory<T extends string> {
   /**
    * Creates an `AppError` without throwing it.
    *
