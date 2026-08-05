@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/mkvlrn/ts-tools/compare/app-error-v0.2.2...app-error-v0.3.0) (2026-08-05)
+
+
+### Features
+
+* **app-error:** update api ([1c57767](https://github.com/mkvlrn/ts-tools/commit/1c57767036b7e664ed44a5e54e95cbff0ca85dc9))
+
 ## [0.2.2](https://github.com/mkvlrn/ts-tools/compare/app-error-v0.2.1...app-error-v0.2.2) (2026-08-04)
 
 
