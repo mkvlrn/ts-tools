@@ -1,11 +1,11 @@
 import { describe, expect, expectTypeOf, test } from "bun:test";
 import assert from "node:assert/strict";
-import { AppError } from "./index";
+import { AppError } from "./app-error";
 
 const errors = AppError.define({
-  userNotFound: "NOT_FOUND",
-  invalidInput: "BAD_REQUEST",
-  unauthorizedAccess: "UNAUTHORIZED",
+  userNotFound: "NotFound",
+  invalidInput: "BadRequest",
+  unauthorizedAccess: "Unauthorized",
 });
 
 describe("AppError class", () => {
@@ -16,7 +16,8 @@ describe("AppError class", () => {
     const serialized = error.serialize();
     // assert
     expect(serialized).toEqual({
-      code: "invalidInput",
+      errorCode: "invalidInput",
+      httpStatus: "BadRequest",
       message: "invalid email",
       details: { field: "email" },
     });
@@ -38,9 +39,9 @@ describe("AppError.define - create", () => {
     expect(error).toBeInstanceOf(Error);
     expect(error).toBeInstanceOf(AppError);
     expect(error.name).toBe("AppError");
-    expect(error.code).toBe("userNotFound");
+    expect(error.errorCode).toBe("userNotFound");
     expect(error.statusCode).toBe(404);
-    expect(error.status).toBe("Not Found");
+    expect(error.statusPhrase).toBe("Not Found");
     expect(error.message).toBe("no such user");
     expect(error.cause).toBeUndefined();
   });
@@ -49,9 +50,9 @@ describe("AppError.define - create", () => {
     // act
     const error = errors.create("invalidInput", "missing field");
     // assert
-    expect(error.code).toBe("invalidInput");
+    expect(error.errorCode).toBe("invalidInput");
     expect(error.statusCode).toBe(400);
-    expect(error.status).toBe("Bad Request");
+    expect(error.statusPhrase).toBe("Bad Request");
   });
 
   test("passes cause through to the created error", () => {
@@ -77,9 +78,9 @@ describe("AppError.define - throw", () => {
       assert.fail("should have thrown");
     } catch (error) {
       expect(error).toBeInstanceOf(AppError);
-      expect((error as AppError<string>).code).toBe("unauthorizedAccess");
+      expect((error as AppError<string>).errorCode).toBe("unauthorizedAccess");
       expect((error as AppError<string>).statusCode).toBe(401);
-      expect((error as AppError<string>).status).toBe("Unauthorized");
+      expect((error as AppError<string>).statusPhrase).toBe("Unauthorized");
       expect((error as AppError<string>).message).toBe("bad token");
     }
   });

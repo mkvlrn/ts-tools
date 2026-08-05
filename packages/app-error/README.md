@@ -2,7 +2,9 @@
 
 [![JSR](https://jsr.io/badges/@mkvlrn/app-error)](https://jsr.io/@mkvlrn/app-error) [![Bun](https://badgen.net/badge/icon/it's%20better%20than%20node?icon=bun&label=bun&color=black)](https://bun.com)
 
-Map your app's error codes to HTTP statuses. Define once, use everywhere, let TypeScript yell at you if you typo a code.
+Type-safe HTTP status lookups and application error factories.
+
+Define your application's error mapping once, then create, throw, serialize, and inspect errors without repeating HTTP status codes. The package also exports standalone HTTP status lookup utilities.
 
 ## Installation
 
@@ -23,10 +25,42 @@ npx jsr add @mkvlrn/app-error@0.2.2 # npm
 
 ## API
 
-| Export              | What it does                                                                         |
-| ------------------- | ------------------------------------------------------------------------------------ |
-| `AppError<T>`       | Error subclass with `code`, `statusCode`, `status`, and `serialize()`                |
-| `AppError.define()` | Static method taking a code to status mapping, returning `throw`, `create`, and `is` |
+| Export              | Description                                                                                           |
+| ------------------- | ----------------------------------------------------------------------------------------------------- |
+| `AppError<T>`       | Error subclass carrying an application-specific error code together with its HTTP status information. |
+| `AppError.define()` | Creates typed `create`, `throw`, and `is` helpers from an error-to-status mapping.                    |
+| `httpStatus`        | Constant-time conversion utilities between HTTP status codes, names, and reason phrases.              |
+| `StatusCode`        | Union of all supported HTTP status codes.                                                             |
+| `StatusName`        | Union of all supported HTTP status names (e.g. `"NotFound"`).                                         |
+| `StatusPhrase`      | Union of all supported HTTP reason phrases (e.g. `"Not Found"`).                                      |
+
+## HTTP status lookups
+
+The `httpStatus` export can be used independently of `AppError`.
+
+```ts
+import { httpStatus } from "@mkvlrn/app-error";
+
+httpStatus.codeFromName("NotFound");
+// 404
+
+httpStatus.codeFromPhrase("Not Found");
+// 404
+
+httpStatus.nameFromCode(404);
+// "NotFound"
+
+httpStatus.nameFromPhrase("Not Found");
+// "NotFound"
+
+httpStatus.phraseFromCode(404);
+// "Not Found"
+
+httpStatus.phraseFromName("NotFound");
+// "Not Found"
+```
+
+All lookups are constant-time and fully type-safe.
 
 ## Usage
 
@@ -38,25 +72,34 @@ import { AppError } from "@mkvlrn/app-error";
 
 ```ts
 const errors = AppError.define({
-  USER_NOT_FOUND: "NOT_FOUND", // 404
-  INVALID_INPUT: "BAD_REQUEST", // 400
-  UNAUTHORIZED_ACCESS: "UNAUTHORIZED", // 401
+  userNotFound: "NotFound",
+  invalidInput: "BadRequest",
+  unauthorizedAccess: "Unauthorized",
 });
 ```
 
-Keys are your codes, values are status names from [http-status-codes](https://github.com/prettymuchbryce/http-status-codes). Both sides autocomplete.
+Keys are your application's error codes. Values are HTTP status names.
 
 ### Throw or create
 
 ```ts
 // throws: return type is never
-errors.throw("USER_NOT_FOUND", "no user with that id");
+errors.throw("userNotFound", "No user with that id");
 
 // creates without throwing
-const error = errors.create("INVALID_INPUT", "email is required");
-error.code; // "INVALID_INPUT"
-error.statusCode; // 400
-error.status; // "Bad Request"
+const err = errors.create("invalidInput", "Email is required");
+
+err.errorCode;
+// "invalidInput"
+
+err.statusCode;
+// 400
+
+err.statusName;
+// "BadRequest"
+
+err.statusPhrase;
+// "Bad Request"
 ```
 
 ### Attach a cause
@@ -65,7 +108,7 @@ error.status; // "Bad Request"
 try {
   JSON.parse(rawBody);
 } catch (cause) {
-  errors.throw("INVALID_INPUT", "malformed json", cause);
+  errors.throw("invalidInput", "Malformed JSON", cause);
 }
 ```
 
@@ -74,11 +117,19 @@ try {
 ```ts
 if (err instanceof AppError) {
   res.status(err.statusCode).json(err.serialize());
-  // { code: "INVALID_INPUT", message: "email is required", details: undefined }
 }
 ```
 
-### Type guard
+Produces:
+
+```json
+{
+  "errorCode": "invalidInput",
+  "httpStatus": "BadRequest",
+  "message": "Email is required",
+  "details": null
+}
+```
 
 ### Type guard
 
@@ -86,7 +137,7 @@ if (err instanceof AppError) {
 
 ```ts
 if (errors.is(err)) {
-  // err is AppError<"USER_NOT_FOUND" | "INVALID_INPUT" | "UNAUTHORIZED_ACCESS">
+  // err is AppError<"userNotFound" | "invalidInput" | "unauthorizedAccess">
   res.status(err.statusCode).json(err.serialize());
 }
 ```
@@ -97,10 +148,10 @@ Extract the `AppError` type using `ReturnType<typeof errors.create>`:
 
 ```ts
 type MyAppError = ReturnType<typeof errors.create>;
-// AppError<"USER_NOT_FOUND" | "INVALID_INPUT" | "UNAUTHORIZED_ACCESS">
+// AppError<"userNotFound" | "invalidInput" | "unauthorizedAccess">
 
 function handleError(err: MyAppError) {
-  // err.code is narrowed to the code union automatically
+  // err.errorCode is narrowed automatically
 }
 ```
 
