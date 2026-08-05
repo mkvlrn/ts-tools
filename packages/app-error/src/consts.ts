@@ -1,3 +1,13 @@
+/**
+ * Union of all supported HTTP status names.
+ *
+ * Status names are PascalCase identifiers such as `"OK"` and `"NotFound"`.
+ *
+ * @example
+ * ```ts
+ * const name: StatusName = "NotFound";
+ * ```
+ */
 export type StatusName =
   | "Continue"
   | "SwitchingProtocols"
@@ -63,6 +73,14 @@ export type StatusName =
   | "NotExtended"
   | "NetworkAuthenticationRequired";
 
+/**
+ * Union of all supported numeric HTTP status codes.
+ *
+ * @example
+ * ```ts
+ * const code: StatusCode = 404;
+ * ```
+ */
 export type StatusCode =
   | 100
   | 101
@@ -128,6 +146,16 @@ export type StatusCode =
   | 510
   | 511;
 
+/**
+ * Union of all supported HTTP reason phrases.
+ *
+ * Reason phrases are human-readable strings such as `"OK"` and `"Not Found"`.
+ *
+ * @example
+ * ```ts
+ * const phrase: StatusPhrase = "Not Found";
+ * ```
+ */
 export type StatusPhrase =
   | "Continue"
   | "Switching Protocols"

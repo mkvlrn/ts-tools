@@ -5,13 +5,12 @@ import { type StatusCode, type StatusName, type StatusPhrase, status } from "./c
  *
  * Provides constant-time conversions between:
  *
- * - {@link StatusCode} numeric HTTP status codes (for example, `404`)
- * - {@link StatusName} symbolic status names (for example, `"NotFound"`)
- * - {@link StatusPhrase} HTTP reason phrases (for example, `"Not Found"`)
+ * - `StatusCode` numeric HTTP status codes (for example, `404`)
+ * - `StatusName` symbolic status names (for example, `"NotFound"`)
+ * - `StatusPhrase` HTTP reason phrases (for example, `"Not Found"`)
  *
  * Every conversion only accepts valid HTTP status values defined by this package.
  *
- * @see {@link httpStatus}
  *
  * @example
  * ```ts
@@ -126,14 +125,13 @@ for (const [codeAsString, [name, phrase]] of Object.entries(status)) {
 }
 
 /**
- * Shared {@link HttpStatus} conversion utility.
+ * Shared `HttpStatus` conversion utility.
  *
  * Use this object to convert between HTTP status codes, names, and reason
  * phrases without manually maintaining lookup tables.
  *
  * All operations are constant-time lookups.
  *
- * @see {@link HttpStatus}
  *
  * @example
  * ```ts
