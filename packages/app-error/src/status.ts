@@ -1,33 +1,5 @@
 import { type StatusCode, type StatusName, type StatusPhrase, status } from "./consts";
 
-/**
- * Type-safe conversion utilities between HTTP status codes, status names,
- * and reason phrases.
- *
- * All conversions are constant-time lookups and accept only valid HTTP
- * status values defined by this package.
- *
- * @example
- * ```ts
- * httpStatus.codeFromName("NotFound");
- * // => 404
- *
- * httpStatus.codeFromPhrase("Not Found");
- * // => 404
- *
- * httpStatus.nameFromCode(404);
- * // => "NotFound"
- *
- * httpStatus.nameFromPhrase("Not Found");
- * // => "NotFound"
- *
- * httpStatus.phraseFromCode(404);
- * // => "Not Found"
- *
- * httpStatus.phraseFromName("NotFound");
- * // => "Not Found"
- * ```
- */
 export interface HttpStatus {
   /**
    * Returns the numeric HTTP status code for a status name.
@@ -128,6 +100,44 @@ for (const [codeAsString, [name, phrase]] of Object.entries(status)) {
   phraseByCode[code] = phrase;
 }
 
+/**
+ * Type-safe conversion utilities between HTTP status codes, status names,
+ * and reason phrases.
+ *
+ * Provides constant-time lookup functions for converting between the three
+ * representations of HTTP status values:
+ *
+ * - Numeric status codes (e.g. `404`)
+ * - Status names (e.g. `"NotFound"`)
+ * - HTTP reason phrases (e.g. `"Not Found"`)
+ *
+ * All methods accept only valid HTTP status values defined by this package.
+ *
+ * @see {@link HttpStatus}
+ *
+ * @example
+ * ```ts
+ * import { httpStatus } from "./status";
+ *
+ * httpStatus.codeFromName("NotFound");
+ * // => 404
+ *
+ * httpStatus.codeFromPhrase("Not Found");
+ * // => 404
+ *
+ * httpStatus.nameFromCode(404);
+ * // => "NotFound"
+ *
+ * httpStatus.nameFromPhrase("Not Found");
+ * // => "NotFound"
+ *
+ * httpStatus.phraseFromCode(404);
+ * // => "Not Found"
+ *
+ * httpStatus.phraseFromName("NotFound");
+ * // => "Not Found"
+ * ```
+ */
 export const httpStatus: Readonly<HttpStatus> = {
   codeFromName(name) {
     return codeByName[name];
