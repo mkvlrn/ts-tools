@@ -1,30 +1,5 @@
 import { type StatusCode, type StatusName, type StatusPhrase, status } from "./consts";
 
-export interface HttpStatus {
-  codeFromName: (name: StatusName) => StatusCode;
-  codeFromPhrase: (phrase: StatusPhrase) => StatusCode;
-
-  nameFromCode: (code: StatusCode) => StatusName;
-  nameFromPhrase: (phrase: StatusPhrase) => StatusName;
-
-  phraseFromCode: (code: StatusCode) => StatusPhrase;
-  phraseFromName: (name: StatusName) => StatusPhrase;
-}
-
-const codeByName = {} as Record<StatusName, StatusCode>;
-const codeByPhrase = {} as Record<StatusPhrase, StatusCode>;
-const nameByCode = {} as Record<StatusCode, StatusName>;
-const phraseByCode = {} as Record<StatusCode, StatusPhrase>;
-
-for (const [codeAsString, [name, phrase]] of Object.entries(status)) {
-  const code = Number(codeAsString) as StatusCode;
-
-  codeByName[name] = code;
-  codeByPhrase[phrase] = code;
-  nameByCode[code] = name;
-  phraseByCode[code] = phrase;
-}
-
 /**
  * Type-safe conversion utilities between HTTP status codes, status names,
  * and reason phrases.
@@ -53,9 +28,12 @@ for (const [codeAsString, [name, phrase]] of Object.entries(status)) {
  * // => "Not Found"
  * ```
  */
-export const httpStatus: Readonly<HttpStatus> = {
+export interface HttpStatus {
   /**
    * Returns the numeric HTTP status code for a status name.
+   *
+   * @param name The HTTP status name to convert.
+   * @returns The corresponding numeric HTTP status code.
    *
    * @example
    * ```ts
@@ -63,12 +41,13 @@ export const httpStatus: Readonly<HttpStatus> = {
    * // => 404
    * ```
    */
-  codeFromName(name: StatusName): StatusCode {
-    return codeByName[name];
-  },
+  codeFromName: (name: StatusName) => StatusCode;
 
   /**
    * Returns the numeric HTTP status code for a reason phrase.
+   *
+   * @param phrase The HTTP reason phrase to convert.
+   * @returns The corresponding numeric HTTP status code.
    *
    * @example
    * ```ts
@@ -76,12 +55,13 @@ export const httpStatus: Readonly<HttpStatus> = {
    * // => 404
    * ```
    */
-  codeFromPhrase(phrase: StatusPhrase): StatusCode {
-    return codeByPhrase[phrase];
-  },
+  codeFromPhrase: (phrase: StatusPhrase) => StatusCode;
 
   /**
    * Returns the status name for a numeric HTTP status code.
+   *
+   * @param code The HTTP status code to convert.
+   * @returns The corresponding status name.
    *
    * @example
    * ```ts
@@ -89,12 +69,13 @@ export const httpStatus: Readonly<HttpStatus> = {
    * // => "NotFound"
    * ```
    */
-  nameFromCode(code: StatusCode): StatusName {
-    return nameByCode[code];
-  },
+  nameFromCode: (code: StatusCode) => StatusName;
 
   /**
    * Returns the status name for a reason phrase.
+   *
+   * @param phrase The HTTP reason phrase to convert.
+   * @returns The corresponding status name.
    *
    * @example
    * ```ts
@@ -102,12 +83,13 @@ export const httpStatus: Readonly<HttpStatus> = {
    * // => "NotFound"
    * ```
    */
-  nameFromPhrase(phrase: StatusPhrase): StatusName {
-    return nameByCode[codeByPhrase[phrase]];
-  },
+  nameFromPhrase: (phrase: StatusPhrase) => StatusName;
 
   /**
    * Returns the reason phrase for a numeric HTTP status code.
+   *
+   * @param code The HTTP status code to convert.
+   * @returns The corresponding HTTP reason phrase.
    *
    * @example
    * ```ts
@@ -115,12 +97,13 @@ export const httpStatus: Readonly<HttpStatus> = {
    * // => "Not Found"
    * ```
    */
-  phraseFromCode(code: StatusCode): StatusPhrase {
-    return phraseByCode[code];
-  },
+  phraseFromCode: (code: StatusCode) => StatusPhrase;
 
   /**
    * Returns the reason phrase for a status name.
+   *
+   * @param name The HTTP status name to convert.
+   * @returns The corresponding HTTP reason phrase.
    *
    * @example
    * ```ts
@@ -128,7 +111,45 @@ export const httpStatus: Readonly<HttpStatus> = {
    * // => "Not Found"
    * ```
    */
-  phraseFromName(name: StatusName): StatusPhrase {
+  phraseFromName: (name: StatusName) => StatusPhrase;
+}
+
+const codeByName = {} as Record<StatusName, StatusCode>;
+const codeByPhrase = {} as Record<StatusPhrase, StatusCode>;
+const nameByCode = {} as Record<StatusCode, StatusName>;
+const phraseByCode = {} as Record<StatusCode, StatusPhrase>;
+
+for (const [codeAsString, [name, phrase]] of Object.entries(status)) {
+  const code = Number(codeAsString) as StatusCode;
+
+  codeByName[name] = code;
+  codeByPhrase[phrase] = code;
+  nameByCode[code] = name;
+  phraseByCode[code] = phrase;
+}
+
+export const httpStatus: Readonly<HttpStatus> = {
+  codeFromName(name) {
+    return codeByName[name];
+  },
+
+  codeFromPhrase(phrase) {
+    return codeByPhrase[phrase];
+  },
+
+  nameFromCode(code) {
+    return nameByCode[code];
+  },
+
+  nameFromPhrase(phrase) {
+    return nameByCode[codeByPhrase[phrase]];
+  },
+
+  phraseFromCode(code) {
+    return phraseByCode[code];
+  },
+
+  phraseFromName(name) {
     return phraseByCode[codeByName[name]];
   },
 };
