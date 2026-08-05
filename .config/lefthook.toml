@@ -10,6 +10,7 @@ test = { glob = "*.{ts,tsx}", run = "mise test-staged" }
 typecheck = { run = "mise typecheck" }
 lint = { run = "mise lint" }
 test = { run = "mise test-ci" }
+jsr-dry-run = { run = "mise jsr-dry-run " }
 
 [post-checkout.commands]
 sync-mise = { run = "mise install" }

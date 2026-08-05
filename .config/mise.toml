@@ -8,6 +8,7 @@ biome = "2.5.6"
 bun = "1.3.14"
 cocogitto = "7.0.0"
 lefthook = "2.1.10"
+"npm:jsr" = "0.14.3"
 
 [env]
 _.path = ["./node_modules/.bin"]
@@ -38,3 +39,13 @@ run = "bun test --changed --bail --reporter=dots"
 [tasks.test-ci]
 description = "Run tests in ci mode"
 run = "bun test --bail --reporter=dots"
+[tasks.jsr-dry-run]
+description = "Checks for jsr slow types in each package"
+run = """
+for dir in packages/*; do
+  if [ -d "$dir" ]; then
+    echo "Checking $dir"
+    (cd "$dir" && jsr publish --dry-run)
+  fi
+done
+"""
