@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.3](https://github.com/mkvlrn/ts-tools/compare/app-error-v0.3.2...app-error-v0.3.3) (2026-08-05)
+
+
+### Documentation
+
+* **app-error:** update JSDoc for httpStatus export ([4351152](https://github.com/mkvlrn/ts-tools/commit/43511525ba14eb298d4046ef40772494f4650532))
+
 ## [0.3.2](https://github.com/mkvlrn/ts-tools/compare/app-error-v0.3.1...app-error-v0.3.2) (2026-08-05)
 
 
