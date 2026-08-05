@@ -1,10 +1,35 @@
 import { type StatusCode, type StatusName, type StatusPhrase, status } from "./consts";
 
+/**
+ * Type-safe conversion utilities for HTTP status values.
+ *
+ * Provides constant-time conversions between:
+ *
+ * - {@link StatusCode} numeric HTTP status codes (for example, `404`)
+ * - {@link StatusName} symbolic status names (for example, `"NotFound"`)
+ * - {@link StatusPhrase} HTTP reason phrases (for example, `"Not Found"`)
+ *
+ * Every conversion only accepts valid HTTP status values defined by this package.
+ *
+ * @see {@link httpStatus}
+ *
+ * @example
+ * ```ts
+ * httpStatus.codeFromName("NotFound");
+ * // => 404
+ *
+ * httpStatus.nameFromCode(404);
+ * // => "NotFound"
+ *
+ * httpStatus.phraseFromCode(404);
+ * // => "Not Found"
+ * ```
+ */
 export interface HttpStatus {
   /**
-   * Returns the numeric HTTP status code for a status name.
+   * Converts an HTTP status name into its numeric status code.
    *
-   * @param name The HTTP status name to convert.
+   * @param name HTTP status name to convert.
    * @returns The corresponding numeric HTTP status code.
    *
    * @example
@@ -16,9 +41,9 @@ export interface HttpStatus {
   codeFromName: (name: StatusName) => StatusCode;
 
   /**
-   * Returns the numeric HTTP status code for a reason phrase.
+   * Converts an HTTP reason phrase into its numeric status code.
    *
-   * @param phrase The HTTP reason phrase to convert.
+   * @param phrase HTTP reason phrase to convert.
    * @returns The corresponding numeric HTTP status code.
    *
    * @example
@@ -30,10 +55,10 @@ export interface HttpStatus {
   codeFromPhrase: (phrase: StatusPhrase) => StatusCode;
 
   /**
-   * Returns the status name for a numeric HTTP status code.
+   * Converts a numeric HTTP status code into its status name.
    *
-   * @param code The HTTP status code to convert.
-   * @returns The corresponding status name.
+   * @param code HTTP status code to convert.
+   * @returns The corresponding HTTP status name.
    *
    * @example
    * ```ts
@@ -44,10 +69,10 @@ export interface HttpStatus {
   nameFromCode: (code: StatusCode) => StatusName;
 
   /**
-   * Returns the status name for a reason phrase.
+   * Converts an HTTP reason phrase into its status name.
    *
-   * @param phrase The HTTP reason phrase to convert.
-   * @returns The corresponding status name.
+   * @param phrase HTTP reason phrase to convert.
+   * @returns The corresponding HTTP status name.
    *
    * @example
    * ```ts
@@ -58,9 +83,9 @@ export interface HttpStatus {
   nameFromPhrase: (phrase: StatusPhrase) => StatusName;
 
   /**
-   * Returns the reason phrase for a numeric HTTP status code.
+   * Converts a numeric HTTP status code into its reason phrase.
    *
-   * @param code The HTTP status code to convert.
+   * @param code HTTP status code to convert.
    * @returns The corresponding HTTP reason phrase.
    *
    * @example
@@ -72,9 +97,9 @@ export interface HttpStatus {
   phraseFromCode: (code: StatusCode) => StatusPhrase;
 
   /**
-   * Returns the reason phrase for a status name.
+   * Converts an HTTP status name into its reason phrase.
    *
-   * @param name The HTTP status name to convert.
+   * @param name HTTP status name to convert.
    * @returns The corresponding HTTP reason phrase.
    *
    * @example
@@ -101,17 +126,12 @@ for (const [codeAsString, [name, phrase]] of Object.entries(status)) {
 }
 
 /**
- * Type-safe conversion utilities between HTTP status codes, status names,
- * and reason phrases.
+ * Shared {@link HttpStatus} conversion utility.
  *
- * Provides constant-time lookup functions for converting between the three
- * representations of HTTP status values:
+ * Use this object to convert between HTTP status codes, names, and reason
+ * phrases without manually maintaining lookup tables.
  *
- * - Numeric status codes (e.g. `404`)
- * - Status names (e.g. `"NotFound"`)
- * - HTTP reason phrases (e.g. `"Not Found"`)
- *
- * All methods accept only valid HTTP status values defined by this package.
+ * All operations are constant-time lookups.
  *
  * @see {@link HttpStatus}
  *
