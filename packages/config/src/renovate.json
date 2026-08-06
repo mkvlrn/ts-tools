@@ -1,0 +1,45 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:best-practices"],
+  "ignorePresets": ["security:minimumReleaseAgeNpm"],
+  "packageRules": [
+    {
+      "matchManagers": ["npm"],
+      "groupName": "npm dependencies",
+      "groupSlug": "npm"
+    },
+    {
+      "matchManagers": ["mise"],
+      "groupName": "mise tools",
+      "groupSlug": "mise"
+    },
+    {
+      "matchPackageNames": ["node", "pnpm", "bun"],
+      "groupName": "mise tools",
+      "groupSlug": "mise"
+    },
+    {
+      "matchManagers": ["custom"],
+      "matchDatasources": ["node-version", "npm"],
+      "matchPackageNames": ["node", "pnpm", "bun"],
+      "groupName": "mise tools",
+      "groupSlug": "mise"
+    }
+  ],
+  "customManagers": [
+    {
+      // this updates versions in package.json's devEngines
+      "customType": "jsonata",
+      "fileFormat": "json",
+      "managerFilePatterns": ["/package.json/"],
+      "matchStrings": [
+        "devEngines.runtime ? [{ \"depName\": devEngines.runtime.name, \"currentValue\": devEngines.runtime.version, \"datasource\": devEngines.runtime.name = \"node\" ? \"node-version\" : \"npm\", \"versioning\": devEngines.runtime.name = \"node\" ? \"node\" : \"npm\" }] : []",
+        "devEngines.packageManager ? [{ \"depName\": devEngines.packageManager.name, \"currentValue\": devEngines.packageManager.version, \"datasource\": \"npm\", \"versioning\": \"npm\" }] : []"
+      ]
+    }
+  ],
+  "minimumReleaseAge": "1 day",
+  "prHourlyLimit": 0,
+  "prConcurrentLimit": 0,
+  "dependencyDashboard": true
+}
