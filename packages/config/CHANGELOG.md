@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.3](https://github.com/mkvlrn/ts-tools/compare/config-v0.4.2...config-v0.4.3) (2026-08-07)
+
+
+### Bug fixes
+
+* **config:** adjust vitest config to be plain export ([2de2fd4](https://github.com/mkvlrn/ts-tools/commit/2de2fd48b09477cf804ca3c403b9363744018046))
+
 ## [0.4.2](https://github.com/mkvlrn/ts-tools/compare/config-v0.4.1...config-v0.4.2) (2026-08-07)
 
 
