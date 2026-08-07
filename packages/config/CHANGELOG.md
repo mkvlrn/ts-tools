@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.4.0](https://github.com/mkvlrn/ts-tools/compare/config-v0.3.1...config-v0.4.0) (2026-08-07)
+
+
+### Features
+
+* **config:** add vitest config and adjust import method (no file extensions) ([9f891e9](https://github.com/mkvlrn/ts-tools/commit/9f891e94559f871fe1bc726afa8ab54b087ddb02))
+
+
+### Bug fixes
+
+* **config:** remove slow type for jsr ([099b9d6](https://github.com/mkvlrn/ts-tools/commit/099b9d6dd393bc4311f85e51564332ce33135794))
+* **config:** remove slow type for jsr ([235960a](https://github.com/mkvlrn/ts-tools/commit/235960ad3f3904dd424e80a578ae26cccb9235e7))
+
 ## [0.3.1](https://github.com/mkvlrn/ts-tools/compare/config-v0.3.0...config-v0.3.1) (2026-08-04)
 
 
