@@ -14,11 +14,11 @@ Aimed at modern, type-safe, non-spaghetti codebases in most most node, bun, deno
 <!-- x-release-please-start-version -->
 
 ```bash
-bunx jsr add -D @mkvlrn/config@0.4.0 # bun
-pnpm dlx jsr add @mkvlrn/config@0.4.0 # pnpm
-yarn dlx jsr add @mkvlrn/config@0.4.0 # yarn
-deno add -D jsr:@mkvlrn/config@0.4.0 # deno
-npx jsr add -D @mkvlrn/config@0.4.0 # npm
+bunx jsr add -D @mkvlrn/config@0.4.1 # bun
+pnpm dlx jsr add @mkvlrn/config@0.4.1 # pnpm
+yarn dlx jsr add @mkvlrn/config@0.4.1 # yarn
+deno add -D jsr:@mkvlrn/config@0.4.1 # deno
+npx jsr add -D @mkvlrn/config@0.4.1 # npm
 ```
 
 <!-- x-release-please-end -->

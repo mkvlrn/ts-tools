@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.1](https://github.com/mkvlrn/ts-tools/compare/config-v0.4.0...config-v0.4.1) (2026-08-07)
+
+
+### Bug fixes
+
+* **config:** trigger publish ([2377f94](https://github.com/mkvlrn/ts-tools/commit/2377f94cdf88a77d67bd489728f5d18f06c0940e))
+
 ## [0.4.0](https://github.com/mkvlrn/ts-tools/compare/config-v0.3.1...config-v0.4.0) (2026-08-07)
 
 
