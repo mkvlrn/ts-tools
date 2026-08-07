@@ -26,7 +26,9 @@ jobs:
       - name: Publish config to JSR
         if: startsWith(github.event.release.tag_name, 'config-v')
         working-directory: ./packages/config
-        run: bunx jsr publish
+        run: |
+          bun install --ignore-scripts
+          bunx jsr publish
 
       - name: Publish result to JSR
         if: startsWith(github.event.release.tag_name, 'result-v')
