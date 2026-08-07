@@ -26,6 +26,8 @@
       "groupSlug": "mise"
     },
     {
+      // renovate's config for this is stale or wrong
+      // doesn't match with what mise outdated -l sees
       "matchManagers": ["mise"],
       "matchPackageNames": ["biomejs/biome"],
       "overrideDatasource": "github-releases",
@@ -34,7 +36,8 @@
   ],
   "customManagers": [
     {
-      // this updates versions in package.json's devEngines, temporary
+      // this updates versions in package.json's devEngines
+      // temporary, while https://github.com/renovatebot/renovate/issues/38067 is still open
       "customType": "jsonata",
       "fileFormat": "json",
       "managerFilePatterns": ["/package.json/"],
