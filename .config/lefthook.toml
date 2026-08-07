@@ -12,12 +12,20 @@ lint = { run = "mise lint" }
 test = { run = "mise test-ci" }
 jsr-dry-run = { run = "mise jsr-dry-run " }
 
+[post-checkout]
+piped = true
+
 [post-checkout.commands]
-sync-mise = { run = "mise install" }
-clean-mise = { run = "mise prune -y" }
-sync-bun = { run = "bun install --frozen-lockfile" }
+1_sync-mise = { run = "mise install" }
+2_clean-mise = { run = "mise prune -y" }
+3_sync-pnpm = { run = "pnpm install --frozen-lockfile" }
+4_sync-githooks = { run = "lefthook install" }
+
+[post-merge]
+piped = true
 
 [post-merge.commands]
-sync-mise = { run = "mise install" }
-clean-mise = { run = "mise prune -y" }
-sync-bun = { run = "bun install --frozen-lockfile" }
+1_sync-mise = { run = "mise install" }
+2_clean-mise = { run = "mise prune -y" }
+3_sync-pnpm = { run = "pnpm install --frozen-lockfile" }
+4_sync-githooks = { run = "lefthook install" }
