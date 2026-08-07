@@ -1,26 +1,21 @@
-import { defineConfig, type ViteUserConfigFnObject } from "vitest/config";
+import { defineConfig, type ViteUserConfig } from "vitest/config";
 
-const config: ViteUserConfigFnObject = defineConfig(() => {
-  return {
-    test: {
-      include: ["**/*.{test,spec}.ts"],
-      exclude: ["node_modules"],
-      watch: false,
-      reporters: ["tree"],
-      coverage: {
-        all: true,
-        clean: true,
-        cleanOnRerun: true,
-        include: ["src"],
-        exclude: [],
-      },
-      // biome-ignore lint/style/useNamingConvention: needed for vitest
-      env: { NODE_ENV: "test" },
-      environment: "node",
-      passWithNoTests: true,
-      setupFiles: [],
+const config: ViteUserConfig = defineConfig({
+  test: {
+    include: ["**/*.{test,spec}.ts"],
+    exclude: ["node_modules"],
+    watch: false,
+    reporters: ["tree"],
+    coverage: {
+      clean: true,
+      cleanOnRerun: true,
+      include: ["src"],
     },
-  };
+    // biome-ignore lint/style/useNamingConvention: needed for vitest
+    env: { NODE_ENV: "test" },
+    environment: "node",
+    passWithNoTests: true,
+  },
 });
 
 /**
