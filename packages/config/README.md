@@ -78,11 +78,13 @@ Create your configuration file:
 import { defineConfig, mergeConfig } from "vitest/config";
 import baseConfig from "@mkvlrn/config/vitest";
 
-export default mergeConfig(
-  baseConfig,
-  defineConfig({
-    // add your custom rules here
-  }),
+export default defineConfig((configEnv) =>
+  mergeConfig(
+    baseConfig(configEnv),
+    defineConfig({
+      // your custom config here
+    }),
+  ),
 );
 ```
 
