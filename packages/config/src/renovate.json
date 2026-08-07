@@ -28,7 +28,8 @@
     {
       "matchManagers": ["mise"],
       "matchPackageNames": ["biomejs/biome"],
-      "overrideDatasource": "github-releases"
+      "overrideDatasource": "github-releases",
+      "extractVersion": "^@biomejs/biome@(?<version>.*)$"
     }
   ],
   "customManagers": [
