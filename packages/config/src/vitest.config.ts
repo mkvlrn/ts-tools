@@ -1,12 +1,6 @@
 import { defineConfig } from "vitest/config";
 
-/**
- * Vitest configuration for this package.
- *
- * This configuration defines the test environment and Vitest behavior
- * used when running the package test suite.
- */
-export default defineConfig(() => {
+const config = defineConfig(() => {
   return {
     test: {
       include: ["**/*.{test,spec}.ts"],
@@ -28,3 +22,11 @@ export default defineConfig(() => {
     },
   };
 });
+
+/**
+ * Vitest configuration for this package.
+ *
+ * This configuration defines the test environment and Vitest behavior
+ * used when running the package test suite.
+ */
+export default config;
