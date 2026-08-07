@@ -2,6 +2,10 @@
   "$schema": "https://jsr.io/schema/config-file.v1.json",
   "name": "@mkvlrn/config",
   "version": "0.3.1", // x-release-please-version
-  "exports": { "./tsconfig.json": "./src/tsconfig.json", "./biome.json": "./src/biome.json" },
-  "publish": { "exclude": ["**/biome.jsonc"] }
+  "exports": {
+    "./biome": "./src/.biome.json",
+    "./tsconfig": "./src/tsconfig.json",
+    "./vitest": "./src/vitest.config.ts"
+  },
+  "publish": { "exclude": ["**/.biome.jsonc", "**/renovate.json"] }
 }

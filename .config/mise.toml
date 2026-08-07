@@ -1,7 +1,7 @@
-monorepo_root = true
+# monorepo_root = true
 
-[monorepo]
-config_roots = ["packages/*"]
+# [monorepo]
+# config_roots = ["packages/*"]
 
 [tools]
 biome = "2.5.6"

@@ -2,7 +2,7 @@
 
 [![JSR](https://jsr.io/badges/@mkvlrn/config)](https://jsr.io/@mkvlrn/config) [![Bun](https://badgen.net/badge/icon/it's%20better%20than%20node?icon=bun&label=bun&color=black)](https://bun.com)
 
-Custom, opinionated configurations that can be used to extend your own biome and typescript configs. Or just to serve as sane, strict defaults.
+Custom, opinionated configurations that can be used to extend your own biome, typescript, and vitest configs. Or just to serve as sane, strict defaults.
 
 Aimed at modern, type-safe, non-spaghetti codebases in most most node, bun, deno, nest, and react projects without changes, just by extending these configs.
 
@@ -25,7 +25,7 @@ npx jsr add -D @mkvlrn/config@0.3.1 # npm
 
 ## Usage
 
-Obs: Both biome and typescript need to be installed separately and be available in the project.
+Obs: Biome, TypeScript, and Vitest need to be installed separately and be available in the project.
 
 ### biome (biome.json / biome.jsonc)
 
@@ -38,7 +38,7 @@ Create your configuration file:
 {
   "$schema": "node_modules/@biomejs/biome/configuration_schema.json",
   "root": true, // if this is the root of your project, false otherwise
-  "extends": ["@mkvlrn/config/biome.json"],
+  "extends": ["@mkvlrn/config/biome"],
   "overrides": [
     // any overrides, see biome docs
   ],
@@ -56,7 +56,7 @@ Create your configuration file:
 
 ```jsonc
 {
-  "extends": "@mkvlrn/config/tsconfig.json",
+  "extends": "@mkvlrn/config/tsconfig",
   "compilerOptions": {
     // add your custom rules here
   },
@@ -66,6 +66,25 @@ Create your configuration file:
 </details>
 
 Obs: anything related to files needs to be set: rootDir, outDir, baseUrl, paths, etc - this prevents path confusion because the "original" tsconfig will be in `node_modules`.
+
+### vitest (vitest.config.ts)
+
+Create your configuration file:
+
+<details>
+<summary><code>vitest.config.ts</code></summary>
+
+```ts
+import { defineConfig, mergeConfig } from "vitest/config";
+import baseConfig from "@mkvlrn/config/vitest";
+
+export default mergeConfig(
+  baseConfig,
+  defineConfig({
+    // add your custom rules here
+  }),
+);
+```
 
 ## License
 

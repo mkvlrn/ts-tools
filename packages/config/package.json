@@ -16,5 +16,7 @@
     "biome",
     "tsconfig"
   ],
-  "devDependencies": {}
+  "devDependencies": {
+    "vitest": "4.1.10"
+  }
 }
