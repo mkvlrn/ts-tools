@@ -28,7 +28,7 @@
   ],
   "customManagers": [
     {
-      // this updates versions in package.json's devEngines
+      // this updates versions in package.json's devEngines, temporary
       "customType": "jsonata",
       "fileFormat": "json",
       "managerFilePatterns": ["/package.json/"],
