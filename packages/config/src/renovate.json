@@ -28,7 +28,7 @@
     {
       "matchManagers": ["mise"],
       "matchPackageNames": ["biome"],
-      "datasource": "github-releases"
+      "overrideDatasource": "github-releases"
     }
   ],
   "customManagers": [
