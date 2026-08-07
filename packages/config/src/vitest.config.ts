@@ -1,6 +1,6 @@
-import { defineConfig } from "vitest/config";
+import { defineConfig, type ViteUserConfigFnObject } from "vitest/config";
 
-const config = defineConfig(() => {
+const config: ViteUserConfigFnObject = defineConfig(() => {
   return {
     test: {
       include: ["**/*.{test,spec}.ts"],
