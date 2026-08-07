@@ -24,7 +24,7 @@ Dead simple Result pattern for TypeScript.
 
 [![JSR](https://jsr.io/badges/@mkvlrn/config)](https://jsr.io/@mkvlrn/config) [![README](https://img.shields.io/badge/readme-white?style=flat&logo=ReadMe)](./packages/config/README.md)
 
-Opinionated configurations for biome and typescript.
+Opinionated configurations for biome, typescript, and vitest.
 
 ---
 
@@ -34,4 +34,4 @@ Opinionated configurations for biome and typescript.
 
 [![JSR](https://jsr.io/badges/@mkvlrn/app-error)](https://jsr.io/@mkvlrn/app-error) [![README](https://img.shields.io/badge/readme-white?style=flat&logo=ReadMe)](./packages/app-error/README.md)
 
-Map app error codes to HTTP statuses.
+Type-safe HTTP status lookups and application error factories.
