@@ -24,6 +24,11 @@
       "matchPackageNames": ["node", "pnpm", "bun"],
       "groupName": "mise tools",
       "groupSlug": "mise"
+    },
+    {
+      "matchManagers": ["mise"],
+      "matchPackageNames": ["biome"],
+      "extractVersion": "^@biomejs/biome@(?<version>.+)$"
     }
   ],
   "customManagers": [
