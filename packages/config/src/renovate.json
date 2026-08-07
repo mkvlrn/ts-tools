@@ -10,6 +10,7 @@
     },
     {
       "matchManagers": ["mise"],
+      "overrideDatasource": "github-releases",
       "groupName": "mise tools",
       "groupSlug": "mise"
     },
