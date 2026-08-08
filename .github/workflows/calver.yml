@@ -15,8 +15,9 @@ jobs:
         id: calver
         shell: bash
         run: |
+          package="config"
           month="$(date -u +'%Y.%m')"
-          latest="$(git tag -l "v$month.*" --sort=-v:refname | head -1)"
+          latest="$(git tag -l "$package-v$month.*" --sort=-v:refname | head -1)"
 
           if [[ -z "$latest" ]]; then
             patch=0
@@ -28,4 +29,3 @@ jobs:
 
           echo "Latest: ${latest:-none}"
           echo "Next:   $version"
-          echo "version=$version" >> "$GITHUB_OUTPUT"
