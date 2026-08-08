@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.3.3](https://github.com/mkvlrn/ts-tools/compare/result-v0.3.2...result-v0.3.3) (2026-08-08)
+
+
+### Bug fixes
+
+* **config:** test calver strategy ([3690e36](https://github.com/mkvlrn/ts-tools/commit/3690e36ac3d7dcfa50789f529e76612498729734))
+
+
+### Documentation
+
+* **result:** update readme ([5a62060](https://github.com/mkvlrn/ts-tools/commit/5a620606050f68b8b0de5af611a8a9145473dade))
+
 ## [0.3.2](https://github.com/mkvlrn/ts-tools/compare/result-v0.3.1...result-v0.3.2) (2026-08-04)
 
 
