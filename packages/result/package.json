@@ -15,5 +15,14 @@
     "typescript",
     "result"
   ],
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/main.d.ts",
+      "default": "./dist/main.js"
+    }
+  },
   "devDependencies": {}
 }

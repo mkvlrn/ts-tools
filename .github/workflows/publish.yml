@@ -16,21 +16,22 @@ jobs:
 
       - uses: jdx/mise-action@7e36c90d9ab29c415a2384db3006f3ec8a8cc654 # v4
 
-      - name: Publish app-error to JSR
+      - name: Publish app-error
         if: startsWith(github.event.release.tag_name, 'app-error-v')
         working-directory: ./packages/app-error
         run: |
           bun install --production --ignore-scripts
-          bunx jsr publish
+          mise publish-app-error
 
-      - name: Publish config to JSR
+      - name: Publish config
         if: startsWith(github.event.release.tag_name, 'config-v')
         working-directory: ./packages/config
         run: |
           bun install --ignore-scripts
-          bunx jsr publish
+          mise publish-config
 
-      - name: Publish result to JSR
+      - name: Publish result
         if: startsWith(github.event.release.tag_name, 'result-v')
         working-directory: ./packages/result
-        run: bunx jsr publish
+        run: |
+          mise publish-result

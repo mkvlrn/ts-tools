@@ -16,6 +16,15 @@
     "biome",
     "tsconfig"
   ],
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    "./vitest": {
+      "types": "./dist/vitest.config.d.ts",
+      "default": "./dist/vitest.config.js"
+    }
+  },
   "devDependencies": {
     "vitest": "4.1.10"
   }

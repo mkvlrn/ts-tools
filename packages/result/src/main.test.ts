@@ -1,7 +1,7 @@
 import { describe, expect, test } from "bun:test";
 import assert from "node:assert/strict";
 import { setTimeout } from "node:timers/promises";
-import { errResult, okResult, type Result, type ResultAsync } from "./index";
+import { errResult, okResult, type Result, type ResultAsync } from "./main";
 
 class CustomError extends Error {
   readonly customField: number;

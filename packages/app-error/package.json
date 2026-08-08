@@ -15,6 +15,15 @@
     "error",
     "http-error"
   ],
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/main.d.ts",
+      "default": "./dist/main.js"
+    }
+  },
   "license": "MIT",
   "type": "module"
 }
