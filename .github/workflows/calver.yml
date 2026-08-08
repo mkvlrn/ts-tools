@@ -16,16 +16,15 @@ jobs:
         run: |
           package="config"
           month="$(date -u +'%Y.%m')"
-          latest="$(git tag -l "$package-v$month.*" --sort=-v:refname | head -1)"
+          latest="$(git tag -l "$package-v*" --sort=-v:refname | head -1)"
 
-          if [[ -z "$latest" ]]; then
-            patch=0
-          else
+          echo "Latest tag: ${latest:-none}"
+
+          if [[ "$latest" == "$package-v$month."* ]]; then
             patch=$((${latest##*.} + 1))
+          else
+            patch=0
           fi
 
           version="$month.$patch"
-
-          echo "Package: $package"
-          echo "Latest tag: ${latest:-none}"
           echo "Next version: $version"
