@@ -10,11 +10,11 @@ They are all published at [jsr](https://jsr.io).
 
 ---
 
-## @mkvlrn/result
+## @mkvlrn/app-error
 
-[![JSR](https://jsr.io/badges/@mkvlrn/result)](https://jsr.io/@mkvlrn/result) [![README](https://img.shields.io/badge/readme-white?style=flat&logo=ReadMe)](./packages/result/README.md)
+[![JSR](https://jsr.io/badges/@mkvlrn/app-error)](https://jsr.io/@mkvlrn/app-error) [![README](https://img.shields.io/badge/readme-white?style=flat&logo=ReadMe)](./packages/app-error/README.md)
 
-Dead simple Result pattern for TypeScript.
+Type-safe HTTP status utilities and application errors.
 
 ---
 
@@ -30,8 +30,8 @@ Opinionated configurations for biome, typescript, and vitest.
 
 ---
 
-## @mkvlrn/app-error
+## @mkvlrn/result
 
-[![JSR](https://jsr.io/badges/@mkvlrn/app-error)](https://jsr.io/@mkvlrn/app-error) [![README](https://img.shields.io/badge/readme-white?style=flat&logo=ReadMe)](./packages/app-error/README.md)
+[![JSR](https://jsr.io/badges/@mkvlrn/result)](https://jsr.io/@mkvlrn/result) [![README](https://img.shields.io/badge/readme-white?style=flat&logo=ReadMe)](./packages/result/README.md)
 
-Type-safe HTTP status lookups and application error factories.
+Dead simple Result pattern for TypeScript.
