@@ -39,11 +39,11 @@ This package is hosted on [JSR](https://jsr.io/@mkvlrn/app-error) and is ESM onl
 <!-- x-release-please-start-version -->
 
 ```bash
-bunx jsr add @mkvlrn/app-error@0.4.0 # bun
-pnpm dlx jsr add @mkvlrn/app-error@0.4.0 # pnpm
-yarn dlx jsr add @mkvlrn/app-error@0.4.0 # yarn
-deno add jsr:@mkvlrn/app-error@0.4.0 # deno
-npx jsr add @mkvlrn/app-error@0.4.0 # npm
+bunx jsr add @mkvlrn/app-error@0.4.1 # bun
+pnpm dlx jsr add @mkvlrn/app-error@0.4.1 # pnpm
+yarn dlx jsr add @mkvlrn/app-error@0.4.1 # yarn
+deno add jsr:@mkvlrn/app-error@0.4.1 # deno
+npx jsr add @mkvlrn/app-error@0.4.1 # npm
 ```
 
 <!-- x-release-please-end -->
