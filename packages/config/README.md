@@ -1,6 +1,6 @@
 # @mkvlrn/config
 
-[![NPM Version](https://img.shields.io/npm/v/%40mkvlrn%2Fconfig?logo=npm&labelColor=red&color=white&label)](https://www.npmjs.com/package/@mkvlrn/config) [![JSR](https://jsr.io/badges/@mkvlrn/config)](https://jsr.io/@mkvlrn/config) [![Bun](https://badgen.net/badge/icon/it's%20better%20than%20node?icon=bun&label=bun&color=black)](https://bun.com)
+[![NPM Version](https://img.shields.io/npm/v/%40mkvlrn%2Fconfig?logo=npm&labelColor=red&color=white&label)](https://www.npmjs.com/package/@mkvlrn/config) [![JSR Version](https://jsr.io/badges/@mkvlrn/config)](https://jsr.io/@mkvlrn/config) [![Bun](https://badgen.net/badge/icon/it's%20better%20than%20node?icon=bun&label=bun&color=black)](https://bun.com)
 
 Custom, opinionated configurations that can be used to extend your own biome, typescript, and vitest configs. Or just to serve as sane, strict defaults.
 
