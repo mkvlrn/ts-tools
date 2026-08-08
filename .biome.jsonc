@@ -4,6 +4,6 @@
   "extends": ["./packages/config/src/.biome.json"],
   "files": {
     "ignoreUnknown": true,
-    "includes": ["**/*", "!**/node_modules/**/*", "!**/dist/**/*"]
+    "includes": ["**/*", "!**/node_modules/**/*", "!!**/dist/**/*"]
   }
 }

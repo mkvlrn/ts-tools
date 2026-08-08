@@ -2,8 +2,8 @@
 cog-lint = { run = "cog verify --file {1}" }
 
 [pre-commit.commands]
-typecheck = { glob = "*.{ts,tsx}", run = "mise typecheck" }
 lint = { glob = "*.{ts,tsx,json,jsonc}", run = "mise lint {staged_files}" }
+typecheck = { glob = "*.{ts,tsx}", run = "mise typecheck" }
 test = { glob = "*.{ts,tsx}", run = "mise test-staged" }
 
 [pre-push.commands]
