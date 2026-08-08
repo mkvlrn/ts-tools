@@ -1,6 +1,6 @@
 # @mkvlrn/app-error
 
-[![JSR](https://jsr.io/badges/@mkvlrn/app-error)](https://jsr.io/@mkvlrn/app-error) [![Bun](https://badgen.net/badge/icon/it's%20better%20than%20node?icon=bun&label=bun&color=black)](https://bun.com)
+[![NPM Version](https://img.shields.io/npm/v/%40mkvlrn%2Fapp-error?logo=npm&labelColor=red&color=white&label)](https://www.npmjs.com/package/@mkvlrn/app-error) [![JSR](https://jsr.io/badges/@mkvlrn/app-error)](https://jsr.io/@mkvlrn/app-error) [![Bun](https://badgen.net/badge/icon/it's%20better%20than%20node?icon=bun&label=bun&color=black)](https://bun.com)
 
 Type-safe HTTP status utilities and application errors.
 
@@ -31,20 +31,18 @@ Type-safe HTTP status utilities and application errors.
 
 ## Installation
 
-This package is hosted on [JSR](https://jsr.io/@mkvlrn/app-error) and is ESM only.
-
 > [!NOTE]
-> This package is hosted at [jsr](https://jsr.io) and is ESM **only**.
+> This package is hosted both at [npm](https://npmjs.com) and [jsr](https://jsr.io), and is ESM **only**.
 
 <!-- x-release-please-start-version -->
 
-```bash
-bunx jsr add @mkvlrn/app-error@0.4.1 # bun
-pnpm dlx jsr add @mkvlrn/app-error@0.4.1 # pnpm
-yarn dlx jsr add @mkvlrn/app-error@0.4.1 # yarn
-deno add jsr:@mkvlrn/app-error@0.4.1 # deno
-npx jsr add @mkvlrn/app-error@0.4.1 # npm
-```
+| Package manager | npm                              | JSR                                        |
+| --------------- | -------------------------------- | ------------------------------------------ |
+| Bun             | `bun add @mkvlrn/app-error`      | `bunx jsr add @mkvlrn/app-error@0.4.1`     |
+| npm             | `npm install @mkvlrn/app-error`  | `npx jsr add @mkvlrn/app-error@0.4.1`      |
+| pnpm            | `pnpm add @mkvlrn/app-error`     | `pnpm dlx jsr add @mkvlrn/app-error@0.4.1` |
+| Yarn            | `yarn add @mkvlrn/app-error`     | `yarn dlx jsr add @mkvlrn/app-error@0.4.1` |
+| Deno            | `deno add npm:@mkvlrn/app-error` | `deno add jsr:@mkvlrn/app-error@0.4.1`     |
 
 <!-- x-release-please-end -->
 
