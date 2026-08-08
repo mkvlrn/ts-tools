@@ -1,6 +1,6 @@
 # @mkvlrn/result
 
-[![JSR](https://jsr.io/badges/@mkvlrn/result)](https://jsr.io/@mkvlrn/result) [![Bun](https://badgen.net/badge/icon/it's%20better%20than%20node?icon=bun&label=bun&color=black)](https://bun.com)
+[![NPM Version](https://img.shields.io/npm/v/%40mkvlrn%2Fresult?logo=npm&labelColor=red&color=white&label)](https://www.npmjs.com/package/@mkvlrn/result) [![JSR](https://jsr.io/badges/@mkvlrn/result)](https://jsr.io/@mkvlrn/result) [![Bun](https://badgen.net/badge/icon/it's%20better%20than%20node?icon=bun&label=bun&color=black)](https://bun.com)
 
 Dead simple Result pattern for TypeScript.
 
@@ -17,17 +17,17 @@ If you need `.map().flatMap().andThen().orElse().unwrapOr()` chains, use [nevert
 ## Installation
 
 > [!NOTE]
-> This package is hosted at [jsr](https://jsr.io) and is ESM **only**.
+> This package is hosted both at [npm](https://npmjs.com) and [jsr](https://jsr.io), and is ESM **only**.
 
 <!-- x-release-please-start-version -->
 
-```bash
-bunx jsr add @mkvlrn/result@0.3.2 # bun
-pnpm dlx jsr add @mkvlrn/result@0.3.2 # pnpm
-yarn dlx jsr add @mkvlrn/result@0.3.2 # yarn
-deno add jsr:@mkvlrn/result@0.3.2 # deno
-npx jsr add @mkvlrn/result@0.3.2 # npm
-```
+| Package manager | npm                           | JSR                                     |
+| --------------- | ----------------------------- | --------------------------------------- |
+| Bun             | `bun add @mkvlrn/result`      | `bunx jsr add @mkvlrn/result@0.3.2`     |
+| npm             | `npm install @mkvlrn/result`  | `npx jsr add @mkvlrn/result@0.3.2`      |
+| pnpm            | `pnpm add @mkvlrn/result`     | `pnpm dlx jsr add @mkvlrn/result@0.3.2` |
+| Yarn            | `yarn add @mkvlrn/result`     | `yarn dlx jsr add @mkvlrn/result@0.3.2` |
+| Deno            | `deno add npm:@mkvlrn/result` | `deno add jsr:@mkvlrn/result@0.3.2`     |
 
 <!-- x-release-please-end -->
 
