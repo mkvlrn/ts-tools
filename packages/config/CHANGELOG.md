@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.5](https://github.com/mkvlrn/ts-tools/compare/config-v0.4.4...config-v0.4.5) (2026-08-08)
+
+
+### Documentation
+
+* **config:** update readme ([b8a3551](https://github.com/mkvlrn/ts-tools/commit/b8a3551f8dda0caf916a2b9f86fb6389c8f496bb))
+
 ## [0.4.4](https://github.com/mkvlrn/ts-tools/compare/config-v0.4.3...config-v0.4.4) (2026-08-08)
 
 
