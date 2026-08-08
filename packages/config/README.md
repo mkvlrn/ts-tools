@@ -1,6 +1,6 @@
 # @mkvlrn/config
 
-[![JSR](https://jsr.io/badges/@mkvlrn/config)](https://jsr.io/@mkvlrn/config) [![Bun](https://badgen.net/badge/icon/it's%20better%20than%20node?icon=bun&label=bun&color=black)](https://bun.com)
+[![NPM Version](https://img.shields.io/npm/v/%40mkvlrn%2Fconfig?logo=npm&labelColor=red&color=white&label)](https://www.npmjs.com/package/@mkvlrn/config) [![JSR](https://jsr.io/badges/@mkvlrn/config)](https://jsr.io/@mkvlrn/config) [![Bun](https://badgen.net/badge/icon/it's%20better%20than%20node?icon=bun&label=bun&color=black)](https://bun.com)
 
 Custom, opinionated configurations that can be used to extend your own biome, typescript, and vitest configs. Or just to serve as sane, strict defaults.
 
@@ -9,17 +9,17 @@ Aimed at modern, type-safe, non-spaghetti codebases in most most node, bun, deno
 ## Installation
 
 > [!NOTE]
-> This package is hosted at [jsr](https://jsr.io) and is ESM **only**.
+> This package is hosted both at [npm](https://npmjs.com) and [jsr](https://jsr.io), and is ESM **only**.
 
 <!-- x-release-please-start-version -->
 
-```bash
-bunx jsr add -D @mkvlrn/config@0.4.3 # bun
-pnpm dlx jsr add @mkvlrn/config@0.4.3 # pnpm
-yarn dlx jsr add @mkvlrn/config@0.4.3 # yarn
-deno add -D jsr:@mkvlrn/config@0.4.3 # deno
-npx jsr add -D @mkvlrn/config@0.4.3 # npm
-```
+| Package manager | npm                           | JSR                                     |
+| --------------- | ----------------------------- | --------------------------------------- |
+| Bun             | `bun add @mkvlrn/config`      | `bunx jsr add @mkvlrn/config@0.4.3`     |
+| npm             | `npm install @mkvlrn/config`  | `npx jsr add @mkvlrn/config@0.4.3`      |
+| pnpm            | `pnpm add @mkvlrn/config`     | `pnpm dlx jsr add @mkvlrn/config@0.4.3` |
+| Yarn            | `yarn add @mkvlrn/config`     | `yarn dlx jsr add @mkvlrn/config@0.4.3` |
+| Deno            | `deno add npm:@mkvlrn/config` | `deno add jsr:@mkvlrn/config@0.4.3`     |
 
 <!-- x-release-please-end -->
 
