@@ -1,6 +1,6 @@
 # @mkvlrn/result
 
-[![NPM Version](https://img.shields.io/npm/v/%40mkvlrn%2Fresult?logo=npm&labelColor=red&color=white&label)](https://www.npmjs.com/package/@mkvlrn/result) [![JSR](https://jsr.io/badges/@mkvlrn/result)](https://jsr.io/@mkvlrn/result) [![Bun](https://badgen.net/badge/icon/it's%20better%20than%20node?icon=bun&label=bun&color=black)](https://bun.com)
+[![NPM Version](https://img.shields.io/npm/v/%40mkvlrn%2Fresult?logo=npm&labelColor=red&color=white&label)](https://www.npmjs.com/package/@mkvlrn/result) [![JSR Version](https://jsr.io/badges/@mkvlrn/result)](https://jsr.io/@mkvlrn/result) [![Bun](https://badgen.net/badge/icon/it's%20better%20than%20node?icon=bun&label=bun&color=black)](https://bun.com)
 
 Dead simple Result pattern for TypeScript.
 
