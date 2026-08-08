@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.4](https://github.com/mkvlrn/ts-tools/compare/result-v0.3.3...result-v0.3.4) (2026-08-08)
+
+
+### Documentation
+
+* **result:** update readme ([15fdd2a](https://github.com/mkvlrn/ts-tools/commit/15fdd2afdbd33480f4b3373e0fe287a5e9b522cc))
+
 ## [0.3.3](https://github.com/mkvlrn/ts-tools/compare/result-v0.3.2...result-v0.3.3) (2026-08-08)
 
 
