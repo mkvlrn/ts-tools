@@ -12,7 +12,6 @@ jobs:
           fetch-depth: 0
 
       - name: Calculate version
-        id: calver
         shell: bash
         run: |
           package="config"
@@ -27,5 +26,6 @@ jobs:
 
           version="$month.$patch"
 
-          echo "Latest: ${latest:-none}"
-          echo "Next:   $version"
+          echo "Package: $package"
+          echo "Latest tag: ${latest:-none}"
+          echo "Next version: $version"
