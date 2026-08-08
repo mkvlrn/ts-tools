@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.4.2](https://github.com/mkvlrn/ts-tools/compare/app-error-v0.4.1...app-error-v0.4.2) (2026-08-08)
+
+
+### Bug fixes
+
+* **config:** test calver strategy ([3690e36](https://github.com/mkvlrn/ts-tools/commit/3690e36ac3d7dcfa50789f529e76612498729734))
+
+
+### Documentation
+
+* **app-error:** update readme ([82c4937](https://github.com/mkvlrn/ts-tools/commit/82c493725ac6e41d1c912af58786b17770f26714))
+
 ## [0.4.1](https://github.com/mkvlrn/ts-tools/compare/app-error-v0.4.0...app-error-v0.4.1) (2026-08-08)
 
 

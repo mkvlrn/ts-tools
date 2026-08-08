@@ -23,11 +23,11 @@ If you need `.map().flatMap().andThen().orElse().unwrapOr()` chains, use [nevert
 
 | Package manager | npm                           | JSR                                     |
 | --------------- | ----------------------------- | --------------------------------------- |
-| Bun             | `bun add @mkvlrn/result`      | `bunx jsr add @mkvlrn/result@0.3.2`     |
-| npm             | `npm install @mkvlrn/result`  | `npx jsr add @mkvlrn/result@0.3.2`      |
-| pnpm            | `pnpm add @mkvlrn/result`     | `pnpm dlx jsr add @mkvlrn/result@0.3.2` |
-| Yarn            | `yarn add @mkvlrn/result`     | `yarn dlx jsr add @mkvlrn/result@0.3.2` |
-| Deno            | `deno add npm:@mkvlrn/result` | `deno add jsr:@mkvlrn/result@0.3.2`     |
+| Bun             | `bun add @mkvlrn/result`      | `bunx jsr add @mkvlrn/result@0.3.3`     |
+| npm             | `npm install @mkvlrn/result`  | `npx jsr add @mkvlrn/result@0.3.3`      |
+| pnpm            | `pnpm add @mkvlrn/result`     | `pnpm dlx jsr add @mkvlrn/result@0.3.3` |
+| Yarn            | `yarn add @mkvlrn/result`     | `yarn dlx jsr add @mkvlrn/result@0.3.3` |
+| Deno            | `deno add npm:@mkvlrn/result` | `deno add jsr:@mkvlrn/result@0.3.3`     |
 
 <!-- x-release-please-end -->
 
