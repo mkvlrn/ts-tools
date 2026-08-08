@@ -13,13 +13,13 @@ Aimed at modern, type-safe, non-spaghetti codebases in most most node, bun, deno
 
 <!-- x-release-please-start-version -->
 
-| Package manager | npm                           | JSR                                     |
-| --------------- | ----------------------------- | --------------------------------------- |
-| Bun             | `bun add @mkvlrn/config`      | `bunx jsr add @mkvlrn/config@0.4.3`     |
-| npm             | `npm install @mkvlrn/config`  | `npx jsr add @mkvlrn/config@0.4.3`      |
-| pnpm            | `pnpm add @mkvlrn/config`     | `pnpm dlx jsr add @mkvlrn/config@0.4.3` |
-| Yarn            | `yarn add @mkvlrn/config`     | `yarn dlx jsr add @mkvlrn/config@0.4.3` |
-| Deno            | `deno add npm:@mkvlrn/config` | `deno add jsr:@mkvlrn/config@0.4.3`     |
+| Package manager | npm                              | JSR                                        |
+| --------------- | -------------------------------- | ------------------------------------------ |
+| Bun             | `bun add @mkvlrn/config -D`      | `bunx jsr add @mkvlrn/config@0.4.3 -D`     |
+| npm             | `npm install @mkvlrn/config -D`  | `npx jsr add @mkvlrn/config@0.4.3 -D`      |
+| pnpm            | `pnpm add @mkvlrn/config -D`     | `pnpm dlx jsr add @mkvlrn/config@0.4.3 -D` |
+| Yarn            | `yarn add @mkvlrn/config -D`     | `yarn dlx jsr add @mkvlrn/config@0.4.3 -D` |
+| Deno            | `deno add npm:@mkvlrn/config -D` | `deno add jsr:@mkvlrn/config@0.4.3 -D`     |
 
 <!-- x-release-please-end -->
 
