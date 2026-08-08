@@ -3,6 +3,8 @@ biome = "2.5.7"
 bun = "1.3.14"
 cocogitto = "7.0.0"
 lefthook = "2.1.10"
+"npm:npm" = "12.0.2"
+node = "26.7.0"
 "npm:jsr" = "0.14.3"
 
 [env]
@@ -45,7 +47,7 @@ bun build ./packages/app-error/src/main.ts --outdir ./packages/app-error/dist
 tsc --declaration --emitDeclarationOnly --outDir packages/app-error/dist --module ESNext --moduleResolution Bundler packages/app-error/src/main.ts --ignoreConfig
 
 echo "Publishing @mkvlrn/app-error to npm..."
-bun publish --access public --cwd packages/app-error
+(cd packages/app-error && npm publish --access public)
 
 echo "Publishing @mkvlrn/app-error to jsr..."
 (cd packages/app-error && jsr publish)
@@ -63,7 +65,7 @@ cp packages/config/src/.biome.json packages/config/dist/biome.json
 cp packages/config/src/tsconfig.json packages/config/dist/tsconfig.json
 
 echo "Publishing @mkvlrn/config to npm..."
-bun publish --access public --cwd packages/config
+(cd packages/config && npm publish --access public)
 
 echo "Publishing @mkvlrn/config to jsr..."
 (cd packages/config && jsr publish)
@@ -79,7 +81,7 @@ bun build ./packages/result/src/main.ts --outdir ./packages/result/dist
 tsc --declaration --emitDeclarationOnly --outDir packages/result/dist --module ESNext --moduleResolution Bundler packages/result/src/main.ts --ignoreConfig
 
 echo "Publishing @mkvlrn/result to npm..."
-bun publish --access public --cwd packages/result
+(cd packages/result && npm publish --access public)
 
 echo "Publishing @mkvlrn/result to jsr..."
 (cd packages/result && jsr publish)
