@@ -5,7 +5,7 @@
 
 Some Typescript tools I use frequently, usable with node, bun, deno, and cloudflare workers - ESM **only**
 
-They are all published at [jsr](https://jsr.io).
+They are all published both at [npm](https://npmjs.com) and [jsr](https://jsr.io).
 
 ---
 
