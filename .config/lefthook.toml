@@ -11,6 +11,7 @@ typecheck = { run = "mise typecheck" }
 lint = { run = "mise lint" }
 test = { run = "mise test-ci" }
 jsr-dry-run = { run = "mise jsr-dry-run " }
+npm-dry-run = { run = "mise npm-dry-run " }
 
 [post-checkout]
 piped = true

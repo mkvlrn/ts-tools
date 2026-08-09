@@ -86,8 +86,18 @@ echo "Publishing @mkvlrn/result to npm..."
 echo "Publishing @mkvlrn/result to jsr..."
 (cd packages/result && jsr publish)
 """
+[tasks.npm-dry-run]
+description = "NPM publish dry run"
+run = """
+for dir in packages/*; do
+  if [ -d "$dir" ]; then
+    echo "Checking $dir"
+    (cd "$dir" && npm publish --dry-run --access public)
+  fi
+done
+"""
 [tasks.jsr-dry-run]
-description = "Checks for jsr slow types in each package"
+description = "JSR publish dry run"
 run = """
 for dir in packages/*; do
   if [ -d "$dir" ]; then
