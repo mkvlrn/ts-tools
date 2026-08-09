@@ -23,7 +23,9 @@
     "./vitest": {
       "types": "./dist/vitest.config.d.ts",
       "default": "./dist/vitest.config.js"
-    }
+    },
+    "./biome": "./dist/biome.json",
+    "./tsconfig": "./dist/tsconfig.json"
   },
   "devDependencies": {
     "vitest": "4.1.10"
