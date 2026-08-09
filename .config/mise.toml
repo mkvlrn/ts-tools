@@ -92,7 +92,7 @@ run = """
 for dir in packages/*; do
   if [ -d "$dir" ]; then
     echo "Checking $dir"
-    (cd "$dir" && npm publish --dry-run --access public)
+    (cd "$dir" && npm pack --dry-run --access public)
   fi
 done
 """
