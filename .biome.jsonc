@@ -1,7 +1,7 @@
 {
   "$schema": "https://biomejs.dev/schemas/latest/schema.json",
   "root": true,
-  "extends": ["./packages/config/src/biome.json5"],
+  "extends": ["./packages/config/src/biome.jsonc"],
   "files": {
     "ignoreUnknown": true,
     "includes": ["**/*", "!**/node_modules/**/*", "!!**/dist/**/*"]
