@@ -17,7 +17,6 @@
     "formatter": { "enabled": true }
   },
   "javascript": {
-    // for nest decorators
     "parser": { "unsafeParameterDecoratorsEnabled": true },
     "formatter": { "enabled": true }
   },
@@ -68,25 +67,19 @@
       "linter": {
         "rules": {
           "complexity": {
-            // because of typescript's noPropertyAccessFromIndexSignature
             "useLiteralKeys": "off"
           },
           "correctness": {
-            // path alias already uses ts extensions
             "useImportExtensions": "off",
-            // let editor resolve imports
             "noUnresolvedImports": "off"
           },
           "style": {
-            // this is a silly rule
             "useExportsLast": "off"
           }
         }
       }
     },
     {
-      // test files, config files, and some scripts
-      // should be able to import from node
       "includes": ["**/*.config.ts", "**/*.test.ts", "**/*.spec.ts", "**/.config/*.ts"],
       "linter": {
         "rules": {
@@ -97,7 +90,6 @@
       }
     },
     {
-      // config files should be able to export defaults as per tooling requirements
       "includes": ["**/*.config.ts", "**/.config/*.ts"],
       "linter": {
         "rules": {
