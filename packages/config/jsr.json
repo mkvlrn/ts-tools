@@ -3,9 +3,9 @@
   "name": "@mkvlrn/config",
   "version": "0.4.6", // x-release-please-version
   "exports": {
-    "./biome": "./src/.biome.json",
+    "./biome": "./src/.biome.jsonc",
     "./tsconfig": "./src/tsconfig.json",
     "./vitest": "./src/vitest.config.ts"
   },
-  "publish": { "exclude": ["**/.biome.jsonc", "**/renovate.json"] }
+  "publish": { "exclude": ["**/mkvlrn.omp.jsonc", "**/renovate.json"] }
 }
