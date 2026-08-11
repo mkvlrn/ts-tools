@@ -32,7 +32,7 @@
           "style": "plain"
         },
         {
-          "template": "{{ if or (glob \"bunfig.toml\") (glob \"deno.lock\") }}{{ else }}\udb80\udf99 {{ .Full }} {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }}{{ end }} {{ end }}",
+          "template": "{{ if or (glob \"bunfig.toml\") (glob \"deno.lock\") }}{{ else }}\udb80\udf99 {{ .Full }} {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ end }}",
           "foreground": "p:node",
           "background": "transparent",
           "type": "node",
