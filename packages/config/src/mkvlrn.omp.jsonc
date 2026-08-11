@@ -42,7 +42,7 @@
           }
         },
         {
-          "template": "\ue7c0 {{ .Full }} ",
+          "template": "{{ if or (glob \"deno.json\") (glob \"deno.lock\") }}\ue7c0 {{ .Full }} {{ else }}{{ end }}",
           "foreground": "p:deno",
           "background": "transparent",
           "type": "deno",
