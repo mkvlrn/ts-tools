@@ -7,5 +7,5 @@
     "./tsconfig": "./src/tsconfig.json",
     "./vitest": "./src/vitest.config.ts"
   },
-  "publish": { "exclude": ["**/mkvlrn.omp.jsonc", "**/renovate.json"] }
+  "publish": { "exclude": ["**/mkvlrn.omp.jsonc", "**/renovate.json", "!**/dist/biome.json"] }
 }
