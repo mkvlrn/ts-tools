@@ -29,9 +29,18 @@
       // renovate's config for this is stale or wrong
       // doesn't match with what mise outdated -l sees
       "matchManagers": ["mise"],
-      "matchPackageNames": ["biomejs/biome"],
+      "matchPackageNames": ["biomejs/biome", "biome"],
       "overrideDatasource": "github-releases",
       "extractVersion": "^@biomejs/biome@(?<version>.*)$"
+    },
+    {
+      // updates pnpm's lockfile with the updated version tracked by devEngines.packageManager
+      "matchManagers": ["custom:jsonata"],
+      "matchPackageNames": ["pnpm"],
+      "postUpgradeTasks": {
+        "commands": ["pnpm install --lockfile-only"],
+        "fileFilters": ["pnpm-lock.yaml"]
+      }
     }
   ],
   "customManagers": [
