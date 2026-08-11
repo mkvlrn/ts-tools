@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.6](https://github.com/mkvlrn/ts-tools/compare/config-v0.4.5...config-v0.4.6) (2026-08-09)
+
+
+### Bug fixes
+
+* **config:** fix exports for npm ([5a77827](https://github.com/mkvlrn/ts-tools/commit/5a7782751d7721a174ad2231a0e71dee2344335d))
+
 ## [0.4.5](https://github.com/mkvlrn/ts-tools/compare/config-v0.4.4...config-v0.4.5) (2026-08-08)
 
 
