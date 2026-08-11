@@ -42,8 +42,8 @@
       "fileFormat": "json",
       "managerFilePatterns": ["/package.json/"],
       "matchStrings": [
-        "devEngines.runtime ? [{ \"depName\": devEngines.runtime.name, \"currentValue\": devEngines.runtime.version, \"datasource\": devEngines.runtime.name = \"node\" ? \"node-version\" : \"npm\", \"versioning\": devEngines.runtime.name = \"node\" ? \"node\" : \"npm\" }] : []",
-        "devEngines.packageManager ? [{ \"depName\": devEngines.packageManager.name, \"currentValue\": devEngines.packageManager.version, \"datasource\": \"npm\", \"versioning\": \"npm\" }] : []"
+        "$map(devEngines.runtime, function($v) { { \"depName\": $v.name, \"currentValue\": $v.version, \"datasource\": $v.name = \"node\" ? \"node-version\" : \"npm\", \"versioning\": $v.name = \"node\" ? \"node\" : \"npm\" } })",
+        "$map(devEngines.packageManager, function($v) { { \"depName\": $v.name, \"currentValue\": $v.version, \"datasource\": \"npm\", \"versioning\": \"npm\" } })"
       ]
     }
   ],
