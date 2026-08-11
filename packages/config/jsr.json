@@ -3,7 +3,7 @@
   "name": "@mkvlrn/config",
   "version": "0.4.6", // x-release-please-version
   "exports": {
-    "./biome": "./src/.biome.jsonc",
+    "./biome": "./src/biome.json5",
     "./tsconfig": "./src/tsconfig.json",
     "./vitest": "./src/vitest.config.ts"
   },
