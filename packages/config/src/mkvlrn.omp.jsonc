@@ -39,7 +39,7 @@
           "style": "plain"
         },
         {
-          "template": "{{ if or (glob \"bunfig.toml\") (glob \"deno.json\") }}{{ else }}\udb80\udf99 {{ .Full }} {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ end }} ",
+          "template": "{{ $pkg := readFile \"package.json\" | fromJson }}{{ if eq (dig \"devEngines\" \"runtime\" \"name\" \"\" $pkg) \"node\" }}\udb80\udf99 {{ .Full }} {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ else }}{{ end }}{{ end }}",
           "foreground": "p:node",
           "background": "transparent",
           "type": "node",
@@ -56,7 +56,7 @@
           "style": "plain"
         },
         {
-          "template": "{{ $pkg := readFile \"package.json\" | fromJson }}{{ if eq (dig \"devEngines\" \"runtime\" \"name\" \"\" $pkg) \"bun\" }}\ue76f {{ .Full }} {{ end }}",
+          "template": "{{ $pkg := readFile \"package.json\" | fromJson }}{{ if eq (dig \"devEngines\" \"runtime\" \"name\" \"\" $pkg) \"bun\" }}\ue76f {{ .Full }} {{ else }}{{ end }}{{ end }}",
           "foreground": "p:bun",
           "background": "transparent",
           "type": "bun",
