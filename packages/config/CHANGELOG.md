@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.4.7](https://github.com/mkvlrn/ts-tools/compare/config-v0.4.6...config-v0.4.7) (2026-08-12)
+
+
+### Bug fixes
+
+* **config:** back to duplicate biome config because jsr is weird ([58a5fb1](https://github.com/mkvlrn/ts-tools/commit/58a5fb12473959f37cfde504d51a1c1a420f56c4))
+* **config:** export biome json5 file ([a5ea9f0](https://github.com/mkvlrn/ts-tools/commit/a5ea9f0b7865b42df68b251dd2dbf66f95006738))
+* **config:** export biome jsonc file ([aefeaee](https://github.com/mkvlrn/ts-tools/commit/aefeaee1d57ce79407f157d6f9c3f62ad8cd2046))
+* **config:** trick jsr by using dist ([edaf25f](https://github.com/mkvlrn/ts-tools/commit/edaf25fd7da4679049d8c5c1496b9202dc8bb352))
+* **config:** trick jsr by using dist ([c118d20](https://github.com/mkvlrn/ts-tools/commit/c118d205219ec46cf4be8db7ce751ea903c41eb3))
+* **config:** trick jsr by using dist ([7d7ab73](https://github.com/mkvlrn/ts-tools/commit/7d7ab734275f7b3808fe9671dbc67f6868fe4c5b))
+
 ## [0.4.6](https://github.com/mkvlrn/ts-tools/compare/config-v0.4.5...config-v0.4.6) (2026-08-09)
 
 
