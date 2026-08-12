@@ -32,6 +32,11 @@
       "matchPackageNames": ["biomejs/biome", "biome"],
       "overrideDatasource": "github-releases",
       "extractVersion": "^@biomejs/biome@(?<version>.*)$"
+    },
+    {
+      // this is disabled by the best-practices preset, apparently
+      "matchManagers": ["devcontainer"],
+      "pinDigests": true
     }
   ],
   "customManagers": [
