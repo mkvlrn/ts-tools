@@ -22,10 +22,10 @@
       "alignment": "left",
       "segments": [
         {
-          "template": "{{ if .Env.DEVCONTAINER }}\udb82\udcc7 \ue650{{ end }} ",
+          "template": "{{ if .Env.DEVCONTAINER }}\udb82\udf7c \ue650 {{ end }}{{ .Icon }} ",
           "foreground": "p:white",
           "background": "transparent",
-          "type": "session",
+          "type": "os",
           "style": "plain"
         },
         {
