@@ -22,12 +22,21 @@
       "alignment": "left",
       "segments": [
         {
-          "template": "{{ if .Env.DEVCONTAINER }}\udb82\udcc7 \ue650{{ end }} ",
-          "foreground": "p:white",
-          "background": "transparent",
-          "type": "session",
-          "style": "plain"
+          "template": "{{ if .Env.DEVCONTAINER }}\udb82\udf7c  \uf308  {{ end }}{{ .Icon }} ",
+          "foreground": "red",
+          "background": "p:lavender",
+          "type": "os",
+          "style": "diamond",
+          "leading_diamond": "",
+          "trailing_diamond": " "
         },
+        // {
+        //   "template": "{{ if .Env.DEVCONTAINER }}\udb82\udf7c \ue650 {{ end }}{{ .Icon }} ",
+        //   "foreground": "p:white",
+        //   "background": "transparent",
+        //   "type": "os",
+        //   "style": "plain"
+        // },
         {
           "options": {
             "style": "full"
