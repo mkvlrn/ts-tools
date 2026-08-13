@@ -22,11 +22,13 @@
       "alignment": "left",
       "segments": [
         {
-          "template": "{{ if .Env.DEVCONTAINER }}\udb82\udf7c \ue650 {{ end }}{{ .Icon }} ",
-          "foreground": "p:white",
-          "background": "transparent",
+          "template": "{{ if .Env.DEVCONTAINER }}\udb82\udf7c  \uf308  {{ end }}{{ .Icon }} ",
+          "foreground": "red",
+          "background": "p:lavender",
           "type": "os",
-          "style": "plain"
+          "style": "diamond",
+          "leading_diamond": "",
+          "trailing_diamond": " "
         },
         {
           "options": {
