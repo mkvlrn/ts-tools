@@ -3,6 +3,7 @@ biome = "2.5.7"
 bun = "1.3.14"
 cocogitto = "7.0.0"
 lefthook = "2.1.10"
+node = "24.19.0"
 "npm:jsr" = "0.14.3"
 
 [env]
