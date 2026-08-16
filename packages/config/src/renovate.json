@@ -4,6 +4,16 @@
   "ignorePresets": ["security:minimumReleaseAgeNpm"],
   "packageRules": [
     {
+      "matchManagers": ["github-actions"],
+      "groupName": "github actions",
+      "groupSlug": "github-actions"
+    },
+    {
+      "matchManagers": ["dockerfile"],
+      "groupName": "docker images",
+      "groupSlug": "docker"
+    },
+    {
       "matchManagers": ["npm"],
       "groupName": "npm dependencies",
       "groupSlug": "npm"
