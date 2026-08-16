@@ -22,6 +22,29 @@
       "alignment": "left",
       "segments": [
         {
+          "type": "text",
+          "style": "plain",
+          "foreground": "#C75B7A",
+          "template": "{{ if .Env.DEVCONTAINER }}\udb82\udf7c{{ end }}"
+        },
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "#1D63ED",
+          "template": "{{ if .Env.DEVCONTAINER }} \uf308 {{ end }}"
+        },
+        {
+          "type": "os",
+          "style": "plain",
+          "foreground_templates": [
+            "{{ if eq .Icon \"\uf303\" }}#1793D1{{ end }}",
+            "{{ if eq .Icon \"\uf31b\" }}#E95420{{ end }}",
+            "{{ if eq .Icon \"\uf30a\" }}#294172{{ end }}",
+            "{{ if eq .Icon \"\uf306\" }}#A80030{{ end }}"
+          ],
+          "template": "{{ .Icon }}  "
+        },
+        {
           "options": {
             "style": "full"
           },
@@ -104,35 +127,12 @@
       "type": "prompt",
       "alignment": "left",
       "segments": [
-        // {
-        //   "template": "{{ if .SSHSession }}{{ .UserName }}@{{ .HostName }} {{ end }}",
-        //   "foreground": "p:green",
-        //   "background": "transparent",
-        //   "type": "session",
-        //   "style": "plain"
-        // },
         {
-          "type": "text",
-          "style": "plain",
-          "foreground": "#C75B7A",
-          "template": "{{ if .Env.DEVCONTAINER }}\udb82\udf7c{{ end }}"
-        },
-        {
-          "type": "text",
-          "style": "plain",
-          "foreground": "#1D63ED",
-          "template": "{{ if .Env.DEVCONTAINER }} \uf308 {{ end }}"
-        },
-        {
-          "type": "os",
-          "style": "plain",
-          "foreground_templates": [
-            "{{ if eq .Icon \"\uf303\" }}#1793D1{{ end }}",
-            "{{ if eq .Icon \"\uf31b\" }}#E95420{{ end }}",
-            "{{ if eq .Icon \"\uf30a\" }}#294172{{ end }}",
-            "{{ if eq .Icon \"\uf306\" }}#A80030{{ end }}"
-          ],
-          "template": "{{ .Icon }} "
+          "template": "{{ if .SSHSession }}{{ .UserName }}@{{ .HostName }} {{ end }}",
+          "foreground": "p:green",
+          "background": "transparent",
+          "type": "session",
+          "style": "plain"
         },
         {
           "template": " ➜ ",
