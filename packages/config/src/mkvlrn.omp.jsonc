@@ -24,25 +24,8 @@
         {
           "type": "text",
           "style": "plain",
-          "foreground": "#C75B7A",
-          "template": "{{ if .Env.DEVCONTAINER }}\udb82\udf7c{{ end }}"
-        },
-        {
-          "type": "text",
-          "style": "plain",
           "foreground": "#1D63ED",
-          "template": "{{ if .Env.DEVCONTAINER }} \uf308 {{ end }}"
-        },
-        {
-          "type": "os",
-          "style": "plain",
-          "foreground_templates": [
-            "{{ if eq .Icon \"\uf303\" }}#1793D1{{ end }}",
-            "{{ if eq .Icon \"\uf31b\" }}#E95420{{ end }}",
-            "{{ if eq .Icon \"\uf30a\" }}#294172{{ end }}",
-            "{{ if eq .Icon \"\uf306\" }}#A80030{{ end }}"
-          ],
-          "template": "{{ .Icon }}  "
+          "template": "{{ if .Env.DEVCONTAINER }}\uf308  {{ end }}"
         },
         {
           "options": {
@@ -53,6 +36,54 @@
           "background": "transparent",
           "type": "path",
           "style": "plain"
+        },
+        {
+          "options": {
+            "fetch_status": true,
+            "fetch_upstream_icon": true
+          },
+          "template": "{{ .UpstreamIcon }}  {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }} ",
+          "foreground": "p:green",
+          "background": "transparent",
+          "type": "git",
+          "style": "plain",
+          "foreground_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}#FF9248{{ end }}",
+            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#FF4500{{ end }}",
+            "{{ if gt .Ahead 0 }}#B388FF{{ end }}",
+            "{{ if gt .Behind 0 }}#B388FF{{ end }}"
+          ]
+        }
+      ],
+      "newline": false
+    },
+    {
+      "type": "prompt",
+      "alignment": "right",
+      "segments": [
+        {
+          "template": "{{ .UserName }}@{{ .HostName }}",
+          "foreground": "p:green",
+          "background": "transparent",
+          "type": "session",
+          "style": "plain"
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "os",
+          "style": "plain",
+          "foreground_templates": [
+            "{{ if eq .Icon \"\uf303\" }}#1793D1{{ end }}",
+            "{{ if eq .Icon \"\uf31b\" }}#E95420{{ end }}",
+            "{{ if eq .Icon \"\uf30a\" }}#294172{{ end }}",
+            "{{ if eq .Icon \"\uf306\" }}#A80030{{ end }}"
+          ],
+          "template": "{{ .Icon }}  "
         },
         {
           "template": "{{ $pkg := readFile \"package.json\" | fromJson }}{{ if eq (dig \"devEngines\" \"runtime\" \"name\" \"\" $pkg) \"node\" }}\udb80\udf99 {{ .Full }} {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }}  {{ else }}{{ end }}{{ end }}",
@@ -97,41 +128,10 @@
           "style": "plain"
         },
         {
-          "template": "\ue627 {{ .Full }} ",
+          "template": "\ue627 {{ .Full }}",
           "foreground": "p:go",
           "background": "transparent",
           "type": "go",
-          "style": "plain"
-        },
-        {
-          "options": {
-            "fetch_status": true,
-            "fetch_upstream_icon": true
-          },
-          "template": "{{ .UpstreamIcon }}  {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }} ",
-          "foreground": "p:green",
-          "background": "transparent",
-          "type": "git",
-          "style": "plain",
-          "foreground_templates": [
-            "{{ if or (.Working.Changed) (.Staging.Changed) }}#FF9248{{ end }}",
-            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#FF4500{{ end }}",
-            "{{ if gt .Ahead 0 }}#B388FF{{ end }}",
-            "{{ if gt .Behind 0 }}#B388FF{{ end }}"
-          ]
-        }
-      ],
-      "newline": false
-    },
-    {
-      "type": "prompt",
-      "alignment": "left",
-      "segments": [
-        {
-          "template": "{{ if .SSHSession }}{{ .UserName }}@{{ .HostName }} {{ end }}",
-          "foreground": "p:green",
-          "background": "transparent",
-          "type": "session",
           "style": "plain"
         },
         {
