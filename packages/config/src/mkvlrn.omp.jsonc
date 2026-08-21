@@ -25,7 +25,7 @@
           "type": "text",
           "style": "plain",
           "foreground": "#1D63ED",
-          "template": "{{ if .Env.DEVCONTAINER }}\uf308  {{ end }}"
+          "template": "{{ if .Env.MISE_DEVCONTAINER }}\uf308  {{ end }}"
         },
         {
           "options": {
