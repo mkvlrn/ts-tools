@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:best-practices"],
+  "extends": ["config:best-practices", "schedule:daily"],
   "ignorePresets": ["security:minimumReleaseAgeNpm"],
   "packageRules": [
     {
@@ -62,6 +62,7 @@
       ]
     }
   ],
+  "updateNotScheduled": false,
   "minimumReleaseAge": "1 day",
   "minimumReleaseAgeBehaviour": "timestamp-optional",
   "prHourlyLimit": 0,
