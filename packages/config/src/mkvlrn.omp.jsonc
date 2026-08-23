@@ -22,12 +22,6 @@
       "alignment": "left",
       "segments": [
         {
-          "type": "text",
-          "style": "plain",
-          "foreground": "#1D63ED",
-          "template": "{{ if .Env.MISE_DEVCONTAINER }}\uf308  {{ end }}"
-        },
-        {
           "options": {
             "style": "full"
           },
@@ -55,36 +49,12 @@
           ]
         }
       ],
-      "newline": false
+      "newline": true
     },
     {
       "type": "prompt",
       "alignment": "right",
       "segments": [
-        {
-          "template": "{{ .UserName }}@{{ .HostName }}",
-          "foreground": "p:green",
-          "background": "transparent",
-          "type": "session",
-          "style": "plain"
-        }
-      ]
-    },
-    {
-      "type": "prompt",
-      "alignment": "left",
-      "segments": [
-        {
-          "type": "os",
-          "style": "plain",
-          "foreground_templates": [
-            "{{ if eq .Icon \"\uf303\" }}#1793D1{{ end }}",
-            "{{ if eq .Icon \"\uf31b\" }}#E95420{{ end }}",
-            "{{ if eq .Icon \"\uf30a\" }}#294172{{ end }}",
-            "{{ if eq .Icon \"\uf306\" }}#A80030{{ end }}"
-          ],
-          "template": "{{ .Icon }}  "
-        },
         {
           "template": "{{ $pkg := readFile \"package.json\" | fromJson }}{{ if eq (dig \"devEngines\" \"runtime\" \"name\" \"\" $pkg) \"node\" }}\udb80\udf99 {{ .Full }} {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }}  {{ else }}{{ end }}{{ end }}",
           "foreground": "p:node",
@@ -132,6 +102,36 @@
           "foreground": "p:go",
           "background": "transparent",
           "type": "go",
+          "style": "plain"
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "os",
+          "style": "plain",
+          "foreground_templates": [
+            "{{ if eq .Icon \"\uf303\" }}#1793D1{{ end }}",
+            "{{ if eq .Icon \"\uf31b\" }}#E95420{{ end }}",
+            "{{ if eq .Icon \"\uf30a\" }}#294172{{ end }}",
+            "{{ if eq .Icon \"\uf306\" }}#A80030{{ end }}"
+          ],
+          "template": "{{ .Icon }} "
+        },
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "#1D63ED",
+          "template": "{{ if .Env.MISE_DEVCONTAINER }}󰡨 {{ end }}"
+        },
+        {
+          "template": "{{ .UserName }}@{{ .HostName }}",
+          "foreground": "p:green",
+          "background": "transparent",
+          "type": "session",
           "style": "plain"
         },
         {
