@@ -1,9 +1,9 @@
 [tools]
-biome = "2.5.9"
+biome = "2.5.10"
 bun = "1.4.0"
 cocogitto = "7.0.0"
-lefthook = "2.1.10"
-node = "24.19.0"
+lefthook = "2.1.11"
+node = "26.7.0"
 "npm:jsr" = "0.14.3"
 
 [env]
