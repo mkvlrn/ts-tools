@@ -122,13 +122,13 @@
           "template": "{{ .Icon }} "
         },
         {
-          "type": "text",
-          "style": "plain",
+          "template": "{{ if .Env.MISE_DEVCONTAINER }}󰡨 {{ end }}",
           "foreground": "#1D63ED",
-          "template": "{{ if .Env.MISE_DEVCONTAINER }}󰡨 {{ end }}"
+          "type": "text",
+          "style": "plain"
         },
         {
-          "template": "{{ .UserName }}@{{ .HostName }}",
+          "template": "{{ if .Env.HIDE_USERNAME }}{{ else }}{{ .UserName }}@{{ .HostName }}{{ end }}",
           "foreground": "p:green",
           "background": "transparent",
           "type": "session",
