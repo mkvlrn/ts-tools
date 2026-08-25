@@ -1,5 +1,5 @@
 {
-  "$schema": "./vitest.schema.json",
+  "$schema": "../vitest.schema.json",
   "test": {
     "include": ["**/*.{test,spec}.ts"],
     "exclude": ["node_modules"],

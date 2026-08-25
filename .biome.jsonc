@@ -4,6 +4,6 @@
   "extends": ["./packages/config/src/biome.jsonc"],
   "files": {
     "ignoreUnknown": true,
-    "includes": ["**/*", "!**/node_modules/**/*", "!!**/dist/**/*"]
+    "includes": ["**", "!**/node_modules/**/*", "!!**/vitest.schema.json"]
   }
 }
