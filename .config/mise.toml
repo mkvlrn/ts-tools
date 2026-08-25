@@ -43,7 +43,7 @@ bun build ./packages/app-error/src/main.ts --outdir ./packages/app-error/dist
 tsc --declaration --emitDeclarationOnly --outDir packages/app-error/dist --module ESNext --moduleResolution Bundler packages/app-error/src/main.ts --ignoreConfig
 
 echo "Publishing @mkvlrn/app-error to npm..."
-(cd packages/app-error && bun publish --access public)
+(cd packages/app-error && npm publish --access public)
 
 echo "Publishing @mkvlrn/app-error to jsr..."
 (cd packages/app-error && jsr publish)
@@ -58,7 +58,7 @@ echo "Building @mkvlrn/config..."
 bunx typescript-json-schema ./packages/config/tsconfig.schema.json UserConfig --include './packages/config/node_modules/vitest/**/*.d.ts' > ./packages/config/vitest.schema.json
 
 echo "Publishing @mkvlrn/config to npm..."
-(cd packages/config && bun publish --access public)
+(cd packages/config && npm publish --access public)
 
 echo "Publishing @mkvlrn/config to jsr..."
 (cd packages/config && jsr publish)
