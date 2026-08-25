@@ -17,17 +17,18 @@
     "tsconfig"
   ],
   "files": [
-    "dist"
+    "src/biome.json",
+    "src/tsconfig.json",
+    "src/vitest.config.json",
+    "src/vitest.schema.json"
   ],
   "exports": {
-    "./vitest": {
-      "types": "./dist/vitest.config.d.ts",
-      "default": "./dist/vitest.config.js"
-    },
-    "./biome": "./dist/biome.json",
-    "./tsconfig": "./dist/tsconfig.json"
+    "./biome": "./src/biome.json",
+    "./tsconfig": "./src/tsconfig.json",
+    "./vitest": "./src/vitest.config.json"
   },
   "devDependencies": {
+    "typescript-json-schema": "0.68.0",
     "vitest": "4.1.11"
   }
 }

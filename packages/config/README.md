@@ -76,7 +76,7 @@ Create your configuration file:
 
 ```ts
 import { defineConfig, mergeConfig } from "vitest/config";
-import baseConfig from "@mkvlrn/config/vitest";
+import baseConfig from "@mkvlrn/config/vitest" with { type: "json" } // attention here, it is a json export
 
 export default mergeConfig(
   baseConfig,
@@ -87,6 +87,8 @@ export default mergeConfig(
   }),
 );
 ```
+
+The exported configuration is in json format, perfectly usable with `mergeConfig`.
 
 ## License
 

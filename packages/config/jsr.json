@@ -5,7 +5,7 @@
   "exports": {
     "./biome": "./src/biome.json",
     "./tsconfig": "./src/tsconfig.json",
-    "./vitest": "./src/vitest.config.ts"
+    "./vitest": "./src/vitest.config.json"
   },
   "publish": {
     "exclude": ["**/biome.jsonc", "**/mkvlrn.omp.jsonc", "**/renovate.json"]

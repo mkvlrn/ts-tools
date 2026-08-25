@@ -55,10 +55,7 @@ echo "Clean..."
 rm -rf packages/config/dist
 
 echo "Building @mkvlrn/config..."
-bun build ./packages/config/src/vitest.config.ts --outdir ./packages/config/dist --external vite --external vitest
-tsc --declaration --emitDeclarationOnly --outDir packages/config/dist --module ESNext --moduleResolution Bundler packages/config/src/*.ts --ignoreConfig
-cp packages/config/src/biome.json packages/config/dist/biome.json
-cp packages/config/src/tsconfig.json packages/config/dist/tsconfig.json
+bunx typescript-json-schema ./packages/config/tsconfig.schema.json UserConfig --include './packages/config/node_modules/vitest/**/*.d.ts' > ./packages/config/src/vitest.schema.json
 
 echo "Publishing @mkvlrn/config to npm..."
 (cd packages/config && bun publish --access public)
@@ -98,7 +95,7 @@ run = """
 for dir in packages/*; do
   if [ -d "$dir" ]; then
     echo "Checking $dir"
-    (cd "$dir" && jsr publish --dry-run --quiet)
+    (cd "$dir" && jsr publish --dry-run --quiet --allow-dirty)
   fi
 done
 """

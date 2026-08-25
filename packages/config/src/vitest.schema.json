@@ -1,0 +1,3193 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "A": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Pick%3CServerOptions%2C%22host%22%7C%22port%22%7C%22strictPort%22%7C%22middlewareMode%22%3E"
+                },
+                {
+                    "properties": {
+                        "allowExec": {
+                            "default": "true if `api.host` is exposed to network, false otherwise",
+                            "description": "Allow running test files via the API.\nIf `api.host` is exposed to network and `allowWrite` is true,\nanyone connected to the API server can run arbitrary code on your machine.",
+                            "type": "boolean"
+                        },
+                        "allowWrite": {
+                            "default": "true if `api.host` is exposed to network, false otherwise",
+                            "description": "Allow any write operations from the API server.",
+                            "type": "boolean"
+                        }
+                    },
+                    "type": "object"
+                }
+            ]
+        },
+        "ArrayBuffer": {
+            "properties": {
+                "__@toStringTag@1757": {
+                    "const": "ArrayBuffer",
+                    "type": "string"
+                },
+                "byteLength": {
+                    "type": "number"
+                },
+                "detached": {
+                    "type": "boolean"
+                },
+                "maxByteLength": {
+                    "type": "number"
+                },
+                "resizable": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "BrowserTraceViewMode": {
+            "enum": [
+                "off",
+                "on",
+                "on-all-retries",
+                "on-first-retry",
+                "retain-on-failure"
+            ],
+            "type": "string"
+        },
+        "C": {
+            "properties": {
+                "allowExternal": {
+                    "default": false,
+                    "description": "Collect coverage of files outside the project `root`.",
+                    "type": "boolean"
+                },
+                "changed": {
+                    "description": "Collect coverage only for files changed since a specified commit or branch.\nInherits the default value from `test.changed`.",
+                    "type": [
+                        "string",
+                        "boolean"
+                    ]
+                },
+                "clean": {
+                    "default": true,
+                    "description": "Clean coverage results before running tests",
+                    "type": "boolean"
+                },
+                "cleanOnRerun": {
+                    "default": true,
+                    "description": "Clean coverage report on watch rerun",
+                    "type": "boolean"
+                },
+                "customProviderModule": {
+                    "description": "Name of the module or path to a file to load the custom provider from",
+                    "type": "string"
+                },
+                "enabled": {
+                    "default": false,
+                    "description": "Enables coverage collection. Can be overridden using `--coverage` CLI option.",
+                    "type": "boolean"
+                },
+                "exclude": {
+                    "description": "List of files excluded from coverage as glob patterns.\nFiles are first checked against `coverage.include`.\n\nSee [Including and excluding files from coverage report](https://vitest.dev/guide/coverage.html#including-and-excluding-files-from-coverage-report) for examples.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "excludeAfterRemap": {
+                    "default": false,
+                    "description": "Apply exclusions again after coverage has been remapped to original sources.\nThis is useful when your source files are transpiled and may contain source maps\nof non-source files.\n\nUse this option when you are seeing files that show up in report even if they\nmatch your `coverage.exclude` patterns.",
+                    "type": "boolean"
+                },
+                "htmlDir": {
+                    "description": "Directory of HTML coverage output to be served in UI mode and HTML reporter.\nThis is automatically configured for builtin reporter with html output (`html`, `html-spa`, and `lcov` reporters).\nUse this option to override with custom coverage reporting location.",
+                    "type": "string"
+                },
+                "ignoreClassMethods": {
+                    "default": [],
+                    "description": "Set to array of class method names to ignore for coverage",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "include": {
+                    "description": "List of files included in coverage as glob patterns.\nBy default only files covered by tests are included.\n\nSee [Including and excluding files from coverage report](https://vitest.dev/guide/coverage.html#including-and-excluding-files-from-coverage-report) for examples.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "instrumenter": {
+                    "description": "Custom instrumenter factory to use instead of the default `istanbul-lib-instrument`.\n\nThe factory receives the same runtime coverage options Vitest passes to its\nbuilt-in Istanbul instrumenter and must return an object implementing the\n`CoverageInstrumenter` interface.\n\nThis allows using faster instrumenters (e.g., oxc-coverage-instrument, SWC) while\nkeeping the Istanbul coverage pipeline for collection, merging, and reporting.",
+                    "type": "object"
+                },
+                "processingConcurrency": {
+                    "description": "Concurrency limit used when processing the coverage results.\nDefaults to `Math.min(20, os.availableParallelism?.() ?? os.cpus().length)`",
+                    "type": "number"
+                },
+                "provider": {
+                    "default": "'v8'",
+                    "description": "Coverage provider to use.",
+                    "enum": [
+                        "custom",
+                        "istanbul",
+                        "v8"
+                    ],
+                    "type": "string"
+                },
+                "reportOnFailure": {
+                    "default": false,
+                    "description": "Generate coverage report even when tests fail.",
+                    "type": "boolean"
+                },
+                "reporter": {
+                    "default": "['text', 'html', 'clover', 'json']",
+                    "description": "Coverage reporters to use.\nSee [istanbul documentation](https://istanbul.js.org/docs/advanced/alternative-reporters/) for detailed list of all reporters."
+                },
+                "reportsDirectory": {
+                    "default": "'./coverage'",
+                    "description": "Directory to write coverage report to",
+                    "type": "string"
+                },
+                "skipFull": {
+                    "default": false,
+                    "description": "Do not show files with 100% statement, branch, and function coverage",
+                    "type": "boolean"
+                },
+                "thresholds": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/Thresholds"
+                        },
+                        {
+                            "allOf": [
+                                {
+                                    "additionalProperties": {
+                                        "$ref": "#/definitions/Pick%3CThresholds%2C%22lines%22%7C%22functions%22%7C%22statements%22%7C%22branches%22%7C100%3E"
+                                    },
+                                    "type": "object"
+                                },
+                                {
+                                    "$ref": "#/definitions/Thresholds"
+                                }
+                            ]
+                        }
+                    ],
+                    "description": "Configurations for thresholds"
+                },
+                "watermarks": {
+                    "description": "Watermarks for statements, lines, branches and functions.\n\nDefault value is `[50,80]` for each property.",
+                    "properties": {
+                        "branches": {
+                            "items": [
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                }
+                            ],
+                            "maxItems": 2,
+                            "minItems": 2,
+                            "type": "array"
+                        },
+                        "functions": {
+                            "items": [
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                }
+                            ],
+                            "maxItems": 2,
+                            "minItems": 2,
+                            "type": "array"
+                        },
+                        "lines": {
+                            "items": [
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                }
+                            ],
+                            "maxItems": 2,
+                            "minItems": 2,
+                            "type": "array"
+                        },
+                        "statements": {
+                            "items": [
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                }
+                            ],
+                            "maxItems": 2,
+                            "minItems": 2,
+                            "type": "array"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "CSSModuleScopeStrategy": {
+            "enum": [
+                "non-scoped",
+                "scoped",
+                "stable"
+            ],
+            "type": "string"
+        },
+        "ConstructorOptionsOverride": {
+            "properties": {
+                "console": {
+                    "default": false,
+                    "description": "Enable console?",
+                    "type": "boolean"
+                },
+                "cookieJar": {
+                    "default": false,
+                    "description": "Enable CookieJar",
+                    "type": "boolean"
+                },
+                "html": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/ArrayBuffer"
+                        },
+                        {
+                            "$ref": "#/definitions/SharedArrayBuffer"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "default": "'<!DOCTYPE html>'",
+                    "description": "The html content for the test."
+                },
+                "pretendToBeVisual": {
+                    "default": true,
+                    "description": "jsdom does not have the capability to render visual content, and will act like a headless browser by default.\nIt provides hints to web pages through APIs such as document.hidden that their content is not visible.\n\nWhen the `pretendToBeVisual` option is set to `true`, jsdom will pretend that it is rendering and displaying\ncontent.",
+                    "type": "boolean"
+                },
+                "resources": {
+                    "const": "usable",
+                    "type": "string"
+                },
+                "url": {
+                    "default": "'http://localhost:3000'.",
+                    "description": "url sets the value returned by window.location, document.URL, and document.documentURI,\nand affects things like resolution of relative URLs within the document\nand the same-origin restrictions and referrer used while fetching subresources.",
+                    "type": "string"
+                },
+                "userAgent": {
+                    "default": "`Mozilla/5.0 (${process.platform}) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/${jsdomVersion}`",
+                    "description": "userAgent affects the value read from navigator.userAgent, as well as the User-Agent header sent while fetching subresources.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "D": {
+            "type": "object"
+        },
+        "DepsOptions": {
+            "properties": {
+                "interopDefault": {
+                    "default": true,
+                    "description": "Interpret CJS module's default as named exports",
+                    "type": "boolean"
+                },
+                "moduleDirectories": {
+                    "default": "['node_modules']",
+                    "description": "A list of directories relative to the config file that should be treated as module directories.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "optimizer": {
+                    "$ref": "#/definitions/Partial%3CRecord%3C%22client%22%7C%22ssr%22%7C(%7B%7D%26string)%2Ca1%3E%3E",
+                    "description": "Enable dependency optimization. This can improve the performance of your tests."
+                },
+                "web": {
+                    "properties": {
+                        "transformAssets": {
+                            "default": true,
+                            "description": "Should Vitest process assets (.png, .svg, .jpg, etc) files and resolve them like Vite does in the browser.\n\nThese module will have a default export equal to the path to the asset, if no query is specified.\n\n**At the moment, this option only works with `{ pool: 'vmThreads' }`.**",
+                            "type": "boolean"
+                        },
+                        "transformCss": {
+                            "default": true,
+                            "description": "Should Vitest process CSS (.css, .scss, .sass, etc) files and resolve them like Vite does in the browser.\n\nIf CSS files are disabled with `css` options, this option will just silence UNKNOWN_EXTENSION errors.\n\n**At the moment, this option only works with `{ pool: 'vmThreads' }`.**",
+                            "type": "boolean"
+                        },
+                        "transformGlobPattern": {
+                            "anyOf": [
+                                {
+                                    "$ref": "#/definitions/RegExp"
+                                },
+                                {
+                                    "items": {
+                                        "$ref": "#/definitions/RegExp"
+                                    },
+                                    "type": "array"
+                                }
+                            ],
+                            "default": [],
+                            "description": "Regexp pattern to match external files that should be transformed.\n\nBy default, files inside `node_modules` are externalized and not transformed.\n\n**At the moment, this option only works with `{ pool: 'vmThreads' }`.**"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "F": {
+            "properties": {
+                "advanceTimeDelta": {
+                    "description": "Relevant only when using with shouldAdvanceTime: true. increment mocked time by advanceTimeDelta ms every advanceTimeDelta ms change\nin the real system time (default: 20)",
+                    "type": "number"
+                },
+                "ignoreMissingTimers": {
+                    "description": "Tells FakeTimers to not throw an error when faking a timer that does not exist in the global object. (default: false)",
+                    "type": "boolean"
+                },
+                "loopLimit": {
+                    "description": "The maximum number of timers that will be run when calling runAll() (default: 1000)",
+                    "type": "number"
+                },
+                "now": {
+                    "anyOf": [
+                        {
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        {
+                            "type": "number"
+                        }
+                    ],
+                    "description": "Installs fake timers with the specified unix epoch (default: 0)"
+                },
+                "shouldAdvanceTime": {
+                    "description": "Tells",
+                    "type": "boolean"
+                },
+                "shouldClearNativeTimers": {
+                    "description": "Tells FakeTimers to clear 'native' (i.e. not fake) timers by delegating to their respective handlers. These are not cleared by\ndefault, leading to potentially unexpected behavior if timers existed prior to installing FakeTimers. (default: false)",
+                    "type": "boolean"
+                },
+                "toFake": {
+                    "description": "An array with names of global methods and APIs to fake. By default, `@sinonjs/fake-timers` does not replace `nextTick()` and `queueMicrotask()`.\nFor instance, `FakeTimers.install({ toFake: ['setTimeout', 'nextTick'] })` will fake only `setTimeout()` and `nextTick()`",
+                    "items": {
+                        "$ref": "#/definitions/FakeMethod"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "FakeMethod": {
+            "description": "Names of clock methods that may be faked by install.",
+            "enum": [
+                "Date",
+                "cancelAnimationFrame",
+                "cancelIdleCallback",
+                "clearImmediate",
+                "clearInterval",
+                "clearTimeout",
+                "hrtime",
+                "nextTick",
+                "performance",
+                "queueMicrotask",
+                "requestAnimationFrame",
+                "requestIdleCallback",
+                "setImmediate",
+                "setInterval",
+                "setTimeout"
+            ],
+            "type": "string"
+        },
+        "I": {
+            "properties": {
+                "alias": {
+                    "description": "Specifies an `Object`, or an `Array` of `Object`,\nwhich defines aliases used to replace values in `import` or `require` statements.\nWill be merged with the default aliases inside `resolve.alias`."
+                },
+                "allowOnly": {
+                    "default": "!process.env.CI",
+                    "description": "Allow tests and suites that are marked as only",
+                    "type": "boolean"
+                },
+                "api": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/A"
+                        },
+                        {
+                            "type": [
+                                "number",
+                                "boolean"
+                            ]
+                        }
+                    ],
+                    "default": false,
+                    "description": "Serve API options.\n\nWhen set to true, the default port is 51204."
+                },
+                "attachmentsDir": {
+                    "default": "'.vitest-attachments'",
+                    "description": "Directory path for storing attachments created by `context.annotate`",
+                    "type": "string"
+                },
+                "bail": {
+                    "description": "Stop test execution when given number of tests have failed.",
+                    "type": "number"
+                },
+                "benchmark": {
+                    "$ref": "#/definitions/p",
+                    "default": {},
+                    "description": "Benchmark options."
+                },
+                "browser": {
+                    "$ref": "#/definitions/t",
+                    "default": false,
+                    "description": "options for test in a browser environment"
+                },
+                "cache": {
+                    "anyOf": [
+                        {
+                            "properties": {
+                                "dir": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "const": false,
+                            "type": "boolean"
+                        }
+                    ],
+                    "default": "{ dir: 'node_modules/.vite/vitest/{project-hash}' }",
+                    "description": "Options for configuring cache policy."
+                },
+                "chaiConfig": {
+                    "additionalProperties": false,
+                    "description": "Modify default Chai config. Vitest uses Chai for `expect` and `assert` matches.\nhttps://github.com/chaijs/chai/blob/4.x.x/lib/chai/config.js",
+                    "patternProperties": {
+                        "^[0-9]+$": {}
+                    },
+                    "type": "object"
+                },
+                "clearMocks": {
+                    "default": false,
+                    "description": "Will call `.mockClear()` on all spies before each test",
+                    "type": "boolean"
+                },
+                "coverage": {
+                    "$ref": "#/definitions/C",
+                    "description": "Coverage options"
+                },
+                "css": {
+                    "anyOf": [
+                        {
+                            "properties": {
+                                "exclude": {
+                                    "anyOf": [
+                                        {
+                                            "$ref": "#/definitions/RegExp"
+                                        },
+                                        {
+                                            "items": {
+                                                "$ref": "#/definitions/RegExp"
+                                            },
+                                            "type": "array"
+                                        }
+                                    ]
+                                },
+                                "include": {
+                                    "anyOf": [
+                                        {
+                                            "$ref": "#/definitions/RegExp"
+                                        },
+                                        {
+                                            "items": {
+                                                "$ref": "#/definitions/RegExp"
+                                            },
+                                            "type": "array"
+                                        }
+                                    ]
+                                },
+                                "modules": {
+                                    "properties": {
+                                        "classNameStrategy": {
+                                            "$ref": "#/definitions/CSSModuleScopeStrategy"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "type": "boolean"
+                        }
+                    ],
+                    "default": "{ include: [], modules: { classNameStrategy: false } }",
+                    "description": "Indicates if CSS files should be processed.\n\nWhen excluded, the CSS files will be replaced with empty strings to bypass the subsequent processing."
+                },
+                "dangerouslyIgnoreUnhandledErrors": {
+                    "default": false,
+                    "description": "Ignore any unhandled errors that occur",
+                    "type": "boolean"
+                },
+                "deps": {
+                    "$ref": "#/definitions/DepsOptions",
+                    "description": "Handling for dependencies inlining or externalizing"
+                },
+                "detectAsyncLeaks": {
+                    "default": false,
+                    "description": "Detect asynchronous resources leaking from the test file.",
+                    "type": "boolean"
+                },
+                "diff": {
+                    "description": "Path to a module which has a default export of diff config."
+                },
+                "dir": {
+                    "default": "`config.root`",
+                    "description": "Base directory to scan for the test files",
+                    "type": "string"
+                },
+                "disableConsoleIntercept": {
+                    "default": false,
+                    "description": "By default, Vitest automatically intercepts console logging during tests for extra formatting of test file, test title, etc...\nThis is also required for console log preview on Vitest UI.\nHowever, disabling such interception might help when you want to debug a code with normal synchronous terminal console logging.\n\nThis option has no effect on browser pool since Vitest preserves original logging on browser devtools.",
+                    "type": "boolean"
+                },
+                "env": {
+                    "$ref": "#/definitions/Partial%3CNodeJS.ProcessEnv%3E",
+                    "description": "Custom environment variables assigned to `process.env` before running tests."
+                },
+                "environment": {
+                    "$ref": "#/definitions/aW",
+                    "default": "'node'",
+                    "description": "Running environment\n\nSupports 'node', 'jsdom', 'happy-dom', 'edge-runtime'\n\nIf used unsupported string, will try to load the package `vitest-environment-${env}`"
+                },
+                "environmentOptions": {
+                    "$ref": "#/definitions/a3",
+                    "description": "Environment options."
+                },
+                "exclude": {
+                    "default": "['**\\/node_modules/**', '**\\/.git/**']",
+                    "description": "Exclude globs for test files",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "execArgv": {
+                    "default": "[] // no execution arguments are passed",
+                    "description": "Pass additional arguments to `node` process when spawning the worker.\n\nSee [Command-line API | Node.js](https://nodejs.org/docs/latest/api/cli.html) for more information.\n\nSet to `process.execArgv` to pass all arguments of the current process.\n\nBe careful when using, it as some options may crash worker, e.g. --prof, --title. See https://github.com/nodejs/node/issues/41103",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "expandSnapshotDiff": {
+                    "description": "Show full diff when snapshot fails instead of a patch.",
+                    "type": "boolean"
+                },
+                "expect": {
+                    "description": "Configuration options for expect() matches.",
+                    "properties": {
+                        "poll": {
+                            "description": "Default options for expect.poll()",
+                            "properties": {
+                                "interval": {
+                                    "default": 50,
+                                    "description": "Polling interval in milliseconds",
+                                    "type": "number"
+                                },
+                                "timeout": {
+                                    "default": 1000,
+                                    "description": "Timeout in milliseconds",
+                                    "type": "number"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "requireAssertions": {
+                            "description": "Throw an error if tests don't have any expect() assertions.",
+                            "type": "boolean"
+                        }
+                    },
+                    "type": "object"
+                },
+                "experimental": {
+                    "description": "Experimental features",
+                    "properties": {
+                        "fsModuleCache": {
+                            "description": "Enable caching of modules on the file system between reruns.",
+                            "type": "boolean"
+                        },
+                        "fsModuleCachePath": {
+                            "default": "node_modules/.experimental-vitest-cache",
+                            "description": "Path relative to the root of the project where the fs module cache will be stored.",
+                            "type": "string"
+                        },
+                        "importDurations": {
+                            "description": "Configure import duration collection and display.\n\nThe `limit` option controls how many imports to collect and display.\nThe `print` option controls CLI terminal output.\nUI can always toggle the breakdown display regardless of `print` setting.",
+                            "properties": {
+                                "failOnDanger": {
+                                    "default": false,
+                                    "description": "Fail the test run if any import exceeds the danger threshold.\nWhen failing, the breakdown is always printed regardless of `print` setting.",
+                                    "type": "boolean"
+                                },
+                                "limit": {
+                                    "default": "0 (or 10 if `print` or UI is enabled)",
+                                    "description": "Maximum number of imports to collect and display.",
+                                    "type": "number"
+                                },
+                                "print": {
+                                    "default": false,
+                                    "description": "When to print import breakdown to CLI terminal after tests finish.\n- `true`: Always print\n- `false`: Never print (default)\n- `'on-warn'`: Print only when any import exceeds the warn threshold",
+                                    "enum": [
+                                        false,
+                                        "on-warn",
+                                        true
+                                    ]
+                                },
+                                "thresholds": {
+                                    "description": "Duration thresholds in milliseconds for coloring and warnings.",
+                                    "properties": {
+                                        "danger": {
+                                            "default": 500,
+                                            "description": "Danger threshold - imports exceeding this are shown in red.",
+                                            "type": "number"
+                                        },
+                                        "warn": {
+                                            "default": 100,
+                                            "description": "Warning threshold - imports exceeding this are shown in yellow/orange.",
+                                            "type": "number"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "nodeLoader": {
+                            "description": "If module runner is disabled, Vitest uses a module loader to transform files to support\n`import.meta.vitest` and `vi.mock`.\n\nIf you don't use these features, you can disable this.\n\nThis option only affects `loader.load` method, Vitest always defines a `loader.resolve` to populate the module graph.",
+                            "type": "boolean"
+                        },
+                        "openTelemetry": {
+                            "description": "{@link https://vitest.dev/guide/open-telemetry}",
+                            "properties": {
+                                "browserSdkPath": {
+                                    "type": "string"
+                                },
+                                "enabled": {
+                                    "type": "boolean"
+                                },
+                                "sdkPath": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "preParse": {
+                            "description": "Parse test specifications before running them.\nThis will apply `.only` flag and test name pattern across all files without running them.",
+                            "type": "boolean"
+                        },
+                        "vcsProvider": {
+                            "anyOf": [
+                                {
+                                    "$ref": "#/definitions/VCSProvider"
+                                },
+                                {
+                                    "type": "string"
+                                }
+                            ],
+                            "description": "Custom provider for detecting changed files. Used with the `--changed` flag\nto determine which files have been modified.\n\nBy default, Vitest uses Git to detect changed files. You can provide a custom\nimplementation of the `VCSProvider` interface to use a different version control system."
+                        },
+                        "viteModuleRunner": {
+                            "default": true,
+                            "description": "Controls whether Vitest uses Vite's module runner to run the code or fallback to the native `import`.\n\nIf Node.js cannot process the code, consider registering [module loader](https://nodejs.org/api/module.html#customization-hooks) via `execArgv`.",
+                            "type": "boolean"
+                        }
+                    },
+                    "type": "object"
+                },
+                "fakeTimers": {
+                    "$ref": "#/definitions/F",
+                    "description": "Options for"
+                },
+                "fileParallelism": {
+                    "default": true,
+                    "description": "Should all test files run in parallel. Doesn't affect tests running in the same file.\nSetting this to `false` will override `maxWorkers` option to `1`.",
+                    "type": "boolean"
+                },
+                "forceRerunTriggers": {
+                    "default": "['**\\/package.json/**', '**\\/{vitest,vite}.config.*\\/**']",
+                    "description": "Glob pattern of file paths that will trigger the whole suite rerun\n\nUseful if you are testing calling CLI commands",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "globalSetup": {
+                    "anyOf": [
+                        {
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "description": "Path to global setup files"
+                },
+                "globals": {
+                    "default": false,
+                    "description": "Register apis globally",
+                    "type": "boolean"
+                },
+                "hideSkippedTests": {
+                    "default": false,
+                    "description": "Hide logs for skipped tests",
+                    "type": "boolean"
+                },
+                "hookTimeout": {
+                    "default": 10000,
+                    "description": "Default timeout of a hook in milliseconds",
+                    "type": "number"
+                },
+                "include": {
+                    "default": "['**\\/*.{test,spec}.?(c|m)[jt]s?(x)']",
+                    "description": "A list of [glob patterns](https://superchupu.dev/tinyglobby/comparison) that match your test files.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "includeSource": {
+                    "default": [],
+                    "description": "Include globs for in-source test files",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "includeTaskLocation": {
+                    "default": false,
+                    "description": "Include \"location\" property inside the test definition",
+                    "type": "boolean"
+                },
+                "inspect": {
+                    "description": "Debug tests by opening `node:inspector` in worker / child process.\nProvides similar experience as `--inspect` Node CLI argument.\n\nRequires `fileParallelism: false`.",
+                    "type": [
+                        "string",
+                        "boolean"
+                    ]
+                },
+                "inspectBrk": {
+                    "description": "Debug tests by opening `node:inspector` in worker / child process and wait for debugger to connect.\nProvides similar experience as `--inspect-brk` Node CLI argument.\n\nRequires `fileParallelism: false`.",
+                    "type": [
+                        "string",
+                        "boolean"
+                    ]
+                },
+                "inspector": {
+                    "description": "Inspector options. If `--inspect` or `--inspect-brk` is enabled, these options will be passed to the inspector.",
+                    "properties": {
+                        "enabled": {
+                            "description": "Enable inspector",
+                            "type": "boolean"
+                        },
+                        "host": {
+                            "description": "Host to run inspector on",
+                            "type": "string"
+                        },
+                        "port": {
+                            "description": "Port to run inspector on",
+                            "type": "number"
+                        },
+                        "waitForDebugger": {
+                            "description": "Wait for debugger to connect before running tests",
+                            "type": "boolean"
+                        }
+                    },
+                    "type": "object"
+                },
+                "isolate": {
+                    "default": true,
+                    "description": "Run tests in an isolated environment. This option has no effect on vmThreads pool.\n\nDisabling this option improves performance if your code doesn't rely on side effects.",
+                    "type": "boolean"
+                },
+                "logHeapUsage": {
+                    "description": "Show heap usage after each test. Useful for debugging memory leaks.",
+                    "type": "boolean"
+                },
+                "maxConcurrency": {
+                    "default": 5,
+                    "description": "A number of tests that are allowed to run at the same time marked with `test.concurrent`.",
+                    "type": "number"
+                },
+                "maxWorkers": {
+                    "description": "Maximum number or percentage of workers to run tests in.",
+                    "type": [
+                        "string",
+                        "number"
+                    ]
+                },
+                "mockReset": {
+                    "default": false,
+                    "description": "Will call `.mockReset()` on all spies before each test",
+                    "type": "boolean"
+                },
+                "name": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/ProjectName"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "description": "Name of the project. Will be used to display in the reporter."
+                },
+                "onConsoleLog": {
+                    "description": "Custom handler for console.log in tests.\n\nReturn `false` to ignore the log.",
+                    "type": "object"
+                },
+                "onStackTrace": {
+                    "description": "Enable stack trace filtering. If absent, all stack trace frames\nwill be shown.\n\nReturn `false` to omit the frame.",
+                    "type": "object"
+                },
+                "onUnhandledError": {
+                    "description": "A callback that can return `false` to ignore an unhandled error",
+                    "type": "object"
+                },
+                "open": {
+                    "default": "!process.env.CI",
+                    "description": "Open UI automatically.",
+                    "type": "boolean"
+                },
+                "outputFile": {
+                    "anyOf": [
+                        {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/Partial%3CRecord%3C%22blob%22%7C%22default%22%7C%22json%22%7C%22verbose%22%7C%22agent%22%7C%22minimal%22%7C%22dot%22%7C%22tap%22%7C%22tap-flat%22%7C%22junit%22%7C%22tree%22%7C%22hanging-process%22%7C%22github-actions%22%2Cstring%3E%3E"
+                                },
+                                {
+                                    "$ref": "#/definitions/Record%3Cstring%2Cstring%3E"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "description": "Write test results to a file when the --reporter=json` or `--reporter=junit` option is also specified.\nAlso definable individually per reporter by using an object instead."
+                },
+                "passWithNoTests": {
+                    "description": "Pass with no tests",
+                    "type": "boolean"
+                },
+                "pool": {
+                    "anyOf": [
+                        {
+                            "allOf": [
+                                {
+                                    "properties": {},
+                                    "type": "object"
+                                },
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        {
+                            "$ref": "#/definitions/ak"
+                        },
+                        {
+                            "enum": [
+                                "forks",
+                                "threads",
+                                "typescript",
+                                "vmForks",
+                                "vmThreads"
+                            ],
+                            "type": "string"
+                        }
+                    ],
+                    "default": "'forks'",
+                    "description": "Pool used to run tests in.\n\nSupports 'threads', 'forks', 'vmThreads', 'vmForks'"
+                },
+                "printConsoleTrace": {
+                    "default": false,
+                    "description": "Always print console stack traces.",
+                    "type": "boolean"
+                },
+                "projects": {
+                    "description": "Options for projects",
+                    "items": {
+                        "$ref": "#/definitions/a"
+                    },
+                    "type": "array"
+                },
+                "provide": {
+                    "$ref": "#/definitions/Partial%3CP%3E",
+                    "description": "Define variables that will be returned from `inject` in the test environment."
+                },
+                "reporters": {
+                    "default": "['default'] (or ['default', 'github-actions'] when `process.env.GITHUB_ACTIONS === 'true'`)",
+                    "description": "Custom reporter for output. Can contain one or more built-in reporter names, reporter instances,\nand/or paths to custom reporters."
+                },
+                "resolveSnapshotPath": {
+                    "description": "Resolve custom snapshot path",
+                    "type": "object"
+                },
+                "restoreMocks": {
+                    "default": false,
+                    "description": "Will call `.mockRestore()` on all spies before each test",
+                    "type": "boolean"
+                },
+                "retry": {
+                    "default": "0 // Don't retry",
+                    "description": "Retry configuration for tests.\n- If a number, specifies how many times to retry failed tests\n- If an object, allows fine-grained retry control\n\n⚠️ WARNING: Function form is NOT supported in a config file\nbecause configurations are serialized when passed to worker threads.\nUse the function form only in test files directly."
+                },
+                "root": {
+                    "default": "process.cwd()",
+                    "description": "Project root",
+                    "type": "string"
+                },
+                "runner": {
+                    "description": "Path to a custom test runner.",
+                    "type": "string"
+                },
+                "sequence": {
+                    "$ref": "#/definitions/SequenceOptions",
+                    "description": "Options for configuring the order of running tests."
+                },
+                "server": {
+                    "properties": {
+                        "debug": {
+                            "properties": {
+                                "dump": {
+                                    "anyOf": [
+                                        {
+                                            "const": true,
+                                            "type": "boolean"
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ],
+                                    "description": "The folder where Vitest stores the contents of transformed\ntest files that can be inspected manually.\n\nIf `true`, Vitest dumps the files in `.vitest-dump` folder relative to the root of the project.\n\nYou can also use `VITEST_DEBUG_DUMP` env variable to enable this."
+                                },
+                                "load": {
+                                    "description": "If dump is enabled, should Vitest load the files from there instead of transforming them.\n\nYou can also use `VITEST_DEBUG_LOAD_DUMP` env variable to enable this.",
+                                    "type": "boolean"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "deps": {
+                            "$ref": "#/definitions/ServerDepsOptions"
+                        }
+                    },
+                    "type": "object"
+                },
+                "setupFiles": {
+                    "anyOf": [
+                        {
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "description": "Path to setup files"
+                },
+                "silent": {
+                    "default": false,
+                    "description": "Silent mode\n\nUse `'passed-only'` to see logs from failing tests only.",
+                    "enum": [
+                        false,
+                        "passed-only",
+                        true
+                    ]
+                },
+                "slowTestThreshold": {
+                    "default": 300,
+                    "description": "The number of milliseconds after which a test is considered slow and reported as such in the results.",
+                    "type": "number"
+                },
+                "snapshotEnvironment": {
+                    "description": "Path to a custom snapshot environment module that has a default export of `SnapshotEnvironment` object.",
+                    "type": "string"
+                },
+                "snapshotFormat": {
+                    "allOf": [
+                        {
+                            "additionalProperties": false,
+                            "patternProperties": {
+                                "^[0-9]+$": {}
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "properties": {
+                                "compareKeys": {
+                                    "type": "null"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    ],
+                    "description": "Format options for snapshot testing."
+                },
+                "snapshotSerializers": {
+                    "description": "Paths to snapshot serializer modules.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "strictTags": {
+                    "default": true,
+                    "description": "Should Vitest throw an error if test has a tag that is not defined in the config.",
+                    "type": "boolean"
+                },
+                "tags": {
+                    "description": "Define tags available in your test files.\n\nIf test defines a tag that is not listed here, an error will be thrown.",
+                    "items": {},
+                    "type": "array"
+                },
+                "teardownTimeout": {
+                    "default": 10000,
+                    "description": "Default timeout to wait for close when Vitest shuts down, in milliseconds",
+                    "type": "number"
+                },
+                "testNamePattern": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/RegExp"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "description": "Run test names with the specified pattern"
+                },
+                "testTimeout": {
+                    "default": 5000,
+                    "description": "Default timeout of a test in milliseconds",
+                    "type": "number"
+                },
+                "typecheck": {
+                    "$ref": "#/definitions/Partial%3CaT%3E",
+                    "description": "Options for configuring typechecking test environment."
+                },
+                "ui": {
+                    "default": false,
+                    "description": "Enable Vitest UI",
+                    "type": "boolean"
+                },
+                "uiBase": {
+                    "default": "'/__vitest__/'",
+                    "description": "Base url for the UI",
+                    "type": "string"
+                },
+                "unstubEnvs": {
+                    "default": false,
+                    "description": "Will restore all env stubs to their original values before each test",
+                    "type": "boolean"
+                },
+                "unstubGlobals": {
+                    "default": false,
+                    "description": "Will restore all global stubs to their original values before each test",
+                    "type": "boolean"
+                },
+                "update": {
+                    "default": false,
+                    "description": "Update snapshot",
+                    "enum": [
+                        "all",
+                        false,
+                        "new",
+                        "none",
+                        true
+                    ]
+                },
+                "vmMemoryLimit": {
+                    "description": "Specifies the memory limit for `worker_thread` or `child_process` before they are recycled.\nIf you see memory leaks, try to tinker this value.",
+                    "type": [
+                        "string",
+                        "number"
+                    ]
+                },
+                "watch": {
+                    "default": "!process.env.CI",
+                    "description": "Watch mode",
+                    "type": "boolean"
+                },
+                "watchTriggerPatterns": {
+                    "description": "Pattern configuration to rerun only the tests that are affected\nby the changes of specific files in the repository.",
+                    "items": {
+                        "$ref": "#/definitions/W"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "JSDOMOptions": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/ConstructorOptionsOverride"
+                },
+                {
+                    "additionalProperties": false,
+                    "patternProperties": {
+                        "^[0-9]+$": {}
+                    },
+                    "type": "object"
+                }
+            ]
+        },
+        "LabelColor": {
+            "enum": [
+                "black",
+                "blue",
+                "cyan",
+                "green",
+                "magenta",
+                "red",
+                "white",
+                "yellow"
+            ],
+            "type": "string"
+        },
+        "Omit<DepsOptions,\"moduleDirectories\">": {
+            "properties": {
+                "interopDefault": {
+                    "default": true,
+                    "description": "Interpret CJS module's default as named exports",
+                    "type": "boolean"
+                },
+                "optimizer": {
+                    "$ref": "#/definitions/Partial%3CRecord%3C%22client%22%7C%22ssr%22%7C(%7B%7D%26string)%2Ca1%3E%3E",
+                    "description": "Enable dependency optimization. This can improve the performance of your tests."
+                },
+                "web": {
+                    "properties": {
+                        "transformAssets": {
+                            "default": true,
+                            "description": "Should Vitest process assets (.png, .svg, .jpg, etc) files and resolve them like Vite does in the browser.\n\nThese module will have a default export equal to the path to the asset, if no query is specified.\n\n**At the moment, this option only works with `{ pool: 'vmThreads' }`.**",
+                            "type": "boolean"
+                        },
+                        "transformCss": {
+                            "default": true,
+                            "description": "Should Vitest process CSS (.css, .scss, .sass, etc) files and resolve them like Vite does in the browser.\n\nIf CSS files are disabled with `css` options, this option will just silence UNKNOWN_EXTENSION errors.\n\n**At the moment, this option only works with `{ pool: 'vmThreads' }`.**",
+                            "type": "boolean"
+                        },
+                        "transformGlobPattern": {
+                            "anyOf": [
+                                {
+                                    "$ref": "#/definitions/RegExp"
+                                },
+                                {
+                                    "items": {
+                                        "$ref": "#/definitions/RegExp"
+                                    },
+                                    "type": "array"
+                                }
+                            ],
+                            "default": [],
+                            "description": "Regexp pattern to match external files that should be transformed.\n\nBy default, files inside `node_modules` are externalized and not transformed.\n\n**At the moment, this option only works with `{ pool: 'vmThreads' }`.**"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "Omit<I,\"deps\"|NonProjectOptions|\"sequencer\">": {
+            "properties": {
+                "alias": {
+                    "description": "Specifies an `Object`, or an `Array` of `Object`,\nwhich defines aliases used to replace values in `import` or `require` statements.\nWill be merged with the default aliases inside `resolve.alias`."
+                },
+                "allowOnly": {
+                    "default": "!process.env.CI",
+                    "description": "Allow tests and suites that are marked as only",
+                    "type": "boolean"
+                },
+                "api": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/A"
+                        },
+                        {
+                            "type": [
+                                "number",
+                                "boolean"
+                            ]
+                        }
+                    ],
+                    "default": false,
+                    "description": "Serve API options.\n\nWhen set to true, the default port is 51204."
+                },
+                "attachmentsDir": {
+                    "default": "'.vitest-attachments'",
+                    "description": "Directory path for storing attachments created by `context.annotate`",
+                    "type": "string"
+                },
+                "bail": {
+                    "description": "Stop test execution when given number of tests have failed.",
+                    "type": "number"
+                },
+                "benchmark": {
+                    "$ref": "#/definitions/p",
+                    "default": {},
+                    "description": "Benchmark options."
+                },
+                "browser": {
+                    "$ref": "#/definitions/t",
+                    "default": false,
+                    "description": "options for test in a browser environment"
+                },
+                "chaiConfig": {
+                    "additionalProperties": false,
+                    "description": "Modify default Chai config. Vitest uses Chai for `expect` and `assert` matches.\nhttps://github.com/chaijs/chai/blob/4.x.x/lib/chai/config.js",
+                    "patternProperties": {
+                        "^[0-9]+$": {}
+                    },
+                    "type": "object"
+                },
+                "clearMocks": {
+                    "default": false,
+                    "description": "Will call `.mockClear()` on all spies before each test",
+                    "type": "boolean"
+                },
+                "css": {
+                    "anyOf": [
+                        {
+                            "properties": {
+                                "exclude": {
+                                    "anyOf": [
+                                        {
+                                            "$ref": "#/definitions/RegExp"
+                                        },
+                                        {
+                                            "items": {
+                                                "$ref": "#/definitions/RegExp"
+                                            },
+                                            "type": "array"
+                                        }
+                                    ]
+                                },
+                                "include": {
+                                    "anyOf": [
+                                        {
+                                            "$ref": "#/definitions/RegExp"
+                                        },
+                                        {
+                                            "items": {
+                                                "$ref": "#/definitions/RegExp"
+                                            },
+                                            "type": "array"
+                                        }
+                                    ]
+                                },
+                                "modules": {
+                                    "properties": {
+                                        "classNameStrategy": {
+                                            "$ref": "#/definitions/CSSModuleScopeStrategy"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "type": "boolean"
+                        }
+                    ],
+                    "default": "{ include: [], modules: { classNameStrategy: false } }",
+                    "description": "Indicates if CSS files should be processed.\n\nWhen excluded, the CSS files will be replaced with empty strings to bypass the subsequent processing."
+                },
+                "detectAsyncLeaks": {
+                    "default": false,
+                    "description": "Detect asynchronous resources leaking from the test file.",
+                    "type": "boolean"
+                },
+                "diff": {
+                    "description": "Path to a module which has a default export of diff config."
+                },
+                "dir": {
+                    "default": "`config.root`",
+                    "description": "Base directory to scan for the test files",
+                    "type": "string"
+                },
+                "disableConsoleIntercept": {
+                    "default": false,
+                    "description": "By default, Vitest automatically intercepts console logging during tests for extra formatting of test file, test title, etc...\nThis is also required for console log preview on Vitest UI.\nHowever, disabling such interception might help when you want to debug a code with normal synchronous terminal console logging.\n\nThis option has no effect on browser pool since Vitest preserves original logging on browser devtools.",
+                    "type": "boolean"
+                },
+                "env": {
+                    "$ref": "#/definitions/Partial%3CNodeJS.ProcessEnv%3E",
+                    "description": "Custom environment variables assigned to `process.env` before running tests."
+                },
+                "environment": {
+                    "$ref": "#/definitions/aW",
+                    "default": "'node'",
+                    "description": "Running environment\n\nSupports 'node', 'jsdom', 'happy-dom', 'edge-runtime'\n\nIf used unsupported string, will try to load the package `vitest-environment-${env}`"
+                },
+                "environmentOptions": {
+                    "$ref": "#/definitions/a3",
+                    "description": "Environment options."
+                },
+                "exclude": {
+                    "default": "['**\\/node_modules/**', '**\\/.git/**']",
+                    "description": "Exclude globs for test files",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "execArgv": {
+                    "default": "[] // no execution arguments are passed",
+                    "description": "Pass additional arguments to `node` process when spawning the worker.\n\nSee [Command-line API | Node.js](https://nodejs.org/docs/latest/api/cli.html) for more information.\n\nSet to `process.execArgv` to pass all arguments of the current process.\n\nBe careful when using, it as some options may crash worker, e.g. --prof, --title. See https://github.com/nodejs/node/issues/41103",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "expandSnapshotDiff": {
+                    "description": "Show full diff when snapshot fails instead of a patch.",
+                    "type": "boolean"
+                },
+                "expect": {
+                    "description": "Configuration options for expect() matches.",
+                    "properties": {
+                        "poll": {
+                            "description": "Default options for expect.poll()",
+                            "properties": {
+                                "interval": {
+                                    "default": 50,
+                                    "description": "Polling interval in milliseconds",
+                                    "type": "number"
+                                },
+                                "timeout": {
+                                    "default": 1000,
+                                    "description": "Timeout in milliseconds",
+                                    "type": "number"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "requireAssertions": {
+                            "description": "Throw an error if tests don't have any expect() assertions.",
+                            "type": "boolean"
+                        }
+                    },
+                    "type": "object"
+                },
+                "experimental": {
+                    "description": "Experimental features",
+                    "properties": {
+                        "fsModuleCache": {
+                            "description": "Enable caching of modules on the file system between reruns.",
+                            "type": "boolean"
+                        },
+                        "fsModuleCachePath": {
+                            "default": "node_modules/.experimental-vitest-cache",
+                            "description": "Path relative to the root of the project where the fs module cache will be stored.",
+                            "type": "string"
+                        },
+                        "importDurations": {
+                            "description": "Configure import duration collection and display.\n\nThe `limit` option controls how many imports to collect and display.\nThe `print` option controls CLI terminal output.\nUI can always toggle the breakdown display regardless of `print` setting.",
+                            "properties": {
+                                "failOnDanger": {
+                                    "default": false,
+                                    "description": "Fail the test run if any import exceeds the danger threshold.\nWhen failing, the breakdown is always printed regardless of `print` setting.",
+                                    "type": "boolean"
+                                },
+                                "limit": {
+                                    "default": "0 (or 10 if `print` or UI is enabled)",
+                                    "description": "Maximum number of imports to collect and display.",
+                                    "type": "number"
+                                },
+                                "print": {
+                                    "default": false,
+                                    "description": "When to print import breakdown to CLI terminal after tests finish.\n- `true`: Always print\n- `false`: Never print (default)\n- `'on-warn'`: Print only when any import exceeds the warn threshold",
+                                    "enum": [
+                                        false,
+                                        "on-warn",
+                                        true
+                                    ]
+                                },
+                                "thresholds": {
+                                    "description": "Duration thresholds in milliseconds for coloring and warnings.",
+                                    "properties": {
+                                        "danger": {
+                                            "default": 500,
+                                            "description": "Danger threshold - imports exceeding this are shown in red.",
+                                            "type": "number"
+                                        },
+                                        "warn": {
+                                            "default": 100,
+                                            "description": "Warning threshold - imports exceeding this are shown in yellow/orange.",
+                                            "type": "number"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "nodeLoader": {
+                            "description": "If module runner is disabled, Vitest uses a module loader to transform files to support\n`import.meta.vitest` and `vi.mock`.\n\nIf you don't use these features, you can disable this.\n\nThis option only affects `loader.load` method, Vitest always defines a `loader.resolve` to populate the module graph.",
+                            "type": "boolean"
+                        },
+                        "openTelemetry": {
+                            "description": "{@link https://vitest.dev/guide/open-telemetry}",
+                            "properties": {
+                                "browserSdkPath": {
+                                    "type": "string"
+                                },
+                                "enabled": {
+                                    "type": "boolean"
+                                },
+                                "sdkPath": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "preParse": {
+                            "description": "Parse test specifications before running them.\nThis will apply `.only` flag and test name pattern across all files without running them.",
+                            "type": "boolean"
+                        },
+                        "vcsProvider": {
+                            "anyOf": [
+                                {
+                                    "$ref": "#/definitions/VCSProvider"
+                                },
+                                {
+                                    "type": "string"
+                                }
+                            ],
+                            "description": "Custom provider for detecting changed files. Used with the `--changed` flag\nto determine which files have been modified.\n\nBy default, Vitest uses Git to detect changed files. You can provide a custom\nimplementation of the `VCSProvider` interface to use a different version control system."
+                        },
+                        "viteModuleRunner": {
+                            "default": true,
+                            "description": "Controls whether Vitest uses Vite's module runner to run the code or fallback to the native `import`.\n\nIf Node.js cannot process the code, consider registering [module loader](https://nodejs.org/api/module.html#customization-hooks) via `execArgv`.",
+                            "type": "boolean"
+                        }
+                    },
+                    "type": "object"
+                },
+                "fakeTimers": {
+                    "$ref": "#/definitions/F",
+                    "description": "Options for"
+                },
+                "fileParallelism": {
+                    "default": true,
+                    "description": "Should all test files run in parallel. Doesn't affect tests running in the same file.\nSetting this to `false` will override `maxWorkers` option to `1`.",
+                    "type": "boolean"
+                },
+                "globalSetup": {
+                    "anyOf": [
+                        {
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "description": "Path to global setup files"
+                },
+                "globals": {
+                    "default": false,
+                    "description": "Register apis globally",
+                    "type": "boolean"
+                },
+                "hideSkippedTests": {
+                    "default": false,
+                    "description": "Hide logs for skipped tests",
+                    "type": "boolean"
+                },
+                "hookTimeout": {
+                    "default": 10000,
+                    "description": "Default timeout of a hook in milliseconds",
+                    "type": "number"
+                },
+                "include": {
+                    "default": "['**\\/*.{test,spec}.?(c|m)[jt]s?(x)']",
+                    "description": "A list of [glob patterns](https://superchupu.dev/tinyglobby/comparison) that match your test files.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "includeSource": {
+                    "default": [],
+                    "description": "Include globs for in-source test files",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "includeTaskLocation": {
+                    "default": false,
+                    "description": "Include \"location\" property inside the test definition",
+                    "type": "boolean"
+                },
+                "inspector": {
+                    "description": "Inspector options. If `--inspect` or `--inspect-brk` is enabled, these options will be passed to the inspector.",
+                    "properties": {
+                        "enabled": {
+                            "description": "Enable inspector",
+                            "type": "boolean"
+                        },
+                        "host": {
+                            "description": "Host to run inspector on",
+                            "type": "string"
+                        },
+                        "port": {
+                            "description": "Port to run inspector on",
+                            "type": "number"
+                        },
+                        "waitForDebugger": {
+                            "description": "Wait for debugger to connect before running tests",
+                            "type": "boolean"
+                        }
+                    },
+                    "type": "object"
+                },
+                "isolate": {
+                    "default": true,
+                    "description": "Run tests in an isolated environment. This option has no effect on vmThreads pool.\n\nDisabling this option improves performance if your code doesn't rely on side effects.",
+                    "type": "boolean"
+                },
+                "logHeapUsage": {
+                    "description": "Show heap usage after each test. Useful for debugging memory leaks.",
+                    "type": "boolean"
+                },
+                "maxConcurrency": {
+                    "default": 5,
+                    "description": "A number of tests that are allowed to run at the same time marked with `test.concurrent`.",
+                    "type": "number"
+                },
+                "maxWorkers": {
+                    "description": "Maximum number or percentage of workers to run tests in.",
+                    "type": [
+                        "string",
+                        "number"
+                    ]
+                },
+                "mockReset": {
+                    "default": false,
+                    "description": "Will call `.mockReset()` on all spies before each test",
+                    "type": "boolean"
+                },
+                "name": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/ProjectName"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "description": "Name of the project. Will be used to display in the reporter."
+                },
+                "onUnhandledError": {
+                    "description": "A callback that can return `false` to ignore an unhandled error",
+                    "type": "object"
+                },
+                "pool": {
+                    "anyOf": [
+                        {
+                            "allOf": [
+                                {
+                                    "properties": {},
+                                    "type": "object"
+                                },
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        {
+                            "$ref": "#/definitions/ak"
+                        },
+                        {
+                            "enum": [
+                                "forks",
+                                "threads",
+                                "typescript",
+                                "vmForks",
+                                "vmThreads"
+                            ],
+                            "type": "string"
+                        }
+                    ],
+                    "default": "'forks'",
+                    "description": "Pool used to run tests in.\n\nSupports 'threads', 'forks', 'vmThreads', 'vmForks'"
+                },
+                "printConsoleTrace": {
+                    "default": false,
+                    "description": "Always print console stack traces.",
+                    "type": "boolean"
+                },
+                "projects": {
+                    "description": "Options for projects",
+                    "items": {
+                        "$ref": "#/definitions/a"
+                    },
+                    "type": "array"
+                },
+                "provide": {
+                    "$ref": "#/definitions/Partial%3CP%3E",
+                    "description": "Define variables that will be returned from `inject` in the test environment."
+                },
+                "restoreMocks": {
+                    "default": false,
+                    "description": "Will call `.mockRestore()` on all spies before each test",
+                    "type": "boolean"
+                },
+                "retry": {
+                    "default": "0 // Don't retry",
+                    "description": "Retry configuration for tests.\n- If a number, specifies how many times to retry failed tests\n- If an object, allows fine-grained retry control\n\n⚠️ WARNING: Function form is NOT supported in a config file\nbecause configurations are serialized when passed to worker threads.\nUse the function form only in test files directly."
+                },
+                "root": {
+                    "default": "process.cwd()",
+                    "description": "Project root",
+                    "type": "string"
+                },
+                "runner": {
+                    "description": "Path to a custom test runner.",
+                    "type": "string"
+                },
+                "sequence": {
+                    "$ref": "#/definitions/SequenceOptions",
+                    "description": "Options for configuring the order of running tests."
+                },
+                "server": {
+                    "properties": {
+                        "debug": {
+                            "properties": {
+                                "dump": {
+                                    "anyOf": [
+                                        {
+                                            "const": true,
+                                            "type": "boolean"
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ],
+                                    "description": "The folder where Vitest stores the contents of transformed\ntest files that can be inspected manually.\n\nIf `true`, Vitest dumps the files in `.vitest-dump` folder relative to the root of the project.\n\nYou can also use `VITEST_DEBUG_DUMP` env variable to enable this."
+                                },
+                                "load": {
+                                    "description": "If dump is enabled, should Vitest load the files from there instead of transforming them.\n\nYou can also use `VITEST_DEBUG_LOAD_DUMP` env variable to enable this.",
+                                    "type": "boolean"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "deps": {
+                            "$ref": "#/definitions/ServerDepsOptions"
+                        }
+                    },
+                    "type": "object"
+                },
+                "setupFiles": {
+                    "anyOf": [
+                        {
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "description": "Path to setup files"
+                },
+                "snapshotEnvironment": {
+                    "description": "Path to a custom snapshot environment module that has a default export of `SnapshotEnvironment` object.",
+                    "type": "string"
+                },
+                "snapshotSerializers": {
+                    "description": "Paths to snapshot serializer modules.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "strictTags": {
+                    "default": true,
+                    "description": "Should Vitest throw an error if test has a tag that is not defined in the config.",
+                    "type": "boolean"
+                },
+                "tags": {
+                    "description": "Define tags available in your test files.\n\nIf test defines a tag that is not listed here, an error will be thrown.",
+                    "items": {},
+                    "type": "array"
+                },
+                "testTimeout": {
+                    "default": 5000,
+                    "description": "Default timeout of a test in milliseconds",
+                    "type": "number"
+                },
+                "typecheck": {
+                    "$ref": "#/definitions/Partial%3CaT%3E",
+                    "description": "Options for configuring typechecking test environment."
+                },
+                "unstubEnvs": {
+                    "default": false,
+                    "description": "Will restore all env stubs to their original values before each test",
+                    "type": "boolean"
+                },
+                "unstubGlobals": {
+                    "default": false,
+                    "description": "Will restore all global stubs to their original values before each test",
+                    "type": "boolean"
+                },
+                "vmMemoryLimit": {
+                    "description": "Specifies the memory limit for `worker_thread` or `child_process` before they are recycled.\nIf you see memory leaks, try to tinker this value.",
+                    "type": [
+                        "string",
+                        "number"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "Omit<SequenceOptions,\"sequencer\"|\"seed\">": {
+            "properties": {
+                "concurrent": {
+                    "default": false,
+                    "description": "Should tests run in parallel.",
+                    "type": "boolean"
+                },
+                "groupOrder": {
+                    "default": 0,
+                    "description": "Controls the order in which this project runs its tests when using multiple [projects](/guide/projects).\n\n- Projects with the same group order number will run together, and groups are run from lowest to highest.\n- If you don’t set this option, all projects run in parallel.\n- If several projects use the same group order, they will run at the same time.",
+                    "type": "number"
+                },
+                "hooks": {
+                    "default": "'stack'",
+                    "description": "Defines how hooks should be ordered\n- `stack` will order \"after\" hooks in reverse order, \"before\" hooks will run sequentially\n- `list` will order hooks in the order they are defined\n- `parallel` will run hooks in a single group in parallel"
+                },
+                "setupFiles": {
+                    "default": "'parallel'",
+                    "description": "Defines how setup files should be ordered\n- 'parallel' will run all setup files in parallel\n- 'list' will run all setup files in the order they are defined in the config file"
+                },
+                "shuffle": {
+                    "anyOf": [
+                        {
+                            "properties": {
+                                "files": {
+                                    "default": false,
+                                    "description": "Should files run in random order. Long running tests will not start\nearlier if you enable this option.",
+                                    "type": "boolean"
+                                },
+                                "tests": {
+                                    "default": false,
+                                    "description": "Should tests run in random order.",
+                                    "type": "boolean"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "type": "boolean"
+                        }
+                    ],
+                    "default": false,
+                    "description": "Should files and tests run in random order."
+                }
+            },
+            "type": "object"
+        },
+        "Partial<NodeJS.ProcessEnv>": {
+            "properties": {
+                "NODE_ENV": {
+                    "type": "string"
+                },
+                "TZ": {
+                    "description": "Set to change the default timezone at runtime",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Partial<P>": {
+            "type": "object"
+        },
+        "Partial<Record<\"blob\"|\"default\"|\"json\"|\"verbose\"|\"agent\"|\"minimal\"|\"dot\"|\"tap\"|\"tap-flat\"|\"junit\"|\"tree\"|\"hanging-process\"|\"github-actions\",string>>": {
+            "properties": {
+                "agent": {
+                    "type": "string"
+                },
+                "blob": {
+                    "type": "string"
+                },
+                "default": {
+                    "type": "string"
+                },
+                "dot": {
+                    "type": "string"
+                },
+                "github-actions": {
+                    "type": "string"
+                },
+                "hanging-process": {
+                    "type": "string"
+                },
+                "json": {
+                    "type": "string"
+                },
+                "junit": {
+                    "type": "string"
+                },
+                "minimal": {
+                    "type": "string"
+                },
+                "tap": {
+                    "type": "string"
+                },
+                "tap-flat": {
+                    "type": "string"
+                },
+                "tree": {
+                    "type": "string"
+                },
+                "verbose": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Partial<Record<\"client\"|\"ssr\"|({}&string),a1>>": {
+            "properties": {
+                "client": {
+                    "$ref": "#/definitions/a1"
+                },
+                "ssr": {
+                    "$ref": "#/definitions/a1"
+                }
+            },
+            "type": "object"
+        },
+        "Partial<Record<\"default\"|\"verbose\",string>>": {
+            "properties": {
+                "default": {
+                    "type": "string"
+                },
+                "verbose": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Partial<aT>": {
+            "properties": {
+                "allowJs": {
+                    "description": "Check JS files that have `@ts-check` comment.\nIf you have it enabled in tsconfig, this will not overwrite it.",
+                    "type": "boolean"
+                },
+                "checker": {
+                    "anyOf": [
+                        {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/Record%3Cnever%2Cnever%3E"
+                                },
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        {
+                            "enum": [
+                                "tsc",
+                                "vue-tsc"
+                            ],
+                            "type": "string"
+                        }
+                    ],
+                    "default": "'tsc'",
+                    "description": "What tools to use for type checking."
+                },
+                "enabled": {
+                    "description": "Run typechecking tests alongside regular tests.",
+                    "type": "boolean"
+                },
+                "exclude": {
+                    "default": "['**\\/node_modules/**', '**\\/dist/**', '**\\/cypress/**', '**\\/.{idea,git,cache,output,temp}/**', '**\\/{karma,rollup,webpack,vite,vitest,jest,ava,babel,nyc,cypress,tsup,build,eslint,prettier}.config.*']",
+                    "description": "Pattern for files that should not be treated as test files",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "ignoreSourceErrors": {
+                    "description": "Do not fail, if Vitest found errors outside the test files.",
+                    "type": "boolean"
+                },
+                "include": {
+                    "default": "['**\\/*.{test,spec}-d.?(c|m)[jt]s?(x)']",
+                    "description": "Pattern for files that should be treated as test files",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "only": {
+                    "description": "When typechecking is enabled, only run typechecking tests.",
+                    "type": "boolean"
+                },
+                "spawnTimeout": {
+                    "default": "10_000",
+                    "description": "Minimum time in milliseconds it takes to spawn the typechecker.",
+                    "type": "number"
+                },
+                "tsconfig": {
+                    "description": "Path to tsconfig, relative to the project root.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Pick<ServerOptions,\"host\"|\"port\"|\"strictPort\"|\"middlewareMode\">": {
+            "properties": {
+                "host": {},
+                "middlewareMode": {},
+                "port": {},
+                "strictPort": {}
+            },
+            "type": "object"
+        },
+        "Pick<Thresholds,\"lines\"|\"functions\"|\"statements\"|\"branches\"|100>": {
+            "properties": {
+                "100": {
+                    "description": "Set global thresholds to `100`",
+                    "type": "boolean"
+                },
+                "branches": {
+                    "description": "Thresholds for branches",
+                    "type": "number"
+                },
+                "functions": {
+                    "description": "Thresholds for functions",
+                    "type": "number"
+                },
+                "lines": {
+                    "description": "Thresholds for lines",
+                    "type": "number"
+                },
+                "statements": {
+                    "description": "Thresholds for statements",
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "ProjectName": {
+            "properties": {
+                "color": {
+                    "$ref": "#/definitions/LabelColor"
+                },
+                "label": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Promise<U>": {
+            "properties": {
+                "__@toStringTag@1757": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Record<never,never>": {
+            "type": "object"
+        },
+        "Record<string,r<any,any>>": {
+            "type": "object"
+        },
+        "Record<string,string>": {
+            "type": "object"
+        },
+        "RegExp": {
+            "properties": {
+                "dotAll": {
+                    "type": "boolean"
+                },
+                "flags": {
+                    "type": "string"
+                },
+                "global": {
+                    "type": "boolean"
+                },
+                "hasIndices": {
+                    "type": "boolean"
+                },
+                "ignoreCase": {
+                    "type": "boolean"
+                },
+                "lastIndex": {
+                    "type": "number"
+                },
+                "multiline": {
+                    "type": "boolean"
+                },
+                "source": {
+                    "type": "string"
+                },
+                "sticky": {
+                    "type": "boolean"
+                },
+                "unicode": {
+                    "type": "boolean"
+                },
+                "unicodeSets": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "SequenceOptions": {
+            "properties": {
+                "concurrent": {
+                    "default": false,
+                    "description": "Should tests run in parallel.",
+                    "type": "boolean"
+                },
+                "groupOrder": {
+                    "default": 0,
+                    "description": "Controls the order in which this project runs its tests when using multiple [projects](/guide/projects).\n\n- Projects with the same group order number will run together, and groups are run from lowest to highest.\n- If you don’t set this option, all projects run in parallel.\n- If several projects use the same group order, they will run at the same time.",
+                    "type": "number"
+                },
+                "hooks": {
+                    "default": "'stack'",
+                    "description": "Defines how hooks should be ordered\n- `stack` will order \"after\" hooks in reverse order, \"before\" hooks will run sequentially\n- `list` will order hooks in the order they are defined\n- `parallel` will run hooks in a single group in parallel"
+                },
+                "seed": {
+                    "default": "Date.now()",
+                    "description": "Seed for the random number generator.",
+                    "type": "number"
+                },
+                "sequencer": {
+                    "$ref": "#/definitions/aM",
+                    "default": "BaseSequencer",
+                    "description": "Class that handles sorting and sharding algorithm.\nIf you only need to change sorting, you can extend\nyour custom sequencer from `BaseSequencer` from `vitest/node`."
+                },
+                "setupFiles": {
+                    "default": "'parallel'",
+                    "description": "Defines how setup files should be ordered\n- 'parallel' will run all setup files in parallel\n- 'list' will run all setup files in the order they are defined in the config file"
+                },
+                "shuffle": {
+                    "anyOf": [
+                        {
+                            "properties": {
+                                "files": {
+                                    "default": false,
+                                    "description": "Should files run in random order. Long running tests will not start\nearlier if you enable this option.",
+                                    "type": "boolean"
+                                },
+                                "tests": {
+                                    "default": false,
+                                    "description": "Should tests run in random order.",
+                                    "type": "boolean"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "type": "boolean"
+                        }
+                    ],
+                    "default": false,
+                    "description": "Should files and tests run in random order."
+                }
+            },
+            "type": "object"
+        },
+        "ServerDepsOptions": {
+            "properties": {
+                "external": {
+                    "description": "Externalize means that Vite will bpass the package to native Node.\n\nExternalized dependencies will not be applied Vite's transformers and resolvers.\nAnd does not support HMR on reload.\n\nTypically, packages under `node_modules` are externalized.",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/definitions/RegExp"
+                            },
+                            {
+                                "type": "string"
+                            }
+                        ]
+                    },
+                    "type": "array"
+                },
+                "fallbackCJS": {
+                    "default": false,
+                    "description": "Try to guess the CJS version of a package when it's invalid ESM",
+                    "type": "boolean"
+                },
+                "inline": {
+                    "anyOf": [
+                        {
+                            "items": {
+                                "anyOf": [
+                                    {
+                                        "$ref": "#/definitions/RegExp"
+                                    },
+                                    {
+                                        "type": "string"
+                                    }
+                                ]
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "const": true,
+                            "type": "boolean"
+                        }
+                    ],
+                    "description": "Vite will process inlined modules.\n\nThis could be helpful to handle packages that ship `.js` in ESM format (that Node can't handle).\n\nIf `true`, every dependency will be inlined"
+                }
+            },
+            "type": "object"
+        },
+        "SharedArrayBuffer": {
+            "properties": {
+                "__@toStringTag@1757": {
+                    "const": "SharedArrayBuffer",
+                    "type": "string"
+                },
+                "byteLength": {
+                    "type": "number"
+                },
+                "growable": {
+                    "type": "boolean"
+                },
+                "maxByteLength": {
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "Thresholds": {
+            "properties": {
+                "100": {
+                    "description": "Set global thresholds to `100`",
+                    "type": "boolean"
+                },
+                "autoUpdate": {
+                    "default": false,
+                    "description": "Update threshold values automatically when current coverage is higher than earlier thresholds\nAlso can accept a function to format the new threshold values",
+                    "type": [
+                        "object",
+                        "boolean"
+                    ]
+                },
+                "branches": {
+                    "description": "Thresholds for branches",
+                    "type": "number"
+                },
+                "functions": {
+                    "description": "Thresholds for functions",
+                    "type": "number"
+                },
+                "lines": {
+                    "description": "Thresholds for lines",
+                    "type": "number"
+                },
+                "perFile": {
+                    "description": "Check thresholds per file.",
+                    "type": "boolean"
+                },
+                "statements": {
+                    "description": "Thresholds for statements",
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "U": {
+            "properties": {
+                "test": {
+                    "$ref": "#/definitions/an"
+                }
+            },
+            "type": "object"
+        },
+        "VCSProvider": {
+            "type": "object"
+        },
+        "W": {
+            "properties": {
+                "pattern": {
+                    "$ref": "#/definitions/RegExp"
+                },
+                "testsToRun": {
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "a": {
+            "anyOf": [
+                {
+                    "$ref": "#/definitions/d"
+                },
+                {
+                    "$ref": "#/definitions/Promise%3CU%3E"
+                },
+                {
+                    "type": [
+                        "string",
+                        "object"
+                    ]
+                }
+            ]
+        },
+        "a1": {
+            "allOf": [
+                {
+                    "additionalProperties": false,
+                    "patternProperties": {
+                        "^[0-9]+$": {}
+                    },
+                    "type": "object"
+                },
+                {
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean"
+                        }
+                    },
+                    "type": "object"
+                }
+            ]
+        },
+        "a3": {
+            "additionalProperties": {},
+            "properties": {
+                "happyDOM": {
+                    "additionalProperties": false,
+                    "patternProperties": {
+                        "^[0-9]+$": {}
+                    },
+                    "type": "object"
+                },
+                "jsdom": {
+                    "$ref": "#/definitions/JSDOMOptions",
+                    "description": "jsdom options."
+                }
+            },
+            "type": "object"
+        },
+        "aM": {
+            "type": "object"
+        },
+        "aW": {
+            "anyOf": [
+                {
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/Record%3Cnever%2Cnever%3E"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "enum": [
+                        "edge-runtime",
+                        "happy-dom",
+                        "jsdom",
+                        "node"
+                    ],
+                    "type": "string"
+                }
+            ]
+        },
+        "ak": {
+            "properties": {
+                "createPoolWorker": {
+                    "type": "object"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "an": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Omit%3CI%2C%22deps%22%7CNonProjectOptions%7C%22sequencer%22%3E"
+                },
+                {
+                    "properties": {
+                        "deps": {
+                            "$ref": "#/definitions/Omit%3CDepsOptions%2C%22moduleDirectories%22%3E"
+                        },
+                        "mode": {
+                            "type": "string"
+                        },
+                        "sequencer": {
+                            "$ref": "#/definitions/Omit%3CSequenceOptions%2C%22sequencer%22%7C%22seed%22%3E"
+                        }
+                    },
+                    "type": "object"
+                }
+            ]
+        },
+        "d": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/U"
+                },
+                {
+                    "properties": {
+                        "extends": {
+                            "anyOf": [
+                                {
+                                    "const": true,
+                                    "type": "boolean"
+                                },
+                                {
+                                    "type": "string"
+                                }
+                            ],
+                            "description": "Relative path to the extendable config. All other options will be merged with this config.\nIf `true`, the project will inherit all options from the root config."
+                        }
+                    },
+                    "type": "object"
+                }
+            ]
+        },
+        "p": {
+            "properties": {
+                "compare": {
+                    "description": "benchmark output file to compare against",
+                    "type": "string"
+                },
+                "exclude": {
+                    "default": "['**\\/node_modules/**', '**\\/dist/**', '**\\/cypress/**', '**\\/.{idea,git,cache,output,temp}/**', '**\\/{karma,rollup,webpack,vite,vitest,jest,ava,babel,nyc,cypress,tsup,build,eslint,prettier}.config.*']",
+                    "description": "Exclude globs for benchmark test files",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "include": {
+                    "default": "['**\\/*.{bench,benchmark}.?(c|m)[jt]s?(x)']",
+                    "description": "Include globs for benchmark test files",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "includeSamples": {
+                    "default": false,
+                    "description": "Include `samples` array of benchmark results for API or custom reporter usages.\nThis is disabled by default to reduce memory usage.",
+                    "type": "boolean"
+                },
+                "includeSource": {
+                    "default": [],
+                    "description": "Include globs for in-source benchmark test files",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "outputFile": {
+                    "anyOf": [
+                        {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/Partial%3CRecord%3C%22default%22%7C%22verbose%22%2Cstring%3E%3E"
+                                },
+                                {
+                                    "$ref": "#/definitions/Record%3Cstring%2Cstring%3E"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "outputJson": {
+                    "description": "benchmark output file",
+                    "type": "string"
+                },
+                "reporters": {
+                    "default": "['default']",
+                    "description": "Custom reporters to use for output. Can contain one or more built-in reporter names, reporter instances,\nand/or paths to custom reporter files to import."
+                }
+            },
+            "type": "object"
+        },
+        "t": {
+            "properties": {
+                "api": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/A"
+                        },
+                        {
+                            "type": "number"
+                        }
+                    ],
+                    "description": "Serve API options.\n\nThe default port is 63315."
+                },
+                "commands": {
+                    "$ref": "#/definitions/Record%3Cstring%2Cr%3Cany%2Cany%3E%3E",
+                    "description": "Commands that will be executed on the server\nvia the browser `import(\"vitest/browser\").commands` API."
+                },
+                "connectTimeout": {
+                    "default": 30000,
+                    "description": "Timeout for connecting to the browser",
+                    "type": "number"
+                },
+                "detailsPanelPosition": {
+                    "default": "'right'",
+                    "description": "Default position for the details panel in browser mode\n'right' shows the details panel on the right side (horizontal split)\n'bottom' shows the details panel at the bottom (vertical split)",
+                    "enum": [
+                        "bottom",
+                        "right"
+                    ],
+                    "type": "string"
+                },
+                "enabled": {
+                    "default": false,
+                    "description": "if running tests in the browser should be the default",
+                    "type": "boolean"
+                },
+                "expect": {
+                    "type": "object"
+                },
+                "fileParallelism": {
+                    "default": "// Same as \"test.fileParallelism\"",
+                    "description": "Run test files in parallel if provider supports this option\nThis option only has effect in headless mode (enabled in CI by default)",
+                    "type": "boolean"
+                },
+                "headless": {
+                    "default": "process.env.CI",
+                    "description": "enable headless mode",
+                    "type": "boolean"
+                },
+                "instances": {
+                    "description": "Configurations for different browser setups",
+                    "items": {
+                        "$ref": "#/definitions/u"
+                    },
+                    "type": "array"
+                },
+                "isolate": {
+                    "default": true,
+                    "description": "Isolate test environment after each test",
+                    "type": "boolean"
+                },
+                "locators": {
+                    "description": "Locator options",
+                    "properties": {
+                        "exact": {
+                            "default": false,
+                            "description": "Should locators match the text exactly by default",
+                            "type": "boolean"
+                        },
+                        "testIdAttribute": {
+                            "default": "'data-testid'",
+                            "description": "Attribute used to locate elements by test id",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "orchestratorScripts": {
+                    "description": "Scripts injected into the main window.",
+                    "items": {
+                        "$ref": "#/definitions/z"
+                    },
+                    "type": "array"
+                },
+                "provider": {
+                    "$ref": "#/definitions/y%3Cobject%3E",
+                    "description": "Browser provider"
+                },
+                "screenshotDirectory": {
+                    "default": "__screenshots__",
+                    "description": "Directory where screenshots will be saved when page.screenshot() is called\nIf not set, all screenshots are saved to __screenshots__ directory in the same folder as the test file.\nIf this is set, it will be resolved relative to the project root.",
+                    "type": "string"
+                },
+                "screenshotFailures": {
+                    "default": "!browser.ui",
+                    "description": "Should Vitest take screenshots if the test fails",
+                    "type": "boolean"
+                },
+                "testerHtmlPath": {
+                    "description": "Path to the index.html file that will be used to run tests.",
+                    "type": "string"
+                },
+                "trace": {
+                    "anyOf": [
+                        {
+                            "properties": {
+                                "mode": {
+                                    "$ref": "#/definitions/BrowserTraceViewMode"
+                                },
+                                "screenshots": {
+                                    "default": true,
+                                    "description": "Whether to capture screenshots during tracing. Screenshots are used to build a timeline preview.",
+                                    "type": "boolean"
+                                },
+                                "snapshots": {
+                                    "default": true,
+                                    "description": "If this option is true tracing will\n- capture DOM snapshot on every action\n- record network activity",
+                                    "type": "boolean"
+                                },
+                                "tracesDir": {
+                                    "description": "The directory where all traces will be stored. By default, Vitest\nstores all traces in `__traces__` folder close to the test file.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "enum": [
+                                "off",
+                                "on",
+                                "on-all-retries",
+                                "on-first-retry",
+                                "retain-on-failure"
+                            ],
+                            "type": "string"
+                        }
+                    ],
+                    "description": "Generate traces that can be viewed on https://trace.playwright.dev/\n\nThis option is supported only by **playwright** provider."
+                },
+                "trackUnhandledErrors": {
+                    "default": true,
+                    "description": "Enables tracking uncaught errors and exceptions so they can be reported by Vitest.\n\nIf you need to hide certain errors, it is recommended to use [`onUnhandledError`](https://vitest.dev/config/onunhandlederror) option instead.\n\nDisabling this will completely remove all Vitest error handlers, which can help debugging with the \"Pause on exceptions\" checkbox turned on.",
+                    "type": "boolean"
+                },
+                "ui": {
+                    "default": "!process.env.CI",
+                    "description": "Show Vitest UI",
+                    "type": "boolean"
+                },
+                "viewport": {
+                    "description": "Default viewport size",
+                    "properties": {
+                        "height": {
+                            "default": 896,
+                            "description": "Height of the viewport",
+                            "type": "number"
+                        },
+                        "width": {
+                            "default": 414,
+                            "description": "Width of the viewport",
+                            "type": "number"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "u": {
+            "properties": {
+                "allowOnly": {
+                    "default": "!process.env.CI",
+                    "description": "Allow tests and suites that are marked as only",
+                    "type": "boolean"
+                },
+                "attachmentsDir": {
+                    "default": "'.vitest-attachments'",
+                    "description": "Directory path for storing attachments created by `context.annotate`",
+                    "type": "string"
+                },
+                "bail": {
+                    "description": "Stop test execution when given number of tests have failed.",
+                    "type": "number"
+                },
+                "browser": {
+                    "description": "Name of the browser",
+                    "type": "string"
+                },
+                "chaiConfig": {
+                    "additionalProperties": false,
+                    "description": "Modify default Chai config. Vitest uses Chai for `expect` and `assert` matches.\nhttps://github.com/chaijs/chai/blob/4.x.x/lib/chai/config.js",
+                    "patternProperties": {
+                        "^[0-9]+$": {}
+                    },
+                    "type": "object"
+                },
+                "clearMocks": {
+                    "default": false,
+                    "description": "Will call `.mockClear()` on all spies before each test",
+                    "type": "boolean"
+                },
+                "css": {
+                    "anyOf": [
+                        {
+                            "properties": {
+                                "exclude": {
+                                    "anyOf": [
+                                        {
+                                            "$ref": "#/definitions/RegExp"
+                                        },
+                                        {
+                                            "items": {
+                                                "$ref": "#/definitions/RegExp"
+                                            },
+                                            "type": "array"
+                                        }
+                                    ]
+                                },
+                                "include": {
+                                    "anyOf": [
+                                        {
+                                            "$ref": "#/definitions/RegExp"
+                                        },
+                                        {
+                                            "items": {
+                                                "$ref": "#/definitions/RegExp"
+                                            },
+                                            "type": "array"
+                                        }
+                                    ]
+                                },
+                                "modules": {
+                                    "properties": {
+                                        "classNameStrategy": {
+                                            "$ref": "#/definitions/CSSModuleScopeStrategy"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "type": "boolean"
+                        }
+                    ],
+                    "default": "{ include: [], modules: { classNameStrategy: false } }",
+                    "description": "Indicates if CSS files should be processed.\n\nWhen excluded, the CSS files will be replaced with empty strings to bypass the subsequent processing."
+                },
+                "detectAsyncLeaks": {
+                    "default": false,
+                    "description": "Detect asynchronous resources leaking from the test file.",
+                    "type": "boolean"
+                },
+                "diff": {
+                    "description": "Path to a module which has a default export of diff config."
+                },
+                "dir": {
+                    "default": "`config.root`",
+                    "description": "Base directory to scan for the test files",
+                    "type": "string"
+                },
+                "disableConsoleIntercept": {
+                    "default": false,
+                    "description": "By default, Vitest automatically intercepts console logging during tests for extra formatting of test file, test title, etc...\nThis is also required for console log preview on Vitest UI.\nHowever, disabling such interception might help when you want to debug a code with normal synchronous terminal console logging.\n\nThis option has no effect on browser pool since Vitest preserves original logging on browser devtools.",
+                    "type": "boolean"
+                },
+                "env": {
+                    "$ref": "#/definitions/Partial%3CNodeJS.ProcessEnv%3E",
+                    "description": "Custom environment variables assigned to `process.env` before running tests."
+                },
+                "exclude": {
+                    "default": "['**\\/node_modules/**', '**\\/.git/**']",
+                    "description": "Exclude globs for test files",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "execArgv": {
+                    "default": "[] // no execution arguments are passed",
+                    "description": "Pass additional arguments to `node` process when spawning the worker.\n\nSee [Command-line API | Node.js](https://nodejs.org/docs/latest/api/cli.html) for more information.\n\nSet to `process.execArgv` to pass all arguments of the current process.\n\nBe careful when using, it as some options may crash worker, e.g. --prof, --title. See https://github.com/nodejs/node/issues/41103",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "expandSnapshotDiff": {
+                    "description": "Show full diff when snapshot fails instead of a patch.",
+                    "type": "boolean"
+                },
+                "expect": {
+                    "description": "Configuration options for expect() matches.",
+                    "properties": {
+                        "poll": {
+                            "description": "Default options for expect.poll()",
+                            "properties": {
+                                "interval": {
+                                    "default": 50,
+                                    "description": "Polling interval in milliseconds",
+                                    "type": "number"
+                                },
+                                "timeout": {
+                                    "default": 1000,
+                                    "description": "Timeout in milliseconds",
+                                    "type": "number"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "requireAssertions": {
+                            "description": "Throw an error if tests don't have any expect() assertions.",
+                            "type": "boolean"
+                        }
+                    },
+                    "type": "object"
+                },
+                "experimental": {
+                    "description": "Experimental features",
+                    "properties": {
+                        "fsModuleCache": {
+                            "description": "Enable caching of modules on the file system between reruns.",
+                            "type": "boolean"
+                        },
+                        "fsModuleCachePath": {
+                            "default": "node_modules/.experimental-vitest-cache",
+                            "description": "Path relative to the root of the project where the fs module cache will be stored.",
+                            "type": "string"
+                        },
+                        "importDurations": {
+                            "description": "Configure import duration collection and display.\n\nThe `limit` option controls how many imports to collect and display.\nThe `print` option controls CLI terminal output.\nUI can always toggle the breakdown display regardless of `print` setting.",
+                            "properties": {
+                                "failOnDanger": {
+                                    "default": false,
+                                    "description": "Fail the test run if any import exceeds the danger threshold.\nWhen failing, the breakdown is always printed regardless of `print` setting.",
+                                    "type": "boolean"
+                                },
+                                "limit": {
+                                    "default": "0 (or 10 if `print` or UI is enabled)",
+                                    "description": "Maximum number of imports to collect and display.",
+                                    "type": "number"
+                                },
+                                "print": {
+                                    "default": false,
+                                    "description": "When to print import breakdown to CLI terminal after tests finish.\n- `true`: Always print\n- `false`: Never print (default)\n- `'on-warn'`: Print only when any import exceeds the warn threshold",
+                                    "enum": [
+                                        false,
+                                        "on-warn",
+                                        true
+                                    ]
+                                },
+                                "thresholds": {
+                                    "description": "Duration thresholds in milliseconds for coloring and warnings.",
+                                    "properties": {
+                                        "danger": {
+                                            "default": 500,
+                                            "description": "Danger threshold - imports exceeding this are shown in red.",
+                                            "type": "number"
+                                        },
+                                        "warn": {
+                                            "default": 100,
+                                            "description": "Warning threshold - imports exceeding this are shown in yellow/orange.",
+                                            "type": "number"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "nodeLoader": {
+                            "description": "If module runner is disabled, Vitest uses a module loader to transform files to support\n`import.meta.vitest` and `vi.mock`.\n\nIf you don't use these features, you can disable this.\n\nThis option only affects `loader.load` method, Vitest always defines a `loader.resolve` to populate the module graph.",
+                            "type": "boolean"
+                        },
+                        "openTelemetry": {
+                            "description": "{@link https://vitest.dev/guide/open-telemetry}",
+                            "properties": {
+                                "browserSdkPath": {
+                                    "type": "string"
+                                },
+                                "enabled": {
+                                    "type": "boolean"
+                                },
+                                "sdkPath": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "preParse": {
+                            "description": "Parse test specifications before running them.\nThis will apply `.only` flag and test name pattern across all files without running them.",
+                            "type": "boolean"
+                        },
+                        "vcsProvider": {
+                            "anyOf": [
+                                {
+                                    "$ref": "#/definitions/VCSProvider"
+                                },
+                                {
+                                    "type": "string"
+                                }
+                            ],
+                            "description": "Custom provider for detecting changed files. Used with the `--changed` flag\nto determine which files have been modified.\n\nBy default, Vitest uses Git to detect changed files. You can provide a custom\nimplementation of the `VCSProvider` interface to use a different version control system."
+                        },
+                        "viteModuleRunner": {
+                            "default": true,
+                            "description": "Controls whether Vitest uses Vite's module runner to run the code or fallback to the native `import`.\n\nIf Node.js cannot process the code, consider registering [module loader](https://nodejs.org/api/module.html#customization-hooks) via `execArgv`.",
+                            "type": "boolean"
+                        }
+                    },
+                    "type": "object"
+                },
+                "fakeTimers": {
+                    "$ref": "#/definitions/F",
+                    "description": "Options for"
+                },
+                "fileParallelism": {
+                    "default": true,
+                    "description": "Should all test files run in parallel. Doesn't affect tests running in the same file.\nSetting this to `false` will override `maxWorkers` option to `1`.",
+                    "type": "boolean"
+                },
+                "globalSetup": {
+                    "anyOf": [
+                        {
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "description": "Path to global setup files"
+                },
+                "globals": {
+                    "default": false,
+                    "description": "Register apis globally",
+                    "type": "boolean"
+                },
+                "headless": {
+                    "default": "process.env.CI",
+                    "description": "enable headless mode",
+                    "type": "boolean"
+                },
+                "hideSkippedTests": {
+                    "default": false,
+                    "description": "Hide logs for skipped tests",
+                    "type": "boolean"
+                },
+                "hookTimeout": {
+                    "default": 10000,
+                    "description": "Default timeout of a hook in milliseconds",
+                    "type": "number"
+                },
+                "include": {
+                    "default": "['**\\/*.{test,spec}.?(c|m)[jt]s?(x)']",
+                    "description": "A list of [glob patterns](https://superchupu.dev/tinyglobby/comparison) that match your test files.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "includeSource": {
+                    "default": [],
+                    "description": "Include globs for in-source test files",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "includeTaskLocation": {
+                    "default": false,
+                    "description": "Include \"location\" property inside the test definition",
+                    "type": "boolean"
+                },
+                "inspector": {
+                    "description": "Inspector options. If `--inspect` or `--inspect-brk` is enabled, these options will be passed to the inspector.",
+                    "properties": {
+                        "enabled": {
+                            "description": "Enable inspector",
+                            "type": "boolean"
+                        },
+                        "host": {
+                            "description": "Host to run inspector on",
+                            "type": "string"
+                        },
+                        "port": {
+                            "description": "Port to run inspector on",
+                            "type": "number"
+                        },
+                        "waitForDebugger": {
+                            "description": "Wait for debugger to connect before running tests",
+                            "type": "boolean"
+                        }
+                    },
+                    "type": "object"
+                },
+                "isolate": {
+                    "default": true,
+                    "description": "Run tests in an isolated environment. This option has no effect on vmThreads pool.\n\nDisabling this option improves performance if your code doesn't rely on side effects.",
+                    "type": "boolean"
+                },
+                "locators": {
+                    "description": "Locator options",
+                    "properties": {
+                        "exact": {
+                            "default": false,
+                            "description": "Should locators match the text exactly by default",
+                            "type": "boolean"
+                        },
+                        "testIdAttribute": {
+                            "default": "'data-testid'",
+                            "description": "Attribute used to locate elements by test id",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "logHeapUsage": {
+                    "description": "Show heap usage after each test. Useful for debugging memory leaks.",
+                    "type": "boolean"
+                },
+                "maxConcurrency": {
+                    "default": 5,
+                    "description": "A number of tests that are allowed to run at the same time marked with `test.concurrent`.",
+                    "type": "number"
+                },
+                "maxWorkers": {
+                    "description": "Maximum number or percentage of workers to run tests in.",
+                    "type": [
+                        "string",
+                        "number"
+                    ]
+                },
+                "mockReset": {
+                    "default": false,
+                    "description": "Will call `.mockReset()` on all spies before each test",
+                    "type": "boolean"
+                },
+                "mode": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "onUnhandledError": {
+                    "description": "A callback that can return `false` to ignore an unhandled error",
+                    "type": "object"
+                },
+                "printConsoleTrace": {
+                    "default": false,
+                    "description": "Always print console stack traces.",
+                    "type": "boolean"
+                },
+                "projects": {
+                    "description": "Options for projects",
+                    "items": {
+                        "$ref": "#/definitions/a"
+                    },
+                    "type": "array"
+                },
+                "provide": {
+                    "$ref": "#/definitions/Partial%3CP%3E",
+                    "description": "Define variables that will be returned from `inject` in the test environment."
+                },
+                "provider": {
+                    "$ref": "#/definitions/y%3Cobject%3E"
+                },
+                "restoreMocks": {
+                    "default": false,
+                    "description": "Will call `.mockRestore()` on all spies before each test",
+                    "type": "boolean"
+                },
+                "retry": {
+                    "default": "0 // Don't retry",
+                    "description": "Retry configuration for tests.\n- If a number, specifies how many times to retry failed tests\n- If an object, allows fine-grained retry control\n\n⚠️ WARNING: Function form is NOT supported in a config file\nbecause configurations are serialized when passed to worker threads.\nUse the function form only in test files directly."
+                },
+                "screenshotDirectory": {
+                    "default": "__screenshots__",
+                    "description": "Directory where screenshots will be saved when page.screenshot() is called\nIf not set, all screenshots are saved to __screenshots__ directory in the same folder as the test file.\nIf this is set, it will be resolved relative to the project root.",
+                    "type": "string"
+                },
+                "screenshotFailures": {
+                    "default": "!browser.ui",
+                    "description": "Should Vitest take screenshots if the test fails",
+                    "type": "boolean"
+                },
+                "sequencer": {
+                    "$ref": "#/definitions/Omit%3CSequenceOptions%2C%22sequencer%22%7C%22seed%22%3E"
+                },
+                "setupFiles": {
+                    "anyOf": [
+                        {
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "description": "Path to setup files"
+                },
+                "snapshotEnvironment": {
+                    "description": "Path to a custom snapshot environment module that has a default export of `SnapshotEnvironment` object.",
+                    "type": "string"
+                },
+                "snapshotSerializers": {
+                    "description": "Paths to snapshot serializer modules.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "strictTags": {
+                    "default": true,
+                    "description": "Should Vitest throw an error if test has a tag that is not defined in the config.",
+                    "type": "boolean"
+                },
+                "tags": {
+                    "description": "Define tags available in your test files.\n\nIf test defines a tag that is not listed here, an error will be thrown.",
+                    "items": {},
+                    "type": "array"
+                },
+                "testTimeout": {
+                    "default": 5000,
+                    "description": "Default timeout of a test in milliseconds",
+                    "type": "number"
+                },
+                "testerHtmlPath": {
+                    "description": "Path to the index.html file that will be used to run tests.",
+                    "type": "string"
+                },
+                "unstubEnvs": {
+                    "default": false,
+                    "description": "Will restore all env stubs to their original values before each test",
+                    "type": "boolean"
+                },
+                "unstubGlobals": {
+                    "default": false,
+                    "description": "Will restore all global stubs to their original values before each test",
+                    "type": "boolean"
+                },
+                "viewport": {
+                    "description": "Default viewport size",
+                    "properties": {
+                        "height": {
+                            "default": 896,
+                            "description": "Height of the viewport",
+                            "type": "number"
+                        },
+                        "width": {
+                            "default": 414,
+                            "description": "Width of the viewport",
+                            "type": "number"
+                        }
+                    },
+                    "type": "object"
+                },
+                "vmMemoryLimit": {
+                    "description": "Specifies the memory limit for `worker_thread` or `child_process` before they are recycled.\nIf you see memory leaks, try to tinker this value.",
+                    "type": [
+                        "string",
+                        "number"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "y<object>": {
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "options": {
+                    "additionalProperties": true,
+                    "properties": {},
+                    "type": "object"
+                },
+                "providerFactory": {
+                    "type": "object"
+                },
+                "serverFactory": {
+                    "$ref": "#/definitions/D"
+                },
+                "supportedBrowser": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "z": {
+            "properties": {
+                "async": {
+                    "description": "If the script should be loaded asynchronously.",
+                    "type": "boolean"
+                },
+                "content": {
+                    "description": "JavaScript content to be injected. This string is processed by Vite plugins if type is \"module\".\n\nYou can use `id` to give Vite a hint about the file extension.",
+                    "type": "string"
+                },
+                "id": {
+                    "default": "`injected-${index}.js`",
+                    "description": "If \"content\" is provided and type is \"module\", this will be its identifier.\n\nIf you are using TypeScript, you can add `.ts` extension here for example.",
+                    "type": "string"
+                },
+                "src": {
+                    "description": "Path to the script. This value is resolved by Vite so it can be a node module or a file path.",
+                    "type": "string"
+                },
+                "type": {
+                    "default": "'module'",
+                    "description": "Script type.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "properties": {
+        "test": {
+            "$ref": "#/definitions/I",
+            "description": "Options for Vitest"
+        }
+    },
+    "type": "object"
+}
+

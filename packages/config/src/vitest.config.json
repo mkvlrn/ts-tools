@@ -1,0 +1,17 @@
+{
+  "$schema": "./vitest.schema.json",
+  "test": {
+    "include": ["**/*.{test,spec}.ts"],
+    "exclude": ["node_modules"],
+    "watch": false,
+    "reporters": ["tree"],
+    "coverage": {
+      "clean": true,
+      "cleanOnRerun": true,
+      "include": ["src"]
+    },
+    "env": { "NODE_ENV": "test" },
+    "environment": "node",
+    "passWithNoTests": true
+  }
+}
