@@ -74,7 +74,7 @@ bun build ./packages/result/src/main.ts --outdir ./packages/result/dist
 tsc --declaration --emitDeclarationOnly --outDir packages/result/dist --module ESNext --moduleResolution Bundler packages/result/src/main.ts --ignoreConfig
 
 echo "Publishing @mkvlrn/result to npm..."
-(cd packages/result && bun publish --access public)
+(cd packages/result && npm publish --access public)
 
 echo "Publishing @mkvlrn/result to jsr..."
 (cd packages/result && jsr publish)
