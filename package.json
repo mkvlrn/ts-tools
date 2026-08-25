@@ -22,11 +22,13 @@
   "devEngines": {
     "runtime": {
       "name": "bun",
-      "version": "1.4.0"
+      "version": "1.4.0",
+      "onFail": "warn"
     },
     "packageManager": {
       "name": "bun",
-      "version": "1.4.0"
+      "version": "1.4.0",
+      "onFail": "warn"
     }
   },
 
