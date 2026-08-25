@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.5.0](https://github.com/mkvlrn/ts-tools/compare/config-v0.4.7...config-v0.5.0) (2026-08-25)
+
+
+### Features
+
+* **config:** vitest config is now a json export ([b1ff1d7](https://github.com/mkvlrn/ts-tools/commit/b1ff1d721f5341792e6d8917757949bd7d493e29))
+* **config:** vitest config is now a json export ([3fe9afb](https://github.com/mkvlrn/ts-tools/commit/3fe9afb0f17ca34fa117c169a3abe76ea32a639c))
+
 ## [0.4.7](https://github.com/mkvlrn/ts-tools/compare/config-v0.4.6...config-v0.4.7) (2026-08-12)
 
 
