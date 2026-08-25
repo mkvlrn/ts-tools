@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.1](https://github.com/mkvlrn/ts-tools/compare/config-v0.5.0...config-v0.5.1) (2026-08-25)
+
+
+### Bug fixes
+
+* **config:** republish config ([5f0f572](https://github.com/mkvlrn/ts-tools/commit/5f0f572134359a2b153b9671204b83834d11d970))
+
 ## [0.5.0](https://github.com/mkvlrn/ts-tools/compare/config-v0.4.7...config-v0.5.0) (2026-08-25)
 
 
