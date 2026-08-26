@@ -6,17 +6,17 @@
       "name": "ts-tools",
       "devDependencies": {
         "@types/bun": "1.4.0",
-        "@types/node": "26.2.0",
+        "@types/node": "26.3.0",
         "typescript": "7.0.2",
       },
     },
     "packages/app-error": {
       "name": "@mkvlrn/app-error",
-      "version": "0.4.3",
+      "version": "0.4.4",
     },
     "packages/config": {
       "name": "@mkvlrn/config",
-      "version": "0.4.7",
+      "version": "0.5.1",
       "devDependencies": {
         "typescript-json-schema": "0.68.0",
         "vitest": "4.1.11",
@@ -24,7 +24,7 @@
     },
     "packages/result": {
       "name": "@mkvlrn/result",
-      "version": "0.3.4",
+      "version": "0.3.5",
     },
   },
   "packages": {
@@ -96,7 +96,7 @@
 
     "@types/json-schema": ["@types/json-schema@7.0.15", "", {}, "sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA=="],
 
-    "@types/node": ["@types/node@26.2.0", "", { "dependencies": { "undici-types": "~8.3.0" } }, "sha512-5IviulTZeRNp2vAJ514cc/HUlY5nZ9fCbq9DMyC52BrhFZACo3nI0R7qBxhQmo/d27NFe96ur/b7Wwxklda+kg=="],
+    "@types/node": ["@types/node@26.3.0", "", { "dependencies": { "undici-types": "~8.3.0" } }, "sha512-L3fgrnchriRC2ExBflb8j4uZZURHZfQsmQeyVzhjcHW4kkwVyo8/0h1B2MVzMTrYUJYu6G7EWs14hW/L9putqw=="],
 
     "@typescript/typescript-aix-ppc64": ["@typescript/typescript-aix-ppc64@7.0.2", "", { "os": "aix", "cpu": "ppc64" }, "sha512-MTKKkWB7p/0E9xi1d1tHtZ5PiLkGEMIq88pK2CubZjOsLtYTLqhgIgi6zepFa+9GHZ6h05NMCkQxGKiPXMxXtQ=="],
 
