@@ -62,6 +62,7 @@
       ]
     }
   ],
+  "rebaseWhen": "behind-base-branch",
   "updateNotScheduled": false,
   "minimumReleaseAge": "1 day",
   "minimumReleaseAgeBehaviour": "timestamp-optional",
