@@ -10,12 +10,11 @@ test = { glob = "*.{ts,tsx}", run = "mise test-staged" }
 typecheck = { run = "mise typecheck" }
 lint = { run = "mise lint" }
 test = { run = "mise test-ci" }
-jsr-dry-run = { run = "mise jsr-dry-run " }
-npm-dry-run = { run = "mise npm-dry-run " }
+jsr-dry-run = { run = "mise jsr-dry-run" }
+npm-dry-run = { run = "mise npm-dry-run" }
 
 [post-checkout.commands]
 sync = { run = "mise sync-branch" }
 
 [post-merge.commands]
 sync = { run = "mise sync-branch" }
-

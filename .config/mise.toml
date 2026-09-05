@@ -32,6 +32,9 @@ run = "bun test --changed --bail --reporter=dots"
 [tasks.test-ci]
 description = "Run tests in ci mode"
 run = "bun test --bail --reporter=dots"
+[tasks.recreate-vitest-schema]
+description = "Create vitest config json schema from vitest types"
+run = "bunx typescript-json-schema ./packages/config/tsconfig.schema.json UserConfig --include './packages/config/node_modules/vitest/**/*.d.ts' > ./packages/config/vitest.schema.json"
 [tasks.publish-app-error]
 description = "Build and publishes @mkvlrn/app-error to npm and jsr"
 run = """
@@ -53,9 +56,6 @@ description = "Build and publishes @mkvlrn/config to npm and jsr"
 run = """
 echo "Clean..."
 rm -rf packages/config/dist
-
-echo "Building @mkvlrn/config..."
-bunx typescript-json-schema ./packages/config/tsconfig.schema.json UserConfig --include './packages/config/node_modules/vitest/**/*.d.ts' > ./packages/config/vitest.schema.json
 
 echo "Publishing @mkvlrn/config to npm..."
 (cd packages/config && npm publish --access public)
