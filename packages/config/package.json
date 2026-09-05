@@ -29,6 +29,6 @@
   },
   "devDependencies": {
     "typescript-json-schema": "0.68.0",
-    "vitest": "4.1.11"
+    "vitest": "5.0.0"
   }
 }
