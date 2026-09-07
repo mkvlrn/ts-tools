@@ -17,24 +17,31 @@ minimum_release_age = "1d"
 [tasks.lint]
 description = "Check files with biome"
 run = "biome check --diagnostic-level=warn --no-errors-on-unmatched"
+
 [tasks.lint-fix]
 description = "Fix files with biome"
 run = "biome check --diagnostic-level=warn --no-errors-on-unmatched --write"
+
 [tasks.typecheck]
 description = "Run tsc"
 run = "tsc"
+
 [tasks.test]
 description = "Run tests"
 run = "bun test --coverage"
+
 [tasks.test-staged]
 description = "Run tests on staged files"
 run = "bun test --changed --bail --reporter=dots"
+
 [tasks.test-ci]
 description = "Run tests in ci mode"
 run = "bun test --bail --reporter=dots"
+
 [tasks.recreate-vitest-schema]
 description = "Create vitest config json schema from vitest types"
 run = "bunx typescript-json-schema ./packages/config/tsconfig.schema.json UserConfig --include './packages/config/node_modules/vitest/**/*.d.ts' > ./packages/config/vitest.schema.json"
+
 [tasks.publish-app-error]
 description = "Build and publishes @mkvlrn/app-error to npm and jsr"
 run = """
@@ -51,6 +58,7 @@ echo "Publishing @mkvlrn/app-error to npm..."
 echo "Publishing @mkvlrn/app-error to jsr..."
 (cd packages/app-error && jsr publish)
 """
+
 [tasks.publish-config]
 description = "Build and publishes @mkvlrn/config to npm and jsr"
 run = """
@@ -63,6 +71,7 @@ echo "Publishing @mkvlrn/config to npm..."
 echo "Publishing @mkvlrn/config to jsr..."
 (cd packages/config && jsr publish)
 """
+
 [tasks.publish-result]
 description = "Build and publishes @mkvlrn/result to npm and jsr"
 run = """
@@ -79,6 +88,7 @@ echo "Publishing @mkvlrn/result to npm..."
 echo "Publishing @mkvlrn/result to jsr..."
 (cd packages/result && jsr publish)
 """
+
 [tasks.npm-dry-run]
 description = "NPM publish dry run"
 run = """
@@ -89,6 +99,7 @@ for dir in packages/*; do
   fi
 done
 """
+
 [tasks.jsr-dry-run]
 description = "JSR publish dry run"
 run = """
@@ -99,6 +110,7 @@ for dir in packages/*; do
   fi
 done
 """
+
 [tasks.sync-branch]
 description = "Sync package manager deps"
 run = """
