@@ -198,7 +198,7 @@ export type StatusPhrase =
   | "Unsupported Media Type"
   | "Range Not Satisfiable"
   | "Expectation Failed"
-  | "I'm A Teapot"
+  | "I'm a teapot"
   | "Misdirected Request"
   | "Unprocessable Content"
   | "Locked"
@@ -265,7 +265,7 @@ export const status = {
   415: ["UnsupportedMediaType", "Unsupported Media Type"],
   416: ["RangeNotSatisfiable", "Range Not Satisfiable"],
   417: ["ExpectationFailed", "Expectation Failed"],
-  418: ["ImATeapot", "I'm A Teapot"],
+  418: ["ImATeapot", "I'm a teapot"],
   421: ["MisdirectedRequest", "Misdirected Request"],
   422: ["UnprocessableContent", "Unprocessable Content"],
   423: ["Locked", "Locked"],
