@@ -156,7 +156,7 @@ for (const [codeAsString, [name, phrase]] of Object.entries(status)) {
  * // => "Not Found"
  * ```
  */
-export const httpStatus: Readonly<HttpStatus> = {
+export const httpStatus: Readonly<HttpStatus> = Object.freeze<HttpStatus>({
   codeFromName(name) {
     return codeByName[name];
   },
@@ -180,4 +180,4 @@ export const httpStatus: Readonly<HttpStatus> = {
   phraseFromName(name) {
     return phraseByCode[codeByName[name]];
   },
-};
+});
