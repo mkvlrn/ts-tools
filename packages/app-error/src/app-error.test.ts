@@ -108,6 +108,14 @@ describe("AppError.define - is", () => {
     expect(errors.is(error)).toBe(true);
   });
 
+  test("returns false for an AppError from a different mapping", () => {
+    // arrange
+    const otherErrors = AppError.define({ other: "BadGateway" });
+    const error = otherErrors.create("other", "wrong mapping");
+    // assert
+    expect(errors.is(error)).toBe(false);
+  });
+
   test("returns false for a plain Error", () => {
     // assert
     expect(errors.is(new Error("nope"))).toBe(false);
