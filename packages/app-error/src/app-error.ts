@@ -233,7 +233,9 @@ export class AppError<T extends string> extends Error {
       },
 
       is: (err: unknown): err is AppError<E> =>
-        err instanceof AppError && Object.hasOwn(mapping, err.errorCode),
+        err instanceof AppError &&
+        Object.hasOwn(mapping, err.errorCode) &&
+        err.statusName === mapping[err.errorCode as E],
     };
   }
 }
