@@ -7,7 +7,8 @@
   "author": "Mike Valeriano <mkvlrn@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "git@github.com:mkvlrn/ts-tools"
+    "url": "git+ssh://git@github.com/mkvlrn/ts-tools.git",
+    "directory": "packages/result"
   },
   "keywords": [
     "node",
