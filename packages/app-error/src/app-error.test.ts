@@ -31,6 +31,15 @@ describe("AppError class", () => {
     // assert
     expect(serialized.details).toBeUndefined();
   });
+
+  test("uses standard non-enumerable cause semantics", () => {
+    // arrange
+    const cause = new Error("root cause");
+    const error = errors.create("invalidInput", "invalid", cause);
+    // assert
+    expect(error.cause).toBe(cause);
+    expect(Object.prototype.propertyIsEnumerable.call(error, "cause")).toBe(false);
+  });
 });
 
 describe("AppError.define - create", () => {

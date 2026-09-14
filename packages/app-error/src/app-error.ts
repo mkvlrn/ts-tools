@@ -137,8 +137,7 @@ export class AppError<T extends string> extends Error {
    * @param cause Optional underlying error or additional failure context.
    */
   protected constructor(errorCode: T, statusCode: StatusCode, message: string, cause?: unknown) {
-    super(message);
-    this.cause = cause;
+    super(message, { cause });
     this.errorCode = errorCode;
     this.statusCode = statusCode;
     this.statusName = httpStatus.nameFromCode(statusCode);
