@@ -9,7 +9,9 @@ Aimed at modern, type-safe, non-spaghetti codebases in most node, bun, deno, nes
 ## Installation
 
 > [!NOTE]
-> This package is hosted both at [npm](https://npmjs.com) and [jsr](https://jsr.io), and is ESM **only**.
+> This package is hosted both at [npm](https://npmjs.com) and [JSR](https://jsr.io), and is ESM **only**.
+>
+> The exported configuration files are generated during publishing; editor-only schemas and repository source files are not included in the published package.
 
 <!-- x-release-please-start-version -->
 
