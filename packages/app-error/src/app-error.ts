@@ -100,13 +100,6 @@ export interface AppErrorFactory<T extends string> {
  */
 export class AppError<T extends string> extends Error {
   /**
-   * The error name identifier.
-   *
-   * Always equal to `"AppError"`.
-   */
-  override readonly name = "AppError";
-
-  /**
    * Application-specific error code.
    */
   readonly errorCode: T;
@@ -137,8 +130,13 @@ export class AppError<T extends string> extends Error {
    * @param cause Optional underlying error or additional failure context.
    */
   protected constructor(errorCode: T, statusCode: StatusCode, message: string, cause?: unknown) {
-    super(message);
-    this.cause = cause;
+    super(message, { cause });
+    Object.defineProperty(this, "name", {
+      configurable: true,
+      enumerable: false,
+      value: "AppError",
+      writable: true,
+    });
     this.errorCode = errorCode;
     this.statusCode = statusCode;
     this.statusName = httpStatus.nameFromCode(statusCode);
@@ -168,7 +166,7 @@ export class AppError<T extends string> extends Error {
    * ```
    */
   serialize(): {
-    errorCode: string;
+    errorCode: T;
     statusCode: StatusCode;
     statusName: StatusName;
     statusPhrase: StatusPhrase;
@@ -221,8 +219,15 @@ export class AppError<T extends string> extends Error {
    * ```
    */
   static define<E extends string>(mapping: Record<E, StatusName>): AppErrorFactory<E> {
+    const definedMapping = { ...mapping };
+
     function create(errorCode: E, message: string, cause?: unknown): AppError<E> {
-      return new AppError(errorCode, httpStatus.codeFromName(mapping[errorCode]), message, cause);
+      return new AppError(
+        errorCode,
+        httpStatus.codeFromName(definedMapping[errorCode]),
+        message,
+        cause,
+      );
     }
 
     return {
@@ -232,7 +237,10 @@ export class AppError<T extends string> extends Error {
         throw create(errorCode, message, cause);
       },
 
-      is: (err: unknown): err is AppError<E> => err instanceof AppError,
+      is: (err: unknown): err is AppError<E> =>
+        err instanceof AppError &&
+        Object.hasOwn(definedMapping, err.errorCode) &&
+        err.statusName === definedMapping[err.errorCode as E],
     };
   }
 }

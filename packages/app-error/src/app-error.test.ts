@@ -31,6 +31,15 @@ describe("AppError class", () => {
     // assert
     expect(serialized.details).toBeUndefined();
   });
+
+  test("uses standard non-enumerable cause semantics", () => {
+    // arrange
+    const cause = new Error("root cause");
+    const error = errors.create("invalidInput", "invalid", cause);
+    // assert
+    expect(error.cause).toBe(cause);
+    expect(Object.prototype.propertyIsEnumerable.call(error, "cause")).toBe(false);
+  });
 });
 
 describe("AppError.define - create", () => {
@@ -41,6 +50,7 @@ describe("AppError.define - create", () => {
     expect(error).toBeInstanceOf(Error);
     expect(error).toBeInstanceOf(AppError);
     expect(error.name).toBe("AppError");
+    expect(Object.prototype.propertyIsEnumerable.call(error, "name")).toBe(false);
     expect(error.errorCode).toBe("userNotFound");
     expect(error.statusCode).toBe(404);
     expect(error.statusPhrase).toBe("Not Found");
@@ -55,6 +65,18 @@ describe("AppError.define - create", () => {
     expect(error.errorCode).toBe("invalidInput");
     expect(error.statusCode).toBe(400);
     expect(error.statusPhrase).toBe("Bad Request");
+  });
+
+  test("does not change when the original mapping is mutated", () => {
+    // arrange
+    const mapping = { resource: "NotFound" as const };
+    const factory = AppError.define(mapping);
+    Object.assign(mapping, { resource: "BadGateway" });
+    // act
+    const error = factory.create("resource", "resource missing");
+    // assert
+    expect(error.statusName).toBe("NotFound");
+    expect(error.statusCode).toBe(404);
   });
 
   test("passes cause through to the created error", () => {
@@ -108,6 +130,22 @@ describe("AppError.define - is", () => {
     expect(errors.is(error)).toBe(true);
   });
 
+  test("returns false for an AppError from a different mapping", () => {
+    // arrange
+    const otherErrors = AppError.define({ other: "BadGateway" });
+    const error = otherErrors.create("other", "wrong mapping");
+    // assert
+    expect(errors.is(error)).toBe(false);
+  });
+
+  test("returns false for an AppError with a different status mapping", () => {
+    // arrange
+    const otherErrors = AppError.define({ userNotFound: "BadGateway" });
+    const error = otherErrors.create("userNotFound", "wrong status");
+    // assert
+    expect(errors.is(error)).toBe(false);
+  });
+
   test("returns false for a plain Error", () => {
     // assert
     expect(errors.is(new Error("nope"))).toBe(false);
@@ -150,5 +188,14 @@ describe("AppError type extraction", () => {
     const error = errors.create("userNotFound", "gone");
     // assert
     expectTypeOf(error).toExtend<Inferred>();
+  });
+
+  test("serialized error preserves the code union", () => {
+    // arrange
+    const error = errors.create("userNotFound", "gone");
+    // assert
+    expectTypeOf(error.serialize().errorCode).toEqualTypeOf<
+      "userNotFound" | "invalidInput" | "unauthorizedAccess"
+    >();
   });
 });

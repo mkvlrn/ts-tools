@@ -12,6 +12,10 @@ const testData = Object.entries(status).map(([code, [name, phrase]]) => ({
   phrase: StatusPhrase;
 }[];
 
+test("keeps the shared status utility immutable", () => {
+  expect(Object.isFrozen(httpStatus)).toBe(true);
+});
+
 test.each(testData)("lookup integrity for $name", ({ code, name, phrase }) => {
   expect(httpStatus.codeFromName(name)).toBe(code);
   expect(httpStatus.codeFromPhrase(phrase)).toBe(code);
