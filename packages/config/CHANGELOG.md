@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.0](https://github.com/mkvlrn/ts-tools/compare/config-v0.5.1...config-v0.6.0) (2026-09-14)
+
+
+### Features
+
+* **config:** document generated package artifacts ([70512ad](https://github.com/mkvlrn/ts-tools/commit/70512adaa164c30c58f042d7efc39606b445c0b3))
+
 ## [0.5.1](https://github.com/mkvlrn/ts-tools/compare/config-v0.5.0...config-v0.5.1) (2026-08-25)
 
 
