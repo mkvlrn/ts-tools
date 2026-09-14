@@ -1,6 +1,7 @@
 {
   "$schema": "https://biomejs.dev/schemas/latest/schema.json",
   "root": false,
+
   "assist": {
     "enabled": true,
     "actions": {
@@ -87,7 +88,7 @@
     {
       // test files, config files, and some scripts
       // should be able to import from node
-      "includes": ["**/*.config.ts", "**/*.test.ts", "**/*.spec.ts", "**/.config/*.ts"],
+      "includes": ["**/*.{config,test,spec}.{ts,tsx,mts}", "**/.config/*.{ts,tsx,mts}"],
       "linter": {
         "rules": {
           "correctness": {
@@ -98,7 +99,7 @@
     },
     {
       // config files should be able to export defaults as per tooling requirements
-      "includes": ["**/*.config.ts", "**/.config/*.ts"],
+      "includes": ["**/*.config.{ts,tsx,mts}", "**/.config/*.{ts,tsx,mts}"],
       "linter": {
         "rules": {
           "style": {
