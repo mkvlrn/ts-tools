@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.5](https://github.com/mkvlrn/ts-tools/compare/app-error-v0.4.4...app-error-v0.4.5) (2026-09-14)
+
+
+### Bug fixes
+
+* **app-error:** harden error handling and status utilities ([#73](https://github.com/mkvlrn/ts-tools/issues/73)) ([97cf525](https://github.com/mkvlrn/ts-tools/commit/97cf52515abcba0350611517d70b66efd50328c1))
+
 ## [0.4.4](https://github.com/mkvlrn/ts-tools/compare/app-error-v0.4.3...app-error-v0.4.4) (2026-08-25)
 
 
