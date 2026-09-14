@@ -95,6 +95,9 @@ run = """
 for dir in packages/*; do
   if [ -d "$dir" ]; then
     echo "Checking $dir"
+    if [ "$dir" = "packages/config" ]; then
+      (cd "$dir" && bun scripts/build.ts)
+    fi
     (cd "$dir" && bun publish --dry-run --access public --quiet)
   fi
 done
@@ -106,6 +109,9 @@ run = """
 for dir in packages/*; do
   if [ -d "$dir" ]; then
     echo "Checking $dir"
+    if [ "$dir" = "packages/config" ]; then
+      (cd "$dir" && bun scripts/build.ts)
+    fi
     (cd "$dir" && jsr publish --dry-run --quiet --allow-dirty)
   fi
 done
