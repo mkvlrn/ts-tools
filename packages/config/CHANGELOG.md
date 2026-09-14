@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.1](https://github.com/mkvlrn/ts-tools/compare/config-v0.6.0...config-v0.6.1) (2026-09-14)
+
+
+### Bug fixes
+
+* **config:** normalize repository metadata ([#70](https://github.com/mkvlrn/ts-tools/issues/70)) ([fed82c6](https://github.com/mkvlrn/ts-tools/commit/fed82c6386d8035b8add10f3ec41b3a6695e0823))
+
 ## [0.6.0](https://github.com/mkvlrn/ts-tools/compare/config-v0.5.1...config-v0.6.0) (2026-09-14)
 
 

@@ -17,11 +17,11 @@ Aimed at modern, type-safe, non-spaghetti codebases in most node, bun, deno, nes
 
 | Package manager | npm                              | JSR                                        |
 | --------------- | -------------------------------- | ------------------------------------------ |
-| Bun             | `bun add @mkvlrn/config -D`      | `bunx jsr add @mkvlrn/config@0.6.0 -D`     |
-| npm             | `npm install @mkvlrn/config -D`  | `npx jsr add @mkvlrn/config@0.6.0 -D`      |
-| pnpm            | `pnpm add @mkvlrn/config -D`     | `pnpm dlx jsr add @mkvlrn/config@0.6.0 -D` |
-| Yarn            | `yarn add @mkvlrn/config -D`     | `yarn dlx jsr add @mkvlrn/config@0.6.0 -D` |
-| Deno            | `deno add npm:@mkvlrn/config -D` | `deno add jsr:@mkvlrn/config@0.6.0 -D`     |
+| Bun             | `bun add @mkvlrn/config -D`      | `bunx jsr add @mkvlrn/config@0.6.1 -D`     |
+| npm             | `npm install @mkvlrn/config -D`  | `npx jsr add @mkvlrn/config@0.6.1 -D`      |
+| pnpm            | `pnpm add @mkvlrn/config -D`     | `pnpm dlx jsr add @mkvlrn/config@0.6.1 -D` |
+| Yarn            | `yarn add @mkvlrn/config -D`     | `yarn dlx jsr add @mkvlrn/config@0.6.1 -D` |
+| Deno            | `deno add npm:@mkvlrn/config -D` | `deno add jsr:@mkvlrn/config@0.6.1 -D`     |
 
 <!-- x-release-please-end -->
 
