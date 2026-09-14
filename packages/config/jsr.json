@@ -3,11 +3,11 @@
   "name": "@mkvlrn/config",
   "version": "0.5.1", // x-release-please-version
   "exports": {
-    "./biome": "./src/biome.json",
-    "./tsconfig": "./src/tsconfig.json",
-    "./vitest": "./src/vitest.config.json"
+    "./biome": "./dist/biome.json",
+    "./tsconfig": "./dist/tsconfig.json",
+    "./vitest": "./dist/vitest.config.json"
   },
   "publish": {
-    "exclude": ["**/biome.jsonc", "**/mkvlrn.omp.jsonc", "**/renovate.json"]
+    "include": ["dist", "README.md", "LICENSE", "CHANGELOG.md", "jsr.json", "package.json"]
   }
 }
