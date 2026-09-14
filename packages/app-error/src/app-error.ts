@@ -100,13 +100,6 @@ export interface AppErrorFactory<T extends string> {
  */
 export class AppError<T extends string> extends Error {
   /**
-   * The error name identifier.
-   *
-   * Always equal to `"AppError"`.
-   */
-  override readonly name = "AppError";
-
-  /**
    * Application-specific error code.
    */
   readonly errorCode: T;
@@ -138,6 +131,12 @@ export class AppError<T extends string> extends Error {
    */
   protected constructor(errorCode: T, statusCode: StatusCode, message: string, cause?: unknown) {
     super(message, { cause });
+    Object.defineProperty(this, "name", {
+      configurable: true,
+      enumerable: false,
+      value: "AppError",
+      writable: true,
+    });
     this.errorCode = errorCode;
     this.statusCode = statusCode;
     this.statusName = httpStatus.nameFromCode(statusCode);

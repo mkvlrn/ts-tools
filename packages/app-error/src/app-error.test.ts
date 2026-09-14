@@ -50,6 +50,7 @@ describe("AppError.define - create", () => {
     expect(error).toBeInstanceOf(Error);
     expect(error).toBeInstanceOf(AppError);
     expect(error.name).toBe("AppError");
+    expect(Object.prototype.propertyIsEnumerable.call(error, "name")).toBe(false);
     expect(error.errorCode).toBe("userNotFound");
     expect(error.statusCode).toBe(404);
     expect(error.statusPhrase).toBe("Not Found");
