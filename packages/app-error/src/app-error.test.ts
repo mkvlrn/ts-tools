@@ -57,6 +57,18 @@ describe("AppError.define - create", () => {
     expect(error.statusPhrase).toBe("Bad Request");
   });
 
+  test("does not change when the original mapping is mutated", () => {
+    // arrange
+    const mapping = { resource: "NotFound" as const };
+    const factory = AppError.define(mapping);
+    Object.assign(mapping, { resource: "BadGateway" });
+    // act
+    const error = factory.create("resource", "resource missing");
+    // assert
+    expect(error.statusName).toBe("NotFound");
+    expect(error.statusCode).toBe(404);
+  });
+
   test("passes cause through to the created error", () => {
     // arrange
     const cause = new TypeError("unexpected type");

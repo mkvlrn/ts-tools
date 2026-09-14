@@ -221,8 +221,15 @@ export class AppError<T extends string> extends Error {
    * ```
    */
   static define<E extends string>(mapping: Record<E, StatusName>): AppErrorFactory<E> {
+    const definedMapping = { ...mapping };
+
     function create(errorCode: E, message: string, cause?: unknown): AppError<E> {
-      return new AppError(errorCode, httpStatus.codeFromName(mapping[errorCode]), message, cause);
+      return new AppError(
+        errorCode,
+        httpStatus.codeFromName(definedMapping[errorCode]),
+        message,
+        cause,
+      );
     }
 
     return {
@@ -234,8 +241,8 @@ export class AppError<T extends string> extends Error {
 
       is: (err: unknown): err is AppError<E> =>
         err instanceof AppError &&
-        Object.hasOwn(mapping, err.errorCode) &&
-        err.statusName === mapping[err.errorCode as E],
+        Object.hasOwn(definedMapping, err.errorCode) &&
+        err.statusName === definedMapping[err.errorCode as E],
     };
   }
 }
