@@ -62,8 +62,8 @@ echo "Publishing @mkvlrn/app-error to jsr..."
 [tasks.publish-config]
 description = "Build and publishes @mkvlrn/config to npm and jsr"
 run = """
-echo "Clean..."
-rm -rf packages/config/dist
+echo "Building @mkvlrn/config..."
+bun packages/config/scripts/build.ts
 
 echo "Publishing @mkvlrn/config to npm..."
 (cd packages/config && npm publish --access public)
