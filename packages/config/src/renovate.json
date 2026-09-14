@@ -47,6 +47,13 @@
       // this is disabled by the best-practices preset, apparently
       "matchManagers": ["devcontainer"],
       "pinDigests": true
+    },
+    {
+      // lockfile maintenance strips lockfile snapshot metadata (ERR_PNPM_PACKAGE_MANAGER_MISSING_PACKAGE_METADATA)
+      // because renovate doesn't read pnpm version from devEngines.
+      // update in-place instead of deleting/rebuilding from scratch.
+      "matchUpdateTypes": ["lockFileMaintenance"],
+      "recreateWhen": "always"
     }
   ],
   "customManagers": [
