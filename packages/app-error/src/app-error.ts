@@ -168,7 +168,7 @@ export class AppError<T extends string> extends Error {
    * ```
    */
   serialize(): {
-    errorCode: string;
+    errorCode: T;
     statusCode: StatusCode;
     statusName: StatusName;
     statusPhrase: StatusPhrase;

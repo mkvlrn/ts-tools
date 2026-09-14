@@ -179,4 +179,13 @@ describe("AppError type extraction", () => {
     // assert
     expectTypeOf(error).toExtend<Inferred>();
   });
+
+  test("serialized error preserves the code union", () => {
+    // arrange
+    const error = errors.create("userNotFound", "gone");
+    // assert
+    expectTypeOf(error.serialize().errorCode).toEqualTypeOf<
+      "userNotFound" | "invalidInput" | "unauthorizedAccess"
+    >();
+  });
 });
