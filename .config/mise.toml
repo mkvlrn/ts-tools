@@ -95,9 +95,19 @@ run = """
 for dir in packages/*; do
   if [ -d "$dir" ]; then
     echo "Checking $dir"
-    if [ "$dir" = "packages/config" ]; then
-      (cd "$dir" && bun scripts/build.ts)
-    fi
+    case "$dir" in
+      packages/app-error)
+        bun build ./packages/app-error/src/main.ts --outdir ./packages/app-error/dist
+        tsc --declaration --emitDeclarationOnly --outDir packages/app-error/dist --module ESNext --moduleResolution Bundler packages/app-error/src/main.ts --ignoreConfig
+        ;;
+      packages/config)
+        (cd "$dir" && bun scripts/build.ts)
+        ;;
+      packages/result)
+        bun build ./packages/result/src/main.ts --outdir ./packages/result/dist
+        tsc --declaration --emitDeclarationOnly --outDir packages/result/dist --module ESNext --moduleResolution Bundler packages/result/src/main.ts --ignoreConfig
+        ;;
+    esac
     (cd "$dir" && bun publish --dry-run --access public --quiet)
   fi
 done
