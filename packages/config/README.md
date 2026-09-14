@@ -4,7 +4,7 @@
 
 Custom, opinionated configurations that can be used to extend your own biome, typescript, and vitest configs. Or just to serve as sane, strict defaults.
 
-Aimed at modern, type-safe, non-spaghetti codebases in most most node, bun, deno, nest, and react projects without changes, just by extending these configs.
+Aimed at modern, type-safe, non-spaghetti codebases in most node, bun, deno, nest, and react projects without changes, just by extending these configs.
 
 ## Installation
 
@@ -76,7 +76,7 @@ Create your configuration file:
 
 ```ts
 import { defineConfig, mergeConfig } from "vitest/config";
-import baseConfig from "@mkvlrn/config/vitest" with { type: "json" } // attention here, it is a json export
+import baseConfig from "@mkvlrn/config/vitest" with { type: "json" }; // attention here, it is a json export
 
 export default mergeConfig(
   baseConfig,
