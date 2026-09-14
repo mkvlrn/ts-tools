@@ -29,7 +29,7 @@ jobs:
         if: startsWith(github.event.release.tag_name, 'config-v')
         working-directory: ./packages/config
         run: |
-          bun install --ignore-scripts
+          bun install --frozen-lockfile --ignore-scripts
           mise publish-config
 
       - name: Publish result
