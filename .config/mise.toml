@@ -9,6 +9,9 @@ node = "26.8.2"
 [env]
 _.path = ["./node_modules/.bin"]
 
+[hooks]
+postinstall = "lefthook install"
+
 [settings]
 disable_backends = ["asdf"]
 use_versions_host = false
