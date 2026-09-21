@@ -25,7 +25,7 @@
         },
         "ArrayBuffer": {
             "properties": {
-                "__@toStringTag@1766": {
+                "__@toStringTag@1776": {
                     "const": "ArrayBuffer",
                     "type": "string"
                 },
@@ -3239,7 +3239,7 @@
                     "type": "boolean"
                 },
                 "exclude": {
-                    "default": "['**\\/node_modules/**', '**\\/dist/**', '**\\/cypress/**', '**\\/.{idea,git,cache,output,temp}/**', '**\\/{karma,rollup,webpack,vite,vitest,jest,ava,babel,nyc,cypress,tsup,build,eslint,prettier}.config.*']",
+                    "default": "['**\\/node_modules/**', '**\\/.git/**']",
                     "description": "Pattern for files that should not be treated as test files",
                     "items": {
                         "type": "string"
@@ -3454,7 +3454,7 @@
         },
         "Promise<U>": {
             "properties": {
-                "__@toStringTag@1766": {
+                "__@toStringTag@1776": {
                     "type": "string"
                 }
             },
@@ -3462,7 +3462,7 @@
         },
         "Promise<any>": {
             "properties": {
-                "__@toStringTag@1766": {
+                "__@toStringTag@1776": {
                     "type": "string"
                 }
             },
@@ -3470,7 +3470,7 @@
         },
         "PromiseConstructor": {
             "properties": {
-                "__@species@4301": {
+                "__@species@4311": {
                     "$ref": "#/definitions/PromiseConstructor"
                 },
                 "prototype": {
@@ -3723,7 +3723,7 @@
         },
         "SharedArrayBuffer": {
             "properties": {
-                "__@toStringTag@1766": {
+                "__@toStringTag@1776": {
                     "const": "SharedArrayBuffer",
                     "type": "string"
                 },
