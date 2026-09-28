@@ -160,7 +160,7 @@ mapfile -t renovate_branches < <(
     --jq '.[] | select(.headRefName | startswith("renovate/")) | .headRefName'
 )
 
-if [ "${#renovate_branches[@]}" -eq 0 ]; then
+if [ -z "${renovate_branches[*]:-}" ]; then
   echo "No open Renovate PRs found."
   git switch main
   git branch -D "$batch_branch"
