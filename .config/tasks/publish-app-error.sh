@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 #MISE description="Build and publishes @mkvlrn/app-error to npm and jsr"
+
 echo "Clean..."
 rm -rf packages/app-error/dist
 

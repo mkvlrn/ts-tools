@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 #MISE description="Build and publishes @mkvlrn/result to npm and jsr"
+
 echo "Clean..."
 rm -rf packages/result/dist
 

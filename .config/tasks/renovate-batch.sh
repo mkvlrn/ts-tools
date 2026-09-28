@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 #MISE description="Combine all open Renovate PRs into one PR"
+
 set -euo pipefail
 
 git fetch origin '+refs/heads/*:refs/remotes/origin/*'
@@ -44,7 +45,7 @@ printf '\033[1;32m╚═══════════════════�
 for branch in "${renovate_branches[@]}"; do
   echo
   echo "Merging $branch..."
-  git merge --no-ff --no-edit "origin/$branch"
+  git merge --no-ff -m "chore(deps): merge Renovate update for $branch" "origin/$branch"
 done
 
 git push -u origin "$batch_branch"

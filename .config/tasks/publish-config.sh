@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 #MISE description="Build and publishes @mkvlrn/config to npm and jsr"
+
 echo "Building @mkvlrn/config..."
 mise exec -- bun packages/config/scripts/build.ts
 
