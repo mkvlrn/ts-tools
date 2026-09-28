@@ -135,6 +135,7 @@ mise exec -- bun install --frozen-lockfile
 
 [renovate-batch]
 description = "Combine all open Renovate PRs into one PR"
+shell = "bash -c"
 run = """
 set -euo pipefail
 
