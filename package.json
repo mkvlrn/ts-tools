@@ -23,12 +23,12 @@
     "runtime": {
       "name": "bun",
       "version": "1.4.2",
-      "onFail": "warn"
+      "onFail": "ignore"
     },
     "packageManager": {
       "name": "bun",
       "version": "1.4.2",
-      "onFail": "warn"
+      "onFail": "ignore"
     }
   },
   "devDependencies": {
