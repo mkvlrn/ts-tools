@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.0](https://github.com/mkvlrn/ts-tools/compare/config-v0.6.1...config-v0.7.0) (2026-09-28)
+
+
+### Features
+
+* **renovate:** automate post-merge lockfile refresh ([ce16013](https://github.com/mkvlrn/ts-tools/commit/ce1601393d0689636c0cccd70db72114c81a76bd))
+
 ## [0.6.1](https://github.com/mkvlrn/ts-tools/compare/config-v0.6.0...config-v0.6.1) (2026-09-14)
 
 
