@@ -133,7 +133,7 @@ mise prune -y
 mise exec -- bun install --frozen-lockfile
 """
 
-[tasks.renovate-batch]
+[renovate-batch]
 description = "Combine all open Renovate PRs into one PR"
 run = """
 set -euo pipefail
