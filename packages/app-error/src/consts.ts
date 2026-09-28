@@ -254,6 +254,7 @@ export const status = {
   404: ["NotFound", "Not Found"],
   405: ["MethodNotAllowed", "Method Not Allowed"],
   406: ["NotAcceptable", "Not Acceptable"],
+  // biome-ignore lint/security/noSecrets: This is a public HTTP status name, not a secret.
   407: ["ProxyAuthenticationRequired", "Proxy Authentication Required"],
   408: ["RequestTimeout", "Request Timeout"],
   409: ["Conflict", "Conflict"],

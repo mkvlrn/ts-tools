@@ -3,6 +3,12 @@ import assert from "node:assert/strict";
 import { setTimeout } from "node:timers/promises";
 import { errResult, okResult, type Result, type ResultAsync } from "./main";
 
+const CUSTOM_ERROR_VALUE = 42;
+const SUCCESS_VALUE = 3;
+const DIVIDEND = 4;
+const DIVISOR = 2;
+const ZERO = 0;
+
 class CustomError extends Error {
   readonly customField: number;
   constructor(customField: number, message: string) {
@@ -24,16 +30,16 @@ async function longRunning(shouldFail: boolean): ResultAsync<number, CustomError
   await setTimeout(1);
 
   if (shouldFail) {
-    return errResult(new CustomError(42, "wrong"));
+    return errResult(new CustomError(CUSTOM_ERROR_VALUE, "wrong"));
   }
 
-  return okResult(3);
+  return okResult(SUCCESS_VALUE);
 }
 
 describe("default Error type", () => {
   test("ok result", () => {
     // act
-    const result = division(4, 2);
+    const result = division(DIVIDEND, DIVISOR);
     // assert
     assert(!result.isError);
     expect(result.value).toBe(2);
@@ -41,7 +47,7 @@ describe("default Error type", () => {
 
   test("error result", () => {
     // act
-    const result = division(4, 0);
+    const result = division(DIVIDEND, ZERO);
     // assert
     assert(result.isError);
     expect(result.error).toBeInstanceOf(Error);
@@ -55,7 +61,7 @@ describe("custom error", () => {
     const result = await longRunning(false);
     // assert
     assert(!result.isError);
-    expect(result.value).toBe(3);
+    expect(result.value).toBe(SUCCESS_VALUE);
   });
 
   test("error result", async () => {
@@ -65,6 +71,6 @@ describe("custom error", () => {
     assert(result.isError);
     expect(result.error).toBeInstanceOf(CustomError);
     expect(result.error.message).toBe("wrong");
-    expect(result.error.customField).toBe(42);
+    expect(result.error.customField).toBe(CUSTOM_ERROR_VALUE);
   });
 });

@@ -2,6 +2,11 @@ import { describe, expect, expectTypeOf, test } from "bun:test";
 import assert from "node:assert/strict";
 import { AppError } from "./app-error";
 
+const BAD_REQUEST_STATUS = 400;
+const NOT_FOUND_STATUS = 404;
+const UNAUTHORIZED_STATUS = 401;
+const NON_ERROR_VALUE = 42;
+
 const errors = AppError.define({
   userNotFound: "NotFound",
   invalidInput: "BadRequest",
@@ -52,7 +57,7 @@ describe("AppError.define - create", () => {
     expect(error.name).toBe("AppError");
     expect(Object.prototype.propertyIsEnumerable.call(error, "name")).toBe(false);
     expect(error.errorCode).toBe("userNotFound");
-    expect(error.statusCode).toBe(404);
+    expect(error.statusCode).toBe(NOT_FOUND_STATUS);
     expect(error.statusPhrase).toBe("Not Found");
     expect(error.message).toBe("no such user");
     expect(error.cause).toBeUndefined();
@@ -63,7 +68,7 @@ describe("AppError.define - create", () => {
     const error = errors.create("invalidInput", "missing field");
     // assert
     expect(error.errorCode).toBe("invalidInput");
-    expect(error.statusCode).toBe(400);
+    expect(error.statusCode).toBe(BAD_REQUEST_STATUS);
     expect(error.statusPhrase).toBe("Bad Request");
   });
 
@@ -76,7 +81,7 @@ describe("AppError.define - create", () => {
     const error = factory.create("resource", "resource missing");
     // assert
     expect(error.statusName).toBe("NotFound");
-    expect(error.statusCode).toBe(404);
+    expect(error.statusCode).toBe(NOT_FOUND_STATUS);
   });
 
   test("passes cause through to the created error", () => {
@@ -103,7 +108,7 @@ describe("AppError.define - throw", () => {
     } catch (error) {
       expect(error).toBeInstanceOf(AppError);
       expect((error as AppError<string>).errorCode).toBe("unauthorizedAccess");
-      expect((error as AppError<string>).statusCode).toBe(401);
+      expect((error as AppError<string>).statusCode).toBe(UNAUTHORIZED_STATUS);
       expect((error as AppError<string>).statusPhrase).toBe("Unauthorized");
       expect((error as AppError<string>).message).toBe("bad token");
     }
@@ -156,7 +161,7 @@ describe("AppError.define - is", () => {
     expect(errors.is(null)).toBe(false);
     expect(errors.is(undefined)).toBe(false);
     expect(errors.is("string")).toBe(false);
-    expect(errors.is(42)).toBe(false);
+    expect(errors.is(NON_ERROR_VALUE)).toBe(false);
     expect(errors.is({})).toBe(false);
   });
 

@@ -4,8 +4,9 @@ import { cp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 
 declare const Bun: {
+  // biome-ignore lint/style/useNamingConvention: Bun exposes this API as JSON5.
   JSON5: {
-    parse(source: string): unknown;
+    parse: (source: string) => unknown;
   };
 };
 
