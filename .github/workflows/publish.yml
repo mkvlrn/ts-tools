@@ -23,17 +23,17 @@ jobs:
         working-directory: ./packages/app-error
         run: |
           bun install --production --ignore-scripts
-          mise publish-app-error
+          mise run publish-app-error
 
       - name: Publish config
         if: startsWith(github.event.release.tag_name, 'config-v')
         working-directory: ./packages/config
         run: |
           bun install --frozen-lockfile --ignore-scripts
-          mise publish-config
+          mise run publish-config
 
       - name: Publish result
         if: startsWith(github.event.release.tag_name, 'result-v')
         working-directory: ./packages/result
         run: |
-          mise publish-result
+          mise run publish-result

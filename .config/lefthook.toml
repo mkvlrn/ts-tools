@@ -1,20 +1,20 @@
 [commit-msg.commands]
-cog-lint = { run = "mise exec -- cog verify --file {1}" }
+cog-lint = { run = "mise run cog-lint {1}" }
 
 [pre-commit.commands]
-lint = { glob = "*.{ts,tsx,json,jsonc}", run = "mise lint {staged_files}" }
-typecheck = { glob = "*.{ts,tsx}", run = "mise typecheck" }
-test = { glob = "*.{ts,tsx}", run = "mise test-staged" }
+lint = { glob = "*.{ts,tsx,json,jsonc}", run = "mise run lint -- {staged_files}" }
+typecheck = { glob = "*.{ts,tsx}", run = "mise run typecheck" }
+test = { glob = "*.{ts,tsx}", run = "mise run test-staged" }
 
 [pre-push.commands]
-typecheck = { run = "mise typecheck" }
-lint = { run = "mise lint" }
-test = { run = "mise test-ci" }
-jsr-dry-run = { run = "mise jsr-dry-run" }
-npm-dry-run = { run = "mise npm-dry-run" }
+typecheck = { run = "mise run typecheck" }
+lint = { run = "mise run lint" }
+test = { run = "mise run test-ci" }
+jsr-dry-run = { run = "mise run jsr-dry-run" }
+npm-dry-run = { run = "mise run npm-dry-run" }
 
 [post-checkout.commands]
-sync = { run = "mise sync-branch" }
+sync = { run = "mise run sync-branch" }
 
 [post-merge.commands]
-sync = { run = "mise sync-branch" }
+sync = { run = "mise run sync-branch" }

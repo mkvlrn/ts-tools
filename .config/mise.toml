@@ -10,7 +10,7 @@ node = "26.10.0"
 _.path = ["./node_modules/.bin"]
 
 [hooks]
-postinstall = "mise exec -- lefthook install"
+postinstall = "mise run postinstall-hook"
 
 [settings]
 disable_backends = ["asdf"]
