@@ -18,4 +18,4 @@ use_versions_host = false
 minimum_release_age = "1d"
 
 [task_config]
-includes = ["./.config/tasks.toml"]
+includes = [".config/tasks"]
