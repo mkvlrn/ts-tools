@@ -2,7 +2,6 @@
   "$schema": "../vitest.schema.json",
   "test": {
     "include": ["**/*.{test,spec}.{ts,tsx,mts}"],
-
     "watch": false,
     "reporters": ["tree"],
     "coverage": {

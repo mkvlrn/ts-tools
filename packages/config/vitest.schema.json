@@ -9,12 +9,12 @@
                 {
                     "properties": {
                         "allowExec": {
-                            "default": "true if `api.host` is exposed to network, false otherwise",
+                            "default": "false if `api.host` is exposed to network, true otherwise",
                             "description": "Allow running test files via the API.\nIf `api.host` is exposed to network and `allowWrite` is true,\nanyone connected to the API server can run arbitrary code on your machine.",
                             "type": "boolean"
                         },
                         "allowWrite": {
-                            "default": "true if `api.host` is exposed to network, false otherwise",
+                            "default": "false if `api.host` is exposed to network, true otherwise",
                             "description": "Allow any write operations from the API server.",
                             "type": "boolean"
                         }
@@ -1993,7 +1993,7 @@
                     ]
                 },
                 "watch": {
-                    "default": "!process.env.CI",
+                    "default": "!process.env.CI && process.stdin.isTTY && !isAgent",
                     "description": "Watch mode",
                     "type": "boolean"
                 },
@@ -2750,7 +2750,7 @@
                 },
                 "setupFiles": {
                     "$ref": "#/definitions/SequenceSetupFiles",
-                    "default": "'parallel'",
+                    "default": "'list'",
                     "description": "Defines how setup files should be ordered\n- 'parallel' will run all setup files in parallel\n- 'list' will run all setup files in the order they are defined in the config file"
                 }
             },
@@ -3638,7 +3638,7 @@
                 },
                 "setupFiles": {
                     "$ref": "#/definitions/SequenceSetupFiles",
-                    "default": "'parallel'",
+                    "default": "'list'",
                     "description": "Defines how setup files should be ordered\n- 'parallel' will run all setup files in parallel\n- 'list' will run all setup files in the order they are defined in the config file"
                 },
                 "shuffle": {
@@ -4239,7 +4239,7 @@
                     "type": "boolean"
                 },
                 "exclude": {
-                    "default": [],
+                    "default": "['**\\/node_modules/**', '**\\/.git/**']",
                     "description": "Exclude globs for benchmark test files",
                     "items": {
                         "type": "string"
@@ -4338,7 +4338,7 @@
                             "type": "string"
                         },
                         "exact": {
-                            "default": false,
+                            "default": true,
                             "description": "Should locators match the text exactly by default",
                             "type": "boolean"
                         },
@@ -4905,7 +4905,7 @@
                             "type": "string"
                         },
                         "exact": {
-                            "default": false,
+                            "default": true,
                             "description": "Should locators match the text exactly by default",
                             "type": "boolean"
                         },
