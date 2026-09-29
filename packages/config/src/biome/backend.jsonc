@@ -1,17 +1,93 @@
 {
+  "$schema": "https://biomejs.dev/schemas/latest/schema.json",
+  "root": false,
+
+  "assist": {
+    "enabled": true,
+    "actions": {
+      "source": {
+        "organizeImports": "on",
+        "useSortedAttributes": "off",
+        "useSortedKeys": "off",
+        "useSortedProperties": "off"
+      }
+    }
+  },
+  "json": {
+    "parser": { "allowComments": true },
+    "formatter": { "enabled": true }
+  },
   "javascript": {
     // for nest decorators
-    "parser": { "unsafeParameterDecoratorsEnabled": true }
+    "parser": { "unsafeParameterDecoratorsEnabled": true },
+    "formatter": { "enabled": true }
+  },
+  "css": {
+    "parser": { "tailwindDirectives": true },
+    "formatter": { "enabled": true }
+  },
+  "html": {
+    "experimentalFullSupportEnabled": true,
+    "formatter": { "enabled": true }
+  },
+  "formatter": {
+    "enabled": true,
+    "formatWithErrors": true,
+    "lineEnding": "lf",
+    "lineWidth": 100,
+    "indentStyle": "space",
+    "indentWidth": 2
   },
   "linter": {
+    "enabled": true,
+    "domains": {
+      "next": "none",
+      "playwright": "none",
+      "project": "recommended",
+      "qwik": "none",
+      "react": "none",
+      "solid": "none",
+      "test": "recommended",
+      "turborepo": "none",
+      "types": "recommended",
+      "vue": "none"
+    },
     "rules": {
+      "a11y": {
+        "preset": "none"
+      },
+      "complexity": {
+        "preset": "all",
+        // because of typescript's noPropertyAccessFromIndexSignature
+        "useLiteralKeys": "off"
+      },
+      "correctness": {
+        "preset": "all",
+        // path alias already uses ts extensions
+        "useImportExtensions": "off",
+        // let editor resolve imports
+        "noUnresolvedImports": "off",
+        // path aliases and/or node exports will take care of this
+        "noNodejsModules": "off"
+      },
+      "nursery": {
+        "preset": "none"
+      },
       "performance": {
         "preset": "all",
         "noNamespaceImport": "off"
       },
+      "security": {
+        "preset": "all"
+      },
       "style": {
         "preset": "all",
+        // this is a silly rule
+        "useExportsLast": "off",
         "noDefaultExport": "off"
+      },
+      "suspicious": {
+        "preset": "all"
       }
     }
   }

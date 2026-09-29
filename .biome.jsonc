@@ -1,10 +1,7 @@
 {
   "$schema": "https://biomejs.dev/schemas/latest/schema.json",
   "root": true,
-  "extends": [
-    "./packages/config/src/biome/common.jsonc",
-    "./packages/config/src/biome/backend.jsonc"
-  ],
+  "extends": ["./packages/config/src/biome/backend.jsonc"],
   "files": {
     "ignoreUnknown": true,
     "includes": ["**", "!**/node_modules/**/*", "!!**/dist/**/*", "!!**/vitest.schema.json"]

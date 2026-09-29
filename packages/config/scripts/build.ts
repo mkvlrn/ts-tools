@@ -1,5 +1,4 @@
 import { cp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
-
 import { join } from "node:path";
 
 declare const Bun: {
@@ -22,36 +21,39 @@ const readBiomeConfig = async (name: string) =>
 const isRecord = (value: unknown): value is Record<string, unknown> =>
   typeof value === "object" && value !== null && !Array.isArray(value);
 
+const mergeValues = (currentValue: unknown, value: unknown): unknown => {
+  if (isRecord(currentValue) && isRecord(value)) {
+    return mergeConfigs(currentValue, value);
+  }
+
+  if (Array.isArray(currentValue) && Array.isArray(value)) {
+    return [...currentValue, ...value];
+  }
+
+  return value;
+};
+
 const mergeConfigs = (...configs: unknown[]): Record<string, unknown> => {
   const result: Record<string, unknown> = {};
 
   for (const config of configs) {
-    if (!isRecord(config)) {
-      continue;
-    }
-
-    for (const [key, value] of Object.entries(config)) {
-      const currentValue = result[key];
-      result[key] =
-        isRecord(currentValue) && isRecord(value)
-          ? mergeConfigs(currentValue, value)
-          : Array.isArray(currentValue) && Array.isArray(value)
-            ? [...currentValue, ...value]
-            : value;
+    if (isRecord(config)) {
+      for (const [key, value] of Object.entries(config)) {
+        result[key] = mergeValues(result[key], value);
+      }
     }
   }
 
   return result;
 };
 
-const [commonBiomeConfig, backendBiomeConfig, reactBiomeConfig] = await Promise.all([
-  readBiomeConfig("common"),
+const [backendBiomeConfig, reactBiomeConfig] = await Promise.all([
   readBiomeConfig("backend"),
   readBiomeConfig("react"),
 ]);
 
-const backendConfig = mergeConfigs(commonBiomeConfig, backendBiomeConfig);
-const reactConfig = mergeConfigs(commonBiomeConfig, reactBiomeConfig);
+const backendConfig = backendBiomeConfig;
+const reactConfig = mergeConfigs(backendBiomeConfig, reactBiomeConfig);
 
 await Promise.all([
   writeFile(

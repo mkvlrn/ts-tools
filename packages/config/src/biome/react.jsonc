@@ -6,6 +6,12 @@
     "rules": {
       "a11y": {
         "preset": "all"
+      },
+      "performance": {
+        "preset": "all"
+      },
+      "style": {
+        "preset": "all"
       }
     }
   },
@@ -14,6 +20,9 @@
       "includes": ["**/*.config.{ts,tsx,mts}", "**/.config/*.{ts,tsx,mts}"],
       "linter": {
         "rules": {
+          "correctness": {
+            "noNodejsModules": "off"
+          },
           "style": {
             // config files should be able to export defaults as per tooling requirements
             "noDefaultExport": "off"
