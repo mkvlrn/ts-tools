@@ -62,7 +62,9 @@
       "correctness": {
         "preset": "all",
         // let editor resolve imports
-        "noUnresolvedImports": "off"
+        "noUnresolvedImports": "off",
+        // path aliases and/or node exports will take care of this
+        "useImportExtensions": "off"
       },
       "nursery": {
         "preset": "none"
