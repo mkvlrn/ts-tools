@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.8.0](https://github.com/mkvlrn/ts-tools/compare/config-v0.7.0...config-v0.8.0) (2026-09-29)
+
+
+### Features
+
+* **config:** split biome config into backend and react variants ([ca6e3f5](https://github.com/mkvlrn/ts-tools/commit/ca6e3f5d70eeeb1d0b53c53fc46db417ac829d27))
+
+
+### Bug fixes
+
+* **config:** update vitest schema defaults to match runtime ([0d1302a](https://github.com/mkvlrn/ts-tools/commit/0d1302ae34d7b76505b000e949560ddf11d3db19))
+
 ## [0.7.0](https://github.com/mkvlrn/ts-tools/compare/config-v0.6.1...config-v0.7.0) (2026-09-28)
 
 
