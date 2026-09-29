@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.9.0](https://github.com/mkvlrn/ts-tools/compare/config-v0.8.0...config-v0.9.0) (2026-09-29)
+
+
+### Features
+
+* **config:** consolidate biome common into backend ([79c7799](https://github.com/mkvlrn/ts-tools/commit/79c779975de343de8330237f37ea872f359984aa))
+
+
+### Bug fixes
+
+* **biome:** disable useImportExtensions rule ([dafdebe](https://github.com/mkvlrn/ts-tools/commit/dafdebecdab084b7c259e5d631ce4e14fa97bbec))
+
 ## [0.8.0](https://github.com/mkvlrn/ts-tools/compare/config-v0.7.0...config-v0.8.0) (2026-09-29)
 
 
