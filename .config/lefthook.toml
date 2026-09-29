@@ -1,5 +1,5 @@
 [commit-msg.commands]
-cog-lint = { run = "mise run commitlint {1}" }
+commitlint = { run = "mise run commitlint {1}" }
 
 [pre-commit.commands]
 lint = { glob = "*.{ts,tsx,json,jsonc}", run = "mise run lint -- {staged_files}" }
