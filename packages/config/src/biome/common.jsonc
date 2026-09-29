@@ -18,8 +18,6 @@
     "formatter": { "enabled": true }
   },
   "javascript": {
-    // for nest decorators
-    "parser": { "unsafeParameterDecoratorsEnabled": true },
     "formatter": { "enabled": true }
   },
   "css": {
@@ -45,7 +43,7 @@
       "playwright": "none",
       "project": "recommended",
       "qwik": "none",
-      "react": "recommended",
+      "react": "none",
       "solid": "none",
       "test": "recommended",
       "turborepo": "none",
@@ -53,57 +51,48 @@
       "vue": "none"
     },
     "rules": {
-      "a11y": "on",
-      "complexity": "on",
-      "correctness": "on",
-      "nursery": "off",
-      "performance": "on",
-      "security": "on",
-      "style": "on",
-      "suspicious": "on"
+      "a11y": {
+        "preset": "none"
+      },
+      "complexity": {
+        "preset": "all",
+        // because of typescript's noPropertyAccessFromIndexSignature
+        "useLiteralKeys": "off"
+      },
+      "correctness": {
+        "preset": "all",
+        // let editor resolve imports
+        "noUnresolvedImports": "off"
+      },
+      "nursery": {
+        "preset": "none"
+      },
+      "performance": {
+        "preset": "all"
+      },
+      "security": {
+        "preset": "all"
+      },
+      "style": {
+        "preset": "all",
+        // this is a silly rule
+        "useExportsLast": "off"
+      },
+      "suspicious": {
+        "preset": "all"
+      }
     }
   },
   "overrides": [
     {
-      "includes": ["**/*"],
-      "linter": {
-        "rules": {
-          "complexity": {
-            // because of typescript's noPropertyAccessFromIndexSignature
-            "useLiteralKeys": "off"
-          },
-          "correctness": {
-            // path alias already uses ts extensions
-            "useImportExtensions": "off",
-            // let editor resolve imports
-            "noUnresolvedImports": "off"
-          },
-          "style": {
-            // this is a silly rule
-            "useExportsLast": "off"
-          }
-        }
-      }
-    },
-    {
-      // test files, config files, and some scripts
-      // should be able to import from node
       "includes": ["**/*.{config,test,spec}.{ts,tsx,mts}", "**/.config/*.{ts,tsx,mts}"],
       "linter": {
         "rules": {
           "correctness": {
+            // path alias already uses ts extensions
+            "useImportExtensions": "off",
+            // test files, config files, and some scripts should be able to import from node
             "noNodejsModules": "off"
-          }
-        }
-      }
-    },
-    {
-      // config files should be able to export defaults as per tooling requirements
-      "includes": ["**/*.config.{ts,tsx,mts}", "**/.config/*.{ts,tsx,mts}"],
-      "linter": {
-        "rules": {
-          "style": {
-            "noDefaultExport": "off"
           }
         }
       }

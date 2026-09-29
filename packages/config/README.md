@@ -31,6 +31,11 @@ Obs: Biome, TypeScript, and Vitest need to be installed separately and be availa
 
 ### biome (biome.json / biome.jsonc)
 
+Two Biome configurations are available:
+
+- `@mkvlrn/config/biome/backend` for backend projects, including Nest decorator support.
+- `@mkvlrn/config/biome/react` for React projects, including accessibility rules.
+
 Create your configuration file:
 
 <details>
@@ -40,7 +45,7 @@ Create your configuration file:
 {
   "$schema": "node_modules/@biomejs/biome/configuration_schema.json",
   "root": true, // if this is the root of your project, false otherwise
-  "extends": ["@mkvlrn/config/biome"],
+  "extends": ["@mkvlrn/config/biome/backend"], // or @mkvlrn/config/biome/react
   "overrides": [
     // any overrides, see biome docs
   ],

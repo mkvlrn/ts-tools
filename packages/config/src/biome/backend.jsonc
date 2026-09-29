@@ -1,0 +1,18 @@
+{
+  "javascript": {
+    // for nest decorators
+    "parser": { "unsafeParameterDecoratorsEnabled": true }
+  },
+  "linter": {
+    "rules": {
+      "performance": {
+        "preset": "all",
+        "noNamespaceImport": "off"
+      },
+      "style": {
+        "preset": "all",
+        "noDefaultExport": "off"
+      }
+    }
+  }
+}

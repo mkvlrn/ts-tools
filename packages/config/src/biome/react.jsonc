@@ -1,0 +1,25 @@
+{
+  "linter": {
+    "domains": {
+      "react": "recommended"
+    },
+    "rules": {
+      "a11y": {
+        "preset": "all"
+      }
+    }
+  },
+  "overrides": [
+    {
+      "includes": ["**/*.config.{ts,tsx,mts}", "**/.config/*.{ts,tsx,mts}"],
+      "linter": {
+        "rules": {
+          "style": {
+            // config files should be able to export defaults as per tooling requirements
+            "noDefaultExport": "off"
+          }
+        }
+      }
+    }
+  ]
+}
