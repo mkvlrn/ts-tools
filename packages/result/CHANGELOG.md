@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/mkvlrn/ts-tools/compare/result-v0.3.5...result-v0.4.0) (2026-09-30)
+
+
+### Features
+
+* **result:** replace helper fns with Result APIs ([41de604](https://github.com/mkvlrn/ts-tools/commit/41de604a62ca3a913fd3e1c83aa12638ea6b826a))
+
 ## [0.3.5](https://github.com/mkvlrn/ts-tools/compare/result-v0.3.4...result-v0.3.5) (2026-08-25)
 
 
