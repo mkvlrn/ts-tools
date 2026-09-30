@@ -1,7 +1,12 @@
 import { describe, expect, test } from "bun:test";
 import assert from "node:assert/strict";
 import { setTimeout } from "node:timers/promises";
-import { errResult, okResult, type Result, type ResultAsync } from "./main";
+import {
+  Result,
+  ResultAsync,
+  type ResultAsync as ResultAsyncType,
+  type Result as ResultType,
+} from "./main";
 
 const CUSTOM_ERROR_VALUE = 42;
 const SUCCESS_VALUE = 3;
@@ -18,22 +23,22 @@ class CustomError extends Error {
   }
 }
 
-function division(a: number, b: number): Result<number, Error> {
+function division(a: number, b: number): ResultType<number, Error> {
   if (b === 0) {
-    return errResult(new Error("cannot divide by zero"));
+    return Result.err(new Error("cannot divide by zero"));
   }
 
-  return okResult(a / b);
+  return Result.ok(a / b);
 }
 
-async function longRunning(shouldFail: boolean): ResultAsync<number, CustomError> {
+async function longRunning(shouldFail: boolean): ResultAsyncType<number, CustomError> {
   await setTimeout(1);
 
   if (shouldFail) {
-    return errResult(new CustomError(CUSTOM_ERROR_VALUE, "wrong"));
+    return ResultAsync.err(new CustomError(CUSTOM_ERROR_VALUE, "wrong"));
   }
 
-  return okResult(SUCCESS_VALUE);
+  return ResultAsync.ok(SUCCESS_VALUE);
 }
 
 describe("default Error type", () => {

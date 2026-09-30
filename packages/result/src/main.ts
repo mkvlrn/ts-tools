@@ -10,22 +10,46 @@ export type Result<T, E extends Error> =
  */
 export type ResultAsync<T, E extends Error> = Promise<Result<T, E>>;
 
-/**
- * Creates a successful Result with the given value.
- *
- * @param value The value indicating success
- * @returns A successful Result object
- */
-export function okResult<T>(value: T): Result<T, never> {
-  return { isError: false, value };
-}
+export const Result = {
+  /**
+   * Creates a successful Result with the given value.
+   *
+   * @param value The value indicating success
+   * @returns A successful Result object
+   */
+  ok<T>(value: T): Result<T, never> {
+    return { isError: false, value };
+  },
 
-/**
- * Creates an error Result with the given error.
- *
- * @param error The error instance indicating failure
- * @returns An error Result object
- */
-export function errResult<E extends Error>(error: E): Result<never, E> {
-  return { isError: true, error };
-}
+  /**
+   * Creates an error Result with the given error.
+   *
+   * @param error The error instance indicating failure
+   * @returns An error Result object
+   */
+  err<E extends Error>(error: E): Result<never, E> {
+    return { isError: true, error };
+  },
+};
+
+export const ResultAsync = {
+  /**
+   * Creates a Promise containing a successful Result with the given value.
+   *
+   * @param value The value indicating success
+   * @returns A Promise containing a successful Result object
+   */
+  ok<T>(value: T): ResultAsync<T, never> {
+    return Promise.resolve({ isError: false, value });
+  },
+
+  /**
+   * Creates a Promise containing an error Result with the given error.
+   *
+   * @param error The error instance indicating failure
+   * @returns A Promise containing an error Result object
+   */
+  err<E extends Error>(error: E): ResultAsync<never, E> {
+    return Promise.resolve({ isError: true, error });
+  },
+};

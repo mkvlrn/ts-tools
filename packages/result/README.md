@@ -10,7 +10,7 @@ No `.map()`, no `.flatMap()`, no `.andThen()`, no `.orElse()`, no `.unwrap()`, n
 
 There are dozens of Result pattern libraries for TypeScript. Nearly all of them bolt on method chaining, transformation pipelines, and functional programming utilities that turn a simple concept into an entire paradigm.
 
-This package does **one thing**: gives you a type-safe `Result<T, E>` or `ResultAsync<T, E>` discriminated union with `okResult()` and `errResult()` constructors. You use `if/else` to handle it. TypeScript narrows the type for you. That's the whole API.
+This package does **one thing**: gives you a type-safe `Result<T, E>` or `ResultAsync<T, E>` discriminated union with `Result.ok()`/`Result.err()` and `ResultAsync.ok()`/`ResultAsync.err()` constructors. You use `if/else` to handle it. TypeScript narrows the type for you. That's the whole API.
 
 If you need `.map().flatMap().andThen().orElse().unwrapOr()` chains, use [neverthrow](https://github.com/supermacro/neverthrow) or [ts-results](https://github.com/vultix/ts-results). They're good libraries. This isn't that.
 
@@ -37,15 +37,17 @@ If you need `.map().flatMap().andThen().orElse().unwrapOr()` chains, use [nevert
 | ------------------- | ----------------------------------------------------------------------------------- |
 | `Result<T, E>`      | Synchronous Result type (`{ isError: false, value }` or `{ isError: true, error }`) |
 | `ResultAsync<T, E>` | Asynchronous Result type (`Promise<Result<T, E>>`)                                  |
-| `okResult(value)`   | Creates a successful Result object                                                  |
-| `errResult(error)`  | Creates an error Result object                                                      |
+| `Result.ok(value)`   | Creates a successful Result object                                                  |
+| `Result.err(error)`  | Creates an error Result object                                                      |
+| `ResultAsync.ok(value)`   | Creates a Promise containing a successful Result object                         |
+| `ResultAsync.err(error)`  | Creates a Promise containing an error Result object                             |
 
 That's it. That's the whole thing.
 
 ## Usage
 
 ```typescript
-import { Result, ResultAsync, okResult, errResult } from "@mkvlrn/result";
+import { Result, ResultAsync } from "@mkvlrn/result";
 ```
 
 ### Create results, check results
@@ -53,10 +55,10 @@ import { Result, ResultAsync, okResult, errResult } from "@mkvlrn/result";
 ```typescript
 function divide(a: number, b: number): Result<number, Error> {
   if (b === 0) {
-    return errResult(new Error("Division by zero"));
+    return Result.err(new Error("Division by zero"));
   }
 
-  return okResult(a / b);
+  return Result.ok(a / b);
 }
 
 const result = divide(10, 2);
@@ -76,13 +78,13 @@ async function fetchUser(id: number): ResultAsync<User, Error> {
   try {
     const response = await fetch(`/api/users/${id}`);
     if (!response.ok) {
-      return errResult(new Error(`HTTP ${response.status}`));
+      return ResultAsync.err(new Error(`HTTP ${response.status}`));
     }
     const user = await response.json();
 
-    return okResult(user);
+    return ResultAsync.ok(user);
   } catch (error) {
-    return errResult(error instanceof Error ? error : new Error("Unknown error"));
+    return ResultAsync.err(error instanceof Error ? error : new Error("Unknown error"));
   }
 }
 ```
@@ -104,10 +106,10 @@ class ValidationError extends Error {
 
 function validateEmail(email: string): Result<string, ValidationError> {
   if (!email.includes("@")) {
-    return errResult(new ValidationError(400, "bad-email"));
+    return Result.err(new ValidationError(400, "bad-email"));
   }
 
-  return okResult(email);
+  return Result.ok(email);
 }
 
 const result = validateEmail("invalid-email");
