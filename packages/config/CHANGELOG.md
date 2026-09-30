@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.2](https://github.com/mkvlrn/ts-tools/compare/config-v0.9.1...config-v0.9.2) (2026-09-30)
+
+
+### Bug fixes
+
+* **result:** republish package ([173cc90](https://github.com/mkvlrn/ts-tools/commit/173cc909ccf4d5bf3d2aeada547d2bc7c12097a2))
+
 ## [0.9.1](https://github.com/mkvlrn/ts-tools/compare/config-v0.9.0...config-v0.9.1) (2026-09-30)
 
 
