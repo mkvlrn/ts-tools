@@ -10,7 +10,17 @@ export type Result<T, E extends Error> =
  */
 export type ResultAsync<T, E extends Error> = Promise<Result<T, E>>;
 
-export const Result = {
+type ResultFactory = {
+  ok<T>(value: T): Result<T, never>;
+  err<E extends Error>(error: E): Result<never, E>;
+};
+
+type ResultAsyncFactory = {
+  ok<T>(value: T): ResultAsync<T, never>;
+  err<E extends Error>(error: E): ResultAsync<never, E>;
+};
+
+export const Result: ResultFactory = {
   /**
    * Creates a successful Result with the given value.
    *
@@ -32,7 +42,7 @@ export const Result = {
   },
 };
 
-export const ResultAsync = {
+export const ResultAsync: ResultAsyncFactory = {
   /**
    * Creates a Promise containing a successful Result with the given value.
    *
