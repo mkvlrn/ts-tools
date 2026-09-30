@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #MISE description="Build and publishes @mkvlrn/app-error to npm and jsr"
 
-mise exec -- bun install --production --ignore-scripts
+mise exec -- bun install --frozen-lockfile --ignore-scripts
 
 echo "Clean..."
 rm -rf packages/app-error/dist
