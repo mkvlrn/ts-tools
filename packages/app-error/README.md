@@ -38,11 +38,11 @@ Type-safe HTTP status utilities and application errors.
 
 | Package manager | npm                              | JSR                                        |
 | --------------- | -------------------------------- | ------------------------------------------ |
-| Bun             | `bun add @mkvlrn/app-error`      | `bunx jsr add @mkvlrn/app-error@0.4.6`     |
-| npm             | `npm install @mkvlrn/app-error`  | `npx jsr add @mkvlrn/app-error@0.4.6`      |
-| pnpm            | `pnpm add @mkvlrn/app-error`     | `pnpm dlx jsr add @mkvlrn/app-error@0.4.6` |
-| Yarn            | `yarn add @mkvlrn/app-error`     | `yarn dlx jsr add @mkvlrn/app-error@0.4.6` |
-| Deno            | `deno add npm:@mkvlrn/app-error` | `deno add jsr:@mkvlrn/app-error@0.4.6`     |
+| Bun             | `bun add @mkvlrn/app-error`      | `bunx jsr add @mkvlrn/app-error@0.4.7`     |
+| npm             | `npm install @mkvlrn/app-error`  | `npx jsr add @mkvlrn/app-error@0.4.7`      |
+| pnpm            | `pnpm add @mkvlrn/app-error`     | `pnpm dlx jsr add @mkvlrn/app-error@0.4.7` |
+| Yarn            | `yarn add @mkvlrn/app-error`     | `yarn dlx jsr add @mkvlrn/app-error@0.4.7` |
+| Deno            | `deno add npm:@mkvlrn/app-error` | `deno add jsr:@mkvlrn/app-error@0.4.7`     |
 
 <!-- x-release-please-end -->
 
