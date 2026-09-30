@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.1](https://github.com/mkvlrn/ts-tools/compare/result-v0.4.0...result-v0.4.1) (2026-09-30)
+
+
+### Bug fixes
+
+* **result:** republish package ([2316e25](https://github.com/mkvlrn/ts-tools/commit/2316e256fd2f40db257111a6ebdd9b9e286ca5bf))
+
 ## [0.4.0](https://github.com/mkvlrn/ts-tools/compare/result-v0.3.5...result-v0.4.0) (2026-09-30)
 
 
