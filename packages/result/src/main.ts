@@ -10,15 +10,15 @@ export type Result<T, E extends Error> =
  */
 export type ResultAsync<T, E extends Error> = Promise<Result<T, E>>;
 
-type ResultFactory = {
-  ok<T>(value: T): Result<T, never>;
-  err<E extends Error>(error: E): Result<never, E>;
-};
+interface ResultFactory {
+  ok: <T>(value: T) => Result<T, never>;
+  err: <E extends Error>(error: E) => Result<never, E>;
+}
 
-type ResultAsyncFactory = {
-  ok<T>(value: T): ResultAsync<T, never>;
-  err<E extends Error>(error: E): ResultAsync<never, E>;
-};
+interface ResultAsyncFactory {
+  ok: <T>(value: T) => ResultAsync<T, never>;
+  err: <E extends Error>(error: E) => ResultAsync<never, E>;
+}
 
 export const Result: ResultFactory = {
   /**
