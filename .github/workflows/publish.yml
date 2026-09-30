@@ -21,19 +21,14 @@ jobs:
       - name: Publish app-error
         if: startsWith(github.event.release.tag_name, 'app-error-v')
         working-directory: ./packages/app-error
-        run: |
-          bun install --production --ignore-scripts
-          mise run publish-app-error
+        run: mise run publish-app-error
 
       - name: Publish config
         if: startsWith(github.event.release.tag_name, 'config-v')
         working-directory: ./packages/config
-        run: |
-          bun install --frozen-lockfile --ignore-scripts
-          mise run publish-config
+        run: mise run publish-config
 
       - name: Publish result
         if: startsWith(github.event.release.tag_name, 'result-v')
         working-directory: ./packages/result
-        run: |
-          mise run publish-result
+        run: mise run publish-result
