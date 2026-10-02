@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 #MISE description="Regenerate dependency lockfiles"
 
+set -euo pipefail
+
 rm -f bun.lock
 mise exec -- bun install
 

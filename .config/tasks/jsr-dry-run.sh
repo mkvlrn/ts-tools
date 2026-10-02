@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 #MISE description="JSR publish dry run"
 
+set -euo pipefail
+
 for dir in packages/*; do
   if [ -d "$dir" ]; then
     echo "Checking $dir"
