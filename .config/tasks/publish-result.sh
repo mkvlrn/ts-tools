@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 #MISE description="Build and publishes @mkvlrn/result to npm and jsr"
 
+set -euo pipefail
+
 mise exec -- bun install --frozen-lockfile --ignore-scripts
 
 echo "Clean..."

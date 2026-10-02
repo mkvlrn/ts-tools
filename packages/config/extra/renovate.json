@@ -14,7 +14,7 @@
       "groupSlug": "docker"
     },
     {
-      "matchManagers": ["npm"],
+      "matchManagers": ["npm", "bun"],
       "groupName": "npm dependencies",
       "groupSlug": "npm"
     },
