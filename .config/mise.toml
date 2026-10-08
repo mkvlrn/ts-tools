@@ -1,6 +1,6 @@
 [tools]
 bun = "1.4.2"
-node = "26.10.0"
+node = "26.11.1"
 
 [env]
 _.path = ["./node_modules/.bin"]
