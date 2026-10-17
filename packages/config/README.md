@@ -1,6 +1,6 @@
 # @mkvlrn/config
 
-[![NPM Version](https://img.shields.io/npm/v/%40mkvlrn%2Fconfig?logo=npm&labelColor=red&color=white&label)](https://www.npmjs.com/package/@mkvlrn/config) [![JSR Version](https://jsr.io/badges/@mkvlrn/config)](https://jsr.io/@mkvlrn/config) [![Bun](https://badgen.net/badge/icon/it's%20better%20than%20node?icon=bun&label=bun&color=black)](https://bun.com)
+[![NPM Version](https://img.shields.io/npm/v/%40mkvlrn%2Fconfig?logo=npm&labelColor=red&color=white&label)](https://www.npmjs.com/package/@mkvlrn/config) [![Bun](https://badgen.net/badge/icon/it's%20better%20than%20node?icon=bun&label=bun&color=black)](https://bun.com)
 
 Custom, opinionated configurations that can be used to extend your own biome, typescript, and vite+ configs. Or just to serve as sane, strict defaults.
 
@@ -9,19 +9,19 @@ Aimed at modern, type-safe, non-spaghetti codebases in most node, bun, deno, nes
 ## Installation
 
 > [!NOTE]
-> This package is hosted both at [npm](https://npmjs.com) and [JSR](https://jsr.io), and is ESM **only**.
+> This package is hosted at [npm](https://npmjs.com), and is ESM **only**.
 >
 > The exported configuration files are generated during publishing; editor-only schemas and repository source files are not included in the published package.
 
 <!-- x-release-please-start-version -->
 
-| Package manager | npm                              | JSR                                        |
+| Package manager | npm                              |
 | --------------- | -------------------------------- | ------------------------------------------ |
-| Bun             | `bun add @mkvlrn/config -D`      | `bunx jsr add @mkvlrn/config@0.10.1 -D`     |
-| npm             | `npm install @mkvlrn/config -D`  | `npx jsr add @mkvlrn/config@0.10.1 -D`      |
-| pnpm            | `pnpm add @mkvlrn/config -D`     | `pnpm dlx jsr add @mkvlrn/config@0.10.1 -D` |
-| Yarn            | `yarn add @mkvlrn/config -D`     | `yarn dlx jsr add @mkvlrn/config@0.10.1 -D` |
-| Deno            | `deno add npm:@mkvlrn/config -D` | `deno add jsr:@mkvlrn/config@0.10.1 -D`     |
+| Bun             | `bun add @mkvlrn/config -D`      |
+| npm             | `npm install @mkvlrn/config -D`  |
+| pnpm            | `pnpm add @mkvlrn/config -D`     |
+| Yarn            | `yarn add @mkvlrn/config -D`     |
+| Deno            | `deno add npm:@mkvlrn/config -D` |
 
 <!-- x-release-please-end -->
 

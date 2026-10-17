@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#MISE description="Build and publishes @mkvlrn/result to npm and jsr"
+#MISE description="Build and publishes @mkvlrn/result to npm"
 
 set -euo pipefail
 
@@ -14,6 +14,3 @@ mise exec -- tsc --declaration --emitDeclarationOnly --outDir packages/result/di
 
 echo "Publishing @mkvlrn/result to npm..."
 (cd packages/result && mise exec -- npm publish --access public)
-
-echo "Publishing @mkvlrn/result to jsr..."
-(cd packages/result && mise exec -- jsr publish)

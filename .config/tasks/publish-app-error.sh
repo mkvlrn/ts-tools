@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#MISE description="Build and publishes @mkvlrn/app-error to npm and jsr"
+#MISE description="Build and publishes @mkvlrn/app-error to npm"
 
 set -euo pipefail
 
@@ -14,6 +14,3 @@ mise exec -- tsc --declaration --emitDeclarationOnly --outDir packages/app-error
 
 echo "Publishing @mkvlrn/app-error to npm..."
 (cd packages/app-error && mise exec -- npm publish --access public)
-
-echo "Publishing @mkvlrn/app-error to jsr..."
-(cd packages/app-error && mise exec -- jsr publish)
