@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.3](https://github.com/mkvlrn/ts-tools/compare/app-error-v0.5.2...app-error-v0.5.3) (2026-10-17)
+
+
+### Bug fixes
+
+* **app-error:** correct repository metadata in package.json ([3f51782](https://github.com/mkvlrn/ts-tools/commit/3f51782edd601fefb7c92cd263a2134fd8001520))
+
 ## [0.5.2](https://github.com/mkvlrn/ts-tools/compare/app-error-v0.5.1...app-error-v0.5.2) (2026-10-17)
 
 
