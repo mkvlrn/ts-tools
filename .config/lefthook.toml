@@ -2,13 +2,12 @@
 commitlint = { run = "mise run commitlint {1}" }
 
 [pre-commit.commands]
-check = { glob = "*.{ts,tsx,js,mjs,json,jsonc}", run = "mise run check" }
-test = { glob = "*.{ts,tsx}", run = "mise run test-staged" }
+check = { glob = "*.{ts,tsx,json,jsonc}", run = "mise run check -- {staged_files}" }
+test = { glob = "*.{ts,tsx}", run = "mise run test -- --staged" }
 
 [pre-push.commands]
 check = { run = "mise run check" }
-test = { run = "mise run test-ci" }
-npm-dry-run = { run = "mise run npm-dry-run" }
+test = { run = "mise run test -- --ci" }
 
 [post-checkout.commands]
 sync = { run = "mise run sync-branch" }
