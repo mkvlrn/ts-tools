@@ -1,7 +1,0 @@
-{
-  "$schema": "https://jsr.io/schema/config-file.v1.json",
-  "name": "@mkvlrn/app-error",
-  "version": "0.4.7", // x-release-please-version
-  "exports": { ".": "./src/main.ts" },
-  "publish": { "exclude": ["**/*.test.ts"] }
-}

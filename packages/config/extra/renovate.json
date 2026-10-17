@@ -35,14 +35,7 @@
       "groupName": "mise tools",
       "groupSlug": "mise"
     },
-    {
-      // renovate's config for this is stale or wrong
-      // doesn't match with what mise outdated -l sees
-      "matchManagers": ["mise"],
-      "matchPackageNames": ["biomejs/biome", "biome"],
-      "overrideDatasource": "github-releases",
-      "extractVersion": "^@biomejs/biome@(?<version>.*)$"
-    },
+
     {
       // this is disabled by the best-practices preset, apparently
       "matchManagers": ["devcontainer"],

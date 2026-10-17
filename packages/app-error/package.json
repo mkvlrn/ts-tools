@@ -1,29 +1,29 @@
 {
   "name": "@mkvlrn/app-error",
   "version": "0.4.7",
+  "description": "Map app error codes to HTTP statuses",
+  "keywords": [
+    "bun",
+    "error",
+    "http-error",
+    "node",
+    "typescript"
+  ],
+  "license": "MIT",
   "author": "Mike Valeriano <mkvlrn@gmail.com>",
   "repository": {
     "type": "git",
     "url": "git@github.com:mkvlrn/ts-tools"
   },
-  "devDependencies": {},
-  "description": "Map app error codes to HTTP statuses",
-  "keywords": [
-    "node",
-    "bun",
-    "typescript",
-    "error",
-    "http-error"
-  ],
   "files": [
     "dist"
   ],
+  "type": "module",
   "exports": {
     ".": {
-      "types": "./dist/main.d.ts",
-      "default": "./dist/main.js"
+      "types": "./dist/main.d.mts",
+      "default": "./dist/main.mjs"
     }
   },
-  "license": "MIT",
-  "type": "module"
+  "devDependencies": {}
 }

@@ -1,6 +1,6 @@
 # @mkvlrn/app-error
 
-[![NPM Version](https://img.shields.io/npm/v/%40mkvlrn%2Fapp-error?logo=npm&labelColor=red&color=white&label)](https://www.npmjs.com/package/@mkvlrn/app-error) [![JSR Version](https://jsr.io/badges/@mkvlrn/app-error)](https://jsr.io/@mkvlrn/app-error) [![Bun](https://badgen.net/badge/icon/it's%20better%20than%20node?icon=bun&label=bun&color=black)](https://bun.com)
+[![NPM Version](https://img.shields.io/npm/v/%40mkvlrn%2Fapp-error?logo=npm&labelColor=red&color=white&label)](https://www.npmjs.com/package/@mkvlrn/app-error) [![Bun](https://badgen.net/badge/icon/it's%20better%20than%20node?icon=bun&label=bun&color=black)](https://bun.com)
 
 Type-safe HTTP status utilities and application errors.
 
@@ -32,17 +32,17 @@ Type-safe HTTP status utilities and application errors.
 ## Installation
 
 > [!NOTE]
-> This package is hosted both at [npm](https://npmjs.com) and [jsr](https://jsr.io), and is ESM **only**.
+> This package is hosted at [npm](https://npmjs.com), and is ESM **only**.
 
 <!-- x-release-please-start-version -->
 
-| Package manager | npm                              | JSR                                        |
-| --------------- | -------------------------------- | ------------------------------------------ |
-| Bun             | `bun add @mkvlrn/app-error`      | `bunx jsr add @mkvlrn/app-error@0.4.7`     |
-| npm             | `npm install @mkvlrn/app-error`  | `npx jsr add @mkvlrn/app-error@0.4.7`      |
-| pnpm            | `pnpm add @mkvlrn/app-error`     | `pnpm dlx jsr add @mkvlrn/app-error@0.4.7` |
-| Yarn            | `yarn add @mkvlrn/app-error`     | `yarn dlx jsr add @mkvlrn/app-error@0.4.7` |
-| Deno            | `deno add npm:@mkvlrn/app-error` | `deno add jsr:@mkvlrn/app-error@0.4.7`     |
+| Package manager | npm                              |
+| --------------- | -------------------------------- |
+| Bun             | `bun add @mkvlrn/app-error`      |
+| npm             | `npm install @mkvlrn/app-error`  |
+| pnpm            | `pnpm add @mkvlrn/app-error`     |
+| Yarn            | `yarn add @mkvlrn/app-error`     |
+| Deno            | `deno add npm:@mkvlrn/app-error` |
 
 <!-- x-release-please-end -->
 

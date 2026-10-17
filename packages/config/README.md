@@ -1,58 +1,33 @@
 # @mkvlrn/config
 
-[![NPM Version](https://img.shields.io/npm/v/%40mkvlrn%2Fconfig?logo=npm&labelColor=red&color=white&label)](https://www.npmjs.com/package/@mkvlrn/config) [![JSR Version](https://jsr.io/badges/@mkvlrn/config)](https://jsr.io/@mkvlrn/config) [![Bun](https://badgen.net/badge/icon/it's%20better%20than%20node?icon=bun&label=bun&color=black)](https://bun.com)
+[![NPM Version](https://img.shields.io/npm/v/%40mkvlrn%2Fconfig?logo=npm&labelColor=red&color=white&label)](https://www.npmjs.com/package/@mkvlrn/config) [![Bun](https://badgen.net/badge/icon/it's%20better%20than%20node?icon=bun&label=bun&color=black)](https://bun.com)
 
-Custom, opinionated configurations that can be used to extend your own biome, typescript, and vite+ configs. Or just to serve as sane, strict defaults.
+Custom, opinionated configurations that can be used to extend your own typescript and vite+ configs. Or just to serve as sane, strict defaults.
 
 Aimed at modern, type-safe, non-spaghetti codebases in most node, bun, deno, nest, and react projects without changes, just by extending these configs.
 
 ## Installation
 
 > [!NOTE]
-> This package is hosted both at [npm](https://npmjs.com) and [JSR](https://jsr.io), and is ESM **only**.
+> This package is hosted at [npm](https://npmjs.com), and is ESM **only**.
 >
 > The exported configuration files are generated during publishing; editor-only schemas and repository source files are not included in the published package.
 
 <!-- x-release-please-start-version -->
 
-| Package manager | npm                              | JSR                                        |
-| --------------- | -------------------------------- | ------------------------------------------ |
-| Bun             | `bun add @mkvlrn/config -D`      | `bunx jsr add @mkvlrn/config@0.10.1 -D`     |
-| npm             | `npm install @mkvlrn/config -D`  | `npx jsr add @mkvlrn/config@0.10.1 -D`      |
-| pnpm            | `pnpm add @mkvlrn/config -D`     | `pnpm dlx jsr add @mkvlrn/config@0.10.1 -D` |
-| Yarn            | `yarn add @mkvlrn/config -D`     | `yarn dlx jsr add @mkvlrn/config@0.10.1 -D` |
-| Deno            | `deno add npm:@mkvlrn/config -D` | `deno add jsr:@mkvlrn/config@0.10.1 -D`     |
+| Package manager | npm                              |
+| --------------- | -------------------------------- |
+| Bun             | `bun add @mkvlrn/config -D`      |
+| npm             | `npm install @mkvlrn/config -D`  |
+| pnpm            | `pnpm add @mkvlrn/config -D`     |
+| Yarn            | `yarn add @mkvlrn/config -D`     |
+| Deno            | `deno add npm:@mkvlrn/config -D` |
 
 <!-- x-release-please-end -->
 
 ## Usage
 
-Obs: Biome, TypeScript, and Vite+ need to be installed separately and be available in the project.
-
-### biome (biome.json / biome.jsonc)
-
-Two Biome configurations are available:
-
-- `@mkvlrn/config/biome/backend` for backend projects, including Nest decorator support.
-- `@mkvlrn/config/biome/react` for React projects, including accessibility rules.
-
-Create your configuration file:
-
-<details>
-<summary><code>biome.jsonc</code></summary>
-
-```jsonc
-{
-  "$schema": "node_modules/@biomejs/biome/configuration_schema.json",
-  "root": true, // if this is the root of your project, false otherwise
-  "extends": ["@mkvlrn/config/biome/backend"], // or @mkvlrn/config/biome/react
-  "overrides": [
-    // any overrides, see biome docs
-  ],
-}
-```
-
-</details>
+Obs: TypeScript and Vite+ need to be installed separately and be available in the project.
 
 ### typescript (tsconfig.json)
 
@@ -82,8 +57,8 @@ Create your configuration file:
 <summary><code>vite.config.ts</code></summary>
 
 ```ts
-import { defineConfig, mergeConfig } from "vite-plus";
 import baseConfig from "@mkvlrn/config/vite" with { type: "json" }; // attention here, it is a json export
+import { defineConfig, mergeConfig } from "vite-plus";
 
 export default mergeConfig(
   baseConfig,

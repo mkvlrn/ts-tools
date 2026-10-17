@@ -20,7 +20,7 @@ import { httpStatus } from "./status";
  * errors.throw("userNotFound", "User does not exist");
  * ```
  */
-export interface AppErrorFactory<T extends string> {
+interface AppErrorFactory<TError extends string> {
   /**
    * Creates an {@link AppError} instance without throwing it.
    *
@@ -37,7 +37,7 @@ export interface AppErrorFactory<T extends string> {
    * );
    * ```
    */
-  create: (code: T, message: string, cause?: unknown) => AppError<T>;
+  create: (code: TError, message: string, cause?: unknown) => AppError<TError>;
 
   /**
    * Creates and immediately throws an {@link AppError} instance.
@@ -56,7 +56,7 @@ export interface AppErrorFactory<T extends string> {
    * );
    * ```
    */
-  throw: (code: T, message: string, cause?: unknown) => never;
+  throw: (code: TError, message: string, cause?: unknown) => never;
 
   /**
    * Checks whether an unknown value is an {@link AppError} instance.
@@ -73,7 +73,7 @@ export interface AppErrorFactory<T extends string> {
    * }
    * ```
    */
-  is: (err: unknown) => err is AppError<T>;
+  is: (err: unknown) => err is AppError<TError>;
 }
 
 /**
@@ -98,49 +98,49 @@ export interface AppErrorFactory<T extends string> {
  * );
  * ```
  */
-export class AppError<T extends string> extends Error {
+class AppError<TError extends string> extends Error {
   /**
    * Application-specific error code.
    */
-  readonly errorCode: T;
+  public readonly errorCode: TError;
 
   /**
    * Numeric HTTP status code associated with this error.
    */
-  readonly statusCode: StatusCode;
+  public readonly statusCode: StatusCode;
 
   /**
    * HTTP status name associated with this error.
    */
-  readonly statusName: StatusName;
+  public readonly statusName: StatusName;
 
   /**
    * Human-readable HTTP status phrase associated with this error.
    */
-  readonly statusPhrase: StatusPhrase;
+  public readonly statusPhrase: StatusPhrase;
 
   /**
    * Creates a new application error.
    *
    * This constructor is protected. Use {@link AppError.define} instead.
    *
-   * @param errorCode Application-specific error code.
-   * @param statusCode Numeric HTTP status code.
-   * @param message Human-readable error message.
-   * @param cause Optional underlying error or additional failure context.
+   * @param options.errorCode Application-specific error code.
+   * @param options.statusCode Numeric HTTP status code.
+   * @param options.message Human-readable error message.
+   * @param options.cause Optional underlying error or additional failure context.
    */
-  protected constructor(errorCode: T, statusCode: StatusCode, message: string, cause?: unknown) {
-    super(message, { cause });
-    Object.defineProperty(this, "name", {
-      configurable: true,
-      enumerable: false,
-      value: "AppError",
-      writable: true,
-    });
-    this.errorCode = errorCode;
-    this.statusCode = statusCode;
-    this.statusName = httpStatus.nameFromCode(statusCode);
-    this.statusPhrase = httpStatus.phraseFromCode(statusCode);
+  protected constructor(options: {
+    errorCode: TError;
+    statusCode: StatusCode;
+    message: string;
+    cause?: unknown;
+  }) {
+    super(options.message, { cause: options.cause });
+    this.name = "AppError";
+    this.errorCode = options.errorCode;
+    this.statusCode = options.statusCode;
+    this.statusName = httpStatus.nameFromCode(options.statusCode);
+    this.statusPhrase = httpStatus.phraseFromCode(options.statusCode);
   }
 
   /**
@@ -165,8 +165,8 @@ export class AppError<T extends string> extends Error {
    * // }
    * ```
    */
-  serialize(): {
-    errorCode: T;
+  public serialize(): {
+    errorCode: TError;
     statusCode: StatusCode;
     statusName: StatusName;
     statusPhrase: StatusPhrase;
@@ -174,12 +174,12 @@ export class AppError<T extends string> extends Error {
     details: unknown;
   } {
     return {
+      details: this.cause,
       errorCode: this.errorCode,
+      message: this.message,
       statusCode: this.statusCode,
       statusName: this.statusName,
       statusPhrase: this.statusPhrase,
-      message: this.message,
-      details: this.cause,
     };
   }
 
@@ -189,7 +189,7 @@ export class AppError<T extends string> extends Error {
    * Each key in the mapping becomes an application-specific error code, and
    * each value defines the associated HTTP status name.
    *
-   * @template E Union of application error codes inferred from the mapping keys.
+   * @template TError Union of application error codes inferred from the mapping keys.
    *
    * @param mapping Object mapping application error codes to HTTP status names.
    *
@@ -218,29 +218,39 @@ export class AppError<T extends string> extends Error {
    * }
    * ```
    */
-  static define<E extends string>(mapping: Record<E, StatusName>): AppErrorFactory<E> {
-    const definedMapping = { ...mapping };
+  public static define<TError extends string>(
+    mapping: Record<TError, StatusName>,
+  ): AppErrorFactory<TError> {
+    const definedMapping: Record<TError, StatusName> = structuredClone(mapping);
 
-    function create(errorCode: E, message: string, cause?: unknown): AppError<E> {
-      return new AppError(
-        errorCode,
-        httpStatus.codeFromName(definedMapping[errorCode]),
-        message,
+    function create(errorCode: TError, message: string, cause?: unknown): AppError<TError> {
+      return new AppError({
         cause,
-      );
+        errorCode,
+        message,
+        statusCode: httpStatus.codeFromName(definedMapping[errorCode]),
+      });
     }
 
     return {
       create,
 
-      throw: (errorCode: E, message: string, cause?: unknown): never => {
-        throw create(errorCode, message, cause);
+      is: (err: unknown): err is AppError<TError> => {
+        if (!(err instanceof AppError)) {
+          return false;
+        }
+        const errorCode: TError = err.errorCode;
+        return (
+          Object.hasOwn(definedMapping, errorCode) && err.statusName === definedMapping[errorCode]
+        );
       },
 
-      is: (err: unknown): err is AppError<E> =>
-        err instanceof AppError &&
-        Object.hasOwn(definedMapping, err.errorCode) &&
-        err.statusName === definedMapping[err.errorCode as E],
+      throw: (errorCode: TError, message: string, cause?: unknown): never => {
+        throw create(errorCode, message, cause);
+      },
     };
   }
 }
+
+export type { AppErrorFactory };
+export { AppError };

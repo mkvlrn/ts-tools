@@ -44,9 +44,11 @@
       "no-console": "warn",
       "no-undefined": "off",
       "one-var": "off",
-      // https://github.com/oxc-project/oxc/issues/19984
       "sort-imports": ["error", { "ignoreDeclarationSort": true }],
-      "vitest/no-importing-vitest-globals": "off"
+      "vitest/no-importing-vitest-globals": "off",
+      "vitest/prefer-to-be-falsy": "off",
+      "import/consistent-type-specifier-style": "off",
+      "oxc/no-async-await": "off"
     }
   },
   "fmt": {

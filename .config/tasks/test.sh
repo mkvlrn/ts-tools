@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-#MISE description="Run tests"
+#MISE description="Run tests with vite+"
 
 set -euo pipefail
 
-mise exec -- bun test --coverage
+mise exec -- vp test --coverage

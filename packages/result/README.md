@@ -1,6 +1,6 @@
 # @mkvlrn/result
 
-[![NPM Version](https://img.shields.io/npm/v/%40mkvlrn%2Fresult?logo=npm&labelColor=red&color=white&label)](https://www.npmjs.com/package/@mkvlrn/result) [![JSR Version](https://jsr.io/badges/@mkvlrn/result)](https://jsr.io/@mkvlrn/result) [![Bun](https://badgen.net/badge/icon/it's%20better%20than%20node?icon=bun&label=bun&color=black)](https://bun.com)
+[![NPM Version](https://img.shields.io/npm/v/%40mkvlrn%2Fresult?logo=npm&labelColor=red&color=white&label)](https://www.npmjs.com/package/@mkvlrn/result) [![Bun](https://badgen.net/badge/icon/it's%20better%20than%20node?icon=bun&label=bun&color=black)](https://bun.com)
 
 Dead simple Result pattern for TypeScript.
 
@@ -17,30 +17,30 @@ If you need `.map().flatMap().andThen().orElse().unwrapOr()` chains, use [nevert
 ## Installation
 
 > [!NOTE]
-> This package is hosted both at [npm](https://npmjs.com) and [jsr](https://jsr.io), and is ESM **only**.
+> This package is hosted at [npm](https://npmjs.com), and is ESM **only**.
 
 <!-- x-release-please-start-version -->
 
-| Package manager | npm                           | JSR                                     |
-| --------------- | ----------------------------- | --------------------------------------- |
-| Bun             | `bun add @mkvlrn/result`      | `bunx jsr add @mkvlrn/result@0.4.2`     |
-| npm             | `npm install @mkvlrn/result`  | `npx jsr add @mkvlrn/result@0.4.2`      |
-| pnpm            | `pnpm add @mkvlrn/result`     | `pnpm dlx jsr add @mkvlrn/result@0.4.2` |
-| Yarn            | `yarn add @mkvlrn/result`     | `yarn dlx jsr add @mkvlrn/result@0.4.2` |
-| Deno            | `deno add npm:@mkvlrn/result` | `deno add jsr:@mkvlrn/result@0.4.2`     |
+| Package manager | npm                           |
+| --------------- | ----------------------------- |
+| Bun             | `bun add @mkvlrn/result`      |
+| npm             | `npm install @mkvlrn/result`  |
+| pnpm            | `pnpm add @mkvlrn/result`     |
+| Yarn            | `yarn add @mkvlrn/result`     |
+| Deno            | `deno add npm:@mkvlrn/result` |
 
 <!-- x-release-please-end -->
 
 ## API
 
-| Export              | What it does                                                                        |
-| ------------------- | ----------------------------------------------------------------------------------- |
-| `Result<T, E>`      | Synchronous Result type (`{ isError: false, value }` or `{ isError: true, error }`) |
-| `ResultAsync<T, E>` | Asynchronous Result type (`Promise<Result<T, E>>`)                                  |
-| `Result.ok(value)`   | Creates a successful Result object                                                  |
-| `Result.err(error)`  | Creates an error Result object                                                      |
-| `ResultAsync.ok(value)`   | Creates a Promise containing a successful Result object                         |
-| `ResultAsync.err(error)`  | Creates a Promise containing an error Result object                             |
+| Export                   | What it does                                                                        |
+| ------------------------ | ----------------------------------------------------------------------------------- |
+| `Result<T, E>`           | Synchronous Result type (`{ isError: false, value }` or `{ isError: true, error }`) |
+| `ResultAsync<T, E>`      | Asynchronous Result type (`Promise<Result<T, E>>`)                                  |
+| `Result.ok(value)`       | Creates a successful Result object                                                  |
+| `Result.err(error)`      | Creates an error Result object                                                      |
+| `ResultAsync.ok(value)`  | Creates a Promise containing a successful Result object                             |
+| `ResultAsync.err(error)` | Creates a Promise containing an error Result object                                 |
 
 That's it. That's the whole thing.
 

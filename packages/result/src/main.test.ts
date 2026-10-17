@@ -1,6 +1,6 @@
-import { describe, expect, test } from "bun:test";
 import assert from "node:assert/strict";
 import { setTimeout } from "node:timers/promises";
+import { describe, expect, it, vi } from "vite-plus/test";
 import {
   Result,
   ResultAsync,
@@ -9,30 +9,35 @@ import {
 } from "./main";
 
 const CUSTOM_ERROR_VALUE = 42;
-const SUCCESS_VALUE = 3;
+const DELAY_MS = 1;
 const DIVIDEND = 4;
 const DIVISOR = 2;
+const QUOTIENT = 2;
+const SUCCESS_VALUE = 3;
 const ZERO = 0;
 
+vi.setConfig({ testTimeout: 1000 });
+
 class CustomError extends Error {
-  readonly customField: number;
-  constructor(customField: number, message: string) {
+  public readonly customField: number;
+
+  public constructor(customField: number, message: string) {
     super(message);
-    this.name = "CustomField";
+    this.name = "CustomError";
     this.customField = customField;
   }
 }
 
-function division(a: number, b: number): ResultType<number, Error> {
-  if (b === 0) {
+function division(dividend: number, divisor: number): ResultType<number, Error> {
+  if (divisor === ZERO) {
     return Result.err(new Error("cannot divide by zero"));
   }
 
-  return Result.ok(a / b);
+  return Result.ok(dividend / divisor);
 }
 
 async function longRunning(shouldFail: boolean): ResultAsyncType<number, CustomError> {
-  await setTimeout(1);
+  await setTimeout(DELAY_MS);
 
   if (shouldFail) {
     return ResultAsync.err(new CustomError(CUSTOM_ERROR_VALUE, "wrong"));
@@ -42,18 +47,20 @@ async function longRunning(shouldFail: boolean): ResultAsyncType<number, CustomE
 }
 
 describe("default Error type", () => {
-  test("ok result", () => {
-    // act
+  it("ok result", () => {
+    // Act
+    expect.hasAssertions();
     const result = division(DIVIDEND, DIVISOR);
-    // assert
+    // Assert
     assert(!result.isError);
-    expect(result.value).toBe(2);
+    expect(result.value).toBe(QUOTIENT);
   });
 
-  test("error result", () => {
-    // act
+  it("error result", () => {
+    // Act
+    expect.hasAssertions();
     const result = division(DIVIDEND, ZERO);
-    // assert
+    // Assert
     assert(result.isError);
     expect(result.error).toBeInstanceOf(Error);
     expect(result.error.message).toBe("cannot divide by zero");
@@ -61,18 +68,20 @@ describe("default Error type", () => {
 });
 
 describe("custom error", () => {
-  test("ok result", async () => {
-    // act
+  it("ok result", async () => {
+    // Act
+    expect.hasAssertions();
     const result = await longRunning(false);
-    // assert
+    // Assert
     assert(!result.isError);
     expect(result.value).toBe(SUCCESS_VALUE);
   });
 
-  test("error result", async () => {
-    //act
+  it("error result", async () => {
+    // Act
+    expect.hasAssertions();
     const result = await longRunning(true);
-    // assert
+    // Assert
     assert(result.isError);
     expect(result.error).toBeInstanceOf(CustomError);
     expect(result.error.message).toBe("wrong");
