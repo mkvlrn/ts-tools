@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.10.0](https://github.com/mkvlrn/ts-tools/compare/config-v0.9.2...config-v0.10.0) (2026-10-17)
+
+
+### Features
+
+* **config:** replace vitest config with vite-plus config ([981cc77](https://github.com/mkvlrn/ts-tools/commit/981cc77fcbfcef50c2f8628c5d268930b24d1ab7))
+
+
+### Bug fixes
+
+* **config:** add oxfmt and oxlint blocks ([d768f68](https://github.com/mkvlrn/ts-tools/commit/d768f68b528eabfa7d9c587c61ca67319a2bf0eb))
+* **config:** include vite-plus augmented keys in vite schema ([445cee5](https://github.com/mkvlrn/ts-tools/commit/445cee5a1810446bccae9118e1ca6c1a1c697314))
+
 ## [0.9.2](https://github.com/mkvlrn/ts-tools/compare/config-v0.9.1...config-v0.9.2) (2026-09-30)
 
 
