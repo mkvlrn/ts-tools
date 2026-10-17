@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.11.1](https://github.com/mkvlrn/ts-tools/compare/config-v0.11.0...config-v0.11.1) (2026-10-17)
+
+
+### Documentation
+
+* **readme:** remove bun/deno install claims and cleanup tables ([eb7fc69](https://github.com/mkvlrn/ts-tools/commit/eb7fc694840460fdcdd018d886a1b869c6a9e68a))
+
 ## [0.11.0](https://github.com/mkvlrn/ts-tools/compare/config-v0.10.1...config-v0.11.0) (2026-10-17)
 
 
