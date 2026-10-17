@@ -23,7 +23,7 @@
       "correctness": "error",
       "suspicious": "error",
       "perf": "error",
-      "style": "error",
+      "style": "warn",
       "pedantic": "off",
       "restriction": "error",
       "nursery": "off"
