@@ -1,6 +1,6 @@
 {
   "name": "@mkvlrn/result",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "description": "Simple Result type/pattern for TypeScript",
   "keywords": [
     "bun",

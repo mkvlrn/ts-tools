@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.5.0](https://github.com/mkvlrn/ts-tools/compare/app-error-v0.4.7...app-error-v0.5.0) (2026-10-17)
+
+
+### Features
+
+* **app-error:** republish package ([3a56568](https://github.com/mkvlrn/ts-tools/commit/3a565688cb7abb03d2dcf9768f94c32c4abb2e9e))
+* **config:** republish package ([5ad26a7](https://github.com/mkvlrn/ts-tools/commit/5ad26a73a37bb47646e1240c5a41df64c0611978))
+* **result:** republish package ([c75d6b9](https://github.com/mkvlrn/ts-tools/commit/c75d6b94720d38b16f2445a991d5d23c7a50cd3d))
+
 ## [0.4.7](https://github.com/mkvlrn/ts-tools/compare/app-error-v0.4.6...app-error-v0.4.7) (2026-09-30)
 
 ### Bug fixes
