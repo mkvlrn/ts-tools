@@ -1,6 +1,6 @@
 {
   "name": "@mkvlrn/app-error",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "Map app error codes to HTTP statuses",
   "keywords": [
     "error",
