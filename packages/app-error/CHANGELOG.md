@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.2](https://github.com/mkvlrn/ts-tools/compare/app-error-v0.5.1...app-error-v0.5.2) (2026-10-17)
+
+
+### Documentation
+
+* **readme:** remove Bun badges and narrow config wording ([64998f2](https://github.com/mkvlrn/ts-tools/commit/64998f27c84fb7edb0429a16f89886bc7bed26ab))
+
 ## [0.5.1](https://github.com/mkvlrn/ts-tools/compare/app-error-v0.5.0...app-error-v0.5.1) (2026-10-17)
 
 
