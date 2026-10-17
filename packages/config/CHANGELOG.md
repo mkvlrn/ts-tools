@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.1](https://github.com/mkvlrn/ts-tools/compare/config-v0.10.0...config-v0.10.1) (2026-10-17)
+
+
+### Bug fixes
+
+* **config:** lower style rule severity to warn ([e0030ad](https://github.com/mkvlrn/ts-tools/commit/e0030ad63fff8c176282cce907e3be1e250605a4))
+
 ## [0.10.0](https://github.com/mkvlrn/ts-tools/compare/config-v0.9.2...config-v0.10.0) (2026-10-17)
 
 
