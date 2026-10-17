@@ -1,0 +1,47 @@
+{
+  "$schema": "../vite.schema.json",
+  "test": {
+    "include": ["**/*.{test,spec}.{ts,tsx,mts}"],
+    "watch": false,
+    "reporters": ["tree"],
+    "coverage": {
+      "clean": true,
+      "cleanOnRerun": true,
+      "include": ["src"]
+    },
+    "env": { "NODE_ENV": "test" },
+    "environment": "node",
+    "passWithNoTests": true
+  },
+  "lint": {
+    "plugins": ["typescript", "unicorn", "oxc", "import", "node", "promise", "vitest"],
+    "categories": {
+      "correctness": "error",
+      "suspicious": "error",
+      "perf": "error",
+      "style": "error",
+      "pedantic": "error",
+      "restriction": "error",
+      "nursery": "error"
+    },
+    "options": {
+      "typeAware": true,
+      "typeCheck": true
+    },
+    "rules": {
+      "dot-notation": "off",
+      "import/extensions": "off",
+      "import/no-unresolved": "off",
+      "import/no-namespace": "off",
+      "import/exports-last": "off",
+      "import/no-default-export": "off"
+    }
+  },
+  "fmt": {
+    "printWidth": 100,
+    "useTabs": false,
+    "tabWidth": 2,
+    "endOfLine": "lf",
+    "sortImports": true
+  }
+}

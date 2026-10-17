@@ -25,7 +25,7 @@ Type-safe HTTP status utilities and application errors.
 
 [![NPM Version](https://img.shields.io/npm/v/%40mkvlrn%2Fconfig?logo=npm&labelColor=red&color=white&label)](https://www.npmjs.com/package/@mkvlrn/config) [![JSR Version](https://jsr.io/badges/@mkvlrn/config)](https://jsr.io/@mkvlrn/config) [![README](https://img.shields.io/badge/readme-white?style=flat&logo=ReadMe)](./packages/config/README.md)
 
-Opinionated configurations for biome, typescript, and vitest.
+Opinionated configurations for biome, typescript, and vite+.
 
 ---
 
