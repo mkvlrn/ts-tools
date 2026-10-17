@@ -13,17 +13,11 @@ Aimed at modern, type-safe, non-spaghetti codebases in most node, bun, deno, nes
 >
 > The exported configuration files are generated during publishing; editor-only schemas and repository source files are not included in the published package.
 
-<!-- x-release-please-start-version -->
-
-| Package manager | npm                              |
-| --------------- | -------------------------------- |
-| Bun             | `bun add @mkvlrn/config -D`      |
-| npm             | `npm install @mkvlrn/config -D`  |
-| pnpm            | `pnpm add @mkvlrn/config -D`     |
-| Yarn            | `yarn add @mkvlrn/config -D`     |
-| Deno            | `deno add npm:@mkvlrn/config -D` |
-
-<!-- x-release-please-end -->
+| Package manager | cmd                             |
+| --------------- | ------------------------------- |
+| pnpm            | `pnpm add @mkvlrn/config -D`    |
+| npm             | `npm install @mkvlrn/config -D` |
+| yarn            | `yarn add @mkvlrn/config -D`    |
 
 ## Usage
 
@@ -63,9 +57,7 @@ import { defineConfig, mergeConfig } from "vite-plus";
 export default mergeConfig(
   baseConfig,
   defineConfig({
-    test: {
-      // custom configs here
-    },
+    // custom configs here
   }),
 );
 ```

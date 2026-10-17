@@ -10,16 +10,13 @@
   ],
   "packages": {
     "packages/app-error": {
-      "release-type": "node",
-      "extra-files": [{ "type": "generic", "path": "README.md" }]
+      "release-type": "node"
     },
     "packages/config": {
-      "release-type": "node",
-      "extra-files": [{ "type": "generic", "path": "README.md" }]
+      "release-type": "node"
     },
     "packages/result": {
-      "release-type": "node",
-      "extra-files": [{ "type": "generic", "path": "README.md" }]
+      "release-type": "node"
     }
   }
 }

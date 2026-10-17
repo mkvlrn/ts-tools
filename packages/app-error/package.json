@@ -3,7 +3,6 @@
   "version": "0.5.0",
   "description": "Map app error codes to HTTP statuses",
   "keywords": [
-    "bun",
     "error",
     "http-error",
     "node",

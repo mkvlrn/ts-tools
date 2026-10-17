@@ -2,7 +2,7 @@
 
 [![NPM](https://img.shields.io/badge/-@mkvlrn-white?logo=npm&labelColor=red&color=white)](https://www.npmjs.com/~mkvlrn)
 
-Some Typescript tools I use frequently, usable with node, bun, deno, and cloudflare workers - ESM **only**
+Some Typescript tools I use frequently, usable with node and likely bun and deno too - ESM **only**
 
 They are all published at [npm](https://npmjs.com).
 

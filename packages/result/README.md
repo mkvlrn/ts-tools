@@ -19,17 +19,11 @@ If you need `.map().flatMap().andThen().orElse().unwrapOr()` chains, use [nevert
 > [!NOTE]
 > This package is hosted at [npm](https://npmjs.com), and is ESM **only**.
 
-<!-- x-release-please-start-version -->
-
-| Package manager | npm                           |
-| --------------- | ----------------------------- |
-| Bun             | `bun add @mkvlrn/result`      |
-| npm             | `npm install @mkvlrn/result`  |
-| pnpm            | `pnpm add @mkvlrn/result`     |
-| Yarn            | `yarn add @mkvlrn/result`     |
-| Deno            | `deno add npm:@mkvlrn/result` |
-
-<!-- x-release-please-end -->
+| Package manager | cmd                          |
+| --------------- | ---------------------------- |
+| pnpm            | `pnpm add @mkvlrn/result`    |
+| npm             | `npm install @mkvlrn/result` |
+| yarn            | `yarn add @mkvlrn/result`    |
 
 ## API
 

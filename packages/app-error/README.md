@@ -34,17 +34,11 @@ Type-safe HTTP status utilities and application errors.
 > [!NOTE]
 > This package is hosted at [npm](https://npmjs.com), and is ESM **only**.
 
-<!-- x-release-please-start-version -->
-
-| Package manager | npm                              |
-| --------------- | -------------------------------- |
-| Bun             | `bun add @mkvlrn/app-error`      |
-| npm             | `npm install @mkvlrn/app-error`  |
-| pnpm            | `pnpm add @mkvlrn/app-error`     |
-| Yarn            | `yarn add @mkvlrn/app-error`     |
-| Deno            | `deno add npm:@mkvlrn/app-error` |
-
-<!-- x-release-please-end -->
+| Package manager | cmd                             |
+| --------------- | ------------------------------- |
+| pnpm            | `pnpm add @mkvlrn/app-error`    |
+| npm             | `npm install @mkvlrn/app-error` |
+| yarn            | `yarn add @mkvlrn/app-error`    |
 
 ## HTTP status
 
