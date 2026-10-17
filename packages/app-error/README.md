@@ -1,6 +1,6 @@
 # @mkvlrn/app-error
 
-[![NPM Version](https://img.shields.io/npm/v/%40mkvlrn%2Fapp-error?logo=npm&labelColor=red&color=white&label)](https://www.npmjs.com/package/@mkvlrn/app-error) [![Bun](https://badgen.net/badge/icon/it's%20better%20than%20node?icon=bun&label=bun&color=black)](https://bun.com)
+[![NPM Version](https://img.shields.io/npm/v/%40mkvlrn%2Fapp-error?logo=npm&labelColor=red&color=white&label)](https://www.npmjs.com/package/@mkvlrn/app-error)
 
 Type-safe HTTP status utilities and application errors.
 

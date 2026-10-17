@@ -1,10 +1,10 @@
 # @mkvlrn/config
 
-[![NPM Version](https://img.shields.io/npm/v/%40mkvlrn%2Fconfig?logo=npm&labelColor=red&color=white&label)](https://www.npmjs.com/package/@mkvlrn/config) [![Bun](https://badgen.net/badge/icon/it's%20better%20than%20node?icon=bun&label=bun&color=black)](https://bun.com)
+[![NPM Version](https://img.shields.io/npm/v/%40mkvlrn%2Fconfig?logo=npm&labelColor=red&color=white&label)](https://www.npmjs.com/package/@mkvlrn/config)
 
 Custom, opinionated configurations that can be used to extend your own typescript and vite+ configs. Or just to serve as sane, strict defaults.
 
-Aimed at modern, type-safe, non-spaghetti codebases in most node, bun, deno, nest, and react projects without changes, just by extending these configs.
+Aimed at modern, type-safe, non-spaghetti codebases in most node projects without changes, just by extending these configs.
 
 ## Installation
 
