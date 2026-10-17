@@ -64,8 +64,8 @@ await Promise.all([
   cp(join(sourceDirectory, "tsconfig.json"), join(outputDirectory, "tsconfig.json")),
 ]);
 
-const sourceViteConfig = JSON.parse(
-  await readFile(join(sourceDirectory, "vite.config.json"), "utf8"),
+const sourceViteConfig = Bun.JSON5.parse(
+  await readFile(join(sourceDirectory, "vite.config.jsonc"), "utf8"),
 ) as Record<string, unknown>;
 const viteConfig = Object.fromEntries(
   Object.entries(sourceViteConfig).filter(([key]) => key !== "$schema"),

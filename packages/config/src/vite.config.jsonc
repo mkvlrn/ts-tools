@@ -14,15 +14,19 @@
     "passWithNoTests": true
   },
   "lint": {
+    "globals": {
+      "Bun": "readonly",
+      "console": "readonly"
+    },
     "plugins": ["typescript", "unicorn", "oxc", "import", "node", "promise", "vitest"],
     "categories": {
       "correctness": "error",
       "suspicious": "error",
       "perf": "error",
       "style": "error",
-      "pedantic": "error",
+      "pedantic": "off",
       "restriction": "error",
-      "nursery": "error"
+      "nursery": "off"
     },
     "options": {
       "typeAware": true,
@@ -30,11 +34,19 @@
     },
     "rules": {
       "dot-notation": "off",
+      "func-style": ["error", "declaration"],
       "import/extensions": "off",
-      "import/no-unresolved": "off",
+      "import/no-default-export": "off",
+      "import/no-named-export": "off",
       "import/no-namespace": "off",
-      "import/exports-last": "off",
-      "import/no-default-export": "off"
+      "import/no-nodejs-modules": "off",
+      "import/prefer-default-export": "off",
+      "no-console": "warn",
+      "no-undefined": "off",
+      "one-var": "off",
+      // https://github.com/oxc-project/oxc/issues/19984
+      "sort-imports": ["error", { "ignoreDeclarationSort": true }],
+      "vitest/no-importing-vitest-globals": "off"
     }
   },
   "fmt": {
@@ -42,6 +54,6 @@
     "useTabs": false,
     "tabWidth": 2,
     "endOfLine": "lf",
-    "sortImports": true
+    "sortImports": { "newlinesBetween": false }
   }
 }
