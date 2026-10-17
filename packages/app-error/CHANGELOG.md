@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.1](https://github.com/mkvlrn/ts-tools/compare/app-error-v0.5.0...app-error-v0.5.1) (2026-10-17)
+
+
+### Documentation
+
+* **readme:** remove bun/deno install claims and cleanup tables ([eb7fc69](https://github.com/mkvlrn/ts-tools/commit/eb7fc694840460fdcdd018d886a1b869c6a9e68a))
+
 ## [0.5.0](https://github.com/mkvlrn/ts-tools/compare/app-error-v0.4.7...app-error-v0.5.0) (2026-10-17)
 
 
