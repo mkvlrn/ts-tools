@@ -4,7 +4,7 @@
 
 Some Typescript tools I use frequently, usable with node and likely bun and deno too - ESM **only**
 
-They are all published at [npm](https://npmjs.com).
+They are all published at [npm](https://www.npmjs.com/~mkvlrn).
 
 ---
 
