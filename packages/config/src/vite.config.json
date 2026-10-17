@@ -1,5 +1,5 @@
 {
-  "$schema": "../vitest.schema.json",
+  "$schema": "../vite.schema.json",
   "test": {
     "include": ["**/*.{test,spec}.{ts,tsx,mts}"],
     "watch": false,

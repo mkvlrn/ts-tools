@@ -64,14 +64,14 @@ await Promise.all([
   cp(join(sourceDirectory, "tsconfig.json"), join(outputDirectory, "tsconfig.json")),
 ]);
 
-const sourceVitestConfig = JSON.parse(
-  await readFile(join(sourceDirectory, "vitest.config.json"), "utf8"),
+const sourceViteConfig = JSON.parse(
+  await readFile(join(sourceDirectory, "vite.config.json"), "utf8"),
 ) as Record<string, unknown>;
-const vitestConfig = Object.fromEntries(
-  Object.entries(sourceVitestConfig).filter(([key]) => key !== "$schema"),
+const viteConfig = Object.fromEntries(
+  Object.entries(sourceViteConfig).filter(([key]) => key !== "$schema"),
 );
 
 await writeFile(
-  join(outputDirectory, "vitest.config.json"),
-  `${JSON.stringify(vitestConfig, null, 2)}\n`,
+  join(outputDirectory, "vite.config.json"),
+  `${JSON.stringify(viteConfig, null, 2)}\n`,
 );

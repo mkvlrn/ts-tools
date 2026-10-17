@@ -2,7 +2,7 @@
 
 [![NPM Version](https://img.shields.io/npm/v/%40mkvlrn%2Fconfig?logo=npm&labelColor=red&color=white&label)](https://www.npmjs.com/package/@mkvlrn/config) [![JSR Version](https://jsr.io/badges/@mkvlrn/config)](https://jsr.io/@mkvlrn/config) [![Bun](https://badgen.net/badge/icon/it's%20better%20than%20node?icon=bun&label=bun&color=black)](https://bun.com)
 
-Custom, opinionated configurations that can be used to extend your own biome, typescript, and vitest configs. Or just to serve as sane, strict defaults.
+Custom, opinionated configurations that can be used to extend your own biome, typescript, and vite+ configs. Or just to serve as sane, strict defaults.
 
 Aimed at modern, type-safe, non-spaghetti codebases in most node, bun, deno, nest, and react projects without changes, just by extending these configs.
 
@@ -27,7 +27,7 @@ Aimed at modern, type-safe, non-spaghetti codebases in most node, bun, deno, nes
 
 ## Usage
 
-Obs: Biome, TypeScript, and Vitest need to be installed separately and be available in the project.
+Obs: Biome, TypeScript, and Vite+ need to be installed separately and be available in the project.
 
 ### biome (biome.json / biome.jsonc)
 
@@ -74,16 +74,16 @@ Create your configuration file:
 
 Obs: anything related to files needs to be set: rootDir, outDir, baseUrl, paths, etc - this prevents path confusion because the "original" tsconfig will be in `node_modules`.
 
-### vitest (vitest.config.ts)
+### vite+ (vite.config.ts)
 
 Create your configuration file:
 
 <details>
-<summary><code>vitest.config.ts</code></summary>
+<summary><code>vite.config.ts</code></summary>
 
 ```ts
-import { defineConfig, mergeConfig } from "vitest/config";
-import baseConfig from "@mkvlrn/config/vitest" with { type: "json" }; // attention here, it is a json export
+import { defineConfig, mergeConfig } from "vite-plus";
+import baseConfig from "@mkvlrn/config/vite" with { type: "json" }; // attention here, it is a json export
 
 export default mergeConfig(
   baseConfig,
