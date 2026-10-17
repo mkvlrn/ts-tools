@@ -22,7 +22,7 @@ If you need `.map().flatMap().andThen().orElse().unwrapOr()` chains, use [nevert
 <!-- x-release-please-start-version -->
 
 | Package manager | npm                           |
-| --------------- | ----------------------------- | --------------------------------------- |
+| --------------- | ----------------------------- |
 | Bun             | `bun add @mkvlrn/result`      |
 | npm             | `npm install @mkvlrn/result`  |
 | pnpm            | `pnpm add @mkvlrn/result`     |
@@ -33,14 +33,14 @@ If you need `.map().flatMap().andThen().orElse().unwrapOr()` chains, use [nevert
 
 ## API
 
-| Export              | What it does                                                                        |
-| ------------------- | ----------------------------------------------------------------------------------- |
-| `Result<T, E>`      | Synchronous Result type (`{ isError: false, value }` or `{ isError: true, error }`) |
-| `ResultAsync<T, E>` | Asynchronous Result type (`Promise<Result<T, E>>`)                                  |
-| `Result.ok(value)`   | Creates a successful Result object                                                  |
-| `Result.err(error)`  | Creates an error Result object                                                      |
-| `ResultAsync.ok(value)`   | Creates a Promise containing a successful Result object                         |
-| `ResultAsync.err(error)`  | Creates a Promise containing an error Result object                             |
+| Export                   | What it does                                                                        |
+| ------------------------ | ----------------------------------------------------------------------------------- |
+| `Result<T, E>`           | Synchronous Result type (`{ isError: false, value }` or `{ isError: true, error }`) |
+| `ResultAsync<T, E>`      | Asynchronous Result type (`Promise<Result<T, E>>`)                                  |
+| `Result.ok(value)`       | Creates a successful Result object                                                  |
+| `Result.err(error)`      | Creates an error Result object                                                      |
+| `ResultAsync.ok(value)`  | Creates a Promise containing a successful Result object                             |
+| `ResultAsync.err(error)` | Creates a Promise containing an error Result object                                 |
 
 That's it. That's the whole thing.
 

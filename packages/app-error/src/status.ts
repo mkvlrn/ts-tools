@@ -1,5 +1,95 @@
 import { type StatusCode, type StatusName, type StatusPhrase, status } from "./consts";
 
+const codeByName = new Map<StatusName, StatusCode>();
+const codeByPhrase = new Map<StatusPhrase, StatusCode>();
+const nameByCode = new Map<StatusCode, StatusName>();
+const phraseByCode = new Map<StatusCode, StatusPhrase>();
+
+function isStatusCode(value: number): value is StatusCode {
+  return Object.hasOwn(status, value);
+}
+
+for (const [key, [name, phrase]] of Object.entries(status)) {
+  const code = Number(key);
+
+  if (!isStatusCode(code)) {
+    throw new RangeError(`Invalid HTTP status code: ${key}`);
+  }
+
+  codeByName.set(name, code);
+  codeByPhrase.set(phrase, code);
+  nameByCode.set(code, name);
+  phraseByCode.set(code, phrase);
+}
+
+function lookup<Key, Value>(map: ReadonlyMap<Key, Value>, key: Key): Value {
+  const value = map.get(key);
+
+  if (value === undefined) {
+    throw new RangeError(`Unknown HTTP status: ${String(key)}`);
+  }
+
+  return value;
+}
+
+/**
+ * Shared `HttpStatus` conversion utility.
+ *
+ * Use this object to convert between HTTP status codes, names, and reason
+ * phrases without manually maintaining lookup tables.
+ *
+ * All operations are constant-time lookups. Unknown inputs throw a `RangeError`.
+ *
+ *
+ * @example
+ * ```ts
+ * import { httpStatus } from "./status";
+ *
+ * httpStatus.codeFromName("NotFound");
+ * // => 404
+ *
+ * httpStatus.codeFromPhrase("Not Found");
+ * // => 404
+ *
+ * httpStatus.nameFromCode(404);
+ * // => "NotFound"
+ *
+ * httpStatus.nameFromPhrase("Not Found");
+ * // => "NotFound"
+ *
+ * httpStatus.phraseFromCode(404);
+ * // => "Not Found"
+ *
+ * httpStatus.phraseFromName("NotFound");
+ * // => "Not Found"
+ * ```
+ */
+export const httpStatus: Readonly<HttpStatus> = Object.freeze<HttpStatus>({
+  codeFromName(name) {
+    return lookup(codeByName, name);
+  },
+
+  codeFromPhrase(phrase) {
+    return lookup(codeByPhrase, phrase);
+  },
+
+  nameFromCode(code) {
+    return lookup(nameByCode, code);
+  },
+
+  nameFromPhrase(phrase) {
+    return lookup(nameByCode, lookup(codeByPhrase, phrase));
+  },
+
+  phraseFromCode(code) {
+    return lookup(phraseByCode, code);
+  },
+
+  phraseFromName(name) {
+    return lookup(phraseByCode, lookup(codeByName, name));
+  },
+});
+
 /**
  * Type-safe conversion utilities for HTTP status values.
  *
@@ -109,75 +199,3 @@ export interface HttpStatus {
    */
   phraseFromName: (name: StatusName) => StatusPhrase;
 }
-
-const codeByName = {} as Record<StatusName, StatusCode>;
-const codeByPhrase = {} as Record<StatusPhrase, StatusCode>;
-const nameByCode = {} as Record<StatusCode, StatusName>;
-const phraseByCode = {} as Record<StatusCode, StatusPhrase>;
-
-for (const [codeAsString, [name, phrase]] of Object.entries(status)) {
-  const code = Number(codeAsString) as StatusCode;
-
-  codeByName[name] = code;
-  codeByPhrase[phrase] = code;
-  nameByCode[code] = name;
-  phraseByCode[code] = phrase;
-}
-
-/**
- * Shared `HttpStatus` conversion utility.
- *
- * Use this object to convert between HTTP status codes, names, and reason
- * phrases without manually maintaining lookup tables.
- *
- * All operations are constant-time lookups.
- *
- *
- * @example
- * ```ts
- * import { httpStatus } from "./status";
- *
- * httpStatus.codeFromName("NotFound");
- * // => 404
- *
- * httpStatus.codeFromPhrase("Not Found");
- * // => 404
- *
- * httpStatus.nameFromCode(404);
- * // => "NotFound"
- *
- * httpStatus.nameFromPhrase("Not Found");
- * // => "NotFound"
- *
- * httpStatus.phraseFromCode(404);
- * // => "Not Found"
- *
- * httpStatus.phraseFromName("NotFound");
- * // => "Not Found"
- * ```
- */
-export const httpStatus: Readonly<HttpStatus> = Object.freeze<HttpStatus>({
-  codeFromName(name) {
-    return codeByName[name];
-  },
-
-  codeFromPhrase(phrase) {
-    return codeByPhrase[phrase];
-  },
-
-  nameFromCode(code) {
-    return nameByCode[code];
-  },
-
-  nameFromPhrase(phrase) {
-    return nameByCode[codeByPhrase[phrase]];
-  },
-
-  phraseFromCode(code) {
-    return phraseByCode[code];
-  },
-
-  phraseFromName(name) {
-    return phraseByCode[codeByName[name]];
-  },
-});

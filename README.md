@@ -1,7 +1,6 @@
 # ts-tools
 
 [![NPM](https://img.shields.io/badge/-@mkvlrn-white?logo=npm&labelColor=red&color=white)](https://www.npmjs.com/~mkvlrn)
-[![Bun](https://badgen.net/badge/icon/it's%20better%20than%20node?icon=bun&label=bun&color=black)](https://bun.com)
 
 Some Typescript tools I use frequently, usable with node, bun, deno, and cloudflare workers - ESM **only**
 
@@ -25,7 +24,7 @@ Type-safe HTTP status utilities and application errors.
 
 [![NPM Version](https://img.shields.io/npm/v/%40mkvlrn%2Fconfig?logo=npm&labelColor=red&color=white&label)](https://www.npmjs.com/package/@mkvlrn/config) [![README](https://img.shields.io/badge/readme-white?style=flat&logo=ReadMe)](./packages/config/README.md)
 
-Opinionated configurations for biome, typescript, and vite+.
+Opinionated configurations for oxlint, oxfmt, typescript, and vite+.
 
 ---
 

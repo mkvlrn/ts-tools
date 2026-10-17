@@ -1,28 +1,28 @@
 {
   "name": "@mkvlrn/result",
-  "description": "Simple Result type/pattern for TypeScript",
   "version": "0.4.2",
+  "description": "Simple Result type/pattern for TypeScript",
+  "keywords": [
+    "bun",
+    "node",
+    "result",
+    "typescript"
+  ],
   "license": "MIT",
-  "type": "module",
   "author": "Mike Valeriano <mkvlrn@gmail.com>",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/mkvlrn/ts-tools.git",
     "directory": "packages/result"
   },
-  "keywords": [
-    "node",
-    "bun",
-    "typescript",
-    "result"
-  ],
   "files": [
     "dist"
   ],
+  "type": "module",
   "exports": {
     ".": {
-      "types": "./dist/main.d.ts",
-      "default": "./dist/main.js"
+      "types": "./dist/main.d.mts",
+      "default": "./dist/main.mjs"
     }
   },
   "devDependencies": {}

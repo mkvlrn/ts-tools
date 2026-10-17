@@ -3,5 +3,5 @@
 
 set -euo pipefail
 
-mise exec -- bun install --frozen-lockfile
+mise exec -- pnpm install --frozen-lockfile
 mise exec -- lefthook install

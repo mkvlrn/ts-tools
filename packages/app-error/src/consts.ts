@@ -1,3 +1,4 @@
+/* eslint-disable no-magic-numbers -- static HTTP status lookup table */
 /**
  * Union of all supported HTTP status names.
  *
@@ -8,7 +9,7 @@
  * const name: StatusName = "NotFound";
  * ```
  */
-export type StatusName =
+type StatusName =
   | "Continue"
   | "SwitchingProtocols"
   | "Processing"
@@ -81,7 +82,7 @@ export type StatusName =
  * const code: StatusCode = 404;
  * ```
  */
-export type StatusCode =
+type StatusCode =
   | 100
   | 101
   | 102
@@ -156,7 +157,7 @@ export type StatusCode =
  * const phrase: StatusPhrase = "Not Found";
  * ```
  */
-export type StatusPhrase =
+type StatusPhrase =
   | "Continue"
   | "Switching Protocols"
   | "Processing"
@@ -223,7 +224,7 @@ export type StatusPhrase =
 
 type Status = Record<StatusCode, readonly [StatusName, StatusPhrase]>;
 
-export const status = {
+const status = {
   100: ["Continue", "Continue"],
   101: ["SwitchingProtocols", "Switching Protocols"],
   102: ["Processing", "Processing"],
@@ -254,7 +255,6 @@ export const status = {
   404: ["NotFound", "Not Found"],
   405: ["MethodNotAllowed", "Method Not Allowed"],
   406: ["NotAcceptable", "Not Acceptable"],
-  // biome-ignore lint/security/noSecrets: This is a public HTTP status name, not a secret.
   407: ["ProxyAuthenticationRequired", "Proxy Authentication Required"],
   408: ["RequestTimeout", "Request Timeout"],
   409: ["Conflict", "Conflict"],
@@ -289,3 +289,6 @@ export const status = {
   510: ["NotExtended", "Not Extended"],
   511: ["NetworkAuthenticationRequired", "Network Authentication Required"],
 } satisfies Status;
+
+export { status };
+export type { StatusCode, StatusName, StatusPhrase };

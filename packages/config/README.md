@@ -2,7 +2,7 @@
 
 [![NPM Version](https://img.shields.io/npm/v/%40mkvlrn%2Fconfig?logo=npm&labelColor=red&color=white&label)](https://www.npmjs.com/package/@mkvlrn/config) [![Bun](https://badgen.net/badge/icon/it's%20better%20than%20node?icon=bun&label=bun&color=black)](https://bun.com)
 
-Custom, opinionated configurations that can be used to extend your own biome, typescript, and vite+ configs. Or just to serve as sane, strict defaults.
+Custom, opinionated configurations that can be used to extend your own typescript and vite+ configs. Or just to serve as sane, strict defaults.
 
 Aimed at modern, type-safe, non-spaghetti codebases in most node, bun, deno, nest, and react projects without changes, just by extending these configs.
 
@@ -16,7 +16,7 @@ Aimed at modern, type-safe, non-spaghetti codebases in most node, bun, deno, nes
 <!-- x-release-please-start-version -->
 
 | Package manager | npm                              |
-| --------------- | -------------------------------- | ------------------------------------------ |
+| --------------- | -------------------------------- |
 | Bun             | `bun add @mkvlrn/config -D`      |
 | npm             | `npm install @mkvlrn/config -D`  |
 | pnpm            | `pnpm add @mkvlrn/config -D`     |
@@ -27,32 +27,7 @@ Aimed at modern, type-safe, non-spaghetti codebases in most node, bun, deno, nes
 
 ## Usage
 
-Obs: Biome, TypeScript, and Vite+ need to be installed separately and be available in the project.
-
-### biome (biome.json / biome.jsonc)
-
-Two Biome configurations are available:
-
-- `@mkvlrn/config/biome/backend` for backend projects, including Nest decorator support.
-- `@mkvlrn/config/biome/react` for React projects, including accessibility rules.
-
-Create your configuration file:
-
-<details>
-<summary><code>biome.jsonc</code></summary>
-
-```jsonc
-{
-  "$schema": "node_modules/@biomejs/biome/configuration_schema.json",
-  "root": true, // if this is the root of your project, false otherwise
-  "extends": ["@mkvlrn/config/biome/backend"], // or @mkvlrn/config/biome/react
-  "overrides": [
-    // any overrides, see biome docs
-  ],
-}
-```
-
-</details>
+Obs: TypeScript and Vite+ need to be installed separately and be available in the project.
 
 ### typescript (tsconfig.json)
 
@@ -82,8 +57,8 @@ Create your configuration file:
 <summary><code>vite.config.ts</code></summary>
 
 ```ts
-import { defineConfig, mergeConfig } from "vite-plus";
 import baseConfig from "@mkvlrn/config/vite" with { type: "json" }; // attention here, it is a json export
+import { defineConfig, mergeConfig } from "vite-plus";
 
 export default mergeConfig(
   baseConfig,

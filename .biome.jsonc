@@ -1,9 +1,0 @@
-{
-  "$schema": "https://biomejs.dev/schemas/latest/schema.json",
-  "root": true,
-  "extends": ["./packages/config/src/biome/backend.jsonc"],
-  "files": {
-    "ignoreUnknown": true,
-    "includes": ["**", "!**/node_modules/**/*", "!!**/dist/**/*", "!!**/vite.schema.json"]
-  }
-}

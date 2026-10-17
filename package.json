@@ -1,43 +1,39 @@
 {
   "name": "ts-tools",
-  "description": "Assorted typescript tools for whatever",
   "version": "0.0.0",
-  "license": "MIT",
   "private": true,
-  "type": "module",
+  "description": "Assorted typescript tools for whatever",
+  "keywords": [
+    "node",
+    "tools",
+    "typescript"
+  ],
+  "license": "MIT",
   "author": "Mike Valeriano <mkvlrn@gmail.com>",
   "repository": {
     "type": "git",
     "url": "git@github.com:mkvlrn/ts-tools"
   },
-  "keywords": [
-    "node",
-    "bun",
-    "typescript",
-    "tools"
-  ],
-  "workspaces": [
-    "packages/*"
-  ],
-  "devEngines": {
-    "runtime": {
-      "name": "bun",
-      "version": "1.4.3",
-      "onFail": "ignore"
-    },
-    "packageManager": {
-      "name": "bun",
-      "version": "1.4.3",
-      "onFail": "ignore"
-    }
-  },
+  "type": "module",
   "devDependencies": {
-    "@biomejs/biome": "2.5.15",
     "@commitlint/cli": "21.2.3",
     "@commitlint/config-conventional": "21.2.3",
-    "@types/bun": "1.4.3",
     "@types/node": "26.6.5",
+    "@vitest/coverage-v8": "5.0.5",
     "lefthook": "2.2.2",
-    "typescript": "7.0.2"
+    "typescript": "7.0.2",
+    "vite-plus": "1.3.0"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "12.11.2",
+      "onFail": "ignore"
+    },
+    "runtime": {
+      "name": "node",
+      "version": "26.11.1",
+      "onFail": "ignore"
+    }
   }
 }

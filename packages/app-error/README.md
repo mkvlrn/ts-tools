@@ -37,7 +37,7 @@ Type-safe HTTP status utilities and application errors.
 <!-- x-release-please-start-version -->
 
 | Package manager | npm                              |
-| --------------- | -------------------------------- | ------------------------------------------ |
+| --------------- | -------------------------------- |
 | Bun             | `bun add @mkvlrn/app-error`      |
 | npm             | `npm install @mkvlrn/app-error`  |
 | pnpm            | `pnpm add @mkvlrn/app-error`     |

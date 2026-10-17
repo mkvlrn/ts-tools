@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-#MISE description="Check files with biome"
-
-set -euo pipefail
-
-mise exec -- biome check --no-errors-on-unmatched "$@"

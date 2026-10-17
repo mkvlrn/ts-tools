@@ -13,4 +13,4 @@ trap 'rm -f "$root_file"' EXIT
 
 printf 'import type { UserConfig } from "vite-plus";\n/// <reference path="%s" />\nexport type ViteConfig = UserConfig;\n' "$augmentation" >"$root_file"
 
-mise exec -- bunx typescript-json-schema ./packages/config/tsconfig.schema.json ViteConfig --required --include "$augmentation" --include "$root_file" >./packages/config/vite.schema.json
+mise exec -- pnpm --filter @mkvlrn/config exec typescript-json-schema ./packages/config/tsconfig.schema.json ViteConfig --required --include "$augmentation" --include "$root_file" >./packages/config/vite.schema.json
