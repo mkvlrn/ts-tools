@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.11.3](https://github.com/mkvlrn/ts-tools/compare/config-v0.11.2...config-v0.11.3) (2026-10-18)
+
+
+### Bug fixes
+
+* **config:** reformat vite config and add vitest truthy rule ([1155d12](https://github.com/mkvlrn/ts-tools/commit/1155d129a8575b9d2e51eb0d4d500deb4acd51d7))
+
 ## [0.11.2](https://github.com/mkvlrn/ts-tools/compare/config-v0.11.1...config-v0.11.2) (2026-10-17)
 
 
