@@ -1,40 +1,37 @@
 {
   "$schema": "../vite.schema.json",
-  "test": {
-    "include": ["**/*.{test,spec}.{ts,tsx,mts}"],
-    "watch": false,
-    "reporters": ["tree"],
-    "coverage": {
-      "clean": true,
-      "cleanOnRerun": true,
-      "include": ["src"]
+  "fmt": {
+    "endOfLine": "lf",
+    "printWidth": 100,
+    "sortImports": {
+      "newlinesBetween": false
     },
-    "env": { "NODE_ENV": "test" },
-    "environment": "node",
-    "passWithNoTests": true
+    "tabWidth": 2,
+    "useTabs": false
   },
   "lint": {
+    "categories": {
+      "correctness": "error",
+      "nursery": "off",
+      "pedantic": "off",
+      "perf": "error",
+      "restriction": "error",
+      "style": "warn",
+      "suspicious": "error"
+    },
     "globals": {
       "Bun": "readonly",
       "console": "readonly"
-    },
-    "plugins": ["typescript", "unicorn", "oxc", "import", "node", "promise", "vitest"],
-    "categories": {
-      "correctness": "error",
-      "suspicious": "error",
-      "perf": "error",
-      "style": "warn",
-      "pedantic": "off",
-      "restriction": "error",
-      "nursery": "off"
     },
     "options": {
       "typeAware": true,
       "typeCheck": true
     },
+    "plugins": ["typescript", "unicorn", "oxc", "import", "node", "promise", "vitest"],
     "rules": {
       "dot-notation": "off",
       "func-style": ["error", "declaration"],
+      "import/consistent-type-specifier-style": "off",
       "import/extensions": "off",
       "import/no-default-export": "off",
       "import/no-named-export": "off",
@@ -44,18 +41,31 @@
       "no-console": "warn",
       "no-undefined": "off",
       "one-var": "off",
-      "sort-imports": ["error", { "ignoreDeclarationSort": true }],
+      "oxc/no-async-await": "off",
+      "sort-imports": [
+        "error",
+        {
+          "ignoreDeclarationSort": true
+        }
+      ],
       "vitest/no-importing-vitest-globals": "off",
       "vitest/prefer-to-be-falsy": "off",
-      "import/consistent-type-specifier-style": "off",
-      "oxc/no-async-await": "off"
+      "vitest/prefer-to-be-truthy": "off"
     }
   },
-  "fmt": {
-    "printWidth": 100,
-    "useTabs": false,
-    "tabWidth": 2,
-    "endOfLine": "lf",
-    "sortImports": { "newlinesBetween": false }
+  "test": {
+    "coverage": {
+      "clean": true,
+      "cleanOnRerun": true,
+      "include": ["src"]
+    },
+    "env": {
+      "NODE_ENV": "test"
+    },
+    "environment": "node",
+    "include": ["**/*.{test,spec}.{ts,tsx,mts}"],
+    "passWithNoTests": true,
+    "reporters": ["tree"],
+    "watch": false
   }
 }
