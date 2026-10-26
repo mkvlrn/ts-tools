@@ -22,17 +22,17 @@
     "@vitest/coverage-v8": "5.0.5",
     "lefthook": "2.2.2",
     "typescript": "7.0.2",
-    "vite-plus": "1.3.0"
+    "vite-plus": "1.4.0"
   },
   "devEngines": {
     "packageManager": {
       "name": "pnpm",
-      "version": "12.14.0",
+      "version": "12.15.0",
       "onFail": "ignore"
     },
     "runtime": {
       "name": "node",
-      "version": "26.12.0",
+      "version": "26.12.1",
       "onFail": "ignore"
     }
   }
