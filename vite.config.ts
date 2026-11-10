@@ -5,7 +5,7 @@ export default mergeConfig(
   baseConfig,
   defineConfig({
     fmt: {
-      ignorePatterns: ["**/CHANGELOG.md"],
+      ignorePatterns: ["**/CHANGELOG.md", "**/vite.schema.json"],
     },
   }),
 );

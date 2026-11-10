@@ -431,7 +431,7 @@
     },
     "ArrayBuffer": {
       "properties": {
-        "__@toStringTag@1859": {
+        "__@toStringTag@3350": {
           "const": "ArrayBuffer",
           "type": "string"
         },
@@ -448,7 +448,7 @@
           "type": "boolean"
         }
       },
-      "required": ["__@toStringTag@1859", "byteLength", "detached", "maxByteLength", "resizable"],
+      "required": ["__@toStringTag@3350", "byteLength", "detached", "maxByteLength", "resizable"],
       "type": "object"
     },
     "ArrayBufferLike": {
@@ -564,6 +564,15 @@
             "type": "string"
           },
           "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "AwaitThenableConfig": {
+      "properties": {
+        "allowMixedPromiseArrays": {
+          "description": "Allow Promise aggregators such as `Promise.all` to receive mixed arrays or\niterables containing at least one potentially Promise-like value.\nInputs containing only synchronous values are still reported.",
+          "type": "boolean"
         }
       },
       "type": "object"
@@ -686,6 +695,10 @@
     },
     "BrowserTraceViewMode": {
       "enum": ["off", "on", "on-all-retries", "on-first-retry", "retain-on-failure"],
+      "type": "string"
+    },
+    "BrowserTraceViewRecordingMode": {
+      "enum": ["failure-only", "off", "on"],
       "type": "string"
     },
     "Bt": {
@@ -978,173 +991,7 @@
       },
       "type": "object"
     },
-    "CSSModuleScopeStrategy": {
-      "enum": ["non-scoped", "scoped", "stable"],
-      "type": "string"
-    },
-    "CSSModulesConfig": {
-      "properties": {
-        "animation": {
-          "description": "Whether to enable hashing for `@keyframes`.",
-          "type": "boolean"
-        },
-        "container": {
-          "description": "Whether to enable hashing for `@container` names.",
-          "type": "boolean"
-        },
-        "customIdents": {
-          "description": "Whether to enable hashing for custom identifiers.",
-          "type": "boolean"
-        },
-        "dashedIdents": {
-          "description": "Whether to rename dashed identifiers, e.g. custom properties.",
-          "type": "boolean"
-        },
-        "grid": {
-          "description": "Whether to enable hashing for CSS grid identifiers.",
-          "type": "boolean"
-        },
-        "pattern": {
-          "description": "The pattern to use when renaming class names and other identifiers. Default is `[hash]_[local]`.",
-          "type": "string"
-        },
-        "pure": {
-          "description": "Whether to require at least one class or id selector in each rule.",
-          "type": "boolean"
-        }
-      },
-      "type": "object"
-    },
-    "CSSModulesOptions": {
-      "properties": {
-        "exportGlobals": {
-          "type": "boolean"
-        },
-        "generateScopedName": {
-          "type": ["string", "object"]
-        },
-        "getJSON": {
-          "type": "object"
-        },
-        "globalModulePaths": {
-          "items": {
-            "$ref": "#/definitions/RegExp"
-          },
-          "type": "array"
-        },
-        "hashPrefix": {
-          "type": "string"
-        },
-        "localsConvention": {
-          "anyOf": [
-            {
-              "enum": ["camelCase", "camelCaseOnly", "dashes", "dashesOnly"],
-              "type": "string"
-            },
-            {
-              "type": "object"
-            }
-          ],
-          "description": "default: undefined"
-        },
-        "scopeBehaviour": {
-          "enum": ["global", "local"],
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "CSSOptions": {
-      "properties": {
-        "devSourcemap": {
-          "default": false,
-          "description": "Enables css sourcemaps during dev",
-          "type": "boolean"
-        },
-        "lightningcss": {
-          "$ref": "#/definitions/LightningCSSOptions"
-        },
-        "modules": {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/CSSModulesOptions"
-            },
-            {
-              "const": false,
-              "type": "boolean"
-            }
-          ],
-          "description": "https://github.com/css-modules/postcss-modules"
-        },
-        "postcss": {
-          "anyOf": [
-            {
-              "allOf": [
-                {
-                  "$ref": "#/definitions/ProcessOptions%3Cdefault%7Cdefault%3E"
-                },
-                {
-                  "properties": {
-                    "plugins": {
-                      "items": {
-                        "$ref": "#/definitions/AcceptedPlugin"
-                      },
-                      "type": "array"
-                    }
-                  },
-                  "type": "object"
-                }
-              ]
-            },
-            {
-              "type": "string"
-            }
-          ]
-        },
-        "preprocessorMaxWorkers": {
-          "anyOf": [
-            {
-              "const": true,
-              "type": "boolean"
-            },
-            {
-              "type": "number"
-            }
-          ],
-          "default": true,
-          "description": "If this option is set, preprocessors will run in workers when possible.\n`true` means the number of CPUs minus 1."
-        },
-        "preprocessorOptions": {
-          "description": "Options for preprocessors.\n\nIn addition to options specific to each processors, Vite supports `additionalData` option.\nThe `additionalData` option can be used to inject extra code for each style content.",
-          "properties": {
-            "less": {
-              "$ref": "#/definitions/LessPreprocessorOptions"
-            },
-            "sass": {
-              "$ref": "#/definitions/SassPreprocessorOptions"
-            },
-            "scss": {
-              "$ref": "#/definitions/SassPreprocessorOptions"
-            },
-            "styl": {
-              "$ref": "#/definitions/StylusPreprocessorOptions"
-            },
-            "stylus": {
-              "$ref": "#/definitions/StylusPreprocessorOptions"
-            }
-          },
-          "type": "object"
-        },
-        "transformer": {
-          "default": "'postcss'",
-          "description": "Using lightningcss is an experimental option to handle CSS modules,\nassets and imports via Lightning CSS. It requires to install it as a\npeer dependency.",
-          "enum": ["lightningcss", "postcss"],
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "C_1": {
+    "C": {
       "properties": {
         "allowExternal": {
           "default": false,
@@ -1203,6 +1050,10 @@
           },
           "type": "array"
         },
+        "ignoreNode": {
+          "description": "Filter to ignore code from coverage based on its AST node.\nCalled only for nodes that Vitest's built-in filters don't already ignore.\nReturn `'ignore-this-and-nested-nodes'` to also ignore all nodes inside the given node.\nSupported only by `v8` provider.",
+          "type": "object"
+        },
         "include": {
           "description": "List of files included in coverage as glob patterns.\nBy default only files covered by tests are included.\n\nSee [Including and excluding files from coverage report](https://vitest.dev/guide/coverage.html#including-and-excluding-files-from-coverage-report) for examples.",
           "items": {
@@ -1244,7 +1095,7 @@
             },
             {
               "items": {
-                "$ref": "#/definitions/a5"
+                "$ref": "#/definitions/a7"
               },
               "type": "array"
             },
@@ -1265,7 +1116,7 @@
                   {
                     "items": [
                       {
-                        "$ref": "#/definitions/a5"
+                        "$ref": "#/definitions/a7"
                       }
                     ],
                     "maxItems": 1,
@@ -1609,6 +1460,188 @@
             }
           },
           "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "CSSModuleScopeStrategy": {
+      "enum": ["non-scoped", "scoped", "stable"],
+      "type": "string"
+    },
+    "CSSModulesConfig": {
+      "properties": {
+        "animation": {
+          "description": "Whether to enable hashing for `@keyframes`.",
+          "type": "boolean"
+        },
+        "container": {
+          "description": "Whether to enable hashing for `@container` names.",
+          "type": "boolean"
+        },
+        "customIdents": {
+          "description": "Whether to enable hashing for custom identifiers.",
+          "type": "boolean"
+        },
+        "dashedIdents": {
+          "description": "Whether to rename dashed identifiers, e.g. custom properties.",
+          "type": "boolean"
+        },
+        "grid": {
+          "description": "Whether to enable hashing for CSS grid identifiers.",
+          "type": "boolean"
+        },
+        "pattern": {
+          "description": "The pattern to use when renaming class names and other identifiers. Default is `[hash]_[local]`.",
+          "type": "string"
+        },
+        "pure": {
+          "description": "Whether to require at least one class or id selector in each rule.",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "CSSModulesOptions": {
+      "properties": {
+        "exportGlobals": {
+          "type": "boolean"
+        },
+        "generateScopedName": {
+          "type": ["string", "object"]
+        },
+        "getJSON": {
+          "type": "object"
+        },
+        "globalModulePaths": {
+          "items": {
+            "$ref": "#/definitions/RegExp"
+          },
+          "type": "array"
+        },
+        "hashPrefix": {
+          "type": "string"
+        },
+        "localsConvention": {
+          "anyOf": [
+            {
+              "enum": ["camelCase", "camelCaseOnly", "dashes", "dashesOnly"],
+              "type": "string"
+            },
+            {
+              "type": "object"
+            }
+          ],
+          "description": "default: undefined"
+        },
+        "scopeBehaviour": {
+          "enum": ["global", "local"],
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "CSSOptions": {
+      "properties": {
+        "devSourcemap": {
+          "default": false,
+          "description": "Enables css sourcemaps during dev",
+          "type": "boolean"
+        },
+        "lightningcss": {
+          "$ref": "#/definitions/LightningCSSOptions"
+        },
+        "modules": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/CSSModulesOptions"
+            },
+            {
+              "const": false,
+              "type": "boolean"
+            }
+          ],
+          "description": "https://github.com/css-modules/postcss-modules"
+        },
+        "postcss": {
+          "anyOf": [
+            {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/ProcessOptions%3Cdefault%7Cdefault%3E"
+                },
+                {
+                  "properties": {
+                    "plugins": {
+                      "items": {
+                        "$ref": "#/definitions/AcceptedPlugin"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "preprocessorMaxWorkers": {
+          "anyOf": [
+            {
+              "const": true,
+              "type": "boolean"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "default": true,
+          "description": "If this option is set, preprocessors will run in workers when possible.\n`true` means the number of CPUs minus 1."
+        },
+        "preprocessorOptions": {
+          "description": "Options for preprocessors.\n\nIn addition to options specific to each processors, Vite supports `additionalData` option.\nThe `additionalData` option can be used to inject extra code for each style content.",
+          "properties": {
+            "less": {
+              "$ref": "#/definitions/LessPreprocessorOptions"
+            },
+            "sass": {
+              "$ref": "#/definitions/SassPreprocessorOptions"
+            },
+            "scss": {
+              "$ref": "#/definitions/SassPreprocessorOptions"
+            },
+            "styl": {
+              "$ref": "#/definitions/StylusPreprocessorOptions"
+            },
+            "stylus": {
+              "$ref": "#/definitions/StylusPreprocessorOptions"
+            }
+          },
+          "type": "object"
+        },
+        "transformer": {
+          "default": "'postcss'",
+          "description": "Using lightningcss is an experimental option to handle CSS modules,\nassets and imports via Lightning CSS. It requires to install it as a\npeer dependency.",
+          "enum": ["lightningcss", "postcss"],
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "CapitalizedCallsConfig": {
+      "properties": {
+        "allow": {
+          "description": "Exact names of capitalized functions that may be called directly.\nForwarded to the React Compiler's `validateNoCapitalizedCalls`\nenvironment option.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "allowPattern": {
+          "description": "A regex pattern; capitalized functions whose name matches may be called\ndirectly, checked alongside `allow`. Useful when a codebase has a\nnaming convention for capitalized non-component factories, such as\ngenerated event or schema builders (e.g. `\"Event$\"`).",
+          "type": "string"
         }
       },
       "type": "object"
@@ -2404,7 +2437,7 @@
     },
     "DataView<ArrayBufferLike>": {
       "properties": {
-        "__@toStringTag@1859": {
+        "__@toStringTag@3350": {
           "type": "string"
         },
         "buffer": {
@@ -2417,7 +2450,7 @@
           "type": "number"
         }
       },
-      "required": ["__@toStringTag@1859", "buffer", "byteLength", "byteOffset"],
+      "required": ["__@toStringTag@3350", "buffer", "byteLength", "byteOffset"],
       "type": "object"
     },
     "DateConstructor": {
@@ -2632,14 +2665,14 @@
         },
         "moduleDirectories": {
           "default": "['node_modules']",
-          "description": "A list of directories relative to the config file that should be treated as module directories.",
+          "description": "A list of directories that contain dependencies. A file is a dependency if its path includes `/<directory>/`.\n`node_modules` is always included.",
           "items": {
             "type": "string"
           },
           "type": "array"
         },
         "optimizer": {
-          "$ref": "#/definitions/Partial%3CRecord%3C%22client%22%7C%22ssr%22%7C(%7B%7D%26string)%2Ca9%3E%3E",
+          "$ref": "#/definitions/Partial%3CRecord%3C%22client%22%7C%22ssr%22%7C(%7B%7D%26string)%2Cab%3E%3E",
           "description": "Enable dependency optimization. This can improve the performance of your tests."
         },
         "web": {
@@ -5419,6 +5452,19 @@
                 "$ref": "#/definitions/AllowWarnDeny"
               },
               {
+                "$ref": "#/definitions/CapitalizedCallsConfig"
+              }
+            ],
+            "maxItems": 2,
+            "minItems": 2,
+            "type": "array"
+          },
+          {
+            "items": [
+              {
+                "$ref": "#/definitions/AllowWarnDeny"
+              },
+              {
                 "$ref": "#/definitions/CheckedRequiresOnchangeOrReadonly"
               }
             ],
@@ -5942,6 +5988,19 @@
               },
               {
                 "$ref": "#/definitions/ArrayTypeConfig"
+              }
+            ],
+            "maxItems": 2,
+            "minItems": 2,
+            "type": "array"
+          },
+          {
+            "items": [
+              {
+                "$ref": "#/definitions/AllowWarnDeny"
+              },
+              {
+                "$ref": "#/definitions/AwaitThenableConfig"
               }
             ],
             "maxItems": 2,
@@ -14423,7 +14482,38 @@
           ]
         },
         "react/capitalized-calls": {
-          "$ref": "#/definitions/RuleNoConfig"
+          "anyOf": [
+            {
+              "items": [
+                {
+                  "$ref": "#/definitions/AllowWarnDeny"
+                }
+              ],
+              "maxItems": 1,
+              "minItems": 1,
+              "type": "array"
+            },
+            {
+              "items": [
+                {
+                  "$ref": "#/definitions/AllowWarnDeny"
+                },
+                {
+                  "$ref": "#/definitions/CapitalizedCallsConfig"
+                }
+              ],
+              "maxItems": 2,
+              "minItems": 2,
+              "type": "array"
+            },
+            {
+              "enum": ["allow", "deny", "error", "off", "warn"],
+              "type": "string"
+            },
+            {
+              "type": "number"
+            }
+          ]
         },
         "react/checked-requires-onchange-or-readonly": {
           "anyOf": [
@@ -16009,7 +16099,38 @@
           ]
         },
         "typescript/await-thenable": {
-          "$ref": "#/definitions/RuleNoConfig"
+          "anyOf": [
+            {
+              "items": [
+                {
+                  "$ref": "#/definitions/AllowWarnDeny"
+                }
+              ],
+              "maxItems": 1,
+              "minItems": 1,
+              "type": "array"
+            },
+            {
+              "items": [
+                {
+                  "$ref": "#/definitions/AllowWarnDeny"
+                },
+                {
+                  "$ref": "#/definitions/AwaitThenableConfig"
+                }
+              ],
+              "maxItems": 2,
+              "minItems": 2,
+              "type": "array"
+            },
+            {
+              "enum": ["allow", "deny", "error", "off", "warn"],
+              "type": "string"
+            },
+            {
+              "type": "number"
+            }
+          ]
         },
         "typescript/ban-ts-comment": {
           "anyOf": [
@@ -17283,6 +17404,9 @@
           "$ref": "#/definitions/RuleNoConfig"
         },
         "typescript/no-unsafe-declaration-merging": {
+          "$ref": "#/definitions/RuleNoConfig"
+        },
+        "typescript/no-unsafe-enum-assignment": {
           "$ref": "#/definitions/RuleNoConfig"
         },
         "typescript/no-unsafe-enum-comparison": {
@@ -21926,36 +22050,6 @@
       },
       "type": "object"
     },
-    "G<object>": {
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "options": {
-          "additionalProperties": true,
-          "properties": {},
-          "type": "object"
-        },
-        "prewarm": {
-          "description": "Called once for every resolved browser project right before its shared\nVite server is created, so the provider can start preparing the browser\n(e.g. launching it) concurrently. Optional, fire-and-forget: errors must\nsurface through the normal provider flow.",
-          "type": "object"
-        },
-        "providerFactory": {
-          "type": "object"
-        },
-        "serverFactory": {
-          "$ref": "#/definitions/K"
-        },
-        "supportedBrowser": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        }
-      },
-      "required": ["name", "options", "providerFactory", "serverFactory"],
-      "type": "object"
-    },
     "GeneratedCodePreset": {
       "enum": ["es2015", "es5"],
       "type": "string"
@@ -22065,33 +22159,6 @@
       },
       "type": "object"
     },
-    "H": {
-      "properties": {
-        "async": {
-          "description": "If the script should be loaded asynchronously.",
-          "type": "boolean"
-        },
-        "content": {
-          "description": "JavaScript content to be injected. This string is processed by Vite plugins if type is \"module\".\n\nYou can use `id` to give Vite a hint about the file extension.",
-          "type": "string"
-        },
-        "id": {
-          "default": "`injected-${index}.js`",
-          "description": "If \"content\" is provided and type is \"module\", this will be its identifier.\n\nIf you are using TypeScript, you can add `.ts` extension here for example.",
-          "type": "string"
-        },
-        "src": {
-          "description": "Path to the script. This value is resolved by Vite so it can be a node module or a file path.",
-          "type": "string"
-        },
-        "type": {
-          "default": "'module'",
-          "description": "Script type.",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
     "HTMLOptions": {
       "properties": {
         "additionalAssetSources": {
@@ -22171,6 +22238,11 @@
         }
       },
       "type": "object"
+    },
+    "HtmlTheme": {
+      "description": "color themes of the html report, `legacy` being the classic istanbul colors",
+      "enum": ["dark", "legacy", "light"],
+      "type": "string"
     },
     "HtmlWhitespaceSensitivityConfig": {
       "enum": ["css", "ignore", "strict"],
@@ -22305,12 +22377,12 @@
           "type": "number"
         },
         "benchmark": {
-          "$ref": "#/definitions/s_1",
+          "$ref": "#/definitions/u_1",
           "default": {},
           "description": "Benchmark options."
         },
         "browser": {
-          "$ref": "#/definitions/w",
+          "$ref": "#/definitions/y",
           "default": false,
           "description": "options for test in a browser environment"
         },
@@ -22347,7 +22419,7 @@
           "type": "boolean"
         },
         "coverage": {
-          "$ref": "#/definitions/C_1",
+          "$ref": "#/definitions/C",
           "description": "Coverage options"
         },
         "css": {
@@ -22438,12 +22510,12 @@
           "description": "Custom environment variables assigned to `process.env` before running tests."
         },
         "environment": {
-          "$ref": "#/definitions/b3",
+          "$ref": "#/definitions/b9",
           "default": "'node'",
           "description": "Running environment\n\nSupports 'node', 'jsdom', 'happy-dom', 'edge-runtime'\n\nIf used unsupported string, will try to load the package `vitest-environment-${env}`"
         },
         "environmentOptions": {
-          "$ref": "#/definitions/ab",
+          "$ref": "#/definitions/ad",
           "description": "Environment options."
         },
         "exclude": {
@@ -22591,16 +22663,33 @@
               "description": "Record the modules that every test file loads in the cache and use the records\nwith `--changed` and `--related` instead of walking the module graph statically.\n\nA test file without a record always runs.",
               "type": "boolean"
             },
+            "traceTimeline": {
+              "default": false,
+              "description": "Record `expect.poll`, `vi.waitFor`, and `vi.waitUntil` steps of each test and print them as a timeline when the test fails.\nSteps of passing tests are dropped without being reported.\n\nThis has no effect in browser mode, which records its steps with `browser.traceView`.",
+              "type": "boolean"
+            },
             "vcsProvider": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/VCSProvider"
+                  "allOf": [
+                    {
+                      "properties": {},
+                      "type": "object"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
                 },
                 {
+                  "$ref": "#/definitions/n"
+                },
+                {
+                  "enum": ["git", "mtime"],
                   "type": "string"
                 }
               ],
-              "description": "Custom provider for detecting changed files. Used with the `--changed` flag\nto determine which files have been modified.\n\nBy default, Vitest uses Git to detect changed files. You can provide a custom\nimplementation of the `VCSProvider` interface to use a different version control system."
+              "description": "Provider for detecting changed files. Used with the `--changed` flag\nto determine which files have been modified.\n\n- `'git'` (default) compares the working tree with the `--changed` reference.\n- `'mtime'` compares the modification time of every recorded dependency with the run\n  that recorded it. It requires `experimental.recordDependencies`. The test files that\n  failed in their last run also run.\n\nYou can also provide a custom implementation of the `VCSProvider` interface."
             },
             "viteModuleRunner": {
               "default": true,
@@ -22611,60 +22700,8 @@
           "type": "object"
         },
         "fakeTimers": {
-          "description": "Options for",
-          "properties": {
-            "advanceTimeDelta": {
-              "type": "number"
-            },
-            "ignoreMissingTimers": {
-              "type": "boolean"
-            },
-            "loopLimit": {
-              "type": "number"
-            },
-            "now": {
-              "anyOf": [
-                {
-                  "format": "date-time",
-                  "type": "string"
-                },
-                {
-                  "properties": {
-                    "epochMilliseconds": {
-                      "type": "number"
-                    }
-                  },
-                  "required": ["epochMilliseconds"],
-                  "type": "object"
-                },
-                {
-                  "type": "number"
-                }
-              ]
-            },
-            "shouldAdvanceTime": {
-              "type": "boolean"
-            },
-            "shouldClearNativeTimers": {
-              "type": "boolean"
-            },
-            "target": {
-              "$ref": "#/definitions/GlobalObject"
-            },
-            "toFake": {
-              "items": {
-                "$ref": "#/definitions/FakeMethod"
-              },
-              "type": "array"
-            },
-            "toNotFake": {
-              "items": {
-                "$ref": "#/definitions/FakeMethod"
-              },
-              "type": "array"
-            }
-          },
-          "type": "object"
+          "$ref": "#/definitions/e",
+          "description": "Options for"
         },
         "fileParallelism": {
           "default": true,
@@ -22835,7 +22872,7 @@
             {
               "allOf": [
                 {
-                  "$ref": "#/definitions/Partial%3CRecord%3C%22blob%22%7C%22default%22%7C%22json%22%7C%22dot%22%7C%22tree%22%7C%22agent%22%7C%22minimal%22%7C%22verbose%22%7C%22tap%22%7C%22tap-flat%22%7C%22junit%22%7C%22hanging-process%22%7C%22github-actions%22%2Cstring%3E%3E"
+                  "$ref": "#/definitions/Partial%3CRecord%3C%22blob%22%7C%22default%22%7C%22json%22%7C%22dot%22%7C%22tree%22%7C%22verbose%22%7C%22agent%22%7C%22minimal%22%7C%22tap%22%7C%22tap-flat%22%7C%22junit%22%7C%22hanging-process%22%7C%22github-actions%22%2Cstring%3E%3E"
                 },
                 {
                   "$ref": "#/definitions/Record%3Cstring%2Cstring%3E"
@@ -22866,7 +22903,7 @@
               ]
             },
             {
-              "$ref": "#/definitions/as"
+              "$ref": "#/definitions/aw"
             },
             {
               "enum": ["forks", "threads", "typescript", "vmForks", "vmThreads"],
@@ -22889,7 +22926,7 @@
           "type": "array"
         },
         "provide": {
-          "$ref": "#/definitions/Partial%3Co%3E",
+          "$ref": "#/definitions/Partial%3Cp%3E",
           "description": "Define variables that will be returned from `inject` in the test environment."
         },
         "repeats": {
@@ -22911,7 +22948,7 @@
               ]
             },
             {
-              "$ref": "#/definitions/ay"
+              "$ref": "#/definitions/aC"
             },
             {
               "items": {
@@ -22928,7 +22965,7 @@
                     ]
                   },
                   {
-                    "$ref": "#/definitions/ay"
+                    "$ref": "#/definitions/aC"
                   },
                   {
                     "enum": [
@@ -22968,7 +23005,7 @@
                     ]
                   },
                   {
-                    "$ref": "#/definitions/ay"
+                    "$ref": "#/definitions/aC"
                   },
                   {
                     "items": [
@@ -22987,7 +23024,7 @@
                         "type": "string"
                       },
                       {
-                        "$ref": "#/definitions/Partial%3Cad%3E"
+                        "$ref": "#/definitions/Partial%3Caf%3E"
                       }
                     ],
                     "maxItems": 2,
@@ -23029,7 +23066,7 @@
                         "type": "string"
                       },
                       {
-                        "$ref": "#/definitions/Partial%3Caj%3E"
+                        "$ref": "#/definitions/Partial%3Cal%3E"
                       }
                     ],
                     "maxItems": 2,
@@ -23088,6 +23125,20 @@
                   {
                     "items": [
                       {
+                        "const": "verbose",
+                        "type": "string"
+                      },
+                      {
+                        "$ref": "#/definitions/Partial%3CDefaultReporterOptions%3E"
+                      }
+                    ],
+                    "maxItems": 2,
+                    "minItems": 2,
+                    "type": "array"
+                  },
+                  {
+                    "items": [
+                      {
                         "const": "agent",
                         "type": "string"
                       },
@@ -23103,20 +23154,6 @@
                     "items": [
                       {
                         "const": "minimal",
-                        "type": "string"
-                      },
-                      {
-                        "$ref": "#/definitions/Partial%3CDefaultReporterOptions%3E"
-                      }
-                    ],
-                    "maxItems": 2,
-                    "minItems": 2,
-                    "type": "array"
-                  },
-                  {
-                    "items": [
-                      {
-                        "const": "verbose",
                         "type": "string"
                       },
                       {
@@ -23166,7 +23203,7 @@
                         "type": "string"
                       },
                       {
-                        "$ref": "#/definitions/Partial%3Cag%3E"
+                        "$ref": "#/definitions/Partial%3Cai%3E"
                       }
                     ],
                     "maxItems": 2,
@@ -23259,7 +23296,7 @@
           "type": "boolean"
         },
         "retry": {
-          "$ref": "#/definitions/bi",
+          "$ref": "#/definitions/bk",
           "default": "0 // Don't retry",
           "description": "Retry configuration for tests.\n- If a number, specifies how many times to retry failed tests\n- If an object, allows fine-grained retry control\n\n⚠️ WARNING: Function form is NOT supported in a config file\nbecause configurations are serialized when passed to worker threads.\nUse the function form only in test files directly."
         },
@@ -23341,7 +23378,7 @@
         "snapshotFormat": {
           "allOf": [
             {
-              "$ref": "#/definitions/Omit%3Cbm%2C%22plugins%22%7C%22compareKeys%22%3E"
+              "$ref": "#/definitions/Omit%3Cbp%2C%22plugins%22%7C%22compareKeys%22%3E"
             },
             {
               "properties": {
@@ -23369,7 +23406,7 @@
         "tags": {
           "description": "Define tags available in your test files.\n\nIf test defines a tag that is not listed here, an error will be thrown.",
           "items": {
-            "$ref": "#/definitions/e"
+            "$ref": "#/definitions/g"
           },
           "type": "array"
         },
@@ -23400,13 +23437,13 @@
           "type": "number"
         },
         "typecheck": {
-          "$ref": "#/definitions/Partial%3Cb0%3E",
+          "$ref": "#/definitions/Partial%3Cb6%3E",
           "description": "Options for configuring typechecking test environment."
         },
         "ui": {
           "anyOf": [
             {
-              "$ref": "#/definitions/b1"
+              "$ref": "#/definitions/b7"
             },
             {
               "type": "boolean"
@@ -24133,6 +24170,36 @@
       },
       "type": "object"
     },
+    "J<object>": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "options": {
+          "additionalProperties": true,
+          "properties": {},
+          "type": "object"
+        },
+        "prewarm": {
+          "description": "Called once for every resolved browser project right before its shared\nVite server is created, so the provider can start preparing the browser\n(e.g. launching it) concurrently. Optional, fire-and-forget: errors must\nsurface through the normal provider flow.",
+          "type": "object"
+        },
+        "providerFactory": {
+          "type": "object"
+        },
+        "serverFactory": {
+          "$ref": "#/definitions/O"
+        },
+        "supportedBrowser": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": ["name", "options", "providerFactory", "serverFactory"],
+      "type": "object"
+    },
     "JSDOMOptions": {
       "allOf": [
         {
@@ -24614,6 +24681,30 @@
       "type": "object"
     },
     "K": {
+      "properties": {
+        "async": {
+          "description": "If the script should be loaded asynchronously.",
+          "type": "boolean"
+        },
+        "content": {
+          "description": "JavaScript content to be injected. This string is processed by Vite plugins if type is \"module\".\n\nYou can use `id` to give Vite a hint about the file extension.",
+          "type": "string"
+        },
+        "id": {
+          "default": "`injected-${index}.js`",
+          "description": "If \"content\" is provided and type is \"module\", this will be its identifier.\n\nIf you are using TypeScript, you can add `.ts` extension here for example.",
+          "type": "string"
+        },
+        "src": {
+          "description": "Path to the script. This value is resolved by Vite so it can be a node module or a file path.",
+          "type": "string"
+        },
+        "type": {
+          "default": "'module'",
+          "description": "Script type.",
+          "type": "string"
+        }
+      },
       "type": "object"
     },
     "KeyObject": {
@@ -28811,6 +28902,9 @@
       },
       "type": "object"
     },
+    "O": {
+      "type": "object"
+    },
     "ObjectLiteralTypeAssertions": {
       "enum": ["allow", "allow-as-parameter", "never"],
       "type": "string"
@@ -29004,7 +29098,7 @@
       },
       "type": "object"
     },
-    "Omit<I,\"sequence\"|\"deps\"|\"projects\"|NonProjectOptions>": {
+    "Omit<I,\"sequence\"|\"deps\"|NonProjectOptions|\"projects\">": {
       "properties": {
         "alias": {
           "$ref": "#/definitions/AliasOptions",
@@ -29037,12 +29131,12 @@
           "type": "number"
         },
         "benchmark": {
-          "$ref": "#/definitions/s_1",
+          "$ref": "#/definitions/u_1",
           "default": {},
           "description": "Benchmark options."
         },
         "browser": {
-          "$ref": "#/definitions/w",
+          "$ref": "#/definitions/y",
           "default": false,
           "description": "options for test in a browser environment"
         },
@@ -29139,12 +29233,12 @@
           "description": "Custom environment variables assigned to `process.env` before running tests."
         },
         "environment": {
-          "$ref": "#/definitions/b3",
+          "$ref": "#/definitions/b9",
           "default": "'node'",
           "description": "Running environment\n\nSupports 'node', 'jsdom', 'happy-dom', 'edge-runtime'\n\nIf used unsupported string, will try to load the package `vitest-environment-${env}`"
         },
         "environmentOptions": {
-          "$ref": "#/definitions/ab",
+          "$ref": "#/definitions/ad",
           "description": "Environment options."
         },
         "exclude": {
@@ -29292,16 +29386,33 @@
               "description": "Record the modules that every test file loads in the cache and use the records\nwith `--changed` and `--related` instead of walking the module graph statically.\n\nA test file without a record always runs.",
               "type": "boolean"
             },
+            "traceTimeline": {
+              "default": false,
+              "description": "Record `expect.poll`, `vi.waitFor`, and `vi.waitUntil` steps of each test and print them as a timeline when the test fails.\nSteps of passing tests are dropped without being reported.\n\nThis has no effect in browser mode, which records its steps with `browser.traceView`.",
+              "type": "boolean"
+            },
             "vcsProvider": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/VCSProvider"
+                  "allOf": [
+                    {
+                      "properties": {},
+                      "type": "object"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
                 },
                 {
+                  "$ref": "#/definitions/n"
+                },
+                {
+                  "enum": ["git", "mtime"],
                   "type": "string"
                 }
               ],
-              "description": "Custom provider for detecting changed files. Used with the `--changed` flag\nto determine which files have been modified.\n\nBy default, Vitest uses Git to detect changed files. You can provide a custom\nimplementation of the `VCSProvider` interface to use a different version control system."
+              "description": "Provider for detecting changed files. Used with the `--changed` flag\nto determine which files have been modified.\n\n- `'git'` (default) compares the working tree with the `--changed` reference.\n- `'mtime'` compares the modification time of every recorded dependency with the run\n  that recorded it. It requires `experimental.recordDependencies`. The test files that\n  failed in their last run also run.\n\nYou can also provide a custom implementation of the `VCSProvider` interface."
             },
             "viteModuleRunner": {
               "default": true,
@@ -29312,60 +29423,8 @@
           "type": "object"
         },
         "fakeTimers": {
-          "description": "Options for",
-          "properties": {
-            "advanceTimeDelta": {
-              "type": "number"
-            },
-            "ignoreMissingTimers": {
-              "type": "boolean"
-            },
-            "loopLimit": {
-              "type": "number"
-            },
-            "now": {
-              "anyOf": [
-                {
-                  "format": "date-time",
-                  "type": "string"
-                },
-                {
-                  "properties": {
-                    "epochMilliseconds": {
-                      "type": "number"
-                    }
-                  },
-                  "required": ["epochMilliseconds"],
-                  "type": "object"
-                },
-                {
-                  "type": "number"
-                }
-              ]
-            },
-            "shouldAdvanceTime": {
-              "type": "boolean"
-            },
-            "shouldClearNativeTimers": {
-              "type": "boolean"
-            },
-            "target": {
-              "$ref": "#/definitions/GlobalObject"
-            },
-            "toFake": {
-              "items": {
-                "$ref": "#/definitions/FakeMethod"
-              },
-              "type": "array"
-            },
-            "toNotFake": {
-              "items": {
-                "$ref": "#/definitions/FakeMethod"
-              },
-              "type": "array"
-            }
-          },
-          "type": "object"
+          "$ref": "#/definitions/e",
+          "description": "Options for"
         },
         "fileParallelism": {
           "default": true,
@@ -29516,7 +29575,7 @@
               ]
             },
             {
-              "$ref": "#/definitions/as"
+              "$ref": "#/definitions/aw"
             },
             {
               "enum": ["forks", "threads", "typescript", "vmForks", "vmThreads"],
@@ -29532,7 +29591,7 @@
           "type": "boolean"
         },
         "provide": {
-          "$ref": "#/definitions/Partial%3Co%3E",
+          "$ref": "#/definitions/Partial%3Cp%3E",
           "description": "Define variables that will be returned from `inject` in the test environment."
         },
         "repeats": {
@@ -29546,7 +29605,7 @@
           "type": "boolean"
         },
         "retry": {
-          "$ref": "#/definitions/bi",
+          "$ref": "#/definitions/bk",
           "default": "0 // Don't retry",
           "description": "Retry configuration for tests.\n- If a number, specifies how many times to retry failed tests\n- If an object, allows fine-grained retry control\n\n⚠️ WARNING: Function form is NOT supported in a config file\nbecause configurations are serialized when passed to worker threads.\nUse the function form only in test files directly."
         },
@@ -29621,7 +29680,7 @@
         "tags": {
           "description": "Define tags available in your test files.\n\nIf test defines a tag that is not listed here, an error will be thrown.",
           "items": {
-            "$ref": "#/definitions/e"
+            "$ref": "#/definitions/g"
           },
           "type": "array"
         },
@@ -29636,7 +29695,7 @@
           "type": "number"
         },
         "typecheck": {
-          "$ref": "#/definitions/Partial%3Cb0%3E",
+          "$ref": "#/definitions/Partial%3Cb6%3E",
           "description": "Options for configuring typechecking test environment."
         },
         "unstubEnvs": {
@@ -29855,7 +29914,7 @@
               "description": "Configuration options for advanced code splitting.",
               "properties": {
                 "experimentalInlineCommonChunks": {
-                  "description": "Replace small automatic common chunks with factory copies in their consumers.",
+                  "description": "Inline small automatic common chunks into their consumers to reduce the chunk count.\nThis duplicates code and adds runtime overhead.\n\nSet `maxSize` above `0` to enable it. Requires {@linkcode OutputOptions.formatoutput.format: 'es'}\nand an explicit {@linkcode InputOptions.preserveEntrySignaturespreserveEntrySignatures: false}.\nRequires {@linkcode OutputOptions.strictExecutionOrderstrictExecutionOrder},\nwhich is enabled automatically when omitted.\nIncompatible with {@linkcode OutputOptions.preserveModulesoutput.preserveModules}.\n\nPlugins must support modules appearing in multiple output chunks. See the\n[Inline Common Chunks guide](https://rolldown.rs/in-depth/inline-common-chunks)\nfor behavior, tradeoffs and plugin compatibility.",
                   "properties": {
                     "exclude": {
                       "anyOf": [
@@ -29879,11 +29938,11 @@
                           "type": ["string", "object"]
                         }
                       ],
-                      "description": "A matcher for module ids, or an array of them: a string (matched as a regular expression), a\nRegExp, or a function, each applied like {@linkcode CodeSplittingGroup.testtest}. A common\nchunk is kept as a file when any of its modules matches any matcher."
+                      "description": "A matcher for module ids, or an array of them: a string (matched as a regular expression), a\nRegExp, or a function, each applied like {@linkcode CodeSplittingGroup.testtest}. A common\nchunk is not inlined when any of its modules matches any matcher."
                     },
                     "maxSize": {
                       "default": 0,
-                      "description": "Common chunks whose pre-render size (the sum of the transformed source sizes of their modules,\nin bytes) is strictly smaller than this value are candidates for inlining.\nUse `Infinity` to remove the size limit.\n\nA value greater than `0` requires `output.format: 'es'`, an explicit\n`preserveEntrySignatures: false` and code splitting, and it turns on\n{@linkcode OutputOptions.strictExecutionOrderstrictExecutionOrder} when that option is\nomitted. `output.strictExecutionOrder: false` is an error, `output.preserveModules`,\n`experimental.devMode` and `experimental.onDemandWrapping` must be off.",
+                      "description": "Inline eligible automatic common chunks whose size is strictly smaller than this value.\nSize is the sum of their modules' transformed source sizes in bytes, before rendering,\nminification and compression.\n\nMust be a non-negative safe integer or `Infinity`. `0` disables inlining.\n`Infinity` removes the size limit.",
                       "type": "number"
                     }
                   },
@@ -30229,7 +30288,7 @@
       },
       "type": "object"
     },
-    "Omit<bm,\"plugins\"|\"compareKeys\">": {
+    "Omit<bp,\"plugins\"|\"compareKeys\">": {
       "properties": {
         "callToJSON": {
           "default": true,
@@ -30328,8 +30387,13 @@
           "type": "string"
         },
         "devtools": {
-          "description": "Devtools integration options.\n\nWhen enabled, Rolldown writes JSON-lines devtools output under\n`node_modules/.rolldown/{session_id}/`, resolved against {@linkcode cwd}.\nConsumers can parse the output with `@rolldown/debug` after\n`await bundle.close()` resolves.\n\n`sessionId` replaces the generated session id. It must be one path segment: not empty, not\n`.` or `..`, and without `/`, `\\` or NUL. Rolldown does not check that it is unique: give each\nbundler that runs at the same time its own `sessionId`, or their devtools output mixes.\nThe name `unknown-session` is reserved regardless of case.",
+          "description": "Devtools integration options.\n\nIn the default `'full'` mode, Rolldown writes JSON-lines devtools output under\n`node_modules/.rolldown/{session_id}/`, resolved against {@linkcode cwd}.\nConsumers can parse the output with `@rolldown/debug` after\n`await bundle.close()` resolves.\n\n`sessionId` replaces the generated session id. It must be one path segment: not empty, not\n`.` or `..`, and without `/`, `\\` or NUL. Rolldown does not check that it is unique: give each\nbundler that runs at the same time its own `sessionId`, or their devtools output mixes.\nThe name `unknown-session` is reserved regardless of case.\n\nIn `'report'` mode, Rolldown aggregates the same internal event stream in-memory and\nwrites a small, agent-readable report instead of the multi-GB `logs.json`: a canonical\n`metrics.json` (schema-versioned, with a build-over-build `delta`), `module-graph.json`\n(the full module graph with retained sizes), progressive markdown\nviews (`entry.md` + on-demand detail files), one `history.jsonl` line per build, and an\n`AGENTS.md` describing the directory contract.\n\nThe report goes to `node_modules/.rolldown/report/<output dir>`, resolved against\n{@linkcode cwd}. `<output dir>` is the output folder (`output.dir`, the folder of\n`output.file`, or `dist`) relative to `cwd`, so each build output keeps its own report and\nfinds its previous one for the delta. Each `..` of an output folder outside `cwd` is written\nas `__`. A bundler opens one report, so its first output picks the folder.",
           "properties": {
+            "mode": {
+              "description": "`'full'` (default): write JSON-lines devtools logs.\n`'report'`: aggregate the same event stream in-memory and emit an agent-readable\nreport (`metrics.json` + markdown views + `history.jsonl`) instead.\nAny other value fails the build.",
+              "enum": ["full", "report"],
+              "type": "string"
+            },
             "sessionId": {
               "type": "string"
             }
@@ -30342,7 +30406,7 @@
             "attachDebugInfo": {
               "$ref": "#/definitions/AttachDebugOptions",
               "default": "'simple'",
-              "description": "Attach debug information to the output bundle.\n\nAvailable modes:\n- `none`: No debug information is attached.\n- `simple`: Attach comments indicating which files the bundled code comes from. These comments could be removed by the minifier.\n- `full`: Attach detailed debug information to the output bundle. These comments are using legal comment syntax, so they won't be removed by the minifier."
+              "description": "Attach debug information to the output bundle.\n\nAvailable modes:\n- `none`: No debug information is attached.\n- `simple`: Attach a `// <module id>` comment where the code of each module starts, like esbuild and Bun. These comments could be removed by the minifier.\n- `full`: Same as `simple`, and also attach comments that tell why each chunk exists. These chunk comments use legal comment syntax, so they won't be removed by the minifier."
             },
             "chunkImportMap": {
               "anyOf": [
@@ -30362,7 +30426,7 @@
                 }
               ],
               "default": false,
-              "description": "Enables automatic generation of a chunk import map asset during build.\n\nThis map only includes chunks with hashed filenames, where keys are derived from the facade module\nname or primary chunk name. It produces stable and unique hash-based filenames, effectively preventing\ncascading cache invalidation caused by content hashes and maximizing browser cache reuse.\n\nThe output defaults to `importmap.json` unless overridden via `fileName`. A base URL prefix\n(default `\"/\"`) can be applied to all paths. The resulting JSON is a valid import map and can be\ndirectly injected into HTML via `<script type=\"importmap\">`."
+              "description": "Enables automatic generation of a chunk import map asset during build.\n\nThis map includes chunks with hashed filenames. Entry keys use their facade module ID. Common chunks\nuse their name; later chunks with the same name use the smallest module key among their original members.\nModule keys distinguish cwd-relative filesystem paths from verbatim non-path IDs.\nModules copied into a file by `experimentalInlineCommonChunks` remain in `moduleIds` but do not\naffect that file's key.\nKeeping these keys independent of content hashes reduces cascading cache invalidation when\na dependency changes.\n\nThe output defaults to `importmap.json` unless overridden via `fileName`. A base URL prefix\n(default `\"/\"`) can be applied to all paths. The resulting JSON is a valid import map and can be\ndirectly injected into HTML via `<script type=\"importmap\">`."
             },
             "chunkModulesOrder": {
               "$ref": "#/definitions/ChunkModulesOrder",
@@ -30673,8 +30737,13 @@
           "type": "string"
         },
         "devtools": {
-          "description": "Devtools integration options.\n\nWhen enabled, Rolldown writes JSON-lines devtools output under\n`node_modules/.rolldown/{session_id}/`, resolved against {@linkcode cwd}.\nConsumers can parse the output with `@rolldown/debug` after\n`await bundle.close()` resolves.\n\n`sessionId` replaces the generated session id. It must be one path segment: not empty, not\n`.` or `..`, and without `/`, `\\` or NUL. Rolldown does not check that it is unique: give each\nbundler that runs at the same time its own `sessionId`, or their devtools output mixes.\nThe name `unknown-session` is reserved regardless of case.",
+          "description": "Devtools integration options.\n\nIn the default `'full'` mode, Rolldown writes JSON-lines devtools output under\n`node_modules/.rolldown/{session_id}/`, resolved against {@linkcode cwd}.\nConsumers can parse the output with `@rolldown/debug` after\n`await bundle.close()` resolves.\n\n`sessionId` replaces the generated session id. It must be one path segment: not empty, not\n`.` or `..`, and without `/`, `\\` or NUL. Rolldown does not check that it is unique: give each\nbundler that runs at the same time its own `sessionId`, or their devtools output mixes.\nThe name `unknown-session` is reserved regardless of case.\n\nIn `'report'` mode, Rolldown aggregates the same internal event stream in-memory and\nwrites a small, agent-readable report instead of the multi-GB `logs.json`: a canonical\n`metrics.json` (schema-versioned, with a build-over-build `delta`), `module-graph.json`\n(the full module graph with retained sizes), progressive markdown\nviews (`entry.md` + on-demand detail files), one `history.jsonl` line per build, and an\n`AGENTS.md` describing the directory contract.\n\nThe report goes to `node_modules/.rolldown/report/<output dir>`, resolved against\n{@linkcode cwd}. `<output dir>` is the output folder (`output.dir`, the folder of\n`output.file`, or `dist`) relative to `cwd`, so each build output keeps its own report and\nfinds its previous one for the delta. Each `..` of an output folder outside `cwd` is written\nas `__`. A bundler opens one report, so its first output picks the folder.",
           "properties": {
+            "mode": {
+              "description": "`'full'` (default): write JSON-lines devtools logs.\n`'report'`: aggregate the same event stream in-memory and emit an agent-readable\nreport (`metrics.json` + markdown views + `history.jsonl`) instead.\nAny other value fails the build.",
+              "enum": ["full", "report"],
+              "type": "string"
+            },
             "sessionId": {
               "type": "string"
             }
@@ -30687,7 +30756,7 @@
             "attachDebugInfo": {
               "$ref": "#/definitions/AttachDebugOptions",
               "default": "'simple'",
-              "description": "Attach debug information to the output bundle.\n\nAvailable modes:\n- `none`: No debug information is attached.\n- `simple`: Attach comments indicating which files the bundled code comes from. These comments could be removed by the minifier.\n- `full`: Attach detailed debug information to the output bundle. These comments are using legal comment syntax, so they won't be removed by the minifier."
+              "description": "Attach debug information to the output bundle.\n\nAvailable modes:\n- `none`: No debug information is attached.\n- `simple`: Attach a `// <module id>` comment where the code of each module starts, like esbuild and Bun. These comments could be removed by the minifier.\n- `full`: Same as `simple`, and also attach comments that tell why each chunk exists. These chunk comments use legal comment syntax, so they won't be removed by the minifier."
             },
             "chunkImportMap": {
               "anyOf": [
@@ -30707,7 +30776,7 @@
                 }
               ],
               "default": false,
-              "description": "Enables automatic generation of a chunk import map asset during build.\n\nThis map only includes chunks with hashed filenames, where keys are derived from the facade module\nname or primary chunk name. It produces stable and unique hash-based filenames, effectively preventing\ncascading cache invalidation caused by content hashes and maximizing browser cache reuse.\n\nThe output defaults to `importmap.json` unless overridden via `fileName`. A base URL prefix\n(default `\"/\"`) can be applied to all paths. The resulting JSON is a valid import map and can be\ndirectly injected into HTML via `<script type=\"importmap\">`."
+              "description": "Enables automatic generation of a chunk import map asset during build.\n\nThis map includes chunks with hashed filenames. Entry keys use their facade module ID. Common chunks\nuse their name; later chunks with the same name use the smallest module key among their original members.\nModule keys distinguish cwd-relative filesystem paths from verbatim non-path IDs.\nModules copied into a file by `experimentalInlineCommonChunks` remain in `moduleIds` but do not\naffect that file's key.\nKeeping these keys independent of content hashes reduces cascading cache invalidation when\na dependency changes.\n\nThe output defaults to `importmap.json` unless overridden via `fileName`. A base URL prefix\n(default `\"/\"`) can be applied to all paths. The resulting JSON is a valid import map and can be\ndirectly injected into HTML via `<script type=\"importmap\">`."
             },
             "chunkModulesOrder": {
               "$ref": "#/definitions/ChunkModulesOrder",
@@ -32002,7 +32071,7 @@
           "type": "array"
         },
         "jsPlugins": {
-          "description": "JS plugins, allows usage of ESLint plugins with Oxlint.\n\nRead more about JS plugins in\n[the docs](https://oxc.rs/docs/guide/usage/linter/js-plugins.html).\n\nNote: JS plugins are in alpha and not subject to semver.\n\nExamples:\n\nBasic usage with a local plugin path.\n\n```json\n{\n  \"jsPlugins\": [\n    \"./custom-plugin.js\"\n  ],\n  \"rules\": {\n    \"custom/rule-name\": \"warn\"\n  }\n}\n```\n\nBasic usage with a TypeScript plugin and a local plugin path.\n\nTypeScript plugin files are supported in the following environments:\n- Deno and Bun: TypeScript files are supported natively.\n- Node.js >=22.18.0 and Node.js ^20.19.0: TypeScript files are supported natively with built-in\ntype-stripping enabled by default.\n\nFor older Node.js versions, TypeScript plugins are not supported. Please use JavaScript plugins or upgrade your Node version.\n\n```json\n{\n  \"jsPlugins\": [\n    \"./custom-plugin.ts\"\n  ],\n  \"rules\": {\n    \"custom/rule-name\": \"warn\"\n  }\n}\n```\n\nUsing a built-in Rust plugin alongside a JS plugin with the same name\nby giving the JS plugin an alias.\n\n```json\n{\n  \"plugins\": [\n    \"import\"\n  ],\n  \"jsPlugins\": [\n    {\n      \"name\": \"import-js\",\n      \"specifier\": \"eslint-plugin-import\"\n    }\n  ],\n  \"rules\": {\n    \"import/no-cycle\": \"error\",\n    \"import-js/no-unresolved\": \"warn\"\n  }\n}\n```",
+          "description": "JS plugins, allows usage of ESLint plugins with Oxlint.\n\nRead more about JS plugins in\n[the docs](https://oxc.rs/docs/guide/usage/linter/js-plugins.html).\n\nNote: JS plugins are in alpha and not subject to semver.\n\nExamples:\n\nBasic usage with a local plugin path.\n\n```json\n{\n  \"jsPlugins\": [\n    \"./custom-plugin.js\"\n  ],\n  \"rules\": {\n    \"custom/rule-name\": \"warn\"\n  }\n}\n```\n\nBasic usage with a TypeScript plugin and a local plugin path.\n\nTypeScript plugin files are supported in the following environments:\n- Deno and Bun: TypeScript files are supported natively.\n- Node.js >=22.18.0: TypeScript files are supported natively with built-in\ntype-stripping enabled by default.\n\nFor older Node.js versions, TypeScript plugins are not supported. Please use JavaScript plugins or upgrade your Node version.\n\n```json\n{\n  \"jsPlugins\": [\n    \"./custom-plugin.ts\"\n  ],\n  \"rules\": {\n    \"custom/rule-name\": \"warn\"\n  }\n}\n```\n\nUsing a built-in Rust plugin alongside a JS plugin with the same name\nby giving the JS plugin an alias.\n\n```json\n{\n  \"plugins\": [\n    \"import\"\n  ],\n  \"jsPlugins\": [\n    {\n      \"name\": \"import-js\",\n      \"specifier\": \"eslint-plugin-import\"\n    }\n  ],\n  \"rules\": {\n    \"import/no-cycle\": \"error\",\n    \"import-js/no-unresolved\": \"warn\"\n  }\n}\n```",
           "items": {
             "$ref": "#/definitions/ExternalPluginEntry"
           },
@@ -32311,6 +32380,10 @@
           "description": "subdirectory (under the report dir) to write the report to",
           "type": "string"
         },
+        "theme": {
+          "$ref": "#/definitions/HtmlTheme",
+          "description": "fixes the report's theme and hides the theme picker; when unset, viewers\npick a theme in the report, which otherwise follows their light/dark\npreference, or the page embedding the report, like Vitest UI"
+        },
         "verbose": {
           "description": "show extra logging while the report is generated",
           "type": "boolean"
@@ -32453,18 +32526,9 @@
       "type": "object"
     },
     "Partial<NodeJS.ProcessEnv>": {
-      "properties": {
-        "NODE_ENV": {
-          "type": "string"
-        },
-        "TZ": {
-          "description": "Set to change the default timezone at runtime",
-          "type": "string"
-        }
-      },
       "type": "object"
     },
-    "Partial<Record<\"blob\"|\"default\"|\"json\"|\"dot\"|\"tree\"|\"agent\"|\"minimal\"|\"verbose\"|\"tap\"|\"tap-flat\"|\"junit\"|\"hanging-process\"|\"github-actions\",string>>": {
+    "Partial<Record<\"blob\"|\"default\"|\"json\"|\"dot\"|\"tree\"|\"verbose\"|\"agent\"|\"minimal\"|\"tap\"|\"tap-flat\"|\"junit\"|\"hanging-process\"|\"github-actions\",string>>": {
       "properties": {
         "agent": {
           "type": "string"
@@ -32508,13 +32572,13 @@
       },
       "type": "object"
     },
-    "Partial<Record<\"client\"|\"ssr\"|({}&string),a9>>": {
+    "Partial<Record<\"client\"|\"ssr\"|({}&string),ab>>": {
       "properties": {
         "client": {
-          "$ref": "#/definitions/a9"
+          "$ref": "#/definitions/ab"
         },
         "ssr": {
-          "$ref": "#/definitions/a9"
+          "$ref": "#/definitions/ab"
         }
       },
       "type": "object"
@@ -32575,7 +32639,7 @@
       },
       "type": "object"
     },
-    "Partial<aU>": {
+    "Partial<aW>": {
       "properties": {
         "__vitest_label__": {
           "type": "string"
@@ -32589,7 +32653,7 @@
       },
       "type": "object"
     },
-    "Partial<ad>": {
+    "Partial<af>": {
       "properties": {
         "outputDir": {
           "default": "'.vitest'",
@@ -32604,7 +32668,7 @@
       },
       "type": "object"
     },
-    "Partial<ag>": {
+    "Partial<ai>": {
       "properties": {
         "addFileAttribute": {
           "default": false,
@@ -32657,7 +32721,7 @@
       },
       "type": "object"
     },
-    "Partial<aj>": {
+    "Partial<al>": {
       "properties": {
         "filterMeta": {
           "type": "object"
@@ -32673,7 +32737,7 @@
       },
       "type": "object"
     },
-    "Partial<b0>": {
+    "Partial<b6>": {
       "properties": {
         "allowJs": {
           "description": "Check JS files that have `@ts-check` comment.\nIf you have it enabled in tsconfig, this will not overwrite it.",
@@ -32743,7 +32807,7 @@
       },
       "type": "object"
     },
-    "Partial<o>": {
+    "Partial<p>": {
       "type": "object"
     },
     "PassThrough": {
@@ -34000,59 +34064,59 @@
     },
     "Promise<U>": {
       "properties": {
-        "__@toStringTag@1859": {
+        "__@toStringTag@3350": {
           "type": "string"
         }
       },
-      "required": ["__@toStringTag@1859"],
+      "required": ["__@toStringTag@3350"],
       "type": "object"
     },
     "Promise<any>": {
       "properties": {
-        "__@toStringTag@1859": {
+        "__@toStringTag@3350": {
           "type": "string"
         }
       },
-      "required": ["__@toStringTag@1859"],
+      "required": ["__@toStringTag@3350"],
       "type": "object"
     },
     "Promise<false|NullValue<RolldownOutputPlugin>|{name:string;}|RolldownOutputPluginOption[]>": {
       "properties": {
-        "__@toStringTag@1859": {
+        "__@toStringTag@3350": {
           "type": "string"
         }
       },
-      "required": ["__@toStringTag@1859"],
+      "required": ["__@toStringTag@3350"],
       "type": "object"
     },
     "Promise<false|Plugin<any>|{name:string;}|PluginOption[]>": {
       "properties": {
-        "__@toStringTag@1859": {
+        "__@toStringTag@3350": {
           "type": "string"
         }
       },
-      "required": ["__@toStringTag@1859"],
+      "required": ["__@toStringTag@3350"],
       "type": "object"
     },
     "Promise<false|{name:string;}|M<any>[]|NullValue<j<any>>>": {
       "properties": {
-        "__@toStringTag@1859": {
+        "__@toStringTag@3350": {
           "type": "string"
         }
       },
-      "required": ["__@toStringTag@1859"],
+      "required": ["__@toStringTag@3350"],
       "type": "object"
     },
     "PromiseConstructor": {
       "properties": {
-        "__@species@12123": {
+        "__@species@13486": {
           "$ref": "#/definitions/PromiseConstructor"
         },
         "prototype": {
           "$ref": "#/definitions/Promise%3Cany%3E"
         }
       },
-      "required": ["__@species@12123", "prototype"],
+      "required": ["__@species@13486", "prototype"],
       "type": "object"
     },
     "PromiseFunctionAsyncConfig": {
@@ -34193,26 +34257,6 @@
         }
       },
       "required": ["buf"],
-      "type": "object"
-    },
-    "Q": {
-      "properties": {
-        "enabled": {
-          "default": false,
-          "description": "Enable Vitest trace view artifacts collection.\n\nThis option controls Vitest's own trace-view pipeline, independently from provider-specific trace retention.",
-          "type": "boolean"
-        },
-        "inlineImages": {
-          "default": false,
-          "description": "Inline loaded `<img>` element pixels in trace view snapshots.\n\nThis uses rrweb's image inlining support. It improves offline replay for still images,\nbut can increase trace artifact size and does not preserve original image resource bytes.",
-          "type": "boolean"
-        },
-        "recordCanvas": {
-          "default": false,
-          "description": "Capture canvas pixels in trace view snapshots.\n\nThis uses rrweb's canvas snapshot support and can increase trace artifact size.\nIn the trace viewer, this enables a weaker replay iframe sandbox because rrweb needs scripts to redraw canvas data.",
-          "type": "boolean"
-        }
-      },
       "type": "object"
     },
     "Query": {
@@ -34409,10 +34453,10 @@
     "Record<string,string|false|string[]>": {
       "type": "object"
     },
-    "Record<string,u<any,any>>": {
+    "Record<string,unknown>": {
       "type": "object"
     },
-    "Record<string,unknown>": {
+    "Record<string,w<any,any>>": {
       "type": "object"
     },
     "RegExp": {
@@ -36766,7 +36810,7 @@
           "type": "number"
         },
         "sequencer": {
-          "$ref": "#/definitions/aV",
+          "$ref": "#/definitions/a%24",
           "default": "BaseSequencer",
           "description": "Class that handles sorting and sharding algorithm.\nIf you only need to change sorting, you can extend\nyour custom sequencer from `BaseSequencer` from `vitest/node`."
         },
@@ -38096,7 +38140,7 @@
     },
     "SharedArrayBuffer": {
       "properties": {
-        "__@toStringTag@1859": {
+        "__@toStringTag@3350": {
           "const": "SharedArrayBuffer",
           "type": "string"
         },
@@ -38110,7 +38154,7 @@
           "type": "number"
         }
       },
-      "required": ["__@toStringTag@1859", "byteLength", "growable", "maxByteLength"],
+      "required": ["__@toStringTag@3350", "byteLength", "growable", "maxByteLength"],
       "type": "object"
     },
     "ShorthandType": {
@@ -39888,7 +39932,7 @@
         "test": {
           "allOf": [
             {
-              "$ref": "#/definitions/Omit%3CI%2C%22sequence%22%7C%22deps%22%7C%22projects%22%7CNonProjectOptions%3E"
+              "$ref": "#/definitions/Omit%3CI%2C%22sequence%22%7C%22deps%22%7CNonProjectOptions%7C%22projects%22%3E"
             },
             {
               "properties": {
@@ -40183,7 +40227,7 @@
               "description": "Configuration options for advanced code splitting.",
               "properties": {
                 "experimentalInlineCommonChunks": {
-                  "description": "Replace small automatic common chunks with factory copies in their consumers.",
+                  "description": "Inline small automatic common chunks into their consumers to reduce the chunk count.\nThis duplicates code and adds runtime overhead.\n\nSet `maxSize` above `0` to enable it. Requires {@linkcode OutputOptions.formatoutput.format: 'es'}\nand an explicit {@linkcode InputOptions.preserveEntrySignaturespreserveEntrySignatures: false}.\nRequires {@linkcode OutputOptions.strictExecutionOrderstrictExecutionOrder},\nwhich is enabled automatically when omitted.\nIncompatible with {@linkcode OutputOptions.preserveModulesoutput.preserveModules}.\n\nPlugins must support modules appearing in multiple output chunks. See the\n[Inline Common Chunks guide](https://rolldown.rs/in-depth/inline-common-chunks)\nfor behavior, tradeoffs and plugin compatibility.",
                   "properties": {
                     "exclude": {
                       "anyOf": [
@@ -40207,11 +40251,11 @@
                           "type": ["string", "object"]
                         }
                       ],
-                      "description": "A matcher for module ids, or an array of them: a string (matched as a regular expression), a\nRegExp, or a function, each applied like {@linkcode CodeSplittingGroup.testtest}. A common\nchunk is kept as a file when any of its modules matches any matcher."
+                      "description": "A matcher for module ids, or an array of them: a string (matched as a regular expression), a\nRegExp, or a function, each applied like {@linkcode CodeSplittingGroup.testtest}. A common\nchunk is not inlined when any of its modules matches any matcher."
                     },
                     "maxSize": {
                       "default": 0,
-                      "description": "Common chunks whose pre-render size (the sum of the transformed source sizes of their modules,\nin bytes) is strictly smaller than this value are candidates for inlining.\nUse `Infinity` to remove the size limit.\n\nA value greater than `0` requires `output.format: 'es'`, an explicit\n`preserveEntrySignatures: false` and code splitting, and it turns on\n{@linkcode OutputOptions.strictExecutionOrderstrictExecutionOrder} when that option is\nomitted. `output.strictExecutionOrder: false` is an error, `output.preserveModules`,\n`experimental.devMode` and `experimental.onDemandWrapping` must be off.",
+                      "description": "Inline eligible automatic common chunks whose size is strictly smaller than this value.\nSize is the sum of their modules' transformed source sizes in bytes, before rendering,\nminification and compression.\n\nMust be a non-negative safe integer or `Infinity`. `0` disables inlining.\n`Infinity` removes the size limit.",
                       "type": "number"
                     }
                   },
@@ -40572,9 +40616,6 @@
       },
       "type": "object"
     },
-    "VCSProvider": {
-      "type": "object"
-    },
     "ValidExpectConfig": {
       "properties": {
         "alwaysAwait": {
@@ -40932,6 +40973,34 @@
       },
       "type": "object"
     },
+    "X": {
+      "properties": {
+        "ariaSnapshot": {
+          "default": true,
+          "description": "Capture the accessibility tree alongside each trace view snapshot.\n\nThe trace viewer's snapshot pane can then switch between \"DOM\" and \"Aria\" views.",
+          "type": "boolean"
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "inlineImages": {
+          "default": false,
+          "description": "Inline loaded `<img>` element pixels in trace view snapshots.\n\nThis uses rrweb's image inlining support. It improves offline replay for still images,\nbut can increase trace artifact size and does not preserve original image resource bytes.",
+          "type": "boolean"
+        },
+        "mode": {
+          "$ref": "#/definitions/BrowserTraceViewRecordingMode",
+          "default": "'failure-only'",
+          "description": "How trace view records tests.\n\n- `'on'`: every test gets a trace with a snapshot at every step, and Vitest UI shows steps live as tests run.\n- `'failure-only'`: only failed tests get a trace, with the full step timeline and a snapshot at the end.\n- `'off'`: no traces.\n\nTakes precedence over `enabled`."
+        },
+        "recordCanvas": {
+          "default": false,
+          "description": "Capture canvas pixels in trace view snapshots.\n\nThis uses rrweb's canvas snapshot support and can increase trace artifact size.\nIn the trace viewer, this enables a weaker replay iframe sandbox because rrweb needs scripts to redraw canvas data.",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
     "YodaOptions": {
       "properties": {
         "exceptRange": {
@@ -40960,7 +41029,10 @@
       },
       "type": "object"
     },
-    "a5": {
+    "a$": {
+      "type": "object"
+    },
+    "a7": {
       "anyOf": [
         {
           "allOf": [
@@ -40993,54 +41065,7 @@
         }
       ]
     },
-    "a9": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/Omit%3CDepOptimizationConfig%2C%22disabled%22%7C%22noDiscovery%22%3E"
-        },
-        {
-          "properties": {
-            "enabled": {
-              "type": "boolean"
-            }
-          },
-          "type": "object"
-        }
-      ]
-    },
-    "aV": {
-      "type": "object"
-    },
-    "ab": {
-      "additionalProperties": {},
-      "properties": {
-        "happyDOM": {
-          "additionalProperties": false,
-          "patternProperties": {
-            "^[0-9]+$": {}
-          },
-          "type": "object"
-        },
-        "jsdom": {
-          "$ref": "#/definitions/JSDOMOptions",
-          "description": "jsdom options."
-        }
-      },
-      "type": "object"
-    },
-    "as": {
-      "properties": {
-        "createPoolWorker": {
-          "type": "object"
-        },
-        "name": {
-          "type": "string"
-        }
-      },
-      "required": ["createPoolWorker", "name"],
-      "type": "object"
-    },
-    "ay": {
+    "aC": {
       "properties": {
         "onBrowserInit": {
           "description": "Called when the project initiated the browser instance.\nproject.browser will always be defined.",
@@ -41132,7 +41157,51 @@
       },
       "type": "object"
     },
-    "b1": {
+    "ab": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/Omit%3CDepOptimizationConfig%2C%22disabled%22%7C%22noDiscovery%22%3E"
+        },
+        {
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            }
+          },
+          "type": "object"
+        }
+      ]
+    },
+    "ad": {
+      "additionalProperties": {},
+      "properties": {
+        "happyDOM": {
+          "additionalProperties": false,
+          "patternProperties": {
+            "^[0-9]+$": {}
+          },
+          "type": "object"
+        },
+        "jsdom": {
+          "$ref": "#/definitions/JSDOMOptions",
+          "description": "jsdom options."
+        }
+      },
+      "type": "object"
+    },
+    "aw": {
+      "properties": {
+        "createPoolWorker": {
+          "type": "object"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": ["createPoolWorker", "name"],
+      "type": "object"
+    },
+    "b7": {
       "properties": {
         "enabled": {
           "default": false,
@@ -41148,7 +41217,7 @@
       },
       "type": "object"
     },
-    "b3": {
+    "b9": {
       "anyOf": [
         {
           "allOf": [
@@ -41166,7 +41235,7 @@
         }
       ]
     },
-    "bi": {
+    "bk": {
       "anyOf": [
         {
           "properties": {
@@ -41303,59 +41372,64 @@
       "type": "object"
     },
     "e": {
+      "description": "Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved.\n\nThis source code is licensed under the MIT license found in the\nLICENSE file in the root directory of https://github.com/jestjs/jest.",
       "properties": {
-        "concurrent": {
-          "description": "Whether suites and tests run concurrently.\nTests inherit `concurrent` from `describe()` and nested `describe()` will inherit from parent's `concurrent`.",
-          "type": "boolean"
-        },
-        "description": {
-          "description": "A description for the tag. This will be shown in the CLI help and UI.",
-          "type": "string"
-        },
-        "fails": {
-          "description": "Whether the test is expected to fail. If it does, the test will pass, otherwise it will fail.",
-          "type": "boolean"
-        },
-        "meta": {
-          "$ref": "#/definitions/Partial%3CaU%3E",
-          "description": "Custom test metadata available to reporters."
-        },
-        "name": {
-          "description": "The name of the tag. This is what you use in the `tags` array in tests.",
-          "type": "string"
-        },
-        "only": {
-          "description": "Should this test be the only one running in a suite.",
-          "type": "boolean"
-        },
-        "priority": {
-          "description": "Priority for merging options when multiple tags with the same options are applied to a test.\n\nLower number means higher priority. E.g., priority 1 takes precedence over priority 3.",
+        "advanceTimeDelta": {
           "type": "number"
         },
-        "repeats": {
-          "default": 0,
-          "description": "How many times the test will run again.\nOnly inner tests will repeat if set on `describe()`, nested `describe()` will inherit parent's repeat by default.",
-          "type": "number"
-        },
-        "retry": {
-          "$ref": "#/definitions/Retry",
-          "default": 0,
-          "description": "Retry configuration for the test.\n- If a number, specifies how many times to retry\n- If an object, allows fine-grained retry control"
-        },
-        "skip": {
-          "description": "Whether the test should be skipped.",
+        "fakeNodeBuiltins": {
+          "default": false,
+          "description": "Mock timer APIs imported from `node:timers` and `node:timers/promises`.",
           "type": "boolean"
         },
-        "timeout": {
-          "description": "Test timeout.",
+        "ignoreMissingTimers": {
+          "type": "boolean"
+        },
+        "loopLimit": {
           "type": "number"
         },
-        "todo": {
-          "description": "Whether the test should be skipped and marked as a todo.",
+        "now": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "properties": {
+                "epochMilliseconds": {
+                  "type": "number"
+                }
+              },
+              "required": ["epochMilliseconds"],
+              "type": "object"
+            },
+            {
+              "type": "number"
+            }
+          ]
+        },
+        "shouldAdvanceTime": {
           "type": "boolean"
+        },
+        "shouldClearNativeTimers": {
+          "type": "boolean"
+        },
+        "target": {
+          "$ref": "#/definitions/GlobalObject"
+        },
+        "toFake": {
+          "items": {
+            "$ref": "#/definitions/FakeMethod"
+          },
+          "type": "array"
+        },
+        "toNotFake": {
+          "items": {
+            "$ref": "#/definitions/FakeMethod"
+          },
+          "type": "array"
         }
       },
-      "required": ["name"],
       "type": "object"
     },
     "f": {
@@ -41458,6 +41532,62 @@
       },
       "type": "object"
     },
+    "g": {
+      "properties": {
+        "concurrent": {
+          "description": "Whether suites and tests run concurrently.\nTests inherit `concurrent` from `describe()` and nested `describe()` will inherit from parent's `concurrent`.",
+          "type": "boolean"
+        },
+        "description": {
+          "description": "A description for the tag. This will be shown in the CLI help and UI.",
+          "type": "string"
+        },
+        "fails": {
+          "description": "Whether the test is expected to fail. If it does, the test will pass, otherwise it will fail.",
+          "type": "boolean"
+        },
+        "meta": {
+          "$ref": "#/definitions/Partial%3CaW%3E",
+          "description": "Custom test metadata available to reporters."
+        },
+        "name": {
+          "description": "The name of the tag. This is what you use in the `tags` array in tests.",
+          "type": "string"
+        },
+        "only": {
+          "description": "Should this test be the only one running in a suite.",
+          "type": "boolean"
+        },
+        "priority": {
+          "description": "Priority for merging options when multiple tags with the same options are applied to a test.\n\nLower number means higher priority. E.g., priority 1 takes precedence over priority 3.",
+          "type": "number"
+        },
+        "repeats": {
+          "default": 0,
+          "description": "How many times the test will run again.\nOnly inner tests will repeat if set on `describe()`, nested `describe()` will inherit parent's repeat by default.",
+          "type": "number"
+        },
+        "retry": {
+          "$ref": "#/definitions/Retry",
+          "default": 0,
+          "description": "Retry configuration for the test.\n- If a number, specifies how many times to retry\n- If an object, allows fine-grained retry control"
+        },
+        "skip": {
+          "description": "Whether the test should be skipped.",
+          "type": "boolean"
+        },
+        "timeout": {
+          "description": "Test timeout.",
+          "type": "number"
+        },
+        "todo": {
+          "description": "Whether the test should be skipped and marked as a todo.",
+          "type": "boolean"
+        }
+      },
+      "required": ["name"],
+      "type": "object"
+    },
     "i": {
       "properties": {
         "checks": {
@@ -41475,8 +41605,13 @@
           "type": "string"
         },
         "devtools": {
-          "description": "Devtools integration options.\n\nWhen enabled, Rolldown writes JSON-lines devtools output under\n`node_modules/.rolldown/{session_id}/`, resolved against {@linkcode cwd}.\nConsumers can parse the output with `@rolldown/debug` after\n`await bundle.close()` resolves.\n\n`sessionId` replaces the generated session id. It must be one path segment: not empty, not\n`.` or `..`, and without `/`, `\\` or NUL. Rolldown does not check that it is unique: give each\nbundler that runs at the same time its own `sessionId`, or their devtools output mixes.\nThe name `unknown-session` is reserved regardless of case.",
+          "description": "Devtools integration options.\n\nIn the default `'full'` mode, Rolldown writes JSON-lines devtools output under\n`node_modules/.rolldown/{session_id}/`, resolved against {@linkcode cwd}.\nConsumers can parse the output with `@rolldown/debug` after\n`await bundle.close()` resolves.\n\n`sessionId` replaces the generated session id. It must be one path segment: not empty, not\n`.` or `..`, and without `/`, `\\` or NUL. Rolldown does not check that it is unique: give each\nbundler that runs at the same time its own `sessionId`, or their devtools output mixes.\nThe name `unknown-session` is reserved regardless of case.\n\nIn `'report'` mode, Rolldown aggregates the same internal event stream in-memory and\nwrites a small, agent-readable report instead of the multi-GB `logs.json`: a canonical\n`metrics.json` (schema-versioned, with a build-over-build `delta`), `module-graph.json`\n(the full module graph with retained sizes), progressive markdown\nviews (`entry.md` + on-demand detail files), one `history.jsonl` line per build, and an\n`AGENTS.md` describing the directory contract.\n\nThe report goes to `node_modules/.rolldown/report/<output dir>`, resolved against\n{@linkcode cwd}. `<output dir>` is the output folder (`output.dir`, the folder of\n`output.file`, or `dist`) relative to `cwd`, so each build output keeps its own report and\nfinds its previous one for the delta. Each `..` of an output folder outside `cwd` is written\nas `__`. A bundler opens one report, so its first output picks the folder.",
           "properties": {
+            "mode": {
+              "description": "`'full'` (default): write JSON-lines devtools logs.\n`'report'`: aggregate the same event stream in-memory and emit an agent-readable\nreport (`metrics.json` + markdown views + `history.jsonl`) instead.\nAny other value fails the build.",
+              "enum": ["full", "report"],
+              "type": "string"
+            },
             "sessionId": {
               "type": "string"
             }
@@ -41489,7 +41624,7 @@
             "attachDebugInfo": {
               "$ref": "#/definitions/AttachDebugOptions",
               "default": "'simple'",
-              "description": "Attach debug information to the output bundle.\n\nAvailable modes:\n- `none`: No debug information is attached.\n- `simple`: Attach comments indicating which files the bundled code comes from. These comments could be removed by the minifier.\n- `full`: Attach detailed debug information to the output bundle. These comments are using legal comment syntax, so they won't be removed by the minifier."
+              "description": "Attach debug information to the output bundle.\n\nAvailable modes:\n- `none`: No debug information is attached.\n- `simple`: Attach a `// <module id>` comment where the code of each module starts, like esbuild and Bun. These comments could be removed by the minifier.\n- `full`: Same as `simple`, and also attach comments that tell why each chunk exists. These chunk comments use legal comment syntax, so they won't be removed by the minifier."
             },
             "chunkImportMap": {
               "anyOf": [
@@ -41509,7 +41644,7 @@
                 }
               ],
               "default": false,
-              "description": "Enables automatic generation of a chunk import map asset during build.\n\nThis map only includes chunks with hashed filenames, where keys are derived from the facade module\nname or primary chunk name. It produces stable and unique hash-based filenames, effectively preventing\ncascading cache invalidation caused by content hashes and maximizing browser cache reuse.\n\nThe output defaults to `importmap.json` unless overridden via `fileName`. A base URL prefix\n(default `\"/\"`) can be applied to all paths. The resulting JSON is a valid import map and can be\ndirectly injected into HTML via `<script type=\"importmap\">`."
+              "description": "Enables automatic generation of a chunk import map asset during build.\n\nThis map includes chunks with hashed filenames. Entry keys use their facade module ID. Common chunks\nuse their name; later chunks with the same name use the smallest module key among their original members.\nModule keys distinguish cwd-relative filesystem paths from verbatim non-path IDs.\nModules copied into a file by `experimentalInlineCommonChunks` remain in `moduleIds` but do not\naffect that file's key.\nKeeping these keys independent of content hashes reduces cascading cache invalidation when\na dependency changes.\n\nThe output defaults to `importmap.json` unless overridden via `fileName`. A base URL prefix\n(default `\"/\"`) can be applied to all paths. The resulting JSON is a valid import map and can be\ndirectly injected into HTML via `<script type=\"importmap\">`."
             },
             "chunkModulesOrder": {
               "$ref": "#/definitions/ChunkModulesOrder",
@@ -41845,6 +41980,9 @@
         }
       ]
     },
+    "n": {
+      "type": "object"
+    },
     "nt<RegExp>": {
       "anyOf": [
         {
@@ -42138,52 +42276,6 @@
         "moduleType": {
           "$ref": "#/definitions/it",
           "description": "A filter based on the module's `moduleType`.\n\nOnly available for {@linkcode Plugin.transformtransform} hook."
-        }
-      },
-      "type": "object"
-    },
-    "s_1": {
-      "properties": {
-        "enabled": {
-          "type": "boolean"
-        },
-        "exclude": {
-          "default": "['**\\/node_modules/**', '**\\/.git/**']",
-          "description": "Exclude globs for benchmark test files",
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "include": {
-          "default": "['**\\/*.{bench,benchmark}.?(c|m)[jt]s?(x)']",
-          "description": "Include globs for benchmark test files",
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "includeSource": {
-          "default": [],
-          "description": "Include globs for in-source benchmark test files",
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "provider": {
-          "description": "The benchmark provider that executes registered benchmarks and produces\ntheir results. Provide a path to a module whose default export implements\n`BenchmarkProvider`. The path is resolved relative to the project\nroot. If not specified, the built-in provider is used.",
-          "type": "string"
-        },
-        "retainSamples": {
-          "default": false,
-          "description": "Include `samples` array of benchmark results for API or custom reporter usages.\nThis is disabled by default to reduce memory usage.",
-          "type": "boolean"
-        },
-        "suppressExportGetterWarnings": {
-          "default": false,
-          "description": "Disable warnings when a benchmark accesses module export getters too many times.",
-          "type": "boolean"
         }
       },
       "type": "object"
@@ -43200,27 +43292,27 @@
     "typeofcaptureRejectionSymbol": {
       "description": "See how to write a custom [rejection handler](https://nodejs.org/docs/latest-v26.x/api/events.html#emittersymbolfornodejsrejectionerr-eventname-args).",
       "properties": {
-        "__@toStringTag@1859": {
+        "__@toStringTag@3350": {
           "type": "string"
         },
         "description": {
           "type": "string"
         }
       },
-      "required": ["__@toStringTag@1859", "description"],
+      "required": ["__@toStringTag@3350", "description"],
       "type": "object"
     },
     "typeoferrorMonitor": {
       "description": "This symbol shall be used to install a listener for only monitoring `'error'`\nevents. Listeners installed using this symbol are called before the regular\n`'error'` listeners are called.\n\nInstalling a listener using this symbol does not change the behavior once an\n`'error'` event is emitted. Therefore, the process will still crash if no\nregular `'error'` listener is installed.",
       "properties": {
-        "__@toStringTag@1859": {
+        "__@toStringTag@3350": {
           "type": "string"
         },
         "description": {
           "type": "string"
         }
       },
-      "required": ["__@toStringTag@1859", "description"],
+      "required": ["__@toStringTag@3350", "description"],
       "type": "object"
     },
     "typeofimport(\"node:events\")": {
@@ -43484,10 +43576,86 @@
     "u": {
       "type": "object"
     },
-    "w": {
+    "u_1": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "exclude": {
+          "default": "['**\\/node_modules/**', '**\\/.git/**']",
+          "description": "Exclude globs for benchmark test files",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "include": {
+          "default": "['**\\/*.{bench,benchmark}.?(c|m)[jt]s?(x)']",
+          "description": "Include globs for benchmark test files",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "includeSource": {
+          "default": [],
+          "description": "Include globs for in-source benchmark test files",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "provider": {
+          "description": "The benchmark provider that executes registered benchmarks and produces\ntheir results. Provide a path to a module whose default export implements\n`BenchmarkProvider`. The path is resolved relative to the project\nroot. If not specified, the built-in provider is used.",
+          "type": "string"
+        },
+        "retainSamples": {
+          "default": false,
+          "description": "Include `samples` array of benchmark results for API or custom reporter usages.\nThis is disabled by default to reduce memory usage.",
+          "type": "boolean"
+        },
+        "suppressExportGetterWarnings": {
+          "default": false,
+          "description": "Disable warnings when a benchmark accesses module export getters too many times.",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "x": {
+      "anyOf": [
+        {
+          "allOf": [
+            {
+              "properties": {},
+              "type": "object"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        {
+          "enum": [
+            "base64",
+            "binary",
+            "dataurl",
+            "empty",
+            "js",
+            "json",
+            "jsx",
+            "text",
+            "ts",
+            "tsx"
+          ],
+          "type": "string"
+        }
+      ]
+    },
+    "y": {
       "properties": {
         "commands": {
-          "$ref": "#/definitions/Record%3Cstring%2Cu%3Cany%2Cany%3E%3E",
+          "$ref": "#/definitions/Record%3Cstring%2Cw%3Cany%2Cany%3E%3E",
           "description": "Commands that will be executed on the server\nvia the browser `import(\"vitest/browser\").commands` API."
         },
         "connectTimeout": {
@@ -43519,10 +43687,14 @@
           "description": "enable headless mode",
           "type": "boolean"
         },
+        "importMapMocks": {
+          "description": "Serve module mocks through an import map in the tester document instead of\nintercepting network requests.\n\nBy default, Vitest checks once per browser whether it accepts an import map\nafter a module has loaded (Chromium 133+, Safari 18.4+, Firefox 150+ with\n`dom.multiple_import_maps.enabled`, which the Playwright provider sets) and\nfalls back to request interception otherwise. `true` fails in a browser that\ncannot, `false` always intercepts.",
+          "type": "boolean"
+        },
         "instances": {
           "description": "Configurations for different browser setups",
           "items": {
-            "$ref": "#/definitions/x_1"
+            "$ref": "#/definitions/z"
           },
           "type": "array"
         },
@@ -43551,12 +43723,12 @@
         "orchestratorScripts": {
           "description": "Scripts injected into the main window.",
           "items": {
-            "$ref": "#/definitions/H"
+            "$ref": "#/definitions/K"
           },
           "type": "array"
         },
         "provider": {
-          "$ref": "#/definitions/G%3Cobject%3E",
+          "$ref": "#/definitions/J%3Cobject%3E",
           "description": "Browser provider"
         },
         "screenshotDirectory": {
@@ -43608,14 +43780,14 @@
         "traceView": {
           "anyOf": [
             {
-              "$ref": "#/definitions/Q"
+              "$ref": "#/definitions/X"
             },
             {
-              "type": "boolean"
+              "enum": ["failure-only", false, "off", "on", true]
             }
           ],
-          "default": false,
-          "description": "Enable Vitest trace view artifacts collection.\n\nThis option controls Vitest's own trace-view pipeline, independently from provider-specific trace retention."
+          "default": "'failure-only'",
+          "description": "Records the actions, assertions, and marks of browser tests with DOM snapshots for the trace viewer.\n\n- `'failure-only'`: records only failed tests.\n- `true` or `'on'`: records every test.\n- `false` or `'off'`: turns trace view off."
         },
         "trackUnhandledErrors": {
           "default": true,
@@ -43647,37 +43819,7 @@
       },
       "type": "object"
     },
-    "x": {
-      "anyOf": [
-        {
-          "allOf": [
-            {
-              "properties": {},
-              "type": "object"
-            },
-            {
-              "type": "string"
-            }
-          ]
-        },
-        {
-          "enum": [
-            "base64",
-            "binary",
-            "dataurl",
-            "empty",
-            "js",
-            "json",
-            "jsx",
-            "text",
-            "ts",
-            "tsx"
-          ],
-          "type": "string"
-        }
-      ]
-    },
-    "x_1": {
+    "z": {
       "properties": {
         "allowOnly": {
           "default": "!process.env.CI",
@@ -43934,16 +44076,33 @@
               "description": "Record the modules that every test file loads in the cache and use the records\nwith `--changed` and `--related` instead of walking the module graph statically.\n\nA test file without a record always runs.",
               "type": "boolean"
             },
+            "traceTimeline": {
+              "default": false,
+              "description": "Record `expect.poll`, `vi.waitFor`, and `vi.waitUntil` steps of each test and print them as a timeline when the test fails.\nSteps of passing tests are dropped without being reported.\n\nThis has no effect in browser mode, which records its steps with `browser.traceView`.",
+              "type": "boolean"
+            },
             "vcsProvider": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/VCSProvider"
+                  "allOf": [
+                    {
+                      "properties": {},
+                      "type": "object"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
                 },
                 {
+                  "$ref": "#/definitions/n"
+                },
+                {
+                  "enum": ["git", "mtime"],
                   "type": "string"
                 }
               ],
-              "description": "Custom provider for detecting changed files. Used with the `--changed` flag\nto determine which files have been modified.\n\nBy default, Vitest uses Git to detect changed files. You can provide a custom\nimplementation of the `VCSProvider` interface to use a different version control system."
+              "description": "Provider for detecting changed files. Used with the `--changed` flag\nto determine which files have been modified.\n\n- `'git'` (default) compares the working tree with the `--changed` reference.\n- `'mtime'` compares the modification time of every recorded dependency with the run\n  that recorded it. It requires `experimental.recordDependencies`. The test files that\n  failed in their last run also run.\n\nYou can also provide a custom implementation of the `VCSProvider` interface."
             },
             "viteModuleRunner": {
               "default": true,
@@ -43954,60 +44113,8 @@
           "type": "object"
         },
         "fakeTimers": {
-          "description": "Options for",
-          "properties": {
-            "advanceTimeDelta": {
-              "type": "number"
-            },
-            "ignoreMissingTimers": {
-              "type": "boolean"
-            },
-            "loopLimit": {
-              "type": "number"
-            },
-            "now": {
-              "anyOf": [
-                {
-                  "format": "date-time",
-                  "type": "string"
-                },
-                {
-                  "properties": {
-                    "epochMilliseconds": {
-                      "type": "number"
-                    }
-                  },
-                  "required": ["epochMilliseconds"],
-                  "type": "object"
-                },
-                {
-                  "type": "number"
-                }
-              ]
-            },
-            "shouldAdvanceTime": {
-              "type": "boolean"
-            },
-            "shouldClearNativeTimers": {
-              "type": "boolean"
-            },
-            "target": {
-              "$ref": "#/definitions/GlobalObject"
-            },
-            "toFake": {
-              "items": {
-                "$ref": "#/definitions/FakeMethod"
-              },
-              "type": "array"
-            },
-            "toNotFake": {
-              "items": {
-                "$ref": "#/definitions/FakeMethod"
-              },
-              "type": "array"
-            }
-          },
-          "type": "object"
+          "$ref": "#/definitions/e",
+          "description": "Options for"
         },
         "fileParallelism": {
           "default": true,
@@ -44169,11 +44276,11 @@
           "type": "boolean"
         },
         "provide": {
-          "$ref": "#/definitions/Partial%3Co%3E",
+          "$ref": "#/definitions/Partial%3Cp%3E",
           "description": "Define variables that will be returned from `inject` in the test environment."
         },
         "provider": {
-          "$ref": "#/definitions/G%3Cobject%3E"
+          "$ref": "#/definitions/J%3Cobject%3E"
         },
         "repeats": {
           "default": "0 // Don't repeat",
@@ -44186,7 +44293,7 @@
           "type": "boolean"
         },
         "retry": {
-          "$ref": "#/definitions/bi",
+          "$ref": "#/definitions/bk",
           "default": "0 // Don't retry",
           "description": "Retry configuration for tests.\n- If a number, specifies how many times to retry failed tests\n- If an object, allows fine-grained retry control\n\n⚠️ WARNING: Function form is NOT supported in a config file\nbecause configurations are serialized when passed to worker threads.\nUse the function form only in test files directly."
         },
@@ -44233,7 +44340,7 @@
         "tags": {
           "description": "Define tags available in your test files.\n\nIf test defines a tag that is not listed here, an error will be thrown.",
           "items": {
-            "$ref": "#/definitions/e"
+            "$ref": "#/definitions/g"
           },
           "type": "array"
         },
