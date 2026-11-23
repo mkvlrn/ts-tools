@@ -14,7 +14,7 @@
       "groupSlug": "docker"
     },
     {
-      "matchManagers": ["npm", "bun"],
+      "matchManagers": ["npm"],
       "groupName": "npm dependencies",
       "groupSlug": "npm"
     },
@@ -24,18 +24,10 @@
       "groupSlug": "mise"
     },
     {
-      "matchPackageNames": ["node", "pnpm", "bun"],
+      "matchPackageNames": ["node", "pnpm"],
       "groupName": "mise tools",
       "groupSlug": "mise"
     },
-    {
-      "matchManagers": ["custom"],
-      "matchDatasources": ["node-version", "npm"],
-      "matchPackageNames": ["node", "pnpm", "bun"],
-      "groupName": "mise tools",
-      "groupSlug": "mise"
-    },
-
     {
       // this is disabled by the best-practices preset, apparently
       "matchManagers": ["devcontainer"],
@@ -51,5 +43,7 @@
   "minimumReleaseAgeBehaviour": "timestamp-optional",
   "prHourlyLimit": 0,
   "prConcurrentLimit": 0,
-  "dependencyDashboard": true
+  "dependencyDashboard": {
+    "enabled": true
+  }
 }
